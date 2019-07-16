@@ -172,35 +172,35 @@ export const data = [
 
 export const columns = [
     {
-        Header: 'Date',
+        Header: 'Customer',
         accessor: 'eventDates',
         headerStyle: { whiteSpace: 'unset' },
         style: { whiteSpace: 'unset' },
     },
     {
-        Header: 'Name',
-        accessor: 'name',
+        Header: 'Customer',
+        accessor: 'customer.name',
         headerStyle: { whiteSpace: 'unset' },
         style: { whiteSpace: 'unset' },
     },
     {
-        Header: 'Type',
-        accessor: 'eventType',
+        Header: 'Supplier',
+        accessor: 'supplier.name',
         headerStyle: { whiteSpace: 'unset' },
         style: { whiteSpace: 'unset' },
     },
     {
-        Header: 'Total Attended',
-        accessor: 'actualAttended',
+        Header: 'State',
+        accessor: 'status',
         headerStyle: { whiteSpace: 'unset' },
         style: { whiteSpace: 'unset' },
         maxWidth: 150,
     },
     {
-        Header: 'Total Registered',
-        accessor: 'actualRegistered',
+        Header: 'Last Modified',
+        accessor: 'updateTime',
         headerStyle: { whiteSpace: 'unset' },
         style: { whiteSpace: 'unset' },
-        maxWidth: 150,
+        // maxWidth: 150,
     },
 ];

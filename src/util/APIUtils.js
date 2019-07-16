@@ -1,4 +1,4 @@
-import { API_BASE_URL, POLL_LIST_SIZE, ACCESS_TOKEN } from '../constants';
+import { API_BASE_URL, EDI_LIST_SIZE, ACCESS_TOKEN } from '../constants';
 
 const request = (options) => {
     const headers = new Headers({
@@ -25,10 +25,10 @@ const request = (options) => {
 
 export function getEdiConnections(pageNumber, size) {
     pageNumber = pageNumber || 0;
-    size = size || POLL_LIST_SIZE;
+    size = size || EDI_LIST_SIZE;
 
     return request({
-        url: API_BASE_URL + "/edi_connection/all?pageNumber=" + pageNumber + "&size=" + size,
+        url: API_BASE_URL + "/edi_connection/all?pageNumber=" + pageNumber + "&pageSize=" + size,
         method: 'GET'
     });
 }
@@ -100,20 +100,20 @@ export function getUserProfile(username) {
 
 export function getUserCreatedPolls(username, page, size) {
     page = page || 0;
-    size = size || POLL_LIST_SIZE;
+    size = size || EDI_LIST_SIZE;
 
     return request({
-        url: API_BASE_URL + "/edi_connection/all", //" + username + "/ediConnections?page=" + page + "&size=" + size
+        url: API_BASE_URL + "/edi_connection/all", //" + username + "/ediConnections?pageNumber=" + pageNumber + "&pageSize=" + pageSize
         method: 'GET'
     });
 }
 
 export function getUserVotedPolls(username, page, size) {
     page = page || 0;
-    size = size || POLL_LIST_SIZE;
+    size = size || EDI_LIST_SIZE;
 
     return request({
-        url: API_BASE_URL + "/users/" + username + "/votes?page=" + page + "&size=" + size,
+        url: API_BASE_URL + "/users/" + username + "/votes?pageNumber=" + page + "&pageSize=" + size,
         method: 'GET'
     });
 }

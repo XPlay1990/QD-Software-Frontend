@@ -6,9 +6,10 @@
 }
   
   .app-title a {
+    color: dodgerblue;
     text-decoration: none;
     line-height: 64px;
-    font-size: 21px;
+    font-size: 33px;
     display: inline-block;
   }
   
