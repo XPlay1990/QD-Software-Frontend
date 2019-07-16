@@ -7,7 +7,7 @@ import loginBackground from '../../resources/login/CHANGE_ME_NOT_FREE.png';
 import abbinoLogo from '../../resources/login/abbino_nicando.png';
 
 
-import {Form, Input, Button, Icon, notification} from 'antd';
+import {Button, Form, Icon, Input, notification} from 'antd';
 
 const FormItem = Form.Item;
 
@@ -15,7 +15,8 @@ class Login extends Component {
     render() {
         const AntWrappedLoginForm = Form.create()(LoginForm)
         return (
-            <div className={"login-background"}><img src={loginBackground} className="LoginBackground" alt=""/>
+            <div className={"login-background"}>
+                <img src={loginBackground} className="LoginBackground" alt=""/>
                 <div className="login-container">
                     <h1 className="page-title">Login</h1>
                     <div className="login-content">

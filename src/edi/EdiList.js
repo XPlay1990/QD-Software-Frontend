@@ -37,15 +37,17 @@ class EdiList extends Component {
             .then(response => {
                 const ediConnections = this.state.ediConnections.slice();
 
-                this.setState({
-                    ediConnections: ediConnections.concat(response.content),
-                    pageNumber: response.pageNumber,
-                    pageSize: response.pageSize,
-                    totalElements: response.totalElements,
-                    totalPages: response.totalPages,
-                    isLast: response.isLast,
-                    isLoading: false
-                })
+                if (this._isMounted) {
+                    this.setState({
+                        ediConnections: ediConnections.concat(response.content),
+                        pageNumber: response.pageNumber,
+                        pageSize: response.pageSize,
+                        totalElements: response.totalElements,
+                        totalPages: response.totalPages,
+                        isLast: response.isLast,
+                        isLoading: false
+                    })
+                }
             }).catch(error => {
             this.setState({
                 isLoading: false
@@ -55,7 +57,12 @@ class EdiList extends Component {
     }
 
     componentDidMount() {
+        this._isMounted = true;
         this.loadEdiList();
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     componentDidUpdate = nextProps => {
@@ -79,6 +86,27 @@ class EdiList extends Component {
         this.loadEdiList(this.state.pageNumber + 1);
     }
 
+    onRowClick(state, rowInfo, column, instance) {
+        this.props.history.push('/edi_connection/' + rowInfo.original.id)
+    }
+
+    reloadEdiConnections(state, rowInfo, column, instance) {
+        console.log("Sorting by " + column.id);
+        if (column.sort === '') return;
+        let newSort;
+        if (this.state.currentSort === column.sort) {
+            this.state.isASC === 'ASC' ? newSort = 'DESC' : newSort = 'ASC';
+        } else {
+            newSort = 'ASC';
+        }
+        // this.setState({currentSort: column.sort, isASC: newSort});
+        // let passObj = this.props.valueAccepted(1);
+        // column.altID ? passObj.orderByColumn = column.altID : passObj.orderByColumn = column.sort;
+        // passObj.orderByAscDesc = newSort;
+        // let qhk = ((((this.props.search || {}).data || {})).queryHeaderKey || -1);
+        // this.props.updateSearch(passObj, qhk, 1, this.props.search.numRecords)
+    }
+
     render() {
         return (
             <div className="ediConnectionsContainer">
@@ -90,10 +118,23 @@ class EdiList extends Component {
                     columns={columns}
                     pages={this.state.totalPages}
                     showPagination={true}
+                    // filterable
+                    getTheadThProps={(state, rowInfo, column, instance) => ({
+                        // style: {
+                        //     borderTop: (this.state.currentSort === column.sort && column.sort !== '' && this.state.isASC === 'ASC') ? '2px solid black' : '0',
+                        //     borderBottom: (this.state.currentSort === column.sort && column.sort !== '' && this.state.isASC === 'DESC') ? '2px solid black' : '0'
+                        // },
+                        onClick: (e) => {
+                            console.log(state);
+                            console.log(rowInfo);
+                            console.log(column);
+                            console.log(instance);
+                            this.reloadEdiConnections(state, rowInfo, column, instance)
+                        }
+                    })}
                     getTrProps={(state, rowInfo, column, instance) => ({
                         onClick: e => {
-                            console.log('A row was clicked!');
-                            console.log("Edi-Connection with ID: " + rowInfo.original.id)
+                            this.onRowClick(state, rowInfo, column, instance);
                         }
                     })}
                 />

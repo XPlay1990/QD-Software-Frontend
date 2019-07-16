@@ -1,11 +1,11 @@
-import { API_BASE_URL, EDI_LIST_SIZE, ACCESS_TOKEN } from '../constants';
+import {ACCESS_TOKEN, API_BASE_URL, EDI_LIST_SIZE} from '../constants';
 
 const request = (options) => {
     const headers = new Headers({
         'Content-Type': 'application/json',
-    })
-    
-    if(localStorage.getItem(ACCESS_TOKEN)) {
+    });
+
+    if (localStorage.getItem(ACCESS_TOKEN)) {
         headers.append('Authorization', 'Bearer ' + localStorage.getItem(ACCESS_TOKEN))
     }
 
@@ -13,14 +13,14 @@ const request = (options) => {
     options = Object.assign({}, defaults, options);
 
     return fetch(options.url, options)
-    .then(response => 
-        response.json().then(json => {
-            if(!response.ok) {
-                return Promise.reject(json);
-            }
-            return json;
-        })
-    );
+        .then(response =>
+            response.json().then(json => {
+                if (!response.ok) {
+                    return Promise.reject(json);
+                }
+                return json;
+            })
+        );
 };
 
 export function getEdiConnections(pageNumber, size) {
@@ -37,7 +37,7 @@ export function createPoll(pollData) {
     return request({
         url: API_BASE_URL + "/ediConnections",
         method: 'POST',
-        body: JSON.stringify(pollData)         
+        body: JSON.stringify(pollData)
     });
 }
 
@@ -81,7 +81,7 @@ export function checkEmailAvailability(email) {
 
 
 export function getCurrentUser() {
-    if(!localStorage.getItem(ACCESS_TOKEN)) {
+    if (!localStorage.getItem(ACCESS_TOKEN)) {
         return Promise.reject("No access token set.");
     }
 
