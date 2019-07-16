@@ -81,7 +81,7 @@ class EdiList extends Component {
 
     render() {
         return (
-            <div className="ediConnections-container">
+            <div className="ediConnectionsContainer">
                 <ReactTable
                     manual
                     minRows={0}

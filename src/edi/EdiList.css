@@ -9,7 +9,8 @@
     margin-bottom: 40px;
 }
 
-.ediConnections-container {
+.ediConnectionsContainer {
+    background-color: white;
     max-width: 90%;
     margin: 20px auto 0;
 }
