@@ -1,0 +1,32 @@
+.ediDescriptionGrid {
+    display: grid;
+    padding: 10px;
+    grid-gap: 15px;
+    grid-template-areas:
+            'customerName assignedDev . status'
+            'supplierName . creationTime updateTime'
+}
+
+.ediDescriptionStatus {
+    grid-area: status;
+}
+
+.ediDescriptionCustomerName {
+    grid-area: customerName;
+}
+
+.ediDescriptionSupplierName {
+    grid-area: supplierName;
+}
+
+.ediDescriptionAssignedDev {
+    grid-area: assignedDev;
+}
+
+.ediDescriptionCreationTime {
+    grid-area: creationTime;
+}
+
+.ediDescriptionUpdateTime {
+    grid-area: updateTime;
+}

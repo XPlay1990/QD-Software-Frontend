@@ -83,14 +83,16 @@ function ProfileDropdownMenu(props) {
     );
 
     return (
-        <Dropdown
-            overlay={dropdownMenu}
-            trigger={['click']}
-            getPopupContainer={() => document.getElementsByClassName('profile-menu')[0]}>
-            <a className="ant-dropdown-link" href="javascript:void(0)">
-                <Icon type="user" className="nav-icon" style={{marginRight: 0}}/> <Icon type="down"/>
-            </a>
-        </Dropdown>
+        <div>
+            <Dropdown
+                overlay={dropdownMenu}
+                trigger={['click']}
+                getPopupContainer={() => document.getElementsByClassName('profile-menu')[0]}>
+                <a className="ant-dropdown-link" href="javascript:void(0)">
+                    <Icon type="user" className="nav-icon" style={{marginRight: 0}}/> <Icon type="down"/>
+                </a>
+            </Dropdown>
+        </div>
     );
 }
 

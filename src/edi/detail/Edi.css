@@ -11,21 +11,15 @@
     background-color: white;
     padding: 10px;
     grid-template-areas:
-            'title title title title'
     'description description detailedInformation detailedInformation'
     'messages messages messages attachments';
     height: 900px;
-    grid-template-rows: 5% 30% 60%;
-}
-
-.ediTitle {
-    grid-area: title;
-    background-color: wheat;
+    grid-template-rows: 30% 60%;
 }
 
 .ediDescription {
     grid-area: description;
-    background-color: grey;
+    /*background-color: grey;*/
 }
 
 .ediDetailedInformation {

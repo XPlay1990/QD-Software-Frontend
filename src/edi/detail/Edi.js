@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './Edi.css';
 import {getEdiConnection} from "../../util/APIUtils";
 import LoadingIndicator from "../../common/LoadingIndicator";
+import Description from "./description/Description";
 
 class Edi extends Component {
     constructor(props) {
@@ -26,7 +27,6 @@ class Edi extends Component {
 
         promise
             .then(response => {
-                console.log(response);
 
                 if (this._isMounted) {
                     this.setState({
@@ -56,7 +56,6 @@ class Edi extends Component {
     componentDidUpdate = nextProps => {
         if (this.props.isAuthenticated !== nextProps.isAuthenticated) {
             // Reset State
-            console.log("update")
             this.setState({
                 ediConnection: null,
                 isLoading: true
@@ -83,16 +82,14 @@ class Edi extends Component {
                 {
                     !this.state.isLoading && this.state.ediConnection != null ? (
                         <div className="ediContentGrid">
-                            <div className="ediTitle">
-                                <p>title</p>
-                            </div>
-                            <div className="ediDescription">
-                                {this.state.ediConnection.status}
-                                {this.state.ediConnection.creationTime}
-                                {this.state.ediConnection.updateTime}
-                                {this.state.ediConnection.customer.name}
-                                {this.state.ediConnection.supplier.name}
-                            </div>
+                            <Description
+                                status={this.state.ediConnection.status}
+                                creationTime={this.state.ediConnection.creationTime}
+                                updateTime={this.state.ediConnection.updateTime}
+                                customerName={this.state.ediConnection.customer.name}
+                                supplierName={this.state.ediConnection.supplier.name}
+                                assignedDev={this.state.ediConnection.assignedDeveloper}
+                            />
 
                             <div className="ediDetailedInformation">
                                 <p>detailedInfos</p>
@@ -104,7 +101,7 @@ class Edi extends Component {
                             </div>
 
                             <div className="ediAttachments">
-
+                                <p>Attachments</p>
                             </div>
                         </div>) : null
                 }
