@@ -117,7 +117,7 @@ class EdiList extends Component {
                     ) : null
                 }
                 {
-                    !this.state.isLoading ? (
+                    !this.state.isLoading && this.state.ediConnections.length > 0 ? (
                         <div className="ediConnectionsTable">
                             <ReactTable
                                 manual

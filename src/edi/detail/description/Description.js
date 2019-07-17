@@ -3,7 +3,7 @@ import './Edi.css';
 import {getEdiConnection} from "../../util/APIUtils";
 import LoadingIndicator from "../../common/LoadingIndicator";
 
-class Edi extends Component {
+class Description extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -75,37 +75,19 @@ class Edi extends Component {
                 }
                 {
                     !this.state.isLoading && this.state.ediConnection === null ? (
-                        <div className="noEdiConnectionsFound">
-                            <span>No Edi-Connection with Id {this.id} Found.</span>
+                        <div className="noDescriptionFound">
+                            <span>No Description found for Edi-Connection with Id {this.id}.</span>
                         </div>
                     ) : null
                 }
                 {
-                    !this.state.isLoading && this.state.ediConnection != null ? (
-                        <div className="ediContentGrid">
-                            <div className="ediTitle">
-                                <p>title</p>
-                            </div>
-                            <div className="ediDescription">
-                                {this.state.ediConnection.status}
-                                {this.state.ediConnection.creationTime}
-                                {this.state.ediConnection.updateTime}
-                                {this.state.ediConnection.customer.name}
-                                {this.state.ediConnection.supplier.name}
-                            </div>
-
-                            <div className="ediDetailedInformation">
-                                <p>detailedInfos</p>
-                            </div>
-
-                            <div className="ediMessages">
-                                <p>{this.ediConnection}</p>
-                                <p>messages</p>
-                            </div>
-
-                            <div className="ediAttachments">
-
-                            </div>
+                    !this.state.isLoading ? (
+                        <div className="ediDescription">
+                            {this.state.ediConnection.status}
+                            {this.state.ediConnection.creationTime}
+                            {this.state.ediConnection.updateTime}
+                            {this.state.ediConnection.customer.name}
+                            {this.state.ediConnection.supplier.name}
                         </div>) : null
                 }
             </div>
@@ -113,4 +95,4 @@ class Edi extends Component {
     }
 }
 
-export default Edi;
+export default Description;

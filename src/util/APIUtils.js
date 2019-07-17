@@ -28,7 +28,7 @@ export function getEdiConnections(pageNumber, size) {
     size = size || EDI_LIST_SIZE;
 
     return request({
-        url: API_BASE_URL + `${EDI_CONNECTIONS_URL}"?pageNumber=` + pageNumber + "&pageSize=" + size,
+        url: API_BASE_URL + `${EDI_CONNECTIONS_URL}?pageNumber=` + pageNumber + "&pageSize=" + size,
         method: 'GET'
     });
 }
