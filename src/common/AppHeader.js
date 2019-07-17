@@ -3,7 +3,6 @@ import {Link, withRouter} from 'react-router-dom';
 import './AppHeader.css';
 import pollIcon from '../poll.svg';
 import {Dropdown, Icon, Layout, Menu} from 'antd';
-import banner from "../resources/header/banner.jpg";
 
 const Header = Layout.Header;
 

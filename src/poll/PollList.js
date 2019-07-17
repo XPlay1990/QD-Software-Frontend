@@ -1,5 +1,5 @@
 // import React, { Component } from 'react';
-// import { getEdiConnections, getUserCreatedPolls, getUserVotedPolls } from '../util/APIUtils';
+// import { getEdiConnection, getUserCreatedPolls, getUserVotedPolls } from '../util/APIUtils';
 // import Poll from './Poll';
 // import { castVote } from '../util/APIUtils';
 // import LoadingIndicator  from '../common/LoadingIndicator';
@@ -34,7 +34,7 @@
 //                 promise = getUserVotedPolls(this.props.username, pageNumber, pageSize);
 //             }
 //         } else {
-//             promise = getEdiConnections(pageNumber, pageSize);
+//             promise = getEdiConnection(pageNumber, pageSize);
 //         }
 //
 //         if(!promise) {

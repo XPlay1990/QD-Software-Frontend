@@ -12,8 +12,15 @@ import {Button, Form, Icon, Input, notification} from 'antd';
 const FormItem = Form.Item;
 
 class Login extends Component {
+    // constructor(props) {
+    //     super(props);
+    // }
+
     render() {
-        const AntWrappedLoginForm = Form.create()(LoginForm)
+        const AntWrappedLoginForm = Form.create()(LoginForm);
+        // if (this.authenticated) {
+        //     return <Redirect to={EDI_CONNECTIONS_URL}/>
+        // }
         return (
             <div className={"login-background"}>
                 <img src={loginBackground} className="LoginBackground" alt=""/>

@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
 import './App.css';
-import {Route, Switch, withRouter} from 'react-router-dom';
+import {Redirect, Route, Switch, withRouter} from 'react-router-dom';
 
 import {getCurrentUser} from '../util/APIUtils';
-import {ACCESS_TOKEN} from '../constants';
-
-import NewPoll from '../poll/NewPoll';
+import {ACCESS_TOKEN, EDI_CONNECTIONS_URL} from '../constants';
 import Login from '../user/login/Login';
 import Signup from '../user/signup/Signup';
 import EdiList from '../edi/EdiList';
@@ -16,6 +14,7 @@ import LoadingIndicator from '../common/LoadingIndicator';
 import PrivateRoute from '../common/PrivateRoute';
 
 import {Layout, notification} from 'antd';
+import Edi from "../edi/detail/Edi";
 
 const {Content} = Layout;
 
@@ -82,7 +81,7 @@ class App extends Component {
             description: "You're successfully logged in.",
         });
         this.loadCurrentUser();
-        this.props.history.push("/edi");
+        this.props.history.push(EDI_CONNECTIONS_URL);
     }
 
     render() {
@@ -98,22 +97,18 @@ class App extends Component {
                 <Content className="app-content">
                     <div className="container">
                         <Switch>
-                            <Route exact path="/"
-                                   render={(props) => <EdiList isAuthenticated={this.state.isAuthenticated}
-                                                               currentUser={this.state.currentUser}
-                                                               handleLogout={this.handleLogout} {...props} />}>
-                            </Route>
-                            <Route path="/login"
-                                   render={(props) => <Login onLogin={this.handleLogin} {...props} />}></Route>
-                            <Route path="/signup" component={Signup}></Route>
-                            <Route path="/edi" component={EdiList}></Route>
-                            <Route path="/users/:username"
-                                   render={(props) => <Profile isAuthenticated={this.state.isAuthenticated}
-                                                               currentUser={this.state.currentUser} {...props}  />}>
-                            </Route>
-                            <PrivateRoute authenticated={this.state.isAuthenticated} path="/poll/new"
-                                          component={NewPoll} handleLogout={this.handleLogout}></PrivateRoute>
-                            <Route component={NotFound}></Route>
+                            <Route exact path="/" render={() => (<Redirect to={EDI_CONNECTIONS_URL}/>)}/>
+                            <Route authenticated={this.state.isAuthenticated} path="/login"
+                                   render={(props) => <Login onLogin={this.handleLogin} {...props} />}/>
+                            <Route path="/signup" component={Signup}/>
+                            <PrivateRoute authenticated={this.state.isAuthenticated} exact path={EDI_CONNECTIONS_URL}
+                                          component={EdiList}/>
+                            <PrivateRoute authenticated={this.state.isAuthenticated} path="/users/:username"
+                                          render={(props) => <Profile isAuthenticated={this.state.isAuthenticated}
+                                                                      currentUser={this.state.currentUser} {...props}  />}/>
+                            <PrivateRoute authenticated={this.state.isAuthenticated} path={EDI_CONNECTIONS_URL + "/:id"}
+                                          component={Edi}/>
+                            <Route component={NotFound}/>
                         </Switch>
                     </div>
                 </Content>

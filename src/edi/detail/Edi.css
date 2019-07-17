@@ -1,0 +1,44 @@
+/*@media (max-width: 768px) {*/
+/*    .poll-question {*/
+/*        font-size: 18px;*/
+/*    }*/
+/*}*/
+
+
+.ediContentGrid {
+    display: grid;
+    grid-gap: 15px;
+    background-color: white;
+    padding: 10px;
+    grid-template-areas:
+            'title title title title'
+    'description description detailedInformation detailedInformation'
+    'messages messages messages attachments';
+    height: 900px;
+    grid-template-rows: 5% 30% 60%;
+}
+
+.ediTitle {
+    grid-area: title;
+    background-color: wheat;
+}
+
+.ediDescription {
+    grid-area: description;
+    background-color: grey;
+}
+
+.ediDetailedInformation {
+    grid-area: detailedInformation;
+    background-color: yellow;
+}
+
+.ediMessages {
+    grid-area: messages;
+    background-color: lightcyan;
+}
+
+.ediAttachments {
+    grid-area: attachments;
+    background-color: red;
+}

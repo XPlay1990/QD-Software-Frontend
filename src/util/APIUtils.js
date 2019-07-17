@@ -1,4 +1,4 @@
-import {ACCESS_TOKEN, API_BASE_URL, EDI_LIST_SIZE} from '../constants';
+import {ACCESS_TOKEN, API_BASE_URL, EDI_CONNECTIONS_URL, EDI_LIST_SIZE} from '../constants';
 
 const request = (options) => {
     const headers = new Headers({
@@ -28,24 +28,15 @@ export function getEdiConnections(pageNumber, size) {
     size = size || EDI_LIST_SIZE;
 
     return request({
-        url: API_BASE_URL + "/edi_connection/all?pageNumber=" + pageNumber + "&pageSize=" + size,
+        url: API_BASE_URL + `${EDI_CONNECTIONS_URL}"?pageNumber=` + pageNumber + "&pageSize=" + size,
         method: 'GET'
     });
 }
 
-export function createPoll(pollData) {
+export function getEdiConnection(id) {
     return request({
-        url: API_BASE_URL + "/ediConnections",
-        method: 'POST',
-        body: JSON.stringify(pollData)
-    });
-}
-
-export function castVote(voteData) {
-    return request({
-        url: API_BASE_URL + "/ediConnections/" + voteData.pollId + "/votes",
-        method: 'POST',
-        body: JSON.stringify(voteData)
+        url: API_BASE_URL + `${EDI_CONNECTIONS_URL}/` + id,
+        method: 'GET'
     });
 }
 
@@ -94,16 +85,6 @@ export function getCurrentUser() {
 export function getUserProfile(username) {
     return request({
         url: API_BASE_URL + "/users/" + username,
-        method: 'GET'
-    });
-}
-
-export function getUserCreatedPolls(username, page, size) {
-    page = page || 0;
-    size = size || EDI_LIST_SIZE;
-
-    return request({
-        url: API_BASE_URL + "/edi_connection/all", //" + username + "/ediConnections?pageNumber=" + pageNumber + "&pageSize=" + pageSize
         method: 'GET'
     });
 }

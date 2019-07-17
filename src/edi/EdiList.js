@@ -5,7 +5,8 @@ import {withRouter} from 'react-router-dom';
 import './EdiList.css';
 import ReactTable from 'react-table'
 import "react-table/react-table.css";
-import {columns} from "./testTableData";
+import {columnConfig} from "./ColumnConfig";
+import LoadingIndicator from "../common/LoadingIndicator";
 
 class EdiList extends Component {
     constructor(props) {
@@ -20,7 +21,7 @@ class EdiList extends Component {
             isLoading: false
         };
         this.loadEdiList = this.loadEdiList.bind(this);
-        this.handleLoadMore = this.handleLoadMore.bind(this);
+        this.onRowClick = this.onRowClick.bind(this)
     }
 
     loadEdiList(page = 0, size = EDI_LIST_SIZE) {
@@ -35,11 +36,9 @@ class EdiList extends Component {
 
         promise
             .then(response => {
-                const ediConnections = this.state.ediConnections.slice();
-
                 if (this._isMounted) {
                     this.setState({
-                        ediConnections: ediConnections.concat(response.content),
+                        ediConnections: response.content,
                         pageNumber: response.pageNumber,
                         pageSize: response.pageSize,
                         totalElements: response.totalElements,
@@ -76,15 +75,11 @@ class EdiList extends Component {
                 totalPages: 0,
                 isLast: true,
                 currentVotes: [],
-                isLoading: false
+                isLoading: true
             });
             this.loadEdiList();
         }
     };
-
-    handleLoadMore() {
-        this.loadEdiList(this.state.pageNumber + 1);
-    }
 
     onRowClick(state, rowInfo, column, instance) {
         this.props.history.push('/edi_connection/' + rowInfo.original.id)
@@ -92,13 +87,13 @@ class EdiList extends Component {
 
     reloadEdiConnections(state, rowInfo, column, instance) {
         console.log("Sorting by " + column.id);
-        if (column.sort === '') return;
-        let newSort;
-        if (this.state.currentSort === column.sort) {
-            this.state.isASC === 'ASC' ? newSort = 'DESC' : newSort = 'ASC';
-        } else {
-            newSort = 'ASC';
-        }
+        // if (column.sort === '') return;
+        // let newSort;
+        // if (this.state.currentSort === column.sort) {
+        //     this.state.isASC === 'ASC' ? newSort = 'DESC' : newSort = 'ASC';
+        // } else {
+        //     newSort = 'ASC';
+        // }
         // this.setState({currentSort: column.sort, isASC: newSort});
         // let passObj = this.props.valueAccepted(1);
         // column.altID ? passObj.orderByColumn = column.altID : passObj.orderByColumn = column.sort;
@@ -110,35 +105,54 @@ class EdiList extends Component {
     render() {
         return (
             <div className="ediConnectionsContainer">
-                <ReactTable
-                    manual
-                    minRows={0}
-                    pageSize={this.state.pageSize}
-                    data={this.state.ediConnections}
-                    columns={columns}
-                    pages={this.state.totalPages}
-                    showPagination={true}
-                    // filterable
-                    getTheadThProps={(state, rowInfo, column, instance) => ({
-                        // style: {
-                        //     borderTop: (this.state.currentSort === column.sort && column.sort !== '' && this.state.isASC === 'ASC') ? '2px solid black' : '0',
-                        //     borderBottom: (this.state.currentSort === column.sort && column.sort !== '' && this.state.isASC === 'DESC') ? '2px solid black' : '0'
-                        // },
-                        onClick: (e) => {
-                            console.log(state);
-                            console.log(rowInfo);
-                            console.log(column);
-                            console.log(instance);
-                            this.reloadEdiConnections(state, rowInfo, column, instance)
-                        }
-                    })}
-                    getTrProps={(state, rowInfo, column, instance) => ({
-                        onClick: e => {
-                            this.onRowClick(state, rowInfo, column, instance);
-                        }
-                    })}
-                />
-                <Tips/>
+                {
+                    this.state.isLoading ?
+                        <LoadingIndicator/> : null
+                }
+                {
+                    !this.state.isLoading && this.state.ediConnections.length === 0 ? (
+                        <div className="noEdiConnectionsFound">
+                            <span>No Edi-Connections Found.</span>
+                        </div>
+                    ) : null
+                }
+                {
+                    !this.state.isLoading ? (
+                        <div className="ediConnectionsTable">
+                            <ReactTable
+                                manual
+                                minRows={0}
+                                pageSize={this.state.pageSize}
+                                data={this.state.ediConnections}
+                                columns={columnConfig}
+                                pages={this.state.totalPages}
+                                showPagination={true}
+                                // filterable
+                                getTheadThProps={(state, rowInfo, column, instance) => ({
+                                    // style: {
+                                    //     borderTop: (this.state.currentSort === column.sort && column.sort !== '' && this.state.isASC === 'ASC') ? '2px solid black' : '0',
+                                    //     borderBottom: (this.state.currentSort === column.sort && column.sort !== '' && this.state.isASC === 'DESC') ? '2px solid black' : '0'
+                                    // },
+                                    onClick: (e) => {
+                                        console.log(state);
+                                        console.log(rowInfo);
+                                        console.log(column);
+                                        console.log(instance);
+                                        this.reloadEdiConnections(state, rowInfo, column, instance)
+                                    }
+                                })}
+                                getTrProps={(state, rowInfo, column, instance) => ({
+                                    onClick: e => {
+                                        this.onRowClick(state, rowInfo, column, instance);
+                                    }
+                                })}
+                            />
+                            <Tips/>
+                        </div>
+                    ) : null
+
+                }
+
             </div>
         );
     }

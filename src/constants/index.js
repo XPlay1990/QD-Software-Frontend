@@ -1,4 +1,5 @@
 export const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:9020';
+export const EDI_CONNECTIONS_URL = '/edi_connection';
 export const ACCESS_TOKEN = 'accessToken';
 
 export const EDI_LIST_SIZE = 10;

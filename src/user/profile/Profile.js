@@ -17,7 +17,7 @@ class Profile extends Component {
         this.state = {
             user: null,
             isLoading: false
-        }
+        };
         this.loadUserProfile = this.loadUserProfile.bind(this);
     }
 
