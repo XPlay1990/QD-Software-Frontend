@@ -22,8 +22,8 @@ class Login extends Component {
         //     return <Redirect to={EDI_CONNECTIONS_URL}/>
         // }
         return (
-            <div className={"login-background"}>
-                <img src={loginBackground} className="LoginBackground" alt=""/>
+            <div className="loginBackground">
+                <img src={loginBackground} className="loginBackgroundImage" alt=""/>
                 <div className="login-container">
                     <h1 className="page-title">Login</h1>
                     <div className="login-content">

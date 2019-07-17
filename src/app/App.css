@@ -1,4 +1,6 @@
 .app-container {
     display: flex;
     flex-direction: column;
+    align-content: flex-end;
+    height: 100%;
 }

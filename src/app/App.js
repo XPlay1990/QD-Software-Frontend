@@ -101,12 +101,14 @@ class App extends Component {
                             <Route authenticated={this.state.isAuthenticated} path="/login"
                                    render={(props) => <Login onLogin={this.handleLogin} {...props} />}/>
                             <Route path="/signup" component={Signup}/>
-                            <PrivateRoute authenticated={this.state.isAuthenticated} exact path={EDI_CONNECTIONS_URL}
+                            <PrivateRoute authenticated={this.state.isAuthenticated} exact
+                                          path={EDI_CONNECTIONS_URL}
                                           component={EdiList}/>
                             <PrivateRoute authenticated={this.state.isAuthenticated} path="/users/:username"
                                           render={(props) => <Profile isAuthenticated={this.state.isAuthenticated}
                                                                       currentUser={this.state.currentUser} {...props}  />}/>
-                            <PrivateRoute authenticated={this.state.isAuthenticated} path={EDI_CONNECTIONS_URL + "/:id"}
+                            <PrivateRoute authenticated={this.state.isAuthenticated}
+                                          path={EDI_CONNECTIONS_URL + "/:id"}
                                           component={Edi}/>
                             <Route component={NotFound}/>
                         </Switch>
