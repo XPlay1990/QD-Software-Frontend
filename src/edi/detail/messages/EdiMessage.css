@@ -1,0 +1,11 @@
+.EdiMessage{
+    border-style: solid;
+    display: flex;
+    min-height: 100px;
+}
+
+.EdiMessage img{
+    min-height: 100px;
+    height: auto;
+    width: auto;
+}

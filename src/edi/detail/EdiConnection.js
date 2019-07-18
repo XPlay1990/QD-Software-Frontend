@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import './Edi.css';
+import './EdiConnection.css';
 import {getEdiConnection} from "../../util/APIUtils";
 import LoadingIndicator from "../../common/LoadingIndicator";
 import Description from "./description/Description";
+import EdiMessageList from "./messages/EdiMessageList";
 
-class Edi extends Component {
+class EdiConnection extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -95,10 +96,7 @@ class Edi extends Component {
                                 <p>detailedInfos</p>
                             </div>
 
-                            <div className="ediMessages">
-                                <p>{this.ediConnection}</p>
-                                <p>messages</p>
-                            </div>
+                            <EdiMessageList ediConnectionId={this.id}/>
 
                             <div className="ediAttachments">
                                 <p>Attachments</p>
@@ -110,4 +108,4 @@ class Edi extends Component {
     }
 }
 
-export default Edi;
+export default EdiConnection;

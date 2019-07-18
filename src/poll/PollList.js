@@ -108,7 +108,7 @@
 //         if(!this.props.isAuthenticated) {
 //             this.props.history.push("/login");
 //             notification.info({
-//                 message: 'Edi-Portal',
+//                 message: 'EdiConnection-Portal',
 //                 description: "Please login to vote.",
 //             });
 //             return;
@@ -134,7 +134,7 @@
 //                 this.props.handleLogout('/login', 'error', 'You have been logged out. Please login to vote');
 //             } else {
 //                 notification.error({
-//                     message: 'Edi-Portal',
+//                     message: 'EdiConnection-Portal',
 //                     description: error.message || 'Sorry! Something went wrong. Please try again!'
 //                 });
 //             }

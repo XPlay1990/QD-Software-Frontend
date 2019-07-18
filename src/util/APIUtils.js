@@ -1,4 +1,10 @@
-import {ACCESS_TOKEN, API_BASE_URL, EDI_CONNECTIONS_URL, EDI_LIST_SIZE} from '../constants';
+import {
+    ACCESS_TOKEN,
+    API_BASE_URL,
+    EDI_CONNECTION_MESSAGES_URL,
+    EDI_CONNECTIONS_URL,
+    EDI_LIST_SIZE
+} from '../constants';
 
 const request = (options) => {
     const headers = new Headers({
@@ -36,6 +42,13 @@ export function getEdiConnections(pageNumber, size) {
 export function getEdiConnection(id) {
     return request({
         url: API_BASE_URL + `${EDI_CONNECTIONS_URL}/` + id,
+        method: 'GET'
+    });
+}
+
+export function getEdiConnectionMessages(ediConnectionId) {
+    return request({
+        url: API_BASE_URL + `${EDI_CONNECTIONS_URL}/` + ediConnectionId + `${EDI_CONNECTION_MESSAGES_URL}`,
         method: 'GET'
     });
 }

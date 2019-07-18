@@ -1,6 +1,6 @@
 export const columnConfig = [
     {
-        Header: 'Customer',
+        Header: '',
         accessor: 'eventDates',
         headerStyle: {whiteSpace: 'unset'},
         style: {whiteSpace: 'unset'},
@@ -29,6 +29,5 @@ export const columnConfig = [
         accessor: 'updateTime',
         headerStyle: {whiteSpace: 'unset'},
         style: {whiteSpace: 'unset'},
-        // maxWidth: 150,
     },
 ];

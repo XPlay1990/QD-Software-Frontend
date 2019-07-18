@@ -1,8 +1,11 @@
 .loginBackground {
     /*text-align: center;*/
-    display: grid;
+    /*display: grid;*/
     height: 100%;
     background-color: #282c34;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 /*.loginBackgroundImage {*/
@@ -15,7 +18,7 @@
     position: absolute;
     right: 500px;
     top: 250px;
-    max-width: 450px;
+    width: 300px;
     margin: 40px auto 0;
     padding: 20px 20px 20px 20px;
 
@@ -31,7 +34,7 @@
     width: 100%;
 }
 
-.LoginFooter{
+.LoginFooter {
     position: absolute;
     bottom: 0;
 }

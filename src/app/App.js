@@ -14,7 +14,7 @@ import LoadingIndicator from '../common/LoadingIndicator';
 import PrivateRoute from '../common/PrivateRoute';
 
 import {Layout, notification} from 'antd';
-import Edi from "../edi/detail/Edi";
+import EdiConnection from "../edi/detail/EdiConnection";
 
 const {Content} = Layout;
 
@@ -70,14 +70,14 @@ class App extends Component {
         this.props.history.push(redirectTo);
 
         notification[notificationType]({
-            message: 'Edi-Portal',
+            message: 'EdiConnection-Portal',
             description: description,
         });
     }
 
     handleLogin() {
         notification.success({
-            message: 'Edi-Portal',
+            message: 'EdiConnection-Portal',
             description: "You're successfully logged in.",
         });
         this.loadCurrentUser();
@@ -104,12 +104,12 @@ class App extends Component {
                             <PrivateRoute authenticated={this.state.isAuthenticated} exact
                                           path={EDI_CONNECTIONS_URL}
                                           component={EdiList}/>
-                            <PrivateRoute authenticated={this.state.isAuthenticated} path="/users/:username"
+                            <Route authenticated={this.state.isAuthenticated} path="/users/:username"
                                           render={(props) => <Profile isAuthenticated={this.state.isAuthenticated}
                                                                       currentUser={this.state.currentUser} {...props}  />}/>
                             <PrivateRoute authenticated={this.state.isAuthenticated}
                                           path={EDI_CONNECTIONS_URL + "/:id"}
-                                          component={Edi}/>
+                                          component={EdiConnection}/>
                             <Route component={NotFound}/>
                         </Switch>
                     </div>
