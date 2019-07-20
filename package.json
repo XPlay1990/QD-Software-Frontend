@@ -3,13 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "antd": "^3.20.3",
-    "customize-cra": "^0.2.14",
+    "antd": "^3.20.5",
+    "customize-cra": "^0.4.1",
     "react": "^16.8.6",
+    "react-chat-elements": "latest",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
-    "react-table": "^6.10.0"
+    "react-table": "^6.10.0",
+    "typescript": "^3.5.3"
   },
   "scripts": {
     "start": "react-app-rewired start",
