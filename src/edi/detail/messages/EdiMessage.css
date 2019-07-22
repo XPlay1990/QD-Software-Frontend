@@ -1,5 +1,5 @@
 .EdiMessage{
-    border-style: solid;
+    /*border-style: solid;*/
     display: flex;
     min-height: 100px;
 }

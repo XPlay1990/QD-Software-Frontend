@@ -5,6 +5,8 @@
   "dependencies": {
     "antd": "^3.20.5",
     "customize-cra": "^0.4.1",
+    "draft-js": "latest",
+    "draft-js-static-toolbar-plugin": "^3.0.0",
     "react": "^16.8.6",
     "react-chat-elements": "latest",
     "react-dom": "^16.8.6",
