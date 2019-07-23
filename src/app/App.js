@@ -2,16 +2,16 @@ import React, {Component} from 'react';
 import './App.css';
 import {Redirect, Route, Switch, withRouter} from 'react-router-dom';
 
-import {getCurrentUser} from '../util/APIUtils';
-import {ACCESS_TOKEN, EDI_CONNECTIONS_URL} from '../constants';
+import {getCurrentUser} from '../security/AuthenticationService';
+import {ACCESS_TOKEN, CURRENT_USER, EDI_CONNECTIONS_URL} from '../config/constants';
 import Login from '../user/login/Login';
 import Signup from '../user/signup/Signup';
 import EdiList from '../edi/EdiList';
 import Profile from '../user/profile/Profile';
 import AppHeader from '../common/AppHeader';
-import NotFound from '../common/NotFound';
+import NotFound from '../error/NotFound';
 import LoadingIndicator from '../common/LoadingIndicator';
-import PrivateRoute from '../common/PrivateRoute';
+import RoleRestrictedRoute from '../security/RoleRestrictedRoute';
 
 import {Layout, notification} from 'antd';
 import EdiConnection from "../edi/detail/EdiConnection";
@@ -48,6 +48,7 @@ class App extends Component {
                     isAuthenticated: true,
                     isLoading: false
                 });
+                localStorage.setItem(CURRENT_USER, JSON.stringify(response))
             }).catch(error => {
             this.setState({
                 isLoading: false
@@ -101,15 +102,15 @@ class App extends Component {
                             <Route authenticated={this.state.isAuthenticated} path="/login"
                                    render={(props) => <Login onLogin={this.handleLogin} {...props} />}/>
                             <Route path="/signup" component={Signup}/>
-                            <PrivateRoute authenticated={this.state.isAuthenticated} exact
-                                          path={EDI_CONNECTIONS_URL}
-                                          component={EdiList}/>
+                            <RoleRestrictedRoute authenticated={this.state.isAuthenticated} exact
+                                                 path={EDI_CONNECTIONS_URL}
+                                                 component={EdiList}/>
                             <Route authenticated={this.state.isAuthenticated} path="/users/:username"
-                                          render={(props) => <Profile isAuthenticated={this.state.isAuthenticated}
-                                                                      currentUser={this.state.currentUser} {...props}  />}/>
-                            <PrivateRoute authenticated={this.state.isAuthenticated}
-                                          path={EDI_CONNECTIONS_URL + "/:id"}
-                                          component={EdiConnection}/>
+                                   render={(props) => <Profile isAuthenticated={this.state.isAuthenticated}
+                                                               currentUser={this.state.currentUser} {...props}  />}/>
+                            <RoleRestrictedRoute authenticated={this.state.isAuthenticated}
+                                                 path={EDI_CONNECTIONS_URL + "/:id"}
+                                                 component={EdiConnection}/>
                             <Route component={NotFound}/>
                         </Switch>
                     </div>

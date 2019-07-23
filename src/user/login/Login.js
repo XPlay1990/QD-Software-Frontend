@@ -1,20 +1,17 @@
 import React, {Component} from 'react';
-import {login} from '../../util/APIUtils';
 import './Login.css';
 import {Link} from 'react-router-dom';
-import {ACCESS_TOKEN} from '../../constants';
 import loginBackground from '../../resources/login/CHANGE_ME_NOT_FREE.png';
 import abbinoLogo from '../../resources/login/abbino_nicando.png';
+import AuthenticationService from "../../security/AuthenticationService"
 
 
 import {Button, Form, Icon, Input, notification} from 'antd';
+import {ACCESS_TOKEN} from "../../config/constants";
 
 const FormItem = Form.Item;
 
 class Login extends Component {
-    // constructor(props) {
-    //     super(props);
-    // }
 
     render() {
         const AntWrappedLoginForm = Form.create()(LoginForm);
@@ -46,9 +43,8 @@ class LoginForm extends Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 const loginRequest = Object.assign({}, values);
-                login(loginRequest)
+                AuthenticationService.login(loginRequest)
                     .then(response => {
-
                         localStorage.setItem(ACCESS_TOKEN, response.accessToken);
                         this.props.onLogin();
                     }).catch(error => {

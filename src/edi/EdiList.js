@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {getEdiConnections} from '../util/APIUtils';
-import {EDI_LIST_SIZE} from '../constants';
+import {EDI_LIST_SIZE} from '../config/constants';
 import {withRouter} from 'react-router-dom';
 import './EdiList.css';
 import ReactTable from 'react-table'

@@ -12,7 +12,7 @@ class EdiConnection extends Component {
             ediConnection: null,
             isLoading: true
         };
-        this.id = props.computedMatch.params.id;
+        this.id = props.match.params.id;
         this.loadEdiConnection = this.loadEdiConnection.bind(this);
     }
 

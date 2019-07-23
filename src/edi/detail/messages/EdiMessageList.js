@@ -3,24 +3,18 @@ import './EdiMessageList.css';
 import LoadingIndicator from "../../../common/LoadingIndicator";
 import {getEdiConnectionMessages} from "../../../util/APIUtils";
 import EdiMessage from "./EdiMessage";
-import {Editor, EditorState} from 'draft-js';
-import createToolbarPlugin from 'draft-js-static-toolbar-plugin';
-import 'draft-js/dist/Draft.css';
+import RichTextEditor from "../RichTextEditor";
 
 class EdiMessageList extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
             ediMessages: [],
             isLoading: true,
-            editorState: EditorState.createEmpty()
         };
         this.ediConnectionId = props.ediConnectionId;
         this.loadEdiMessages = this.loadEdiMessages.bind(this);
-        this.onChange = (editorState) => this.setState({editorState});
-        this.setEditor = (editor) => {
-            this.editor = editor;
-        };
     }
 
     loadEdiMessages(ediConnectionId) {
@@ -35,7 +29,6 @@ class EdiMessageList extends Component {
 
         promise
             .then(response => {
-                console.log(response.content);
                 if (this._isMounted) {
                     this.setState({
                         ediMessages: response.content,
@@ -82,15 +75,6 @@ class EdiMessageList extends Component {
             />)
         });
 
-        const styles = {
-            editor: {
-                border: '1px solid gray',
-                minHeight: '6em'
-            }
-        };
-        const toolbarPlugin = createToolbarPlugin();
-
-
         return (
             <div className="EdiMessageList">
                 {messageView}
@@ -109,14 +93,7 @@ class EdiMessageList extends Component {
                     // !this.state.isLoading && this.state.ediMessages !== [] ? (
                     // ) : null
                 }
-                <div style={styles.editor} onClick={this.focusEditor}>
-                    <Editor
-                        ref={this.setEditor}
-                        editorState={this.state.editorState}
-                        onChange={this.onChange}
-                        plugins={[toolbarPlugin]}
-                    />
-                </div>
+                <RichTextEditor/>
             </div>
         );
     }

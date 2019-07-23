@@ -1,33 +1,5 @@
-import {
-    ACCESS_TOKEN,
-    API_BASE_URL,
-    EDI_CONNECTION_MESSAGES_URL,
-    EDI_CONNECTIONS_URL,
-    EDI_LIST_SIZE
-} from '../constants';
-
-const request = (options) => {
-    const headers = new Headers({
-        'Content-Type': 'application/json',
-    });
-
-    if (localStorage.getItem(ACCESS_TOKEN)) {
-        headers.append('Authorization', 'Bearer ' + localStorage.getItem(ACCESS_TOKEN))
-    }
-
-    const defaults = {headers: headers};
-    options = Object.assign({}, defaults, options);
-
-    return fetch(options.url, options)
-        .then(response =>
-            response.json().then(json => {
-                if (!response.ok) {
-                    return Promise.reject(json);
-                }
-                return json;
-            })
-        );
-};
+import request from "../security/authHeader/AuthorizationHeaderRequest"
+import {API_BASE_URL, EDI_CONNECTION_MESSAGES_URL, EDI_CONNECTIONS_URL, EDI_LIST_SIZE} from '../config/constants';
 
 export function getEdiConnections(pageNumber, size) {
     pageNumber = pageNumber || 0;
@@ -53,14 +25,6 @@ export function getEdiConnectionMessages(ediConnectionId) {
     });
 }
 
-export function login(loginRequest) {
-    return request({
-        url: API_BASE_URL + "/auth/login",
-        method: 'POST',
-        body: JSON.stringify(loginRequest)
-    });
-}
-
 export function signup(signupRequest) {
     return request({
         url: API_BASE_URL + "/auth/signup",
@@ -79,18 +43,6 @@ export function checkUsernameAvailability(username) {
 export function checkEmailAvailability(email) {
     return request({
         url: API_BASE_URL + "/user/checkEmailAvailability?email=" + email,
-        method: 'GET'
-    });
-}
-
-
-export function getCurrentUser() {
-    if (!localStorage.getItem(ACCESS_TOKEN)) {
-        return Promise.reject("No access token set.");
-    }
-
-    return request({
-        url: API_BASE_URL + "/user/me",
         method: 'GET'
     });
 }
