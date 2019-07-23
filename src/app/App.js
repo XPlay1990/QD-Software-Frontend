@@ -15,6 +15,7 @@ import RoleRestrictedRoute from '../security/RoleRestrictedRoute';
 
 import {Layout, notification} from 'antd';
 import EdiConnection from "../edi/detail/EdiConnection";
+import {Role} from "../security/Roles";
 
 const {Content} = Layout;
 
@@ -23,6 +24,7 @@ class App extends Component {
         super(props);
         this.state = {
             currentUser: null,
+            isAdmin: false,
             isAuthenticated: false,
             isLoading: false
         };
@@ -45,6 +47,7 @@ class App extends Component {
             .then(response => {
                 this.setState({
                     currentUser: response,
+                    isAdmin: response && response.authorities.includes({authority: Role.Admin}),
                     isAuthenticated: true,
                     isLoading: false
                 });
@@ -93,6 +96,7 @@ class App extends Component {
             <Layout className="app-container">
                 <AppHeader isAuthenticated={this.state.isAuthenticated}
                            currentUser={this.state.currentUser}
+                           isAdmin={this.state.isAdmin}
                            onLogout={this.handleLogout}/>
 
                 <Content className="app-content">

@@ -21,23 +21,28 @@ class AppHeader extends Component {
     render() {
         let menuItems;
         if (this.props.currentUser) {
-            menuItems = [
+            menuItems = [];
+            menuItems.push(
                 <Menu.Item key="/">
                     <Link to="/">
                         <Icon type="home" className="nav-icon"/>
                     </Link>
-                </Menu.Item>,
-                <Menu.Item key="/poll/new">
-                    <Link to="/poll/new">
-                        <img src={pollIcon} alt="poll" className="poll-icon"/>
-                    </Link>
-                </Menu.Item>,
+                </Menu.Item>);
+            if (this.props.isAdmin) {
+                menuItems.push(
+                    <Menu.Item key="/poll/new">
+                        <Link to="/poll/new">
+                            <img src={pollIcon} alt="poll" className="poll-icon"/>
+                        </Link>
+                    </Menu.Item>
+                )
+            }
+            menuItems.push(
                 <Menu.Item key="/profile" className="profile-menu">
                     <ProfileDropdownMenu
                         currentUser={this.props.currentUser}
                         handleMenuClick={this.handleMenuClick}/>
-                </Menu.Item>
-            ];
+                </Menu.Item>);
         } else {
             return null;
         }

@@ -11,7 +11,7 @@
     "draft-js-inline-toolbar-plugin": "^3.0.0",
     "draft-js-plugins-editor": "^2.1.1",
     "draft-js-static-toolbar-plugin": "^3.0.0",
-    "npm": "^6.10.1",
+    "npm": "^6.10.2",
     "react": "^16.8.6",
     "react-chat-elements": "latest",
     "react-dom": "^16.8.6",
