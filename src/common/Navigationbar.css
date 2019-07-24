@@ -4,10 +4,79 @@
     background: linear-gradient(to left, #021B79, #0575E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-.BackArrow {
-    height: 60px;
-    fill: black;
-    /*background-f;*/
-    stroke: none;
-    stroke-opacity: 0;
+.NavigationButton:before {
+    left: -50%;
+    top: 0;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    /*line-height: 1;*/
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    /*height: 100%;*/
+    font-size: 125%;
+    /*line-height: 3.5;*/
+    color: #fff;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
 }
+
+.icon-arrow-left:before {
+    content: url("../resources/navbar/md-arrow-round-back.svg");
+}
+
+.icon-arrow-right:before {
+    content: url("../resources/navbar/md-arrow-round-forward.svg");
+}
+
+.NavigationButton {
+    border-radius: 50px;
+    border: 3px solid #fff;
+    color: #fff;
+    overflow: hidden;
+    height: 50px;
+    /*font-family: inherit;*/
+    /*font-size: inherit;*/
+    background: green;
+    cursor: pointer;
+    padding: 25px 80px;
+    /*display: inline-block;*/
+    margin: 15px 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    outline: none;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.NavigationButton:active {
+    border-color: #17954c;
+    color: #17954c;
+}
+
+.NavigationButton:active:before {
+    color: #17954c;
+}
+
+.NavigationButton:hover:before {
+    left: 10%;
+}
+
+.NavigationButton:hover {
+    background: #24b662;
+}
+
+.NavigationButton:after {
+    content: '';
+    /*position: absolute;*/
+    z-index: -1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+

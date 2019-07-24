@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import "./Navigationbar.css"
-import {ReactComponent as BackArrow} from "../resources/navbar/md-arrow-round-back.svg";
 
 class Navigationbar extends Component {
     render() {
@@ -10,12 +9,8 @@ class Navigationbar extends Component {
 
         return (
             <div className="Navigationbar">
-                <BackArrow className="BackArrow"/>
-                <button
-                    className="button icon-right"
-                    onClick={this.props.history.goForward}>
-                    Forward
-                </button>
+                <button className="NavigationButton icon-arrow-left" onClick={this.props.history.goBack}>Return</button>
+                <button className="NavigationButton icon-arrow-right" onClick={this.props.history.goForward}>Forward</button>
             </div>
         );
     }
