@@ -1,23 +1,28 @@
 import React, {Component} from 'react';
 import './Login.css';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import loginBackground from '../../resources/login/CHANGE_ME_NOT_FREE.png';
 import abbinoLogo from '../../resources/login/abbino_nicando.png';
 import AuthenticationService from "../../security/AuthenticationService"
 
-
 import {Button, Form, Icon, Input, notification} from 'antd';
-import {ACCESS_TOKEN} from "../../config/constants";
+import {ACCESS_TOKEN, EDICON_LIST_URL} from "../../config/constants";
 
 const FormItem = Form.Item;
 
 class Login extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isAuthenticated: props.isAuthenticated
+        };
+    }
 
     render() {
         const AntWrappedLoginForm = Form.create()(LoginForm);
-        // if (this.authenticated) {
-        //     return <Redirect to={EDI_CONNECTIONS_URL}/>
-        // }
+        if (this.state.isAuthenticated) {
+            return <Redirect to={EDICON_LIST_URL}/>
+        }
         return (
             <div className="loginBackground">
                 <img src={loginBackground} className="loginBackgroundImage" alt=""/>

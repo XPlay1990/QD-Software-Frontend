@@ -1,6 +1,6 @@
 import {BehaviorSubject} from 'rxjs';
 import request from "./authHeader/AuthorizationHeaderRequest"
-import {ACCESS_TOKEN, API_BASE_URL, USER_SELF_URL} from "../config/constants";
+import {ACCESS_TOKEN, BACKEND_BASE_URL, LOGIN_URL, USER_SELF_URL} from "../config/constants";
 
 const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')));
 
@@ -20,7 +20,7 @@ export const authenticationService = {
 // //         body: JSON.stringify(loginRequest)
 // //     };
 // //
-// //     return fetch(`${API_BASE_URL}${LOGIN_URL}`, requestOptions)
+// //     return fetch(`${BACKEND_BASE_URL}${LOGIN_URL}`, requestOptions)
 // //         .then(handleResponse)
 // //         .then(user => {
 // //             // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -33,7 +33,7 @@ export const authenticationService = {
 
 function login(loginRequest) {
     return request({
-        url: API_BASE_URL + "/auth/login",
+        url: BACKEND_BASE_URL + LOGIN_URL,
         method: 'POST',
         body: JSON.stringify(loginRequest)
     });
@@ -51,7 +51,7 @@ export function getCurrentUser() {
     }
 
     return request({
-        url: API_BASE_URL + USER_SELF_URL,
+        url: BACKEND_BASE_URL + USER_SELF_URL,
         method: 'GET'
     });
 }

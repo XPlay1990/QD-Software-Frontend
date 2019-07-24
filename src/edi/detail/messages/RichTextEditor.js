@@ -1,6 +1,6 @@
 import React from "react";
 import Draft from "draft-js"
-import "./test.css"
+import "./RichTextEditor.css"
 
 const {Editor, EditorState, RichUtils} = Draft;
 

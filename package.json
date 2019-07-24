@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@progress/kendo-react-buttons": "^3.2.2",
     "antd": "^3.20.5",
     "config": "^3.2.2",
     "customize-cra": "^0.4.1",

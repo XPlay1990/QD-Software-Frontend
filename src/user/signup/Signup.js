@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { signup, checkUsernameAvailability, checkEmailAvailability } from '../../util/APIUtils';
 import './Signup.css';
 import { Link } from 'react-router-dom';
-import { 
-    NAME_MIN_LENGTH, NAME_MAX_LENGTH, 
+import {
+    NAME_MIN_LENGTH, NAME_MAX_LENGTH,
     USERNAME_MIN_LENGTH, USERNAME_MAX_LENGTH,
     EMAIL_MAX_LENGTH,
-    PASSWORD_MIN_LENGTH, PASSWORD_MAX_LENGTH
+    PASSWORD_MIN_LENGTH, PASSWORD_MAX_LENGTH, LOGIN_URL
 } from '../../config/constants';
 
 import { Form, Input, Button, notification } from 'antd';
@@ -28,7 +28,7 @@ class Signup extends Component {
             password: {
                 value: ''
             }
-        }
+        };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.validateUsernameAvailability = this.validateUsernameAvailability.bind(this);
@@ -64,7 +64,7 @@ class Signup extends Component {
                 message: 'EdiConnection-Portal',
                 description: "Thank you! You're successfully registered. Please Login to continue!",
             });          
-            this.props.history.push("/login");
+            this.props.history.push(LOGIN_URL);
         }).catch(error => {
             notification.error({
                 message: 'EdiConnection-Portal',
@@ -146,7 +146,7 @@ class Signup extends Component {
                                 size="large" 
                                 className="signup-form-button"
                                 disabled={this.isFormInvalid()}>Sign up</Button>
-                            Already registed? <Link to="/login">Login now!</Link>
+                            Already registed? <Link to={LOGIN_URL}>Login now!</Link>
                         </FormItem>
                     </Form>
                 </div>
