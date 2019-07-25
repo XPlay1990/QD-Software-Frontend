@@ -11,7 +11,7 @@ import Profile from '../user/profile/Profile';
 import AppHeader from '../common/AppHeader';
 import NotFound from '../error/NotFound';
 import LoadingIndicator from '../common/LoadingIndicator';
-import RoleRestrictedRoute from '../security/RoleRestrictedRoute';
+import ProtectedRoute from '../security/RoleRestrictedRoute';
 
 import {Layout, notification} from 'antd';
 import EdiConnection from "../edi/detail/EdiConnection";
@@ -112,15 +112,15 @@ class App extends Component {
                                    render={(props) => <Login onLogin={this.handleLogin}
                                                              isAuthenticated={this.state.isAuthenticated} {...props} />}/>
                             <Route path={REGISTER_URL} component={Signup}/>
-                            <RoleRestrictedRoute isAuthenticated={this.state.isAuthenticated}
-                                                 exact path={EDICON_LIST_URL}
-                                                 component={EdiList}/>
+                            <ProtectedRoute isAuthenticated={this.state.isAuthenticated}
+                                            exact path={EDICON_LIST_URL}
+                                            component={EdiList}/>
                             <Route isAuthenticated={this.state.isAuthenticated} path="/users/:username"
                                    render={(props) => <Profile isAuthenticated={this.state.isAuthenticated}
                                                                currentUser={this.state.currentUser} {...props}  />}/>
-                            <RoleRestrictedRoute isAuthenticated={this.state.isAuthenticated}
-                                                 path={EDICON_LIST_URL + "/:id"}
-                                                 component={EdiConnection}/>
+                            <ProtectedRoute isAuthenticated={this.state.isAuthenticated}
+                                            path={EDICON_LIST_URL + "/:id"}
+                                            component={EdiConnection}/>
                             <Route component={NotFound}/>
                         </Switch>
                     </div>

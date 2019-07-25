@@ -19,13 +19,12 @@ class AppHeader extends Component {
     }
 
     render() {
-        let menuItems;
         if (!this.props.currentUser) {
             //do not show AppHeader when logged out
             return null
         }
 
-        menuItems = [];
+        let menuItems = [];
         menuItems.push(
             <Menu.Item key="/">
                 <Link to="/">
