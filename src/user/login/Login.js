@@ -25,7 +25,7 @@ class Login extends Component {
         }
         return (
             <div className="loginBackground">
-                <img src={loginBackground} className="loginBackgroundImage" alt=""/>
+                <img src={loginBackground} id="loginBackgroundImage" alt=""/>
                 <div className="login-container">
                     <h1 className="page-title">Login</h1>
                     <div className="login-content">

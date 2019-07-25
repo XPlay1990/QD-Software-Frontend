@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
-import {getEdiConnections} from '../../util/APIUtils';
 import {EDI_LIST_SIZE} from '../../config/constants';
 import {withRouter} from 'react-router-dom';
 import './EdiCreate.css';
-import ReactTable from 'react-table'
 import "react-table/react-table.css";
 import LoadingIndicator from "../../common/LoadingIndicator";
 
@@ -54,15 +52,15 @@ class EdiCreate extends Component {
     }
 
     componentDidUpdate = nextProps => {
-            // Reset State
-            // this.setState({
-            // });
-            // this.loadEdiList();
+        // Reset State
+        // this.setState({
+        // });
+        // this.loadEdiList();
     };
 
     render() {
         return (
-            <div className="ediConnectionsContainer">
+            <div className="ediCreateContainer">
                 {
                     this.state.isLoading ?
                         <LoadingIndicator/> : null
