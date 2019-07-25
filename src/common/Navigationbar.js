@@ -4,6 +4,7 @@ import "./Navigationbar.css"
 import {ReactComponent as ArrowLeft} from "../resources/navbar/md-arrow-round-back.svg"
 import {ReactComponent as ArrowRight} from "../resources/navbar/md-arrow-round-forward.svg"
 import {ReactComponent as AddButton} from "../resources/navbar/md-add.svg"
+import {EDICON_CREATE_URL} from "../config/constants";
 
 class Navigationbar extends Component {
     constructor(props) {
@@ -19,13 +20,14 @@ class Navigationbar extends Component {
         }
 
         let navbarItems = [];
-        navbarItems.push(<ArrowLeft className="NavigationButton" onClick={this.props.history.goBack}/>);
-        navbarItems.push(<ArrowRight className="NavigationButton" onClick={this.props.history.goForward}/>);
+        navbarItems.push(<ArrowLeft key="BackButton" className="NavigationButton" onClick={this.props.history.goBack}/>);
+        navbarItems.push(<ArrowRight key="ForwardButton" className="NavigationButton"
+                                     onClick={this.props.history.goForward}/>);
 
         if (this.state.isAdmin) {
-            navbarItems.push(<AddButton className="NavigationButton" onClick={this.props.history.goForward}/>);
+            navbarItems.push(<AddButton key="EDICREATEBUTTON" className="NavigationButton"
+                                        onClick={() => this.props.history.push(EDICON_CREATE_URL)}/>);
         }
-
 
         return (
             <div className="Navigationbar">

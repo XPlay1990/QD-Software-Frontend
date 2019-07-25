@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import './EdiMessageList.css';
-import LoadingIndicator from "../../../common/LoadingIndicator";
-import {getEdiConnectionMessages} from "../../../util/APIUtils";
+import LoadingIndicator from "../../../../common/LoadingIndicator";
+import {getEdiConnectionMessages} from "../../../../util/APIUtils";
 import EdiMessage from "./EdiMessage";
 import RichTextEditor from "./RichTextEditor";
-import ToolbarContainer from "../../../common/Toolbar";
+import ToolbarContainer from "../../../../common/Toolbar";
 
 class EdiMessageList extends Component {
     constructor(props) {

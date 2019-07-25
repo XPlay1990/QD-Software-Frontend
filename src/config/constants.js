@@ -8,6 +8,7 @@ export const REGISTER_URL = '/tbd';
 export const USER_SELF_URL = '/user/me';
 export const EDICON_LIST_URL = '/edi_connection';
 export const EDICON_MESSAGES_URL = (id) => `${EDICON_LIST_URL}/${id}/messages`;
+export const EDICON_CREATE_URL = `${EDICON_LIST_URL}/create`;
 
 // STORAGE
 export const ACCESS_TOKEN = 'accessToken';

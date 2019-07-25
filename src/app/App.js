@@ -3,10 +3,17 @@ import './App.css';
 import {Redirect, Route, Switch, withRouter} from 'react-router-dom';
 
 import {getCurrentUser} from '../security/AuthenticationService';
-import {ACCESS_TOKEN, CURRENT_USER, EDICON_LIST_URL, LOGIN_URL, REGISTER_URL} from '../config/constants';
+import {
+    ACCESS_TOKEN,
+    CURRENT_USER,
+    EDICON_CREATE_URL,
+    EDICON_LIST_URL,
+    LOGIN_URL,
+    REGISTER_URL
+} from '../config/constants';
 import Login from '../user/login/Login';
 import Signup from '../user/signup/Signup';
-import EdiList from '../edi/EdiList';
+import EdiList from '../edi/display/EdiList';
 import Profile from '../user/profile/Profile';
 import AppHeader from '../common/AppHeader';
 import NotFound from '../error/NotFound';
@@ -14,9 +21,10 @@ import LoadingIndicator from '../common/LoadingIndicator';
 import ProtectedRoute from '../security/RoleRestrictedRoute';
 
 import {Layout, notification} from 'antd';
-import EdiConnection from "../edi/detail/EdiConnection";
+import EdiConnection from "../edi/display/detail/EdiConnection";
 import {Role} from "../security/Roles";
 import Navigationbar from "../common/Navigationbar";
+import EdiCreate from "../edi/create/EdiCreate";
 
 const {Content} = Layout;
 
@@ -115,6 +123,9 @@ class App extends Component {
                             <ProtectedRoute isAuthenticated={this.state.isAuthenticated}
                                             exact path={EDICON_LIST_URL}
                                             component={EdiList}/>
+                            <ProtectedRoute isAuthenticated={this.state.isAuthenticated}
+                                            exact path={EDICON_CREATE_URL}
+                                            component={EdiCreate}/>
                             <Route isAuthenticated={this.state.isAuthenticated} path="/users/:username"
                                    render={(props) => <Profile isAuthenticated={this.state.isAuthenticated}
                                                                currentUser={this.state.currentUser} {...props}  />}/>

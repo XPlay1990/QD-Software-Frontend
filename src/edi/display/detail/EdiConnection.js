@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './EdiConnection.css';
-import {getEdiConnection} from "../../util/APIUtils";
-import LoadingIndicator from "../../common/LoadingIndicator";
+import {getEdiConnection} from "../../../util/APIUtils";
+import LoadingIndicator from "../../../common/LoadingIndicator";
 import Description from "./description/Description";
 import EdiMessageList from "./messages/EdiMessageList";
 

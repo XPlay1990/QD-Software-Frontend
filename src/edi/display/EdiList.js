@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import {getEdiConnections} from '../util/APIUtils';
-import {EDI_LIST_SIZE} from '../config/constants';
+import {getEdiConnections} from '../../util/APIUtils';
+import {EDI_LIST_SIZE} from '../../config/constants';
 import {withRouter} from 'react-router-dom';
 import './EdiList.css';
 import ReactTable from 'react-table'
 import "react-table/react-table.css";
 import {columnConfig} from "./ColumnConfig";
-import LoadingIndicator from "../common/LoadingIndicator";
+import LoadingIndicator from "../../common/LoadingIndicator";
 
 class EdiList extends Component {
     constructor(props) {
@@ -18,7 +18,7 @@ class EdiList extends Component {
             totalElements: 0,
             totalPages: 0,
             isLast: true,
-            isLoading: false
+            isLoading: true
         };
         this.loadEdiList = this.loadEdiList.bind(this);
         this.onRowClick = this.onRowClick.bind(this)
