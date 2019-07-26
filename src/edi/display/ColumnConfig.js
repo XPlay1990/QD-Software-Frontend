@@ -1,11 +1,5 @@
 export const columnConfig = [
     {
-        Header: '',
-        accessor: 'eventDates',
-        headerStyle: {whiteSpace: 'unset'},
-        style: {whiteSpace: 'unset'},
-    },
-    {
         Header: 'Customer',
         accessor: 'customer.name',
         headerStyle: {whiteSpace: 'unset'},

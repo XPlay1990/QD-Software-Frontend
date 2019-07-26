@@ -18,6 +18,11 @@
     grid-area: SupplierSelect;
 }
 
+.CustomerSelect,
+.SupplierSelect{
+    width: 80%;
+}
+
 .CustomerContactAddList {
     grid-area: CustomerContactAddList;
 }
@@ -28,6 +33,7 @@
 
 .CustomerContactAddList,
 .SupplierContactAddList {
+    width: 70%;
     display: flex;
     flex-direction: column;
 }
