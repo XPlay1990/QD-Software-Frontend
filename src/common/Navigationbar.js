@@ -6,7 +6,7 @@ import {ReactComponent as ArrowRight} from "../resources/navbar/md-arrow-round-f
 import {ReactComponent as AddButton} from "../resources/navbar/md-add.svg"
 import {ReactComponent as CreateUser} from "../resources/navbar/md-person-add.svg"
 import {ReactComponent as CreateOrg} from "../resources/navbar/md-people.svg"
-import {EDICON_CREATE_URL} from "../config/constants";
+import {CREATE_ORGANIZATION_URL, CREATE_USER_URL, EDICON_CREATE_URL} from "../config/constants";
 
 class Navigationbar extends Component {
     constructor(props) {
@@ -39,9 +39,9 @@ class Navigationbar extends Component {
                                         onClick={() => this.props.history.push(EDICON_CREATE_URL)}>
                </AddButton>);
             navbarItems.push(<CreateUser key="USERCREATEBUTTON" className="NavigationButton"
-            />);
+                                         onClick={() => this.props.history.push(CREATE_USER_URL)}/>);
             navbarItems.push(<CreateOrg key="ORGANIZATIONCREATEBUTTON" className="NavigationButton"
-            />);
+                                        onClick={() => this.props.history.push(CREATE_ORGANIZATION_URL)}/>);
         }
 
         return (

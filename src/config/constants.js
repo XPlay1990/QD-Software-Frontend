@@ -5,6 +5,8 @@ export const BACKEND_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://lo
 export const LOGIN_URL = '/auth/login';
 export const LOGOUT_URL = '/auth/logout';
 export const REGISTER_URL = '/tbd';
+export const CREATE_USER_URL = '/tbd';
+export const CREATE_ORGANIZATION_URL = '/tbd';
 export const USER_SELF_URL = '/user/me';
 export const EDICON_LIST_URL = '/edi_connection';
 export const EDICON_MESSAGES_URL = (id) => `${EDICON_LIST_URL}/${id}/messages`;
