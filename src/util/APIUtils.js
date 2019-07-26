@@ -1,5 +1,11 @@
 import request from "../security/authHeader/AuthorizationHeaderRequest"
-import {BACKEND_BASE_URL, EDICON_MESSAGES_URL, EDICON_LIST_URL, EDI_LIST_SIZE} from '../config/constants';
+import {
+    BACKEND_BASE_URL,
+    EDICON_MESSAGES_URL,
+    EDICON_LIST_URL,
+    EDI_LIST_SIZE,
+    GET_CUSTOMER_ORGANIZATIONS_URL, GET_SUPPLIER_ORGANIZATIONS_URL
+} from '../config/constants';
 
 export function getEdiConnections(pageNumber, size) {
     pageNumber = pageNumber || 0;
@@ -50,6 +56,19 @@ export function checkEmailAvailability(email) {
 export function getUserProfile(username) {
     return request({
         url: BACKEND_BASE_URL + "/users/" + username,
+        method: 'GET'
+    });
+}
+
+export function getCustomerOrganizations() {
+    return request({
+        url: `${BACKEND_BASE_URL}${GET_CUSTOMER_ORGANIZATIONS_URL}`,
+        method: 'GET'
+    });
+}
+export function getSupplierOrganizations() {
+    return request({
+        url: `${BACKEND_BASE_URL}${GET_SUPPLIER_ORGANIZATIONS_URL}`,
         method: 'GET'
     });
 }
