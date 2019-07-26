@@ -108,12 +108,11 @@ class App extends Component {
                            isAdmin={this.state.isAdmin}
                            onLogout={this.handleLogout}/>
 
-                <Navigationbar isAuthenticated={this.state.isAuthenticated}
-                               history={this.props.history}
-                               isAdmin={this.state.isAdmin}/>
-
                 <Content className="app-content">
                     <div className="container">
+                        <Navigationbar isAuthenticated={this.state.isAuthenticated}
+                                       history={this.props.history}
+                                       isAdmin={this.state.isAdmin}/>
                         <Switch>
                             <Route exact path="/" render={() => (<Redirect to={EDICON_LIST_URL}/>)}/>
                             <Route path={LOGIN_URL}
