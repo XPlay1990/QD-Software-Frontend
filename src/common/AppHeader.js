@@ -3,6 +3,7 @@ import {Link, withRouter} from 'react-router-dom';
 import './AppHeader.css';
 import pollIcon from '../poll.svg';
 import {Dropdown, Icon, Layout, Menu} from 'antd';
+import NicandoLogo from "../resources/header/nicando.png"
 
 const Header = Layout.Header;
 
@@ -51,7 +52,8 @@ class AppHeader extends Component {
             <Header className="app-header">
                 <div className="container">
                     <div className="app-title">
-                        <Link to="/">Edi-Portal</Link>
+                        {/*<img className={"HeaderLogo"} src={NicandoLogo}/>*/}
+                        <Link to="/">Nicando Edi-Portal</Link>
                     </div>
                     <Menu
                         className="app-menu"

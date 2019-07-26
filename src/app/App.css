@@ -1,11 +1,13 @@
-.app-content{
-    height: 100vh;
-    background-color: white;
-}
-
 .app-container {
     display: flex;
     flex-direction: column;
     align-content: flex-end;
+    align-items: center;
     height: 100%;
+}
+
+.app-content{
+    height: 100vh;
+    width: 90%;
+    background-color: white;
 }

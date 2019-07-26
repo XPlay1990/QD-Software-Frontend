@@ -1,3 +1,68 @@
-.ediCreateCointainer{
+.ediCreateCointainer {
+}
+
+.EdiCreateGrid {
     display: grid;
+    grid-gap: 15px;
+    background-color: white;
+    padding: 10px;
+    grid-template-areas: 'CustomerSelect SupplierSelect' 'CustomerContactAddList SupplierContactAddList';
+    grid-template-rows: 30% 60%;
+}
+
+.CustomerSelect {
+    grid-area: CustomerSelect;
+}
+
+.SupplierSelect {
+    grid-area: SupplierSelect;
+}
+
+.CustomerContactAddList {
+    grid-area: CustomerContactAddList;
+}
+
+.SupplierContactAddList {
+    grid-area: SupplierContactAddList;
+}
+
+.CustomerContactAddList,
+.SupplierContactAddList {
+    display: flex;
+    flex-direction: column;
+}
+
+.ButtonCreate {
+    border-radius: 50px;
+    border: 3px solid #fff;
+    color: #fff;
+    /*overflow: hidden;*/
+    height: 50px;
+    /*font-family: inherit;*/
+    /*font-size: inherit;*/
+    background: green;
+    cursor: pointer;
+    /*padding: 25px 80px;*/
+    display: inline-block;
+    margin: 5px 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    outline: none;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    text-align: center;
+    position: absolute;
+    bottom: 100px;
+    right: 100px;
+}
+
+.ButtonCreate:active {
+    border-color: #17954c;
+    color: #17954c;
+}
+
+.ButtonCreate:hover {
+    background: #24b662;
 }

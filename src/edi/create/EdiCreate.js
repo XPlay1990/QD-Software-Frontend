@@ -116,22 +116,50 @@ class EdiCreate extends Component {
                 {/*}*/}
                 {
                     !this.state.isLoading ? (
-                        <div className="noEdiConnectionsFound">
-                            <Select
-                                value={selectedOption}
-                                onChange={this.handleChange}
-                                options={this.state.customerList}
-                                getOptionLabel={(option) => option.name}
-                                getOptionValue={(option) => option.id}
-                            />
+                        <div className="EdiCreateGrid">
+                            <div className={"CustomerSelect"}>
+                                <span>Select Customer</span>
+                                <Select
+                                    value={selectedOption}
+                                    onChange={this.handleChange}
+                                    options={this.state.customerList}
+                                    getOptionLabel={(option) => option.name}
+                                    getOptionValue={(option) => option.id}
+                                />
+                            </div>
 
-                            <Select
-                                value={selectedOption}
-                                onChange={this.handleChange}
-                                options={this.state.supplierList}
-                                getOptionLabel={(option) => option.name}
-                                getOptionValue={(option) => option.id}
-                            />
+                            <div className={"CustomerContactAddList"}>
+                                <span>Select Contact</span>
+                                <Select
+                                    value={selectedOption}
+                                    onChange={this.handleChange}
+                                    options={this.state.supplierList}
+                                    getOptionLabel={(option) => option.name}
+                                    getOptionValue={(option) => option.id}
+                                />
+                            </div>
+
+                            <div className={"SupplierSelect"}>
+                                <span>Select Supplier</span>
+                                <Select
+                                    value={selectedOption}
+                                    onChange={this.handleChange}
+                                    options={this.state.supplierList}
+                                    getOptionLabel={(option) => option.name}
+                                    getOptionValue={(option) => option.id}
+                                />
+                            </div>
+
+                            <div className={"SupplierContactAddList"}>
+                                <span>Select Contact</span>
+                                <Select
+                                    value={selectedOption}
+                                    onChange={this.handleChange}
+                                    options={this.state.supplierList}
+                                    getOptionLabel={(option) => option.name}
+                                    getOptionValue={(option) => option.id}
+                                />
+                            </div>
                         </div>
                     ) : null
                 }
@@ -144,7 +172,7 @@ class EdiCreate extends Component {
                 {/*    ) : null*/}
 
                 {/*}*/}
-
+                <button className={"ButtonCreate"}>Create</button>
             </div>
         );
     }

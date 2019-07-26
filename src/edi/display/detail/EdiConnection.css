@@ -29,7 +29,9 @@
 
 .EdiMessageList {
     grid-area: messages;
-    background-color: wheat;
+    background-color: lightgray;
+    border-style: solid;
+    border-color: lightblue;
 }
 
 .ediAttachments {
