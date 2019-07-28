@@ -4,7 +4,7 @@ import {
     EDICON_MESSAGES_URL,
     EDICON_LIST_URL,
     EDI_LIST_SIZE,
-    GET_CUSTOMER_ORGANIZATIONS_URL, GET_SUPPLIER_ORGANIZATIONS_URL
+    GET_CUSTOMER_ORGANIZATIONS_URL, GET_SUPPLIER_ORGANIZATIONS_URL, GET_ORGANIZATION_MEMBERS_URL
 } from '../config/constants';
 
 export function getEdiConnections(pageNumber, size) {
@@ -60,6 +60,13 @@ export function getUserProfile(username) {
     });
 }
 
+export function getOrganizationMembers(id) {
+    return request({
+        url: `${BACKEND_BASE_URL}${GET_ORGANIZATION_MEMBERS_URL(id)}`,
+        // url: `${BACKEND_BASE_URL}/org/1/members`,
+        method: 'GET'
+    });
+}
 export function getCustomerOrganizations() {
     return request({
         url: `${BACKEND_BASE_URL}${GET_CUSTOMER_ORGANIZATIONS_URL}`,

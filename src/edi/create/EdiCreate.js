@@ -1,32 +1,75 @@
 import React, {Component} from 'react';
-import {EDI_LIST_SIZE} from '../../config/constants';
 import {withRouter} from 'react-router-dom';
 import './EdiCreate.css';
 import "react-table/react-table.css";
 import LoadingIndicator from "../../common/LoadingIndicator";
 import Select from "react-select";
-import {getCustomerOrganizations, getSupplierOrganizations} from "../../util/APIUtils";
+import {getCustomerOrganizations, getOrganizationMembers, getSupplierOrganizations} from "../../util/APIUtils";
 
 class EdiCreate extends Component {
     constructor(props) {
         super(props);
         this.state = {
             isLoading: true,
-            selectedCustomer: null,
-            selectedSupplier: null,
+            customerSelect: null,
+            customerContactSelect: null,
+            supplierSelect: null,
+            supplierContactSelect: null,
+
             customerList: [],
-            supplierList: []
+            customerContactList: [],
+            supplierList: [],
+            supplierContactList: []
         };
         this.loadCustomerList = this.loadCustomerList.bind(this);
     }
 
-    handleChange = selectedOption => {
-        this.setState({selectedCustomer: selectedOption});
-        // TODO: do distinguish between customerselect and supplierselect!
-        console.log(selectedOption)
+    handleChange = (selectedOption, actionMeta) => {
+        this.setState({
+            [actionMeta.name]: selectedOption,
+        });
+
+        this.loadOrganizationMembers(selectedOption.id, actionMeta.name)
     };
 
-    loadCustomerList(page = 0, size = EDI_LIST_SIZE) {
+    loadOrganizationMembers(organizationId, selectName) {
+        let promise = getOrganizationMembers(organizationId);
+        if (!promise) {
+            return;
+        }
+
+        this.setState({
+            isLoading: true
+        });
+
+        promise
+            .then(response => {
+                if (this._isMounted) {
+                    console.log(response)
+                    switch (selectName) {
+                        case "customerSelect":
+                            this.setState({
+                                customerContactList: response
+                            });
+                            break;
+                        case "supplierSelect":
+                            this.setState({
+                                supplierContactList: response
+                            });
+                            break;
+                    }
+                }
+            }).catch(error => {
+            this.setState({
+                isLoading: false
+            })
+        });
+        this.setState({
+            isLoading: false
+        })
+    }
+
+    loadCustomerList() {
         let promise = getCustomerOrganizations();
         if (!promise) {
             return;
@@ -101,6 +144,7 @@ class EdiCreate extends Component {
 
     render() {
         const {selectedOption} = this.state;
+
         return (
             <div className="ediCreateContainer">
                 {
@@ -120,7 +164,8 @@ class EdiCreate extends Component {
                             <div className={"CustomerSelect"}>
                                 <span>Select Customer</span>
                                 <Select
-                                    value={selectedOption}
+                                    name="customerSelect"
+                                    // value={this.state.customerSelect}
                                     onChange={this.handleChange}
                                     options={this.state.customerList}
                                     getOptionLabel={(option) => option.name}
@@ -131,10 +176,12 @@ class EdiCreate extends Component {
                             <div className={"CustomerContactAddList"}>
                                 <span>Select Contact</span>
                                 <Select
-                                    value={selectedOption}
+                                    name="customerContactSelect"
+                                    isMulti
+                                    value={this.state.customerContactSelect || ''}
                                     onChange={this.handleChange}
-                                    options={this.state.supplierList}
-                                    getOptionLabel={(option) => option.name}
+                                    options={this.state.customerContactList}
+                                    getOptionLabel={(option) => (`${option.firstName} ${option.lastName} (@${option.username})`)}
                                     getOptionValue={(option) => option.id}
                                 />
                             </div>
@@ -142,7 +189,8 @@ class EdiCreate extends Component {
                             <div className={"SupplierSelect"}>
                                 <span>Select Supplier</span>
                                 <Select
-                                    value={selectedOption}
+                                    name="supplierSelect"
+                                    // value={selectedOption}
                                     onChange={this.handleChange}
                                     options={this.state.supplierList}
                                     getOptionLabel={(option) => option.name}
@@ -153,10 +201,12 @@ class EdiCreate extends Component {
                             <div className={"SupplierContactAddList"}>
                                 <span>Select Contact</span>
                                 <Select
-                                    value={selectedOption}
+                                    name="supplierContactSelect"
+                                    isMulti
+                                    value={this.state.supplierContactSelect || ''}
                                     onChange={this.handleChange}
-                                    options={this.state.supplierList}
-                                    getOptionLabel={(option) => option.name}
+                                    options={this.state.supplierContactList}
+                                    getOptionLabel={(option) => (`${option.firstName} ${option.lastName} (@${option.username})`)}
                                     getOptionValue={(option) => option.id}
                                 />
                             </div>
