@@ -28,6 +28,11 @@ class EdiCreate extends Component {
         this.setState({
             [actionMeta.name]: selectedOption,
         });
+        if (actionMeta.name === "customerSelect") {
+            this.state.customerContactSelect = null
+        } else if (actionMeta.name === "supplierSelect") {
+            this.state.supplierContactSelect = null
+        }
 
         this.loadOrganizationMembers(selectedOption.id, actionMeta.name)
     };
@@ -179,7 +184,7 @@ class EdiCreate extends Component {
                                     name="customerContactSelect"
                                     isMulti
                                     value={this.state.customerContactSelect || ''}
-                                    onChange={this.handleChange}
+                                    onChange={(value) => this.setState({customerContactSelect: value})}
                                     options={this.state.customerContactList}
                                     getOptionLabel={(option) => (`${option.firstName} ${option.lastName} (@${option.username})`)}
                                     getOptionValue={(option) => option.id}
@@ -203,8 +208,9 @@ class EdiCreate extends Component {
                                 <Select
                                     name="supplierContactSelect"
                                     isMulti
+                                    autosize={false}
                                     value={this.state.supplierContactSelect || ''}
-                                    onChange={this.handleChange}
+                                    onChange={(value) => this.setState({supplierContactSelect: value})}
                                     options={this.state.supplierContactList}
                                     getOptionLabel={(option) => (`${option.firstName} ${option.lastName} (@${option.username})`)}
                                     getOptionValue={(option) => option.id}

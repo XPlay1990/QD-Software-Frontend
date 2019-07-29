@@ -7,7 +7,8 @@
     background-color: white;
     padding: 10px;
     grid-template-areas: 'CustomerSelect SupplierSelect' 'CustomerContactAddList SupplierContactAddList';
-    grid-template-rows: 30% 60%;
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 50% 50%;
 }
 
 .CustomerSelect {
@@ -19,7 +20,7 @@
 }
 
 .CustomerSelect,
-.SupplierSelect{
+.SupplierSelect {
     width: 80%;
 }
 
