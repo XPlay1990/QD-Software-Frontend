@@ -4,7 +4,12 @@ import './EdiCreate.css';
 import "react-table/react-table.css";
 import LoadingIndicator from "../../common/LoadingIndicator";
 import Select from "react-select";
-import {getCustomerOrganizations, getOrganizationMembers, getSupplierOrganizations} from "../../util/APIUtils";
+import {
+    createEdiCon,
+    getCustomerOrganizations,
+    getOrganizationMembers,
+    getSupplierOrganizations
+} from "../../util/APIUtils";
 
 class EdiCreate extends Component {
     constructor(props) {
@@ -22,9 +27,51 @@ class EdiCreate extends Component {
             supplierContactList: []
         };
         this.loadCustomerList = this.loadCustomerList.bind(this);
+        this.createEdiCon = this.createEdiCon.bind(this);
     }
 
-    handleChange = (selectedOption, actionMeta) => {
+    createEdiCon() {
+        console.log("creating edicon");
+        let tmCustomerList = [];
+        this.state.customerContactSelect.forEach(function (custmerContact) {
+            tmCustomerList.push(custmerContact.id)
+        });
+
+        let tmpSupplierList = [];
+        this.state.supplierContactSelect.forEach(function (supplierContact) {
+            tmpSupplierList.push(supplierContact.id)
+        });
+
+        let promise = createEdiCon(this.state.customerSelect.id, tmCustomerList,
+            this.state.supplierSelect.id, tmpSupplierList);
+        if (!promise) {
+            return;
+        }
+
+        this.setState({
+            isLoading: true
+        });
+
+        promise
+            .then(
+                // this.props.history.push("/")
+            )
+            .catch(error => {
+                // notification.error({
+                //     message: 'EdiConnection-Portal',
+                //     description: error
+                // });
+                console.log(error)
+                this.setState({
+                    isLoading: false
+                })
+            });
+        this.setState({
+            isLoading: false
+        })
+    }
+
+    handleSelectsChange = (selectedOption, actionMeta) => {
         this.setState({
             [actionMeta.name]: selectedOption,
         });
@@ -50,7 +97,6 @@ class EdiCreate extends Component {
         promise
             .then(response => {
                 if (this._isMounted) {
-                    console.log(response)
                     switch (selectName) {
                         case "customerSelect":
                             this.setState({
@@ -171,7 +217,7 @@ class EdiCreate extends Component {
                                 <Select
                                     name="customerSelect"
                                     // value={this.state.customerSelect}
-                                    onChange={this.handleChange}
+                                    onChange={this.handleSelectsChange}
                                     options={this.state.customerList}
                                     getOptionLabel={(option) => option.name}
                                     getOptionValue={(option) => option.id}
@@ -196,7 +242,7 @@ class EdiCreate extends Component {
                                 <Select
                                     name="supplierSelect"
                                     // value={selectedOption}
-                                    onChange={this.handleChange}
+                                    onChange={this.handleSelectsChange}
                                     options={this.state.supplierList}
                                     getOptionLabel={(option) => option.name}
                                     getOptionValue={(option) => option.id}
@@ -228,7 +274,7 @@ class EdiCreate extends Component {
                 {/*    ) : null*/}
 
                 {/*}*/}
-                <button className={"ButtonCreate"}>Create</button>
+                <button className={"ButtonCreate"} onClick={this.createEdiCon}>Create</button>
             </div>
         );
     }

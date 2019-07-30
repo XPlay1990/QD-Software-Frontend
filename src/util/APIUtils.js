@@ -60,10 +60,21 @@ export function getUserProfile(username) {
     });
 }
 
+export function createEdiCon(customerOrgId, custmerContactIdList, supplierOrgId, supplierContactIdList) {
+    return request({
+        url: `${BACKEND_BASE_URL}${EDICON_LIST_URL}`,
+        method: 'POST',
+        body: JSON.stringify({
+            customerOrgId: customerOrgId,
+            custmerContactIdList: custmerContactIdList,
+            supplierOrgId: supplierOrgId,
+            supplierContactIdList: supplierContactIdList
+        })
+    });
+}
 export function getOrganizationMembers(id) {
     return request({
         url: `${BACKEND_BASE_URL}${GET_ORGANIZATION_MEMBERS_URL(id)}`,
-        // url: `${BACKEND_BASE_URL}/org/1/members`,
         method: 'GET'
     });
 }
