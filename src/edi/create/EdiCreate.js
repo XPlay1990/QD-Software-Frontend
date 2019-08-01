@@ -11,8 +11,7 @@ import {
     getSupplierOrganizations
 } from "../../util/APIUtils";
 import {notification} from "antd";
-import AuthenticationService from "../../security/AuthenticationService";
-import {ACCESS_TOKEN} from "../../config/constants";
+import {BASE_URL} from "../../config/constants";
 
 class EdiCreate extends Component {
     constructor(props) {
@@ -63,26 +62,22 @@ class EdiCreate extends Component {
             isLoading: true
         });
 
-        promise.then(
-            function (result) {
-                notification.success({
-                    message: 'EdiConnection-Portal',
-                    description: "Successfully created new Edi Connection!",
-                });
-            },
-            function (error) {
+        promise.then(response => {
+            notification.success({
+                message: 'EdiConnection-Portal',
+                description: "Successfully created new Edi Connection!",
+            });
+            this.setState({
+                isSuccessfullyCreated: true
+            })
+        })
+            .catch(function (err) {
                 notification.error({
                     message: 'EdiConnection-Portal',
-                    description: error.toString(),
+                    description: err.toString(),
                 });
-                this.setState({
-                    isLoading: false
-                })
-            }
-        ).then(this.setState({
-                isSuccessfullyCreated: true
-            }),
-        );
+            });
+
         this.setState({
             isLoading: false
         })
@@ -245,7 +240,7 @@ class EdiCreate extends Component {
                 <form onSubmit={this.createEdiCon}>
 
                     {
-                        this.state.isSuccessfullyCreated ? <Redirect to="/" push={true}/> : null
+                        this.state.isSuccessfullyCreated ? <Redirect to={BASE_URL} push={true}/> : null
                     }
                     {
                         this.state.isLoading ?

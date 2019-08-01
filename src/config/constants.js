@@ -2,6 +2,7 @@
 export const BACKEND_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:9020';
 
 // API URLS
+export const BASE_URL = '/';
 export const LOGIN_URL = '/auth/login';
 export const LOGOUT_URL = '/auth/logout';
 export const REGISTER_URL = '/tbd';
