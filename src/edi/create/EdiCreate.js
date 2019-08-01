@@ -3,7 +3,7 @@ import {Redirect, withRouter} from 'react-router-dom';
 import './EdiCreate.css';
 import "react-table/react-table.css";
 import LoadingIndicator from "../../common/LoadingIndicator";
-import Select from "react-select";
+import BaseSelect from "react-select";
 import {
     createEdiCon,
     getCustomerOrganizations,
@@ -12,6 +12,14 @@ import {
 } from "../../util/APIUtils";
 import {notification} from "antd";
 import {BASE_URL} from "../../config/constants";
+import CustomRequiredSelect from "../../common/CustomRequiredSelect";
+
+const RequiredSelect = props => (
+    <CustomRequiredSelect
+        {...props}
+        SelectComponent={BaseSelect}
+    />
+);
 
 class EdiCreate extends Component {
     constructor(props) {
@@ -256,21 +264,22 @@ class EdiCreate extends Component {
                     {
                         !this.state.isLoading ? (
                             <div className="EdiCreateGrid">
-                                <div className={"CustomerSelect"}>
+                                <div className={["CustomerSelect"]}>
                                     <span>Select Customer</span>
-                                    <Select
+                                    <RequiredSelect
                                         name="customerSelect"
                                         // value={this.state.customerSelect}
                                         onChange={this.handleSelectsChange}
                                         options={this.state.customerList}
                                         getOptionLabel={(option) => option.name}
                                         getOptionValue={(option) => option.id}
+                                        required
                                     />
                                 </div>
 
-                                <div className={"CustomerContactAddList"}>
+                                <div className={["CustomerContactAddList"]}>
                                     <span>Select Contact</span>
-                                    <Select
+                                    <RequiredSelect
                                         name="customerContactSelect"
                                         isMulti
                                         value={this.state.customerContactSelect || ''}
@@ -278,24 +287,26 @@ class EdiCreate extends Component {
                                         options={this.state.customerContactList}
                                         getOptionLabel={(option) => (`${option.firstName} ${option.lastName} (@${option.username})`)}
                                         getOptionValue={(option) => option.id}
+                                        required
                                     />
                                 </div>
 
-                                <div className={"SupplierSelect"}>
+                                <div className={["SupplierSelect"]}>
                                     <span>Select Supplier</span>
-                                    <Select
+                                    <RequiredSelect
                                         name="supplierSelect"
                                         // value={selectedOption}
                                         onChange={this.handleSelectsChange}
                                         options={this.state.supplierList}
                                         getOptionLabel={(option) => option.name}
                                         getOptionValue={(option) => option.id}
+                                        required
                                     />
                                 </div>
 
-                                <div className={"SupplierContactAddList"}>
+                                <div className={["SupplierContactAddList"]}>
                                     <span>Select Contact</span>
-                                    <Select
+                                    <RequiredSelect
                                         name="supplierContactSelect"
                                         isMulti
                                         autosize={false}
@@ -304,6 +315,7 @@ class EdiCreate extends Component {
                                         options={this.state.supplierContactList}
                                         getOptionLabel={(option) => (`${option.firstName} ${option.lastName} (@${option.username})`)}
                                         getOptionValue={(option) => option.id}
+                                        required
                                     />
                                 </div>
                             </div>
