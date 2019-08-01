@@ -1,10 +1,13 @@
 import request from "../security/authHeader/AuthorizationHeaderRequest"
 import {
     BACKEND_BASE_URL,
-    EDICON_MESSAGES_URL,
-    EDICON_LIST_URL,
     EDI_LIST_SIZE,
-    GET_CUSTOMER_ORGANIZATIONS_URL, GET_SUPPLIER_ORGANIZATIONS_URL, GET_ORGANIZATION_MEMBERS_URL
+    EDICON_LIST_URL,
+    EDICON_MESSAGES_URL,
+    GET_CUSTOMER_ORGANIZATIONS_URL,
+    GET_DEVELOPERS,
+    GET_ORGANIZATION_MEMBERS_URL,
+    GET_SUPPLIER_ORGANIZATIONS_URL
 } from '../config/constants';
 
 export function getEdiConnections(pageNumber, size) {
@@ -87,6 +90,13 @@ export function getCustomerOrganizations() {
 export function getSupplierOrganizations() {
     return request({
         url: `${BACKEND_BASE_URL}${GET_SUPPLIER_ORGANIZATIONS_URL}`,
+        method: 'GET'
+    });
+}
+
+export function getDeveloperList() {
+    return request({
+        url: `${BACKEND_BASE_URL}${GET_DEVELOPERS}`,
         method: 'GET'
     });
 }

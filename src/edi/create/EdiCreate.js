@@ -89,29 +89,6 @@ class EdiCreate extends Component {
         this.setState({
             isLoading: false
         })
-
-        // this.props.form.validateFields((err, values) => {
-        //     if (!err) {
-        //         const loginRequest = Object.assign({}, values);
-        //         AuthenticationService.login(loginRequest)
-        //             .then(response => {
-        //                 localStorage.setItem(ACCESS_TOKEN, response.accessToken);
-        //                 this.props.onLogin();
-        //             }).catch(error => {
-        //             if (error.status === 401) {
-        //                 notification.error({
-        //                     message: 'EdiConnection-Portal',
-        //                     description: 'Your Username or Password is incorrect. Please try again!'
-        //                 });
-        //             } else {
-        //                 notification.error({
-        //                     message: 'EdiConnection-Portal',
-        //                     description: error.message || 'Sorry! Something went wrong. Please try again!'
-        //                 });
-        //             }
-        //         });
-        //     }
-        // });
     }
 
     handleSelectsChange = (selectedOption, actionMeta) => {
