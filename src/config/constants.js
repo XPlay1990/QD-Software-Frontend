@@ -21,7 +21,7 @@ export const EDICON_CREATE_URL = `${EDICON_LIST_URL}/create`;
 export const ACCESS_TOKEN = 'accessToken';
 export const CURRENT_USER = 'currentUser';
 
-export const EDI_LIST_SIZE = 10;
+export const EDI_LIST_SIZE = 15;
 export const MAX_CHOICES = 6;
 export const POLL_QUESTION_MAX_LENGTH = 140;
 export const POLL_CHOICE_MAX_LENGTH = 40;

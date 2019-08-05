@@ -10,19 +10,23 @@ import {
     GET_SUPPLIER_ORGANIZATIONS_URL
 } from '../config/constants';
 
-export function getEdiConnections(pageNumber, size) {
+export function getEdiConnections(pageNumber, pageSize, pageSorting, additiveSorting) {
     pageNumber = pageNumber || 0;
-    size = size || EDI_LIST_SIZE;
-
+    pageSize = pageSize || EDI_LIST_SIZE;
+    if (pageSorting.length === 0) {
+        pageSorting = ""
+    }
+    pageSorting = JSON.stringify(pageSorting);
+    console.log(`API: ${BACKEND_BASE_URL}${EDICON_LIST_URL}?pageNumber=${pageNumber}&pageSize=${pageSize}&pageSorting=${pageSorting}&additiveSorting=${additiveSorting}`)
     return request({
-        url: BACKEND_BASE_URL + `${EDICON_LIST_URL}?pageNumber=` + pageNumber + "&pageSize=" + size,
-        method: 'GET'
+        url: `${BACKEND_BASE_URL}${EDICON_LIST_URL}?pageNumber=${pageNumber}&pageSize=${pageSize}&pageSorting=${pageSorting}&additiveSorting=${additiveSorting}`,
+        method: 'GET',
     });
 }
 
 export function getEdiConnection(id) {
     return request({
-        url: BACKEND_BASE_URL + `${EDICON_LIST_URL}/` + id,
+        url: `${BACKEND_BASE_URL}${EDICON_LIST_URL}/${id}`,
         method: 'GET'
     });
 }
@@ -75,18 +79,21 @@ export function createEdiCon(customerOrgId, custmerContactIdList, supplierOrgId,
         })
     });
 }
+
 export function getOrganizationMembers(id) {
     return request({
         url: `${BACKEND_BASE_URL}${GET_ORGANIZATION_MEMBERS_URL(id)}`,
         method: 'GET'
     });
 }
+
 export function getCustomerOrganizations() {
     return request({
         url: `${BACKEND_BASE_URL}${GET_CUSTOMER_ORGANIZATIONS_URL}`,
         method: 'GET'
     });
 }
+
 export function getSupplierOrganizations() {
     return request({
         url: `${BACKEND_BASE_URL}${GET_SUPPLIER_ORGANIZATIONS_URL}`,

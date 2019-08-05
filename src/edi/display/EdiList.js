@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {getEdiConnections} from '../../util/APIUtils';
-import {EDI_LIST_SIZE} from '../../config/constants';
 import {withRouter} from 'react-router-dom';
 import './EdiList.css';
 import ReactTable from 'react-table'
 import "react-table/react-table.css";
 import {columnConfig} from "./ColumnConfig";
 import LoadingIndicator from "../../common/LoadingIndicator";
+import {EDI_LIST_SIZE} from "../../config/constants";
 
 class EdiList extends Component {
     constructor(props) {
@@ -14,17 +14,22 @@ class EdiList extends Component {
         this.state = {
             ediConnections: [],
             pageNumber: 0,
-            pageSize: 15,
+            pageSize: EDI_LIST_SIZE,
             totalElements: 0,
             totalPages: 0,
             isLast: true,
-            isLoading: true
+            isLoading: true,
+            pageSorting: [],
+            additiveSorting: false
         };
         this.loadEdiList = this.loadEdiList.bind(this);
+        this.updateTablePage = this.updateTablePage.bind(this);
+        this.updateTablePageSize = this.updateTablePageSize.bind(this);
+        this.updateTableSorting = this.updateTableSorting.bind(this);
     }
 
-    loadEdiList(page = 0, size = EDI_LIST_SIZE) {
-        let promise = getEdiConnections(page, size);
+    loadEdiList() {
+        let promise = getEdiConnections(this.state.pageNumber, this.state.pageSize, this.state.pageSorting, this.state.additiveSorting);
         if (!promise) {
             return;
         }
@@ -51,7 +56,33 @@ class EdiList extends Component {
                 isLoading: false
             })
         });
+    }
 
+    updateTablePage(pageIndex) {
+        this.setState({
+                pageNumber: pageIndex
+            },
+            this.loadEdiList
+        );
+    }
+
+    updateTablePageSize(pageSize) {
+        this.setState({
+                pageSize: pageSize,
+                pageNumber: 0
+            },
+            this.loadEdiList
+        )
+        ;
+    }
+
+    updateTableSorting(newSorted, column, additive) {
+        this.setState({
+                pageSorting: newSorted,
+                additiveSorting: additive
+            },
+            this.loadEdiList
+        );
     }
 
     componentDidMount() {
@@ -69,7 +100,7 @@ class EdiList extends Component {
             this.setState({
                 ediConnections: [],
                 pageNumber: 0,
-                pageSize: 10,
+                pageSize: 15,
                 totalElements: 0,
                 totalPages: 0,
                 isLast: true,
@@ -79,23 +110,6 @@ class EdiList extends Component {
             this.loadEdiList();
         }
     };
-
-    reloadEdiConnections(state, rowInfo, column, instance) {
-        console.log("Sorting by " + column.id);
-        // if (column.sort === '') return;
-        // let newSort;
-        // if (this.state.currentSort === column.sort) {
-        //     this.state.isASC === 'ASC' ? newSort = 'DESC' : newSort = 'ASC';
-        // } else {
-        //     newSort = 'ASC';
-        // }
-        // this.setState({currentSort: column.sort, isASC: newSort});
-        // let passObj = this.props.valueAccepted(1);
-        // column.altID ? passObj.orderByColumn = column.altID : passObj.orderByColumn = column.sort;
-        // passObj.orderByAscDesc = newSort;
-        // let qhk = ((((this.props.search || {}).data || {})).queryHeaderKey || -1);
-        // this.props.updateSearch(passObj, qhk, 1, this.props.search.numRecords)
-    }
 
     render() {
         return (
@@ -117,11 +131,24 @@ class EdiList extends Component {
                             <ReactTable
                                 manual
                                 minRows={0}
+                                pageSizeOptions={[5, 10, 15, 20]}
                                 pageSize={this.state.pageSize}
                                 data={this.state.ediConnections}
                                 columns={columnConfig}
+                                page={this.state.pageNumber}
                                 pages={this.state.totalPages}
                                 showPagination={true}
+                                showPageSizeOptions={true}
+                                showPageJump={true}
+                                onPageChange={(pageIndex) => {
+                                    this.updateTablePage(pageIndex)
+                                }}
+                                onSortedChange={(newSorted, column, additive) => {
+                                    this.updateTableSorting(newSorted, column, additive)
+                                }}
+                                onPageSizeChange={(pageSize) => {
+                                    this.updateTablePageSize(pageSize)
+                                }}
                             />
                             <Tips/>
                         </div>
