@@ -18,7 +18,7 @@ import Profile from '../user/profile/Profile';
 import AppHeader from '../common/AppHeader';
 import NotFound from '../error/NotFound';
 import LoadingIndicator from '../common/LoadingIndicator';
-import ProtectedRoute from '../security/RoleRestrictedRoute';
+import RoleRestrictedRoute from '../security/RoleRestrictedRoute';
 
 import {Layout, notification} from 'antd';
 import EdiConnection from "../edi/display/detail/EdiConnection";
@@ -119,16 +119,19 @@ class App extends Component {
                                    render={(props) => <Login onLogin={this.handleLogin}
                                                              isAuthenticated={this.state.isAuthenticated} {...props} />}/>
                             <Route path={REGISTER_URL} component={Signup}/>
-                            <ProtectedRoute isAuthenticated={this.state.isAuthenticated}
-                                            exact path={EDICON_LIST_URL}
-                                            component={EdiList}/>
-                            <ProtectedRoute isAuthenticated={this.state.isAuthenticated}
-                                            exact path={EDICON_CREATE_URL}
-                                            component={EdiCreate}/>
+                            <RoleRestrictedRoute isAuthenticated={this.state.isAuthenticated}
+                                                 exact path={EDICON_LIST_URL}
+                                                 component={EdiList}/>
+                            <RoleRestrictedRoute isAuthenticated={this.state.isAuthenticated}
+                                                 exact path={EDICON_CREATE_URL}
+                                                 component={EdiCreate}/>
                             <Route isAuthenticated={this.state.isAuthenticated} path="/users/:username"
                                    render={(props) => <Profile isAuthenticated={this.state.isAuthenticated}
                                                                currentUser={this.state.currentUser} {...props}  />}/>
-                            <ProtectedRoute isAuthenticated={this.state.isAuthenticated}
+                            {/*<ProtectedRoute isAuthenticated={this.state.isAuthenticated}*/}
+                            {/*                path={EDICON_LIST_URL + "/:id"}*/}
+                            {/*                component={EdiConnection}/>*/}
+                            <Route isAuthenticated={this.state.isAuthenticated}
                                             path={EDICON_LIST_URL + "/:id"}
                                             component={EdiConnection}/>
                             <Route component={NotFound}/>

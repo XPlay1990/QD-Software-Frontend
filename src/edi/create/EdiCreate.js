@@ -50,9 +50,9 @@ class EdiCreate extends Component {
     createEdiCon(event) {
         event.preventDefault();
 
-        let tmCustomerList = [];
-        this.state.customerContactSelect.forEach(function (custmerContact) {
-            tmCustomerList.push(custmerContact.id)
+        let tmpCustomerList = [];
+        this.state.customerContactSelect.forEach(function (customerContact) {
+            tmpCustomerList.push(customerContact.id)
         });
 
         let tmpSupplierList = [];
@@ -60,7 +60,7 @@ class EdiCreate extends Component {
             tmpSupplierList.push(supplierContact.id)
         });
 
-        let promise = createEdiCon(this.state.customerSelect.id, tmCustomerList,
+        let promise = createEdiCon(this.state.customerSelect.id, tmpCustomerList,
             this.state.supplierSelect.id, tmpSupplierList);
         if (!promise) {
             return;

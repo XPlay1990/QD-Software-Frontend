@@ -21,7 +21,6 @@ class EdiList extends Component {
             isLoading: true
         };
         this.loadEdiList = this.loadEdiList.bind(this);
-        this.onRowClick = this.onRowClick.bind(this)
     }
 
     loadEdiList(page = 0, size = EDI_LIST_SIZE) {
@@ -81,10 +80,6 @@ class EdiList extends Component {
         }
     };
 
-    onRowClick(state, rowInfo, column, instance) {
-        this.props.history.push('/edi_connection/' + rowInfo.original.id)
-    }
-
     reloadEdiConnections(state, rowInfo, column, instance) {
         console.log("Sorting by " + column.id);
         // if (column.sort === '') return;
@@ -127,25 +122,6 @@ class EdiList extends Component {
                                 columns={columnConfig}
                                 pages={this.state.totalPages}
                                 showPagination={true}
-                                // filterable
-                                getTheadThProps={(state, rowInfo, column, instance) => ({
-                                    // style: {
-                                    //     borderTop: (this.state.currentSort === column.sort && column.sort !== '' && this.state.isASC === 'ASC') ? '2px solid black' : '0',
-                                    //     borderBottom: (this.state.currentSort === column.sort && column.sort !== '' && this.state.isASC === 'DESC') ? '2px solid black' : '0'
-                                    // },
-                                    onClick: (e) => {
-                                        console.log(state);
-                                        console.log(rowInfo);
-                                        console.log(column);
-                                        console.log(instance);
-                                        this.reloadEdiConnections(state, rowInfo, column, instance)
-                                    }
-                                })}
-                                getTrProps={(state, rowInfo, column, instance) => ({
-                                    onClick: e => {
-                                        this.onRowClick(state, rowInfo, column, instance);
-                                    }
-                                })}
                             />
                             <Tips/>
                         </div>
