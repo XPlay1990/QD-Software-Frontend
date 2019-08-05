@@ -149,13 +149,14 @@ class EdiList extends Component {
                                 onPageSizeChange={(pageSize) => {
                                     this.updateTablePageSize(pageSize)
                                 }}
+                                noDataText={'No rows found'}
+                                // NoDataComponent={NoDataComponent}
                             />
                             <Tips/>
                         </div>
                     ) : null
 
                 }
-
             </div>
         );
     }
