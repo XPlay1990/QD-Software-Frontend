@@ -72,8 +72,7 @@ class EdiList extends Component {
                 pageNumber: 0
             },
             this.loadEdiList
-        )
-        ;
+        );
     }
 
     updateTableSorting(newSorted, column, additive) {

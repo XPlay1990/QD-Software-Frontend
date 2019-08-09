@@ -17,9 +17,16 @@ export function getEdiConnections(pageNumber, pageSize, pageSorting, additiveSor
         pageSorting = ""
     }
     pageSorting = JSON.stringify(pageSorting);
-    console.log(`API: ${BACKEND_BASE_URL}${EDICON_LIST_URL}?pageNumber=${pageNumber}&pageSize=${pageSize}&pageSorting=${pageSorting}&additiveSorting=${additiveSorting}`)
+    var sortString = "";
+    // console.log(pageSorting)
+    // var sortArray = JSON.parse(pageSorting)
+    // sortArray.forEach(function (sortElement) {
+    //     sortString += `pagesorting.id=${sortElement.id}&pageSorting.desc=${sortElement.desc}&`
+    // });
+    console.log(sortString);
+    console.log(`${BACKEND_BASE_URL}${EDICON_LIST_URL}?pageNumber=${pageNumber}&pageSize=${pageSize}&${sortString}additiveSorting=${additiveSorting}`,);
     return request({
-        url: `${BACKEND_BASE_URL}${EDICON_LIST_URL}?pageNumber=${pageNumber}&pageSize=${pageSize}&pageSorting=${pageSorting}&additiveSorting=${additiveSorting}`,
+        url: `${BACKEND_BASE_URL}${EDICON_LIST_URL}?pageNumber=${pageNumber}&pageSize=${pageSize}&${sortString}additiveSorting=${additiveSorting}`,
         method: 'GET',
     });
 }
