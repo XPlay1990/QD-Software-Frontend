@@ -1,7 +1,7 @@
 import React from 'react';
 import {Redirect, Route} from "react-router-dom";
-import { authenticationService } from './AuthenticationService';
-import Unauthorized from "../error/Unauthorized";
+// import { authenticationService } from './AuthenticationService';
+// import Unauthorized from "../error/Unauthorized";
 import {LOGIN_URL} from "../config/constants";
 
 // The react private route component renders a route component if the user is logged in and in an authorised role for the route

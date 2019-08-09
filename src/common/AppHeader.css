@@ -102,4 +102,19 @@
         padding: 0 15px;
         margin: 0 -15px;
     }
-}  
+}
+
+.ant-dropdown-link {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+.ant-dropdown-link:hover,
+.ant-dropdown-link:focus {
+    text-decoration: none;
+}

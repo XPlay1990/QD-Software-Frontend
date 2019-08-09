@@ -3,7 +3,6 @@ import {Link, withRouter} from 'react-router-dom';
 import './AppHeader.css';
 import pollIcon from '../poll.svg';
 import {Dropdown, Icon, Layout, Menu} from 'antd';
-import NicandoLogo from "../resources/header/nicando.png"
 
 const Header = Layout.Header;
 
@@ -94,9 +93,9 @@ function ProfileDropdownMenu(props) {
             overlay={dropdownMenu}
             trigger={['click']}
             getPopupContainer={() => document.getElementsByClassName('profile-menu')[0]}>
-            <a className="ant-dropdown-link" href="javascript:void(0)">
+            <button className="ant-dropdown-link">
                 <Icon type="user" className="nav-icon" style={{marginRight: 0}}/> <Icon type="down"/>
-            </a>
+            </button>
         </Dropdown>
     );
 }
