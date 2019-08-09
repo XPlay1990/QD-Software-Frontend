@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@progress/kendo-react-buttons": "^3.2.2",
-    "antd": "^3.20.5",
+    "antd": "^3.21.4",
     "config": "^3.2.2",
     "customize-cra": "^0.4.1",
     "draft-js": "latest",
@@ -12,17 +12,17 @@
     "draft-js-inline-toolbar-plugin": "^3.0.0",
     "draft-js-plugins-editor": "^2.1.1",
     "draft-js-static-toolbar-plugin": "^3.0.0",
-    "npm": "^6.10.2",
-    "react": "^16.8.6",
+    "npm": "^6.10.3",
+    "prop-types": "latest",
+    "react": "^16.9.0",
     "react-chat-elements": "latest",
-    "react-dom": "^16.8.6",
+    "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
     "react-select": "^3.0.4",
     "react-table": "^6.10.0",
     "rxjs": "latest",
-    "typescript": "^3.5.3",
-    "prop-types": "latest"
+    "typescript": "^3.5.3"
   },
   "scripts": {
     "start": "react-app-rewired start",
