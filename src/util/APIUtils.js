@@ -13,20 +13,22 @@ import {
 export function getEdiConnections(pageNumber, pageSize, pageSorting, additiveSorting) {
     pageNumber = pageNumber || 0;
     pageSize = pageSize || EDI_LIST_SIZE;
-    if (pageSorting.length === 0) {
-        pageSorting = ""
+
+    let sortingArray = [];
+    pageSorting.forEach(function (sortElement) {
+            if (sortElement.desc) {
+                sortingArray.push(`${sortElement.id},desc`)
+            } else {
+                sortingArray.push(`${sortElement.id},asc`)
+            }
+        }
+    );
+    let sortString = sortingArray.join("&sort=");
+    if (!sortString) {
+        sortString = "updateTime,desc"
     }
-    pageSorting = JSON.stringify(pageSorting);
-    var sortString = "";
-    // console.log(pageSorting)
-    // var sortArray = JSON.parse(pageSorting)
-    // sortArray.forEach(function (sortElement) {
-    //     sortString += `pagesorting.id=${sortElement.id}&pageSorting.desc=${sortElement.desc}&`
-    // });
-    console.log(sortString);
-    console.log(`${BACKEND_BASE_URL}${EDICON_LIST_URL}?pageNumber=${pageNumber}&pageSize=${pageSize}&${sortString}additiveSorting=${additiveSorting}`,);
     return request({
-        url: `${BACKEND_BASE_URL}${EDICON_LIST_URL}?pageNumber=${pageNumber}&pageSize=${pageSize}&${sortString}additiveSorting=${additiveSorting}`,
+        url: `${BACKEND_BASE_URL}${EDICON_LIST_URL}?page=${pageNumber}&size=${pageSize}&sort=${sortString}`,
         method: 'GET',
     });
 }
