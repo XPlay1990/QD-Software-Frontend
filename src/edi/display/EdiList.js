@@ -72,8 +72,7 @@ class EdiList extends Component {
                 pageNumber: 0
             },
             this.loadEdiList
-        )
-        ;
+        );
     }
 
     updateTableSorting(newSorted, column, additive) {
@@ -134,6 +133,7 @@ class EdiList extends Component {
                                 pageSizeOptions={[5, 10, 15, 20]}
                                 pageSize={this.state.pageSize}
                                 data={this.state.ediConnections}
+                                defaultSorted={this.state.pageSorting}
                                 columns={columnConfig}
                                 page={this.state.pageNumber}
                                 pages={this.state.totalPages}
