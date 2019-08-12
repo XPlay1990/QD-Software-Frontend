@@ -32,6 +32,7 @@
     background-color: lightgray;
     border-style: solid;
     border-color: lightblue;
+    max-height: 100%;
 }
 
 .ediAttachments {
