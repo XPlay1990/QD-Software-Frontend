@@ -2,9 +2,7 @@
     display: grid;
     padding: 10px;
     grid-gap: 15px;
-    grid-template-areas:
-            'customerName assignedDev . status'
-            'supplierName . creationTime updateTime'
+    grid-template-areas: 'customerName updateTime assignedDev status' 'supplierName creationTime . saveButton'
 }
 
 .ediDescriptionStatus {
@@ -29,4 +27,63 @@
 
 .ediDescriptionUpdateTime {
     grid-area: updateTime;
+}
+
+.saveButton {
+    grid-area: saveButton;
+
+    padding: 15px;
+    background: #2196f3;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: Helvetica, sans-serif;
+    font-size: 22px;
+    cursor: pointer;
+    width: 200px;
+    height: 50px;
+    white-space: nowrap;
+    position: relative;
+}
+
+.saveButton::after {
+    content: "Apply Changes";
+}
+
+.saveButton.save-animation {
+    animation: saveAnimation 450ms ease forwards;
+}
+
+.saveButton.save-animation::after {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    margin-left: -10px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top-color: #07d;
+    border-bottom-color: #07d;
+    animation: spinner 0.8s ease infinite;
+}
+
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes saveAnimation {
+    0% {
+        width: 200px;
+    }
+
+    100% {
+        width: 0px;
+        background: #fff;
+    }
 }

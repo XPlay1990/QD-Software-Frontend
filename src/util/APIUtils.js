@@ -5,9 +5,9 @@ import {
     EDICON_LIST_URL,
     EDICON_MESSAGES_URL,
     GET_CUSTOMER_ORGANIZATIONS_URL,
-    GET_DEVELOPERS,
+    GET_DEVELOPERS, GET_EDISTATES,
     GET_ORGANIZATION_MEMBERS_URL,
-    GET_SUPPLIER_ORGANIZATIONS_URL
+    GET_SUPPLIER_ORGANIZATIONS_URL, SAVE_DEVELOPER_AND_STATE
 } from '../config/constants';
 
 export function getEdiConnections(pageNumber, pageSize, pageSorting, additiveSorting) {
@@ -117,12 +117,21 @@ export function getDeveloperList() {
     });
 }
 
-export function getUserVotedPolls(username, page, size) {
-    page = page || 0;
-    size = size || EDI_LIST_SIZE;
-
+export function getEdiStatusList() {
     return request({
-        url: BACKEND_BASE_URL + "/users/" + username + "/votes?pageNumber=" + page + "&pageSize=" + size,
+        url: `${BACKEND_BASE_URL}${GET_EDISTATES}`,
         method: 'GET'
+    });
+}
+
+export function saveDeveloperAndStatus(ediConnectionId, assignedDev, state) {
+    return request({
+        url: `${BACKEND_BASE_URL}${SAVE_DEVELOPER_AND_STATE}`,
+        method: 'POST',
+        body: JSON.stringify({
+            ediConnectionId: ediConnectionId,
+            developerId: assignedDev.id,
+            state: state.value,
+        })
     });
 }

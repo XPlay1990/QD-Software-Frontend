@@ -14,8 +14,13 @@ export const GET_CUSTOMER_ORGANIZATIONS_URL = '/org/customers';
 export const GET_SUPPLIER_ORGANIZATIONS_URL = '/org/suppliers';
 export const USER_SELF_URL = '/user/me';
 export const EDICON_LIST_URL = '/edi_connection';
+export const GET_EDISTATES = `${EDICON_LIST_URL}/possibleStates`;
+export const SAVE_DEVELOPER_AND_STATE = `${EDICON_LIST_URL}/saveDeveloperAndState`;
 export const EDICON_MESSAGES_URL = (id) => `${EDICON_LIST_URL}/${id}/messages`;
 export const EDICON_CREATE_URL = `${EDICON_LIST_URL}/create`;
+
+export const FORBIDDEN_URL = `/forbidden`;
+export const NOT_FOUND_URL = `/notFound`;
 
 // STORAGE
 export const ACCESS_TOKEN = 'accessToken';

@@ -1,22 +1,29 @@
 import React, {Component} from 'react';
 import './Description.css';
 import Select from "react-select";
-import {getDeveloperList} from "../../../../util/APIUtils";
+import {getDeveloperList, getEdiStatusList, saveDeveloperAndStatus} from "../../../../util/APIUtils";
+import {notification} from "antd";
 
 
 class Description extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            status: props.status,
+            status: {label: props.status, value: props.status},
+            statusList: [],
             creationTime: props.creationTime,
             updateTime: props.updateTime,
             customerName: props.customerName,
             supplierName: props.supplierName,
             developerList: [],
-            assignedDev: props.assignedDev
+            assignedDev: props.assignedDev,
+            isSaving: false
         };
+        this.ediConnectionId = props.ediConnectionId;
+
         this.loadDeveloperList = this.loadDeveloperList.bind(this);
+        this.loadEdiStatusList = this.loadEdiStatusList.bind(this);
+        this.saveDeveloperAndState = this.saveDeveloperAndState.bind(this);
     }
 
     loadDeveloperList() {
@@ -45,9 +52,72 @@ class Description extends Component {
         })
     }
 
+    loadEdiStatusList() {
+        let promise = getEdiStatusList();
+        if (!promise) {
+            return;
+        }
+
+        this.setState({
+            isLoading: true
+        });
+
+        promise
+            .then(response => {
+                if (this._isMounted) {
+                    let statusList = [];
+                    response.forEach(function (element) {
+                        statusList.push({label: element, value: element})
+                    });
+                    this.setState({
+                        statusList: statusList,
+                        isLoading: false
+                    })
+                }
+            })
+            .catch(error => {
+            });
+        this.setState({
+            isLoading: false
+        })
+    }
+
+    saveDeveloperAndState() {
+        let promise = saveDeveloperAndStatus(this.ediConnectionId, this.state.assignedDev, this.state.status);
+        if (!promise) {
+            return;
+        }
+
+        this.setState({
+            isSaving: true
+        });
+
+        promise
+            .then(response => {
+                if (this._isMounted) {
+                    setTimeout(() => {
+                        this.setState({
+                            isSaving: false
+                        })
+                    }, 150);
+                }
+                notification.success({
+                    message: 'EdiConnection-Portal',
+                    description: response.message,
+                });
+            })
+            .catch(error => {
+                //TODO:ERRORMSG
+                this.setState({
+                    isSaving: false
+                })
+            });
+    }
+
     componentDidMount() {
         this._isMounted = true;
         this.loadDeveloperList();
+        this.loadEdiStatusList();
     }
 
     componentWillUnmount() {
@@ -59,10 +129,6 @@ class Description extends Component {
         return (
             <div className="ediDescription">
                 <div className="ediDescriptionGrid">
-                    <div className="ediDescriptionStatus">
-                        <h1>State:</h1>
-                        {this.state.status}
-                    </div>
                     <div className="ediDescriptionCreationTime"><h1>Created:</h1>{this.state.creationTime}</div>
                     <div className="ediDescriptionUpdateTime"><h1>Last Modified:</h1>{this.state.updateTime}</div>
                     <div className="ediDescriptionCustomerName"><h1>Customer:</h1>{this.state.customerName}</div>
@@ -78,6 +144,22 @@ class Description extends Component {
                                 getOptionValue={(option) => option.id}
                         />
                     </div>
+                    <div className="ediDescriptionStatus">
+                        <h1>State:</h1>
+                        <Select name="StateSelect"
+                                autosize={false}
+                                value={this.state.status || ''}
+                                onChange={(value) => this.setState({status: value})}
+                                getOptionKey={(option) => option.index}
+                                options={this.state.statusList}
+                            // getOptionLabel={(option) => option}
+                            // getOptionValue={(option) => option}
+                        />
+                    </div>
+                    <button
+                        className={"saveButton " + (this.state.isSaving ? "save-animation" : "")}
+                        onClick={this.saveDeveloperAndState}
+                    />
                 </div>
             </div>
         );

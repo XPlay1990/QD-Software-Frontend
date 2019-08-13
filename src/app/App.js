@@ -7,7 +7,7 @@ import {
     ACCESS_TOKEN,
     CURRENT_USER,
     EDICON_CREATE_URL,
-    EDICON_LIST_URL,
+    EDICON_LIST_URL, FORBIDDEN_URL,
     LOGIN_URL,
     REGISTER_URL
 } from '../config/constants';
@@ -25,6 +25,7 @@ import EdiConnection from "../edi/display/detail/EdiConnection";
 import {Role} from "../security/Roles";
 import Navigationbar from "../common/Navigationbar";
 import EdiCreate from "../edi/create/EdiCreate";
+import Forbidden from "../error/Forbidden";
 
 const {Content} = Layout;
 
@@ -134,6 +135,7 @@ class App extends Component {
                             <Route isAuthenticated={this.state.isAuthenticated}
                                             path={EDICON_LIST_URL + "/:id"}
                                             component={EdiConnection}/>
+                            <Route path={FORBIDDEN_URL} component={Forbidden}/>
                             <Route component={NotFound}/>
                         </Switch>
                     </div>

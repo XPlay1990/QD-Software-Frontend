@@ -4,6 +4,7 @@ import {getEdiConnection} from "../../../util/APIUtils";
 import LoadingIndicator from "../../../common/LoadingIndicator";
 import Description from "./description/Description";
 import EdiMessageList from "./messages/EdiMessageList";
+import {routeErrorCodes} from "../../../common/HttpErrorCodeRouter";
 
 class EdiConnection extends Component {
     constructor(props) {
@@ -36,11 +37,10 @@ class EdiConnection extends Component {
                     })
                 }
             }).catch(error => {
-            console.log(error);
             this.setState({
                 ediConnection: null,
                 isLoading: false
-            })
+            });
         });
 
     }
@@ -84,6 +84,7 @@ class EdiConnection extends Component {
                     !this.state.isLoading && this.state.ediConnection != null ? (
                         <div className="ediContentGrid">
                             <Description
+                                ediConnectionId={this.id}
                                 status={this.state.ediConnection.status}
                                 creationTime={this.state.ediConnection.creationTime}
                                 updateTime={this.state.ediConnection.updateTime}
