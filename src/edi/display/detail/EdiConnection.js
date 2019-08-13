@@ -4,7 +4,7 @@ import {getEdiConnection} from "../../../util/APIUtils";
 import LoadingIndicator from "../../../common/LoadingIndicator";
 import Description from "./description/Description";
 import EdiMessageList from "./messages/EdiMessageList";
-import {routeErrorCodes} from "../../../common/HttpErrorCodeRouter";
+import {notification} from "antd";
 
 class EdiConnection extends Component {
     constructor(props) {
@@ -40,6 +40,10 @@ class EdiConnection extends Component {
             this.setState({
                 ediConnection: null,
                 isLoading: false
+            });
+            notification.error({
+                message: 'EdiConnection-Portal',
+                description: error.message,
             });
         });
 

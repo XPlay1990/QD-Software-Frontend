@@ -2,7 +2,8 @@
     display: grid;
     padding: 10px;
     grid-gap: 15px;
-    grid-template-areas: 'customerName updateTime assignedDev status' 'supplierName creationTime . saveButton'
+    grid-template-areas: 'customerName updateTime assignedDev status' 'supplierName creationTime . saveButton';
+    grid-template-columns: 20% 20% 25% 25%;
 }
 
 .ediDescriptionStatus {

@@ -107,10 +107,13 @@ class Description extends Component {
                 });
             })
             .catch(error => {
-                //TODO:ERRORMSG
                 this.setState({
                     isSaving: false
-                })
+                });
+                notification.error({
+                    message: 'EdiConnection-Portal',
+                    description: error.message,
+                });
             });
     }
 
