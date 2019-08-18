@@ -1,7 +1,9 @@
 .EdiMessage{
     /*border-style: solid;*/
     display: flex;
-    min-height: 100px;
+    flex-direction: column;
+    /*min-height: 100px;*/
+    background-color: white;
 }
 
 .EdiMessage img{

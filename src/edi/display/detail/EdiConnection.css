@@ -11,10 +11,13 @@
     background-color: white;
     padding: 10px;
     grid-template-areas:
-    'description description detailedInformation detailedInformation'
-    'messages messages messages attachments';
+    /*'description description detailedInformation detailedInformation'*/
+    /*'messages messages messages attachments';    */
+    'description messages messages'
+    'detailedInformation messages messages'
+    'attachments messages messages';
     height: 900px;
-    grid-template-rows: 30% 60%;
+    grid-template-rows: 30% 30% 30%;
 }
 
 .ediDescription {
@@ -29,10 +32,7 @@
 
 .EdiMessageList {
     grid-area: messages;
-    background-color: lightgray;
-    border-style: solid;
-    border-color: lightblue;
-    max-height: 100%;
+    height: 100%;
 }
 
 .ediAttachments {

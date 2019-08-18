@@ -3,8 +3,8 @@ import './EdiMessageList.css';
 import LoadingIndicator from "../../../../common/LoadingIndicator";
 import {getEdiConnectionMessages} from "../../../../util/APIUtils";
 import EdiMessage from "./EdiMessage";
-import RichTextEditor from "./RichTextEditor";
-import ToolbarContainer from "../../../../common/Toolbar";
+import MegaDraftTextEditor from "./TextEditor/MegaDraft/MegaDraftTextEditor";
+import EdiMessageJS from "./EdiMessageJS";
 
 class EdiMessageList extends Component {
     constructor(props) {
@@ -69,7 +69,7 @@ class EdiMessageList extends Component {
     render() {
         const messageView = [];
         this.state.ediMessages.forEach((ediMessage, index) => {
-            messageView.push(<EdiMessage
+            messageView.push(<EdiMessageJS
                 key={ediMessage.message.id}
                 message={ediMessage.message}
                 type={ediMessage.type}
@@ -78,24 +78,25 @@ class EdiMessageList extends Component {
 
         return (
             <div className="EdiMessageList">
-                {messageView}
-                {
-                    this.state.isLoading ?
-                        <LoadingIndicator/> : null
-                }
-                {
-                    !this.state.isLoading && this.state.ediMessages === [] ? (
-                        <div className="noEdiConnectionsFound">
-                            <span>No Messages Found.</span>
-                        </div>
-                    ) : null
-                }
-                {
-                    // !this.state.isLoading && this.state.ediMessages !== [] ? (
-                    // ) : null
-                }
-                <RichTextEditor/>
-                <ToolbarContainer/>
+                <div className="EdiMessages">
+                    {messageView}
+                    {
+                        this.state.isLoading ?
+                            <LoadingIndicator/> : null
+                    }
+                    {
+                        !this.state.isLoading && this.state.ediMessages === [] ? (
+                            <div className="noEdiConnectionsFound">
+                                <span>No Messages Found.</span>
+                            </div>
+                        ) : null
+                    }
+                    {
+                        // !this.state.isLoading && this.state.ediMessages !== [] ? (
+                        // ) : null
+                    }
+                </div>
+                <MegaDraftTextEditor/>
             </div>
         );
     }
