@@ -4,10 +4,10 @@ import {Redirect, Route, Switch, withRouter} from 'react-router-dom';
 
 import {getCurrentUser} from '../security/AuthenticationService';
 import {
-    ACCESS_TOKEN,
     CURRENT_USER,
     EDICON_CREATE_URL,
-    EDICON_LIST_URL, FORBIDDEN_URL,
+    EDICON_LIST_URL,
+    FORBIDDEN_URL,
     LOGIN_URL,
     REGISTER_URL
 } from '../config/constants';
@@ -74,7 +74,7 @@ class App extends Component {
     }
 
     handleLogout(notificationType = "success", description = "You're successfully logged out.") {
-        localStorage.removeItem(ACCESS_TOKEN);
+        localStorage.clear();
 
         this.setState({
             currentUser: null,
@@ -121,6 +121,7 @@ class App extends Component {
                                                              isAuthenticated={this.state.isAuthenticated} {...props} />}/>
                             <Route path={REGISTER_URL} component={Signup}/>
                             <RoleRestrictedRoute isAuthenticated={this.state.isAuthenticated}
+                                                 isAdmin={this.state.isAdmin}
                                                  exact path={EDICON_LIST_URL}
                                                  component={EdiList}/>
                             <RoleRestrictedRoute isAuthenticated={this.state.isAuthenticated}
@@ -133,8 +134,8 @@ class App extends Component {
                             {/*                path={EDICON_LIST_URL + "/:id"}*/}
                             {/*                component={EdiConnection}/>*/}
                             <Route isAuthenticated={this.state.isAuthenticated}
-                                            path={EDICON_LIST_URL + "/:id"}
-                                            component={EdiConnection}/>
+                                   path={EDICON_LIST_URL + "/:id"}
+                                   component={EdiConnection}/>
                             <Route path={FORBIDDEN_URL} component={Forbidden}/>
                             <Route component={NotFound}/>
                         </Switch>

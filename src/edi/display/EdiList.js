@@ -20,7 +20,8 @@ class EdiList extends Component {
             isLast: true,
             isLoading: true,
             pageSorting: [],
-            additiveSorting: false
+            additiveSorting: false,
+            isAdmin: props.isAdmin
         };
         this.loadEdiList = this.loadEdiList.bind(this);
         this.updateTablePage = this.updateTablePage.bind(this);

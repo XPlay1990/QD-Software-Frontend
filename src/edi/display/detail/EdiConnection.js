@@ -5,6 +5,8 @@ import LoadingIndicator from "../../../common/LoadingIndicator";
 import Description from "./description/Description";
 import EdiMessageList from "./messages/EdiMessageList";
 import {notification} from "antd";
+import {CURRENT_USER} from "../../../config/constants";
+import {Role} from "../../../security/Roles";
 
 class EdiConnection extends Component {
     constructor(props) {
@@ -13,6 +15,7 @@ class EdiConnection extends Component {
             ediConnection: null,
             isLoading: true
         };
+        this.isAdmin = JSON.parse(localStorage.getItem(CURRENT_USER))["authorities"].includes(Role.Admin);
         this.id = props.match.params.id;
         this.loadEdiConnection = this.loadEdiConnection.bind(this);
     }
@@ -29,7 +32,6 @@ class EdiConnection extends Component {
 
         promise
             .then(response => {
-
                 if (this._isMounted) {
                     this.setState({
                         ediConnection: response.content,

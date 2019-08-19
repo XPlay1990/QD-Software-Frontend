@@ -3,6 +3,8 @@ import './Description.css';
 import Select from "react-select";
 import {getDeveloperList, getEdiStatusList, saveDeveloperAndStatus} from "../../../../util/APIUtils";
 import {notification} from "antd";
+import {CURRENT_USER} from "../../../../config/constants";
+import {Role} from "../../../../security/Roles";
 
 
 class Description extends Component {
@@ -19,6 +21,7 @@ class Description extends Component {
             assignedDev: props.assignedDev,
             isSaving: false
         };
+        this.isAdmin = JSON.parse(localStorage.getItem(CURRENT_USER))["authorities"].includes(Role.Admin);
         this.ediConnectionId = props.ediConnectionId;
 
         this.loadDeveloperList = this.loadDeveloperList.bind(this);
@@ -138,31 +141,46 @@ class Description extends Component {
                     <div className="ediDescriptionSupplierName"><h1>Supplier:</h1>{this.state.supplierName}</div>
                     <div className="ediDescriptionAssignedDev">
                         <h1>Developer:</h1>
-                        <Select name="DeveloperSelect"
-                                autosize={false}
-                                value={this.state.assignedDev || ''}
-                                onChange={(value) => this.setState({assignedDev: value})}
-                                options={this.state.developerList}
-                                getOptionLabel={(option) => (`${option.firstName} ${option.lastName} (@${option.username})`)}
-                                getOptionValue={(option) => option.id}
-                        />
+                        {
+                            this.isAdmin ? (
+                                <Select name="DeveloperSelect"
+                                        autosize={false}
+                                        value={this.state.assignedDev || ''}
+                                        onChange={(value) => this.setState({assignedDev: value})}
+                                        options={this.state.developerList}
+                                        getOptionLabel={(option) => (`${option.firstName} ${option.lastName} (@${option.username})`)}
+                                        getOptionValue={(option) => option.id}
+                                />) : (
+                                //TODO: Link to Developer Profile
+                                <text>
+                                    {`${this.state.assignedDev.firstName} ${this.state.assignedDev.lastName} (@${this.state.assignedDev.username})`}
+                                </text>
+                            )
+                        }
                     </div>
                     <div className="ediDescriptionStatus">
                         <h1>State:</h1>
-                        <Select name="StateSelect"
-                                autosize={false}
-                                value={this.state.status || ''}
-                                onChange={(value) => this.setState({status: value})}
-                                getOptionKey={(option) => option.index}
-                                options={this.state.statusList}
-                            // getOptionLabel={(option) => option}
-                            // getOptionValue={(option) => option}
-                        />
+                        {
+                            this.isAdmin ? (
+                                    <Select name="StateSelect"
+                                            autosize={false}
+                                            value={this.state.status || ''}
+                                            onChange={(value) => this.setState({status: value})}
+                                            getOptionKey={(option) => option.index}
+                                            options={this.state.statusList}
+                                        // getOptionLabel={(option) => option}
+                                        // getOptionValue={(option) => option}
+                                    />)
+                                : (`${this.state.status.label}`)
+                        }
                     </div>
-                    <button
-                        className={"saveButton " + (this.state.isSaving ? "save-animation" : "")}
-                        onClick={this.saveDeveloperAndState}
-                    />
+                    {
+                        this.isAdmin ? (
+                            <button
+                                className={"saveButton " + (this.state.isSaving ? "save-animation" : "")}
+                                onClick={this.saveDeveloperAndState}
+                            />) : null
+                    }
                 </div>
             </div>
         );

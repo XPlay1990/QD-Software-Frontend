@@ -25,6 +25,7 @@ export const NOT_FOUND_URL = `/notFound`;
 // STORAGE
 export const ACCESS_TOKEN = 'accessToken';
 export const CURRENT_USER = 'currentUser';
+export const IS_ADMIN = 'isAdmin';
 
 export const EDI_LIST_SIZE = 15;
 export const MAX_CHOICES = 6;
