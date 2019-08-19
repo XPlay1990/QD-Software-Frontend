@@ -13,11 +13,12 @@
     grid-template-areas:
     /*'description description detailedInformation detailedInformation'*/
     /*'messages messages messages attachments';    */
-    'description messages messages'
-    'detailedInformation messages messages'
-    'attachments messages messages';
+    'description messages'
+    'detailedInformation messages'
+    'attachments messages';
     height: 900px;
     grid-template-rows: 30% 30% 30%;
+    grid-template-columns: 50% 50%;
 }
 
 .ediDescription {
