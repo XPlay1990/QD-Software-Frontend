@@ -15,6 +15,7 @@
     "react": "^16.9.0",
     "react-chat-elements": "latest",
     "react-dom": "^16.9.0",
+    "react-dropzone": "^10.1.7",
     "react-router-dom": "^5.0.1",
     "react-scripts": "^3.1.0",
     "react-select": "^3.0.4",

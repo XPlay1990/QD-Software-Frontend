@@ -3,7 +3,12 @@ import {convertFromRaw, convertToRaw, EditorState} from 'draft-js';
 import {editorStateFromRaw, editorStateToJSON, MegadraftEditor} from 'megadraft';
 import Button from './Button/Button';
 import './MegaDraftTextEditor.css';
-import 'megadraft/dist/css/megadraft.css';
+// import 'megadraft/dist/css/megadraft.css';
+// import 'megadraft/dist/css/sidebar.css';
+// import 'megadraft/dist/css/toolbar.css';
+// import 'megadraft/dist/css/block.css';
+// import 'megadraft/dist/css/media.css';
+// import 'megadraft/dist/css/typography.css';
 import icons from 'megadraft/lib/icons/';
 
 const intialState = editorStateFromRaw(null);
@@ -56,6 +61,7 @@ class MegaDraftTextEditor extends Component {
                     placeholder={"Type your message"}
                     // readOnly={true}
                     // language={'de-DE'}
+                    sty
                 />
                 <Button className="SendButton" label="Send" handleClick={this.onSaveClick}/>
             </div>

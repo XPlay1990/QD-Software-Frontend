@@ -5,6 +5,7 @@ import LoadingIndicator from "../../../common/LoadingIndicator";
 import Description from "./description/Description";
 import EdiMessageList from "./messages/EdiMessageList";
 import {notification} from "antd";
+import AttachmentDropZone from "./attachments/Attachments";
 import {CURRENT_USER} from "../../../config/constants";
 import {Role} from "../../../security/Roles";
 
@@ -105,9 +106,7 @@ class EdiConnection extends Component {
 
                             <EdiMessageList ediConnectionId={this.id}/>
 
-                            <div className="ediAttachments">
-                                <p>Attachments</p>
-                            </div>
+                            <AttachmentDropZone/>
                         </div>) : null
                 }
             </div>

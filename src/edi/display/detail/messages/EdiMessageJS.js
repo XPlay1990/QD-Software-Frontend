@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import {convertToRaw} from 'draft-js';
 import {editorStateFromRaw, MegadraftEditor} from 'megadraft';
 // import Button from './Button/Button';
-// import '../draftjs/MegaDraftTextEditor.css';
-import 'megadraft/dist/css/megadraft.css';
+// import 'megadraft/dist/css/megadraft.css';
+import "./TextEditor/MegaDraft/MegaDraftTextEditor.css";
 import Divider from '@material-ui/core/Divider';
 
 
