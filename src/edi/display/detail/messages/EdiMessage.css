@@ -1,13 +1,50 @@
-.EdiMessage{
+.EdiMessage {
     /*border-style: solid;*/
-    display: flex;
-    flex-direction: column;
+    /*display: flex;*/
+    /*flex-direction: column;*/
     /*min-height: 100px;*/
+    position: relative;
     background-color: white;
+    display: grid;
+    grid-gap: 15px;
+    padding: 10px;
+    grid-template-areas: 'Sender CreationTime' 'Text Text' 'Divider Divider';
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 10% 80% 10%;
 }
 
-.EdiMessage img{
-    min-height: 100px;
-    height: auto;
-    width: auto;
+/*.EdiMessage img {*/
+/*    min-height: 100px;*/
+/*    height: auto;*/
+/*    width: auto;*/
+/*}*/
+
+.EdiMessage .Sender {
+    grid-area: Sender;
+    text-decoration: underline;
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
+}
+
+.EdiMessage .CreationTime {
+    grid-area: CreationTime;
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*right: 0;*/
+}
+
+.EdiMessage .CreationTime h1 {
+    float: right;
+    margin-right: 10px;
+}
+
+.EdiMessage .EdiMessageText {
+    grid-area: Text;
+    height: 100px;
+    max-height: 100px;
+}
+
+.EdiMessage .MessageDivider {
+    grid-area: Divider;
 }

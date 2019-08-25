@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {convertFromRaw, convertToRaw, EditorState} from 'draft-js';
+import {convertToRaw} from 'draft-js';
 import {editorStateFromRaw, editorStateToJSON, MegadraftEditor} from 'megadraft';
 import Button from './Button/Button';
 import './MegaDraftTextEditor.css';
@@ -10,15 +10,26 @@ import './MegaDraftTextEditor.css';
 // import 'megadraft/dist/css/media.css';
 // import 'megadraft/dist/css/typography.css';
 import icons from 'megadraft/lib/icons/';
+import {getEdiConnectionMessages, sendEdiMessage} from "../../../../../../util/APIUtils";
+import {notification} from "antd";
+import {LOGIN_URL} from "../../../../../../config/constants";
 
-const intialState = editorStateFromRaw(null);
+const initialState = editorStateFromRaw(null);
 
 class MegaDraftTextEditor extends Component {
-    state = {
-        editorState: intialState,
-        raw: convertToRaw(intialState.getCurrentContent()),
-        paste: false,
-    };
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            editorState: initialState,
+            // raw: convertToRaw(initialState.getCurrentContent()),
+            // paste: false,
+        };
+        this.reloadEdiMessages = props.loadEdiMessages;
+        this.ediConnectionId = props.ediConnectionId;
+        this.sendMessage = this.sendMessage.bind(this)
+    }
+
 
     handleUpdate = (editorState) => {
         this.setState({
@@ -28,13 +39,58 @@ class MegaDraftTextEditor extends Component {
         });
     };
 
-    onSaveClick = () => {
+    componentDidMount() {
+        this._isMounted = true;
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
+
+    sendMessage() {
         const {editorState} = this.state;
+
+        if (!editorState.getCurrentContent().hasText()){
+            return;
+        }
+
         const content = editorStateToJSON(editorState);
-        // Your function to save the content
-        // save_my_content(content);
-        console.log(content);
-    };
+
+        let promise = sendEdiMessage(this.ediConnectionId, content);
+        if (!promise) {
+            return;
+        }
+
+        this.setState({
+            isLoading: true
+        });
+
+        promise
+            .then(response => {
+                if (this._isMounted) {
+                    console.log("YESS")
+                    this.setState({
+                        editorState: editorStateFromRaw(null),
+                        // raw: convertToRaw(initialState.getCurrentContent()),
+                        isLoading: false
+                    })
+                }
+                notification.success({
+                    message: 'EdiConnection-Portal',
+                    description: response.message,
+                });
+                this.reloadEdiMessages()
+            }).catch(error => {
+            console.log(error);
+            this.setState({
+                isLoading: false
+            });
+            notification.error({
+                message: 'EdiConnection-Portal',
+                description: error.message || 'Sorry! Something went wrong. Please try again!'
+            });
+        });
+    }
 
     render() {
         const actions = [
@@ -48,12 +104,12 @@ class MegaDraftTextEditor extends Component {
             {type: "block", label: "H2", style: "header-two", icon: icons.H2Icon},
             {type: "block", label: "QT", style: "blockquote", icon: icons.BlockQuoteIcon}
         ];
-        const {raw, editorState, paste} = this.state;
+        // const {raw, editorState, paste} = this.state;
         return (
             <div className="MessageEditor">
                 <div className="EditorLabel">editor</div>
                 <MegadraftEditor
-                    editorState={editorState}
+                    editorState={this.state.editorState}
                     onChange={this.handleUpdate}
                     showSidebar={false}
                     // theme='white-thin'
@@ -61,9 +117,8 @@ class MegaDraftTextEditor extends Component {
                     placeholder={"Type your message"}
                     // readOnly={true}
                     // language={'de-DE'}
-                    sty
                 />
-                <Button className="SendButton" label="Send" handleClick={this.onSaveClick}/>
+                <Button className="SendButton" label="Send" handleClick={this.sendMessage}/>
             </div>
         );
     }

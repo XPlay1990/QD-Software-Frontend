@@ -201,6 +201,7 @@
 .megadraft-editor .DraftEditor-editorContainer {
     position: relative;
     z-index: 1;
+    background-color: white;
 }
 
 .megadraft-editor .paragraph + .paragraph {

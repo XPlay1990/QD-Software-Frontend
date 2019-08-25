@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import './EdiMessageList.css';
 import LoadingIndicator from "../../../../common/LoadingIndicator";
 import {getEdiConnectionMessages} from "../../../../util/APIUtils";
-import EdiMessage from "./EdiMessage";
 import MegaDraftTextEditor from "./TextEditor/MegaDraft/MegaDraftTextEditor";
 import EdiMessageJS from "./EdiMessageJS";
 
@@ -18,8 +17,8 @@ class EdiMessageList extends Component {
         this.loadEdiMessages = this.loadEdiMessages.bind(this);
     }
 
-    loadEdiMessages(ediConnectionId) {
-        let promise = getEdiConnectionMessages(ediConnectionId);
+    loadEdiMessages() {
+        let promise = getEdiConnectionMessages(this.ediConnectionId);
         if (!promise) {
             return;
         }
@@ -30,6 +29,7 @@ class EdiMessageList extends Component {
 
         promise
             .then(response => {
+                console.log(response.content)
                 if (this._isMounted) {
                     this.setState({
                         ediMessages: response.content,
@@ -96,7 +96,10 @@ class EdiMessageList extends Component {
                         // ) : null
                     }
                 </div>
-                <MegaDraftTextEditor/>
+                <MegaDraftTextEditor
+                    loadEdiMessages={this.loadEdiMessages}
+                    ediConnectionId={this.ediConnectionId}
+                />
             </div>
         );
     }

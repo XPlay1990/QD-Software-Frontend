@@ -126,6 +126,14 @@ export function getEdiStatusList() {
     });
 }
 
+export function sendEdiMessage(ediConnectionId, messageContent) {
+    return request({
+        url: `${BACKEND_BASE_URL}${EDICON_MESSAGES_URL(ediConnectionId)}`,
+        method: 'POST',
+        body: messageContent
+    });
+}
+
 export function saveDeveloperAndStatus(ediConnectionId, assignedDev, state) {
     let assignedDevId = assignedDev ? assignedDev.id : null;
     return request({
