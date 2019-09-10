@@ -49,7 +49,6 @@ class EdiConnection extends Component {
                 description: error.message,
             });
         });
-
     }
 
     componentDidMount() {
@@ -106,7 +105,7 @@ class EdiConnection extends Component {
 
                             <EdiMessageList ediConnectionId={this.id}/>
 
-                            <AttachmentDropZone/>
+                            <AttachmentDropZone ediConnectionId={this.id}/>
                         </div>) : null
                 }
             </div>

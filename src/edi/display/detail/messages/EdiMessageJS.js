@@ -4,7 +4,9 @@ import {editorStateFromRaw, MegadraftEditor} from "megadraft";
 // import 'megadraft/dist/css/megadraft.css';
 import "./TextEditor/MegaDraft/MegaDraftTextEditor.css";
 import "./EdiMessage.css"
+import Avatar from '@atlaskit/avatar';
 import Divider from '@material-ui/core/Divider';
+import {BASE_URL} from "../../../../config/constants";
 
 
 class EdiMessageJS extends Component {
@@ -27,8 +29,19 @@ class EdiMessageJS extends Component {
                 <div className="CreationTime">
                     <h1>{this.state.creationTime}</h1>
                 </div>
-
                 <div className="EdiMessageText">
+                    <div className="Avatar">
+                        <Avatar
+                            // className="Avatar"
+                            name={this.state.sender}
+                            size="medium" presence="online"
+                            enableTooltip={true}
+                            label={this.state.sender}
+                            href={BASE_URL}
+                            // src={img url}
+                        />
+                    </div>
+
                     <MegadraftEditor
                         editorState={this.state.editorState}
                         // onChange={this.handleUpdate}
@@ -41,7 +54,7 @@ class EdiMessageJS extends Component {
                     />
                 </div>
                 <div className="MessageDivider">
-                <Divider variant="middle" absolute/>
+                    <Divider variant="middle" absolute/>
                     {/*<Divider variant="inset"  />*/}
                 </div>
             </div>

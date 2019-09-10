@@ -43,8 +43,14 @@
     grid-area: Text;
     height: 100px;
     max-height: 100px;
+    display: flex;
 }
 
 .EdiMessage .MessageDivider {
     grid-area: Divider;
+}
+
+.EdiMessage .Avatar {
+    /*grid-area: Avatar;*/
+    margin-right: 20px;
 }

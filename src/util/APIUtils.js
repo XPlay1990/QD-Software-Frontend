@@ -1,4 +1,4 @@
-import request from "../security/authHeader/AuthorizationHeaderRequest"
+import customJSONRequest, {customFileRequest} from "../security/authHeader/AuthorizationHeaderRequest"
 import {
     BACKEND_BASE_URL,
     EDI_LIST_SIZE,
@@ -29,28 +29,28 @@ export function getEdiConnections(pageNumber, pageSize, pageSorting, additiveSor
     if (!sortString) {
         sortString = "updateTime,desc"
     }
-    return request({
+    return customJSONRequest({
         url: `${BACKEND_BASE_URL}${EDICON_LIST_URL}?page=${pageNumber}&size=${pageSize}&sort=${sortString}`,
         method: 'GET',
     });
 }
 
 export function getEdiConnection(id) {
-    return request({
+    return customJSONRequest({
         url: `${BACKEND_BASE_URL}${EDICON_LIST_URL}/${id}`,
         method: 'GET'
     });
 }
 
 export function getEdiConnectionMessages(ediConnectionId) {
-    return request({
+    return customJSONRequest({
         url: BACKEND_BASE_URL + `${EDICON_MESSAGES_URL(ediConnectionId)}`,
         method: 'GET'
     });
 }
 
 export function signup(signupRequest) {
-    return request({
+    return customJSONRequest({
         url: BACKEND_BASE_URL + "/auth/signup",
         method: 'POST',
         body: JSON.stringify(signupRequest)
@@ -58,28 +58,28 @@ export function signup(signupRequest) {
 }
 
 export function checkUsernameAvailability(username) {
-    return request({
+    return customJSONRequest({
         url: BACKEND_BASE_URL + "/user/checkUsernameAvailability?username=" + username,
         method: 'GET'
     });
 }
 
 export function checkEmailAvailability(email) {
-    return request({
+    return customJSONRequest({
         url: BACKEND_BASE_URL + "/user/checkEmailAvailability?email=" + email,
         method: 'GET'
     });
 }
 
 export function getUserProfile(username) {
-    return request({
+    return customJSONRequest({
         url: BACKEND_BASE_URL + "/users/" + username,
         method: 'GET'
     });
 }
 
 export function createEdiCon(customerOrgId, custmerContactIdList, supplierOrgId, supplierContactIdList) {
-    return request({
+    return customJSONRequest({
         url: `${BACKEND_BASE_URL}${EDICON_LIST_URL}`,
         method: 'POST',
         body: JSON.stringify({
@@ -92,51 +92,59 @@ export function createEdiCon(customerOrgId, custmerContactIdList, supplierOrgId,
 }
 
 export function getOrganizationMembers(id) {
-    return request({
+    return customJSONRequest({
         url: `${BACKEND_BASE_URL}${GET_ORGANIZATION_MEMBERS_URL(id)}`,
         method: 'GET'
     });
 }
 
 export function getCustomerOrganizations() {
-    return request({
+    return customJSONRequest({
         url: `${BACKEND_BASE_URL}${GET_CUSTOMER_ORGANIZATIONS_URL}`,
         method: 'GET'
     });
 }
 
 export function getSupplierOrganizations() {
-    return request({
+    return customJSONRequest({
         url: `${BACKEND_BASE_URL}${GET_SUPPLIER_ORGANIZATIONS_URL}`,
         method: 'GET'
     });
 }
 
 export function getDeveloperList() {
-    return request({
+    return customJSONRequest({
         url: `${BACKEND_BASE_URL}${GET_DEVELOPERS}`,
         method: 'GET'
     });
 }
 
 export function getEdiStatusList() {
-    return request({
+    return customJSONRequest({
         url: `${BACKEND_BASE_URL}${GET_EDISTATES}`,
         method: 'GET'
     });
 }
 
 export function sendEdiMessage(ediConnectionId, messageContent) {
-    return request({
+    return customJSONRequest({
         url: `${BACKEND_BASE_URL}${EDICON_MESSAGES_URL(ediConnectionId)}`,
         method: 'POST',
         body: messageContent
     });
 }
 
+export function storeAttachments(ediConnectionId, files){
+    return customFileRequest({
+        url: `${BACKEND_BASE_URL}${EDICON_MESSAGES_URL(ediConnectionId)}`,
+        method: 'POST',
+        body: files
+    });
+}
+
 export function saveDeveloperAndStatus(ediConnectionId, assignedDev, state) {
     let assignedDevId = assignedDev ? assignedDev.id : null;
-    return request({
+    return customJSONRequest({
         url: `${BACKEND_BASE_URL}${SAVE_DEVELOPER_AND_STATE}`,
         method: 'POST',
         body: JSON.stringify({

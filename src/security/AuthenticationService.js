@@ -1,5 +1,5 @@
 import {BehaviorSubject} from 'rxjs';
-import request from "./authHeader/AuthorizationHeaderRequest"
+import customJSONRequest from "./authHeader/AuthorizationHeaderRequest"
 import {ACCESS_TOKEN, BACKEND_BASE_URL, LOGIN_URL, USER_SELF_URL} from "../config/constants";
 
 const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')));
@@ -32,7 +32,7 @@ export const authenticationService = {
 // // }
 
 function login(loginRequest) {
-    return request({
+    return customJSONRequest({
         url: BACKEND_BASE_URL + LOGIN_URL,
         method: 'POST',
         body: JSON.stringify(loginRequest)
@@ -50,7 +50,7 @@ export function getCurrentUser() {
         return Promise.reject("No access token set.");
     }
 
-    return request({
+    return customJSONRequest({
         url: BACKEND_BASE_URL + USER_SELF_URL,
         method: 'GET'
     });
