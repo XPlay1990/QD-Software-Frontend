@@ -2,8 +2,22 @@ import React, {Component} from 'react';
 import './EdiMessageList.css';
 import LoadingIndicator from "../../../../common/LoadingIndicator";
 import {getEdiConnectionMessages} from "../../../../util/APIUtils";
-import MegaDraftTextEditor from "./TextEditor/MegaDraft/MegaDraftTextEditor";
 import EdiMessageJS from "./EdiMessageJS";
+import MegaDraftTextEditor from "./TextEditor/MegaDraft/MegaDraftTextEditor";
+// import '@atlaskit/css-reset';
+// import '@atlaskit/reduced-ui-pack';
+// import { Editor, CollapsedEditor } from '@atlaskit/editor-core';
+
+// export class ExtendedEditor extends React.Component {
+//     handleSave = () => {
+//         this.props.actions.getValue().then(value => console.log(value));
+//     }
+//
+//     render() {
+//         const {actions, ...props} = this.props;
+//         return <Editor {...props} onSave={this.handleSave}/>;
+//     }
+// }
 
 class EdiMessageList extends Component {
     constructor(props) {
@@ -12,10 +26,18 @@ class EdiMessageList extends Component {
         this.state = {
             ediMessages: [],
             isLoading: true,
+            isEditorExpanded: false
         };
         this.ediConnectionId = props.ediConnectionId;
         this.loadEdiMessages = this.loadEdiMessages.bind(this);
     }
+
+    // expandEditor = () => this.setState({ isEditorExpanded: true });
+    // collapseEditor = () => this.setState({ isEditorExpanded: false });
+    //
+    // onSave = () => {
+    //     /* do something */
+    // };
 
     loadEdiMessages() {
         let promise = getEdiConnectionMessages(this.ediConnectionId);
@@ -29,7 +51,6 @@ class EdiMessageList extends Component {
 
         promise
             .then(response => {
-                console.log(response.content)
                 if (this._isMounted) {
                     this.setState({
                         ediMessages: response.content,
@@ -37,7 +58,6 @@ class EdiMessageList extends Component {
                     })
                 }
             }).catch(error => {
-            console.log(error);
             this.setState({
                 ediMessages: [],
                 isLoading: false
@@ -100,6 +120,18 @@ class EdiMessageList extends Component {
                     loadEdiMessages={this.loadEdiMessages}
                     ediConnectionId={this.ediConnectionId}
                 />
+                {/*<CollapsedEditor*/}
+                {/*    placeholder="What would you like to say?"*/}
+                {/*    isExpanded={this.state.isEditorExpanded}*/}
+                {/*    onFocus={this.expandEditor}*/}
+                {/*>*/}
+                {/*    <Editor*/}
+                {/*        appearance="comment"*/}
+                {/*        onSave={this.onSave}*/}
+                {/*        onCancel={this.collapseEditor}*/}
+                {/*    />*/}
+                {/*</CollapsedEditor>*/}
+
             </div>
         );
     }

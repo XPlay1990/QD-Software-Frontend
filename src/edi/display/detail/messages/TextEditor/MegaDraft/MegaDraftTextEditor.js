@@ -10,9 +10,8 @@ import './MegaDraftTextEditor.css';
 // import 'megadraft/dist/css/media.css';
 // import 'megadraft/dist/css/typography.css';
 import icons from 'megadraft/lib/icons/';
-import {getEdiConnectionMessages, sendEdiMessage} from "../../../../../../util/APIUtils";
+import {sendEdiMessage} from "../../../../../../util/APIUtils";
 import {notification} from "antd";
-import {LOGIN_URL} from "../../../../../../config/constants";
 
 const initialState = editorStateFromRaw(null);
 
@@ -50,7 +49,7 @@ class MegaDraftTextEditor extends Component {
     sendMessage() {
         const {editorState} = this.state;
 
-        if (!editorState.getCurrentContent().hasText()){
+        if (!editorState.getCurrentContent().hasText()) {
             return;
         }
 
@@ -68,7 +67,6 @@ class MegaDraftTextEditor extends Component {
         promise
             .then(response => {
                 if (this._isMounted) {
-                    console.log("YESS")
                     this.setState({
                         editorState: editorStateFromRaw(null),
                         // raw: convertToRaw(initialState.getCurrentContent()),

@@ -7,7 +7,7 @@ export const columnConfig = [
         accessor: 'customer.name',
         headerStyle: {whiteSpace: 'unset'},
         style: {whiteSpace: 'unset'},
-        // Cell: e => <Link state={this.state} to={`/edi_connection/${e.original.id}`}> {e.value} </Link>
+        // Cell: e => <Link state={this.state} to={`/edi_connection/${e.original.ediConnectionId}`}> {e.value} </Link>
         // TODO: pass state, so that link can be protectedroute @ APP.js
         Cell: e => <Link to={`/edi_connection/${e.original.id}`}> {e.value} </Link>
     },

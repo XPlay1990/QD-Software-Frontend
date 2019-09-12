@@ -17,6 +17,9 @@ export const EDICON_LIST_URL = '/edi_connection';
 export const GET_EDISTATES = `${EDICON_LIST_URL}/possibleStates`;
 export const SAVE_DEVELOPER_AND_STATE = `${EDICON_LIST_URL}/saveDeveloperAndState`;
 export const EDICON_MESSAGES_URL = (id) => `${EDICON_LIST_URL}/${id}/messages`;
+export const EDICON_ATTACHMENT_BASE_URL = (id) => `${EDICON_LIST_URL}/${id}/attachment`;
+export const EDICON_ATTACHMENT_UPLOAD_URL = (id) => `${EDICON_ATTACHMENT_BASE_URL(id)}/upload`;
+export const EDICON_ATTACHMENT_DOWNLOAD_URL = (id, fileName) => `${EDICON_ATTACHMENT_BASE_URL(id)}/download/${fileName}`;
 export const EDICON_CREATE_URL = `${EDICON_LIST_URL}/create`;
 
 export const FORBIDDEN_URL = `/forbidden`;

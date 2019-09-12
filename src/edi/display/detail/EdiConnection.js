@@ -5,9 +5,9 @@ import LoadingIndicator from "../../../common/LoadingIndicator";
 import Description from "./description/Description";
 import EdiMessageList from "./messages/EdiMessageList";
 import {notification} from "antd";
-import AttachmentDropZone from "./attachments/Attachments";
 import {CURRENT_USER} from "../../../config/constants";
 import {Role} from "../../../security/Roles";
+import AttachmentList from "./attachments/AttachmentList";
 
 class EdiConnection extends Component {
     constructor(props) {
@@ -17,7 +17,7 @@ class EdiConnection extends Component {
             isLoading: true
         };
         this.isAdmin = JSON.parse(localStorage.getItem(CURRENT_USER))["authorities"].includes(Role.Admin);
-        this.id = props.match.params.id;
+        this.ediConnectionId = props.match.params.id;
         this.loadEdiConnection = this.loadEdiConnection.bind(this);
     }
 
@@ -53,7 +53,7 @@ class EdiConnection extends Component {
 
     componentDidMount() {
         this._isMounted = true;
-        this.loadEdiConnection(this.id);
+        this.loadEdiConnection(this.ediConnectionId);
     }
 
     componentWillUnmount() {
@@ -67,7 +67,7 @@ class EdiConnection extends Component {
                 ediConnection: null,
                 isLoading: true
             });
-            this.loadEdiConnection(this.id);
+            this.loadEdiConnection(this.ediConnectionId);
         }
     };
 
@@ -82,7 +82,7 @@ class EdiConnection extends Component {
                 {
                     !this.state.isLoading && this.state.ediConnection === null ? (
                         <div className="noEdiConnectionsFound">
-                            <span>No Edi-Connection with Id {this.id} Found.</span>
+                            <span>No Edi-Connection with Id {this.ediConnectionId} Found.</span>
                         </div>
                     ) : null
                 }
@@ -90,7 +90,7 @@ class EdiConnection extends Component {
                     !this.state.isLoading && this.state.ediConnection != null ? (
                         <div className="ediContentGrid">
                             <Description
-                                ediConnectionId={this.id}
+                                ediConnectionId={this.ediConnectionId}
                                 status={this.state.ediConnection.status}
                                 creationTime={this.state.ediConnection.creationTime}
                                 updateTime={this.state.ediConnection.updateTime}
@@ -103,9 +103,9 @@ class EdiConnection extends Component {
                                 <p>detailedInfos</p>
                             </div>
 
-                            <EdiMessageList ediConnectionId={this.id}/>
+                            <EdiMessageList ediConnectionId={this.ediConnectionId}/>
 
-                            <AttachmentDropZone ediConnectionId={this.id}/>
+                            <AttachmentList ediConnectionId={this.ediConnectionId}/>
                         </div>) : null
                 }
             </div>

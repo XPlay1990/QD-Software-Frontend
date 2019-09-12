@@ -1,7 +1,8 @@
 import customJSONRequest, {customFileRequest} from "../security/authHeader/AuthorizationHeaderRequest"
 import {
     BACKEND_BASE_URL,
-    EDI_LIST_SIZE,
+    EDI_LIST_SIZE, EDICON_ATTACHMENT_BASE_URL,
+    EDICON_ATTACHMENT_UPLOAD_URL,
     EDICON_LIST_URL,
     EDICON_MESSAGES_URL,
     GET_CUSTOMER_ORGANIZATIONS_URL,
@@ -134,11 +135,21 @@ export function sendEdiMessage(ediConnectionId, messageContent) {
     });
 }
 
-export function storeAttachments(ediConnectionId, files){
+export function getAttachmentList(ediConnectionId) {
+    return customJSONRequest({
+        url: `${BACKEND_BASE_URL}${EDICON_ATTACHMENT_BASE_URL(ediConnectionId)}`,
+        method: 'GET'
+    });
+}
+export function storeAttachments(ediConnectionId, files) {
+    let formData = new FormData();
+    files.forEach(function (entry) {
+        formData.append("file", entry);
+    });
     return customFileRequest({
-        url: `${BACKEND_BASE_URL}${EDICON_MESSAGES_URL(ediConnectionId)}`,
+        url: `${BACKEND_BASE_URL}${EDICON_ATTACHMENT_UPLOAD_URL(ediConnectionId)}`,
         method: 'POST',
-        body: files
+        body: formData
     });
 }
 
