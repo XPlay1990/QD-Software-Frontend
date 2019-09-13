@@ -40,3 +40,8 @@
     grid-area: attachments;
     background-color: white;
 }
+.AttachmentList {
+    max-height: 50%;
+    height: 50%;
+    overflow-y: scroll;
+}

@@ -3,6 +3,7 @@ import './AttachmentList.css';
 import {getAttachmentList, storeAttachments} from "../../../../util/APIUtils";
 import Dropzone from 'react-dropzone'
 import {notification} from "antd";
+import Attachment from "./Attachment";
 
 class AttachmentList extends Component {
     constructor(props) {
@@ -84,28 +85,32 @@ class AttachmentList extends Component {
                         description: response.message,
                     });
                 }
+                this.loadAttachmentList()
             }).catch(error => {
             notification.error({
                 message: 'EdiConnection-Portal',
                 description: error.message,
             });
         });
-        this.loadAttachmentList()
         // const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop});
     };
 
     render() {
         const attachments = [];
         this.state.attachmentList.forEach((attachment, index) => {
-            // attachmentList.push(<EdiMessageJS
-            //     key={ediMessage.message.id}
-            //     message={ediMessage.message}
-            //     type={ediMessage.type}
-            // />)
+            attachments.push(<Attachment
+                key={attachment.fileName}
+                fileName={attachment.fileName}
+                fileSize={attachment.fileSize}
+                fileType={attachment.fileType}
+            />)
         });
 
         return (
             <div className="EdiAttachments">
+                <div className="AttachmentList">
+                    {attachments}
+                </div>
                 <Dropzone onDrop={acceptedFiles => this.uploadFiles(acceptedFiles)}>
                     {({getRootProps, getInputProps}) => (
                         <section>
