@@ -363,7 +363,7 @@
 }
 
 .megadraft-editor .toolbar {
-    background: yellow;
+    background: white;
     height: 0;
     position: absolute;
     display: none;
@@ -376,7 +376,6 @@
 
 .megadraft-editor .toolbar__error-msg {
     margin: 0;
-    height: 0;
     height: 0;
     transition: height 0.2s ease-in-out;
 }

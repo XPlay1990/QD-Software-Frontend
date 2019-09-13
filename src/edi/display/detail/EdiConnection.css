@@ -10,12 +10,7 @@
     grid-gap: 15px;
     background-color: white;
     padding: 10px;
-    grid-template-areas:
-    /*'description description detailedInformation detailedInformation'*/
-    /*'messages messages messages attachments';    */
-    'description messages'
-    'detailedInformation messages'
-    'attachments messages';
+    grid-template-areas: /*'description description detailedInformation detailedInformation'*/ /*'messages messages messages attachments';    */ 'description messages' 'detailedInformation messages' 'attachments messages';
     height: 900px;
     grid-template-rows: 30% 30% 30%;
     grid-template-columns: 50% 50%;
@@ -28,7 +23,7 @@
 
 .ediDetailedInformation {
     grid-area: detailedInformation;
-    background-color: yellow;
+    background-color: white;
 }
 
 .EdiMessageList {
@@ -40,8 +35,17 @@
     grid-area: attachments;
     background-color: white;
 }
+
 .AttachmentList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     max-height: 50%;
     height: 50%;
     overflow-y: scroll;
+}
+
+.AttachmentDropZone {
+    min-height: 120px;
+    background-color: lightgrey;
 }

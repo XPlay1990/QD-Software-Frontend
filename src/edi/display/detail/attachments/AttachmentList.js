@@ -103,6 +103,7 @@ class AttachmentList extends Component {
                 fileName={attachment.fileName}
                 fileSize={attachment.fileSize}
                 fileType={attachment.fileType}
+                ediConnectionId={this.ediConnectionId}
             />)
         });
 
@@ -114,7 +115,7 @@ class AttachmentList extends Component {
                 <Dropzone onDrop={acceptedFiles => this.uploadFiles(acceptedFiles)}>
                     {({getRootProps, getInputProps}) => (
                         <section>
-                            <div {...getRootProps()}>
+                            <div className={"AttachmentDropZone"}{...getRootProps()}>
                                 <input {...getInputProps()} />
                                 <p>Drag 'n' drop some files here, or click to select files</p>
                             </div>
