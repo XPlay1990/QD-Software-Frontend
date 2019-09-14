@@ -44,8 +44,3 @@
     height: 50%;
     overflow-y: scroll;
 }
-
-.AttachmentDropZone {
-    min-height: 120px;
-    background-color: lightgrey;
-}
