@@ -38,7 +38,7 @@
 
 .AttachmentList {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     max-height: 50%;
     height: 50%;
