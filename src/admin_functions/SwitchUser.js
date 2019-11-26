@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import './SwitchUser.css';
 import LoadingIndicator from "../common/LoadingIndicator";
 import Select from "react-select";
-import {getAllUsers} from "../util/APIUtils";
+import {getAllUsers, switchUser} from "../util/APIUtils";
 import {notification} from "antd";
+import {ACCESS_TOKEN, BASE_URL} from "../config/constants";
 
 class SwitchUser extends Component {
     constructor(props) {
@@ -38,7 +39,7 @@ class SwitchUser extends Component {
                 }
             }).catch(error => {
             this.setState({
-                ediConnection: null,
+                userList: null,
                 isLoading: false
             });
             notification.error({
@@ -49,7 +50,35 @@ class SwitchUser extends Component {
     }
 
     switchUser() {
-        //TODO
+        let promise = switchUser(this.state.selectedUser.username);
+        if (!promise) {
+            return;
+        }
+
+        this.setState({
+            isLoading: true
+        });
+
+        promise
+            .then(response => {
+                if (this._isMounted) {
+                    this.setState({
+                        isLoading: false
+                    })
+                }
+                localStorage.setItem(ACCESS_TOKEN, response.accessToken);
+                this.props.history.push(BASE_URL);
+                //hacky reload to refresh toolbar with new username
+                window.location.reload();
+            }).catch(error => {
+            this.setState({
+                isLoading: false
+            });
+            notification.error({
+                message: 'EdiConnection-Portal',
+                description: error.message,
+            });
+        });
     }
 
     componentDidMount() {
@@ -92,7 +121,7 @@ class SwitchUser extends Component {
                             <h1>User:</h1>
                             <Select name="SwitchUserSelect"
                                     autosize={false}
-                                    value={this.state.userList[0] || ''}
+                                    value={this.state.selectedUser || ''}
                                     onChange={(value) => this.setState({selectedUser: value})}
                                     options={this.state.userList}
                                     getOptionLabel={(option) => (`@${option.username}`)}

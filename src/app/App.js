@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import {Redirect, Route, Switch, withRouter} from 'react-router-dom';
 
-import {getCurrentUser} from '../security/AuthenticationService';
+import {getCurrentUserWithRoles} from '../security/AuthenticationService';
 import {
     CURRENT_USER,
     EDICON_CREATE_URL,
@@ -54,7 +54,7 @@ class App extends Component {
         this.setState({
             isLoading: true
         });
-        getCurrentUser()
+        getCurrentUserWithRoles()
             .then(response => {
                 this.setState({
                     currentUser: response,

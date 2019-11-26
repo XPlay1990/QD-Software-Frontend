@@ -43,6 +43,7 @@ class AppHeader extends Component {
         menuItems.push(
             <Menu.Item key="/profile" className="profile-menu">
                 <ProfileDropdownMenu
+                    isAdmin={this.props.isAdmin}
                     currentUser={this.props.currentUser}
                     handleMenuClick={this.handleMenuClick}/>
             </Menu.Item>);
@@ -82,9 +83,12 @@ function ProfileDropdownMenu(props) {
             <Menu.Item key="profile" className="dropdown-item">
                 <Link to={`/users/${props.currentUser.username}`}>Profile</Link>
             </Menu.Item>
-            <Menu.Item key="switchUser" className="dropdown-item">
-                <Link to={`/switchuser/`}>Switch User</Link>
-            </Menu.Item>
+            {
+                (props.isAdmin) ? (
+                    <Menu.Item key="switchUser" className="dropdown-item">
+                        <Link to={`/switchuser/`}>Switch User</Link>
+                    </Menu.Item>) : null
+            }
             <Menu.Item key="logout" className="dropdown-item">
                 Logout
             </Menu.Item>

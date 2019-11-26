@@ -4,6 +4,8 @@ import LoadingIndicator from "../../../../common/LoadingIndicator";
 import {getEdiConnectionMessages} from "../../../../util/APIUtils";
 import EdiMessageJS from "./EdiMessageJS";
 import MegaDraftTextEditor from "./TextEditor/MegaDraft/MegaDraftTextEditor";
+import MyEditor from "./TextEditor/draftJS/MyEditor";
+import MyDraftailEditor from "./TextEditor/draftTail/MyDraftailEditor";
 // import '@atlaskit/css-reset';
 // import '@atlaskit/reduced-ui-pack';
 // import { Editor, CollapsedEditor } from '@atlaskit/editor-core';
@@ -116,10 +118,11 @@ class EdiMessageList extends Component {
                         // ) : null
                     }
                 </div>
-                <MegaDraftTextEditor
-                    loadEdiMessages={this.loadEdiMessages}
-                    ediConnectionId={this.ediConnectionId}
-                />
+                {/*<MegaDraftTextEditor*/}
+                {/*    loadEdiMessages={this.loadEdiMessages}*/}
+                {/*    ediConnectionId={this.ediConnectionId}*/}
+                {/*/>*/}
+                <MyDraftailEditor/>
                 {/*<CollapsedEditor*/}
                 {/*    placeholder="What would you like to say?"*/}
                 {/*    isExpanded={this.state.isEditorExpanded}*/}

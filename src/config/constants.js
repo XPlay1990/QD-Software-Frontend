@@ -15,6 +15,7 @@ export const GET_SUPPLIER_ORGANIZATIONS_URL = '/org/suppliers';
 export const USER_URL= '/user';
 export const SELF_URL = USER_URL + '/me';
 export const GET_USERLIST_URL = USER_URL + '/all';
+export const SWITCH_USER_URL = '/switchUser';
 export const EDICON_LIST_URL = '/edi_connection';
 export const GET_EDISTATES = `${EDICON_LIST_URL}/possibleStates`;
 export const SAVE_DEVELOPER_AND_STATE = `${EDICON_LIST_URL}/saveDeveloperAndState`;

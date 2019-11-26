@@ -45,13 +45,13 @@ function logout() {
     currentUserSubject.next(null);
 }
 
-export function getCurrentUser() {
+export function getCurrentUserWithRoles() {
     if (!localStorage.getItem(ACCESS_TOKEN)) {
         return Promise.reject("No access token set.");
     }
 
     return customJSONRequest({
-        url: BACKEND_BASE_URL + SELF_URL,
+        url: BACKEND_BASE_URL + SELF_URL + '/withroles',
         method: 'GET'
     });
 }

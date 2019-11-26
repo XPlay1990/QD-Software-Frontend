@@ -13,7 +13,7 @@ import {
     GET_EDISTATES,
     GET_ORGANIZATION_MEMBERS_URL,
     GET_SUPPLIER_ORGANIZATIONS_URL, GET_USERLIST_URL,
-    SAVE_DEVELOPER_AND_STATE
+    SAVE_DEVELOPER_AND_STATE, SELF_URL, SWITCH_USER_URL
 } from '../config/constants';
 
 export function getEdiConnections(pageNumber, pageSize, pageSorting, additiveSorting) {
@@ -52,6 +52,12 @@ export function getAllUsers() {
         method: 'GET'
     });
 }
+export function switchUser(username) {
+    return customJSONRequest({
+        url: `${BACKEND_BASE_URL}${SWITCH_USER_URL}?username=${username}`,
+        method: 'GET'
+    });
+}
 
 export function getEdiConnectionMessages(ediConnectionId) {
     return customJSONRequest({
@@ -82,9 +88,9 @@ export function checkEmailAvailability(email) {
     });
 }
 
-export function getUserProfile(username) {
+export function getUserProfile() {
     return customJSONRequest({
-        url: BACKEND_BASE_URL + "/users/" + username,
+        url: BACKEND_BASE_URL + SELF_URL,
         method: 'GET'
     });
 }
