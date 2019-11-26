@@ -177,7 +177,7 @@ class Description extends Component {
                     {
                         this.isAdmin ? (
                             <button
-                                className={"saveButton " + (this.state.isSaving ? "save-animation" : "")}
+                                className={"ApplyChangesButton saveButton " + (this.state.isSaving ? "save-animation" : "")}
                                 onClick={this.saveDeveloperAndState}
                             />) : null
                     }

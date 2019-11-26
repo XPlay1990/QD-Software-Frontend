@@ -48,7 +48,6 @@
 }
 
 .saveButton::after {
-    content: "Apply Changes";
 }
 
 .saveButton.save-animation {
@@ -72,6 +71,10 @@
     animation: spinner 0.8s ease infinite;
 }
 
+.ApplyChangesButton::after{
+    content: "Apply Changes";
+}
+
 @keyframes spinner {
     to {
         transform: rotate(360deg);
@@ -84,7 +87,7 @@
     }
 
     100% {
-        width: 0px;
+        width: 0;
         background: #fff;
     }
 }

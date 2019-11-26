@@ -1,6 +1,6 @@
 import {BehaviorSubject} from 'rxjs';
 import customJSONRequest from "./authHeader/AuthorizationHeaderRequest"
-import {ACCESS_TOKEN, BACKEND_BASE_URL, LOGIN_URL, USER_SELF_URL} from "../config/constants";
+import {ACCESS_TOKEN, BACKEND_BASE_URL, LOGIN_URL, SELF_URL} from "../config/constants";
 
 const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')));
 
@@ -51,7 +51,7 @@ export function getCurrentUser() {
     }
 
     return customJSONRequest({
-        url: BACKEND_BASE_URL + USER_SELF_URL,
+        url: BACKEND_BASE_URL + SELF_URL,
         method: 'GET'
     });
 }

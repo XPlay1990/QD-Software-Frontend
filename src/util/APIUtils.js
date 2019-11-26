@@ -12,7 +12,7 @@ import {
     GET_DEVELOPERS,
     GET_EDISTATES,
     GET_ORGANIZATION_MEMBERS_URL,
-    GET_SUPPLIER_ORGANIZATIONS_URL,
+    GET_SUPPLIER_ORGANIZATIONS_URL, GET_USERLIST_URL,
     SAVE_DEVELOPER_AND_STATE
 } from '../config/constants';
 
@@ -42,6 +42,13 @@ export function getEdiConnections(pageNumber, pageSize, pageSorting, additiveSor
 export function getEdiConnection(id) {
     return customJSONRequest({
         url: `${BACKEND_BASE_URL}${EDICON_LIST_URL}/${id}`,
+        method: 'GET'
+    });
+}
+
+export function getAllUsers() {
+    return customJSONRequest({
+        url: `${BACKEND_BASE_URL}${GET_USERLIST_URL}`,
         method: 'GET'
     });
 }

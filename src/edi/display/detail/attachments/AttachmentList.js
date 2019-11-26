@@ -36,7 +36,6 @@ class AttachmentList extends Component {
                         attachmentList: response.content,
                         isLoading: false
                     });
-                    console.log(this.state.attachmentList)
                 }
             }).catch(error => {
             this.setState({

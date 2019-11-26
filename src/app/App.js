@@ -26,6 +26,7 @@ import {Role} from "../security/Roles";
 import Navigationbar from "../common/Navigationbar";
 import EdiCreate from "../edi/create/EdiCreate";
 import Forbidden from "../error/Forbidden";
+import SwitchUser from "../admin_functions/SwitchUser";
 
 const {Content} = Layout;
 
@@ -136,6 +137,9 @@ class App extends Component {
                             <Route isAuthenticated={this.state.isAuthenticated}
                                    path={EDICON_LIST_URL + "/:id"}
                                    component={EdiConnection}/>
+                            <Route isAuthenticated={this.state.isAuthenticated}
+                                   path={"/switchuser/"}
+                                   component={SwitchUser}/>
                             <Route path={FORBIDDEN_URL} component={Forbidden}/>
                             <Route component={NotFound}/>
                         </Switch>

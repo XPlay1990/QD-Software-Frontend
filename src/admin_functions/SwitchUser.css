@@ -1,0 +1,3 @@
+.SwitchUserButton::after{
+    content: "Switch User";
+}
