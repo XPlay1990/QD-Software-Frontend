@@ -153,7 +153,10 @@ class Description extends Component {
                                 />) : (
                                 //TODO: Link to Developer Profile
                                 <text>
-                                    {`${this.state.assignedDev.firstName} ${this.state.assignedDev.lastName} (@${this.state.assignedDev.username})`}
+                                    {
+                                        this.state.assignedDev ?
+                                            `${this.state.assignedDev.firstName} ${this.state.assignedDev.lastName} (@${this.state.assignedDev.username})` : 'Not Assigned'
+                                    }
                                 </text>
                             )
                         }
