@@ -153,6 +153,7 @@ class EdiList extends Component {
                                 noDataText={'No rows found'}
                                 // NoDataComponent={NoDataComponent}
                             />
+                            <text style={{textAlign: "left"}}>Total found Elements: {this.state.totalElements}</text>
                             <Tips/>
                         </div>
                     ) : null
