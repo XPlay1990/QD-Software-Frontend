@@ -7,6 +7,7 @@ import LoadingIndicator from '../../common/LoadingIndicator';
 import './Profile.css';
 import NotFound from '../../error/NotFound';
 import ServerError from '../../error/ServerError';
+import Forbidden from "../../error/Forbidden";
 
 const TabPane = Tabs.TabPane;
 
@@ -38,6 +39,11 @@ class Profile extends Component {
             if (error.status === 404) {
                 this.setState({
                     notFound: true,
+                    isLoading: false
+                });
+            } else if (error.status === 403) {
+                this.setState({
+                    forbidden: true,
                     isLoading: false
                 });
             } else {
@@ -74,6 +80,10 @@ class Profile extends Component {
             return <NotFound/>;
         }
 
+        if (this.state.forbidden) {
+            return <Forbidden/>;
+        }
+
         if (this.state.serverError) {
             return <ServerError/>;
         }
@@ -89,12 +99,14 @@ class Profile extends Component {
                         <div className="user-profile">
                             <div className="user-details">
                                 <div className="user-avatar">
-                                    <Avatar className="user-avatar-circle" style={{ backgroundColor: getAvatarColor(this.state.user.username)}}>
-                                        {this.state.user.username[0].toUpperCase()}
+                                    <Avatar className="user-avatar-circle"
+                                            style={{backgroundColor: getAvatarColor(this.state.user.username)}}>
+                                        {`${this.state.user.firstName[0].toUpperCase()}${this.state.user.lastName[0].toUpperCase()}`}
                                     </Avatar>
                                 </div>
                                 <div className="user-summary">
-                                    <div className="full-name">{this.state.user.firstName + ' ' + this.state.user.lastName}</div>
+                                    <div
+                                        className="full-name">{this.state.user.firstName + ' ' + this.state.user.lastName}</div>
                                     <div className="username">@{this.state.user.username}</div>
                                     <div className="user-joined">
                                         Joined {formatDate(this.state.user.creationTime)}
