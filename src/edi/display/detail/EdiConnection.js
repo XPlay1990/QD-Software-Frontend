@@ -35,7 +35,7 @@ class EdiConnection extends Component {
             .then(response => {
                 if (this._isMounted) {
                     this.setState({
-                        ediConnection: response.content,
+                        ediConnection: response,
                         isLoading: false
                     })
                 }
