@@ -122,7 +122,7 @@ class EdiMessageList extends Component {
                 {/*    loadEdiMessages={this.loadEdiMessages}*/}
                 {/*    ediConnectionId={this.ediConnectionId}*/}
                 {/*/>*/}
-                <MyDraftailEditor/>
+                {/*<MyDraftailEditor/>*/}
                 {/*<CollapsedEditor*/}
                 {/*    placeholder="What would you like to say?"*/}
                 {/*    isExpanded={this.state.isEditorExpanded}*/}

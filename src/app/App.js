@@ -4,6 +4,7 @@ import {Redirect, Route, Switch, withRouter} from 'react-router-dom';
 
 import {getCurrentUserWithRoles} from '../security/AuthenticationService';
 import {
+    ANSWER_URL,
     CURRENT_USER,
     EDICON_CREATE_URL,
     EDICON_LIST_URL,
@@ -27,6 +28,7 @@ import Navigationbar from "../common/Navigationbar";
 import EdiCreate from "../edi/create/EdiCreate";
 import Forbidden from "../error/Forbidden";
 import SwitchUser from "../admin_functions/SwitchUser";
+import SupplierQuestions from "../edi/display/detail/supplierQuestions/SupplierQuestions";
 
 const {Content} = Layout;
 
@@ -135,8 +137,11 @@ class App extends Component {
                             {/*                path={EDICON_LIST_URL + "/:id"}*/}
                             {/*                component={EdiConnection}/>*/}
                             <Route isAuthenticated={this.state.isAuthenticated}
-                                   path={EDICON_LIST_URL + "/:id"}
+                                   exact path={EDICON_LIST_URL + "/:id"}
                                    component={EdiConnection}/>
+                            <Route isAuthenticated={this.state.isAuthenticated}
+                                   path={EDICON_LIST_URL + "/:id/question/answer"} //ANSWER_URL
+                                   component={SupplierQuestions}/>
                             <Route isAuthenticated={this.state.isAuthenticated}
                                    path={"/switchuser/"}
                                    component={SwitchUser}/>

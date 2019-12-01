@@ -3,6 +3,7 @@ import customJSONRequest, {
     customFileUploadRequest
 } from "../security/authHeader/AuthorizationHeaderRequest"
 import {
+    ANSWER_URL,
     BACKEND_BASE_URL,
     EDI_LIST_SIZE, EDICON_ATTACHMENT_BASE_URL,
     EDICON_ATTACHMENT_UPLOAD_URL,
@@ -12,7 +13,7 @@ import {
     GET_DEVELOPERS,
     GET_EDISTATES,
     GET_ORGANIZATION_MEMBERS_URL,
-    GET_SUPPLIER_ORGANIZATIONS_URL, GET_USERLIST_URL,
+    GET_SUPPLIER_ORGANIZATIONS_URL, GET_USERLIST_URL, QUESTION_URL,
     SAVE_DEVELOPER_AND_STATE, SELF_URL, SWITCH_USER_URL
 } from '../config/constants';
 
@@ -42,6 +43,20 @@ export function getEdiConnections(pageNumber, pageSize, pageSorting, additiveSor
 export function getEdiConnection(id) {
     return customJSONRequest({
         url: `${BACKEND_BASE_URL}${EDICON_LIST_URL}/${id}`,
+        method: 'GET'
+    });
+}
+
+export function getAnswers(id) {
+    return customJSONRequest({
+        url: `${BACKEND_BASE_URL}${ANSWER_URL(id)}`,
+        method: 'GET'
+    });
+}
+
+export function getQuestions() {
+    return customJSONRequest({
+        url: `${BACKEND_BASE_URL}${QUESTION_URL}`,
         method: 'GET'
     });
 }

@@ -152,12 +152,12 @@ class Description extends Component {
                                         getOptionValue={(option) => option.id}
                                 />) : (
                                 //TODO: Link to Developer Profile
-                                <text>
+                                <p>
                                     {
                                         this.state.assignedDev ?
                                             `${this.state.assignedDev.firstName} ${this.state.assignedDev.lastName} (@${this.state.assignedDev.username})` : 'Not Assigned'
                                     }
-                                </text>
+                                </p>
                             )
                         }
                     </div>

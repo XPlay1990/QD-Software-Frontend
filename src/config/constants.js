@@ -17,6 +17,8 @@ export const SELF_URL = USER_URL + '/me';
 export const GET_USERLIST_URL = USER_URL + '/all';
 export const SWITCH_USER_URL = '/switchUser';
 export const EDICON_LIST_URL = '/edi_connection';
+export const QUESTION_URL = `${EDICON_LIST_URL}/question/list`;
+export const ANSWER_URL = (id) => `${EDICON_LIST_URL}/${id}/question/answer`;
 export const GET_EDISTATES = `${EDICON_LIST_URL}/possibleStates`;
 export const SAVE_DEVELOPER_AND_STATE = `${EDICON_LIST_URL}/saveDeveloperAndState`;
 export const EDICON_MESSAGES_URL = (id) => `${EDICON_LIST_URL}/${id}/messages`;

@@ -4,10 +4,11 @@ import {getEdiConnection} from "../../../util/APIUtils";
 import LoadingIndicator from "../../../common/LoadingIndicator";
 import Description from "./description/Description";
 import EdiMessageList from "./messages/EdiMessageList";
-import {notification} from "antd";
-import {CURRENT_USER} from "../../../config/constants";
+import {Button, notification} from "antd";
+import {ANSWER_URL, CURRENT_USER} from "../../../config/constants";
 import {Role} from "../../../security/Roles";
 import AttachmentList from "./attachments/AttachmentList";
+import {Link} from "react-router-dom";
 
 class EdiConnection extends Component {
     constructor(props) {
@@ -101,6 +102,7 @@ class EdiConnection extends Component {
 
                             <div className="ediDetailedInformation">
                                 <p>detailedInfos</p>
+                                <Link to={ANSWER_URL(this.ediConnectionId)}><Button className="To_Questions" type="primary" size="large">To Questions</Button></Link>
                             </div>
 
                             <EdiMessageList ediConnectionId={this.ediConnectionId}/>
