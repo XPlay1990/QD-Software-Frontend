@@ -4,7 +4,6 @@ import {Redirect, Route, Switch, withRouter} from 'react-router-dom';
 
 import {getCurrentUserWithRoles} from '../security/AuthenticationService';
 import {
-    ANSWER_URL,
     CURRENT_USER,
     EDICON_CREATE_URL,
     EDICON_LIST_URL,

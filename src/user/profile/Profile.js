@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {getUserProfile} from '../../util/APIUtils';
-import {Avatar, Tabs} from 'antd';
+// import {Avatar, Tabs} from 'antd';
+import {Avatar} from 'antd';
 import {getAvatarColor} from '../../util/Colors';
 import {formatDate} from '../../util/Helpers';
 import LoadingIndicator from '../../common/LoadingIndicator';
@@ -9,7 +10,7 @@ import NotFound from '../../error/NotFound';
 import ServerError from '../../error/ServerError';
 import Forbidden from "../../error/Forbidden";
 
-const TabPane = Tabs.TabPane;
+// const TabPane = Tabs.TabPane;
 
 class Profile extends Component {
     constructor(props) {
@@ -88,9 +89,9 @@ class Profile extends Component {
             return <ServerError/>;
         }
 
-        const tabBarStyle = {
-            textAlign: 'center'
-        };
+        // const tabBarStyle = {
+        //     textAlign: 'center'
+        // };
 
         return (
             <div className="profile">

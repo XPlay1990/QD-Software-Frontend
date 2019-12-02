@@ -4,7 +4,7 @@ import customJSONRequest, {
 } from "../security/authHeader/AuthorizationHeaderRequest"
 import {
     ANSWER_URL,
-    BACKEND_BASE_URL,
+    BACKEND_BASE_URL, CONNECTION_TYPES_URL,
     EDI_LIST_SIZE, EDICON_ATTACHMENT_BASE_URL,
     EDICON_ATTACHMENT_UPLOAD_URL,
     EDICON_LIST_URL,
@@ -13,8 +13,8 @@ import {
     GET_DEVELOPERS,
     GET_EDISTATES,
     GET_ORGANIZATION_MEMBERS_URL,
-    GET_SUPPLIER_ORGANIZATIONS_URL, GET_USERLIST_URL, QUESTION_URL,
-    SAVE_DEVELOPER_AND_STATE, SELF_URL, SWITCH_USER_URL
+    GET_SUPPLIER_ORGANIZATIONS_URL, GET_USERLIST_URL, MESSAGE_TYPES_URL, QUESTION_URL,
+    SAVE_DEVELOPER_AND_STATE, SELF_URL, SWITCH_USER_URL, TRANSFER_STANDARDS_URL
 } from '../config/constants';
 
 export function getEdiConnections(pageNumber, pageSize, pageSorting, additiveSorting) {
@@ -57,6 +57,27 @@ export function getAnswers(id) {
 export function getQuestions() {
     return customJSONRequest({
         url: `${BACKEND_BASE_URL}${QUESTION_URL}`,
+        method: 'GET'
+    });
+}
+
+export function getMessageTypes() {
+    return customJSONRequest({
+        url: `${BACKEND_BASE_URL}${MESSAGE_TYPES_URL}`,
+        method: 'GET'
+    });
+}
+
+export function getTransferStandards() {
+    return customJSONRequest({
+        url: `${BACKEND_BASE_URL}${TRANSFER_STANDARDS_URL}`,
+        method: 'GET'
+    });
+}
+
+export function getConnectionTypes() {
+    return customJSONRequest({
+        url: `${BACKEND_BASE_URL}${CONNECTION_TYPES_URL}`,
         method: 'GET'
     });
 }
