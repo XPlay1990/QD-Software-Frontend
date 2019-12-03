@@ -5,7 +5,8 @@ import {
     getConnectionTypes,
     getMessageTypes,
     getQuestions,
-    getTransferStandards
+    getTransferStandards,
+    saveSupplierAnswers
 } from "../../../../util/APIUtils";
 import LoadingIndicator from "../../../../common/LoadingIndicator";
 import NotFound from "../../../../error/NotFound";
@@ -18,18 +19,19 @@ class SupplierQuestions extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            AnswerList: {},
-            QuestionList: [],
+            AnswerList: null,
+            QuestionList: null,
+            MessageTypesList: null,
+            ConnectionTypesList: null,
+            TransferStandardsList: null,
+
             SelectedMessageTypesReceive: [],
             SelectedMessageTypesSend: [],
-            MessageTypesList: [],
             PreferredConnectionTypes: [],
             SelectedConnectionTypes: [],
             SelectedConnectionTypesOther: [],
-            ConnectionTypesList: [],
             SelectedTransferStandards: [],
             SelectedTransferStandardsOther: '',
-            TransferStandardsList: [],
             IsAlreadySupplier: false,
             WantsPDFs: false,
             SelectedPDFTransferStandards: [],
@@ -39,24 +41,24 @@ class SupplierQuestions extends Component {
             isLoading: true
         };
         this.ediConnectionId = props.match.params.id;
+
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     initState() {
-        if (this._isMounted) {
-            this.setState({
-                isLoading: true
-            });
+        this.setState({
+            isLoading: true
+        });
 
-            this.getQuestions();
-            this.getAnswers(this.ediConnectionId);
-            this.getMessageTypes();
-            this.getConnectionTypes();
-            this.getTransferStandards();
+        this.getQuestions();
+        this.getAnswers(this.ediConnectionId);
+        this.getMessageTypes();
+        this.getConnectionTypes();
+        this.getTransferStandards();
 
-            this.setState({
-                isLoading: false
-            });
-        }
+        this.setState({
+            isLoading: false
+        });
     }
 
     getQuestions() {
@@ -67,9 +69,11 @@ class SupplierQuestions extends Component {
 
         promise
             .then(response => {
-                this.setState({
-                    QuestionList: response,
-                })
+                if (this._isMounted) {
+                    this.setState({
+                        QuestionList: response,
+                    })
+                }
             }).catch(error => {
             this.setError(error);
         });
@@ -83,9 +87,11 @@ class SupplierQuestions extends Component {
 
         promise
             .then(response => {
-                this.setState({
-                    AnswerList: response,
-                })
+                if (this._isMounted) {
+                    this.setState({
+                        AnswerList: response,
+                    })
+                }
             }).catch(error => {
             this.setError(error);
         });
@@ -99,9 +105,11 @@ class SupplierQuestions extends Component {
 
         promise
             .then(response => {
-                this.setState({
-                    MessageTypesList: response
-                })
+                if (this._isMounted) {
+                    this.setState({
+                        MessageTypesList: response
+                    })
+                }
             }).catch(error => {
             this.setError(error);
         });
@@ -115,9 +123,11 @@ class SupplierQuestions extends Component {
 
         promise
             .then(response => {
-                this.setState({
-                    ConnectionTypesList: response
-                })
+                if (this._isMounted) {
+                    this.setState({
+                        ConnectionTypesList: response
+                    })
+                }
             }).catch(error => {
             this.setError(error);
         });
@@ -131,9 +141,11 @@ class SupplierQuestions extends Component {
 
         promise
             .then(response => {
-                this.setState({
-                    TransferStandardsList: response
-                })
+                if (this._isMounted) {
+                    this.setState({
+                        TransferStandardsList: response
+                    })
+                }
             }).catch(error => {
             this.setError(error);
         });
@@ -158,6 +170,39 @@ class SupplierQuestions extends Component {
             description: error.message,
         });
     }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        const answerList = [];
+        answerList.push(this.state.QuestionList[0].id, this.state.IsAlreadySupplier);
+        answerList.push(this.state.QuestionList[1].id, this.state.SelectedTransferStandards);
+        answerList.push(this.state.QuestionList[2].id, this.state.SelectedConnectionTypes);
+        answerList.push(this.state.QuestionList[3].id, this.state.PreferredConnectionTypes);
+        answerList.push(this.state.QuestionList[4].id, this.state.SelectedMessageTypesReceive);
+        answerList.push(this.state.QuestionList[5].id, this.state.SelectedMessageTypesSend);
+        answerList.push(this.state.QuestionList[6].id, this.state.WantsPDFs);
+        if (this.state.WantsPDFs) {
+            answerList.push(this.state.QuestionList[7].id, this.state.SelectedPDFTransferStandards);
+        }
+        answerList.push(this.state.QuestionList[8].id, this.state.WantsEmails);
+        if (this.state.WantsEmails) {
+            answerList.push(this.state.QuestionList[9].id, this.state.SelectedEmailMessageTypes);
+            answerList.push(this.state.QuestionList[10].id, this.state.Email);
+        }
+
+
+        let promise = saveSupplierAnswers(this.ediConnectionId, answerList);
+        if (!promise) {
+            return;
+        }
+
+        promise
+            .then(response => {
+                this.getAnswers()
+            }).catch(error => {
+            this.setError(error);
+        });
+    };
 
     componentDidMount() {
         this._isMounted = true;
@@ -199,7 +244,9 @@ class SupplierQuestions extends Component {
                     // ) : null
                 }
                 {
-                    !this.state.isLoading && this.state.QuestionList.length === 11 ? (
+                    !this.state.isLoading
+                    && this.state.QuestionList && this.state.AnswerList
+                    && this.state.MessageTypesList && this.state.TransferStandardsList && this.state.ConnectionTypesList ? (
                         <Form onSubmit={this.handleSubmit} className="signup-form SupplierQuestionGrid">
                             <div className="GeneralInfos">
                                 <h2>General information</h2>

@@ -82,6 +82,14 @@ export function getConnectionTypes() {
     });
 }
 
+export function saveSupplierAnswers(ediConnectionId, answerList) {
+    return customJSONRequest({
+        url: `${BACKEND_BASE_URL}${ANSWER_URL(ediConnectionId)}`,
+        method: 'PUT',
+        body: JSON.stringify(answerList)
+    });
+}
+
 export function getAllUsers() {
     return customJSONRequest({
         url: `${BACKEND_BASE_URL}${GET_USERLIST_URL}`,
