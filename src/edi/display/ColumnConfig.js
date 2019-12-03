@@ -29,7 +29,16 @@ export const columnConfig = [
         accessor: 'status',
         headerStyle: {whiteSpace: 'unset'},
         style: {whiteSpace: 'unset'},
-        maxWidth: 150,
+        width: 350,
+        Cell: e => e.original.read ?
+            <Link to={`/edi_connection/${e.original.id}`}> {e.value} </Link>
+            : <Link to={`/edi_connection/${e.original.id}`}> <b>{e.value}</b> </Link>
+    },
+    {
+        Header: 'Developer',
+        accessor: 'assignedDeveloper.username',
+        headerStyle: {whiteSpace: 'unset'},
+        style: {whiteSpace: 'unset'},
         Cell: e => e.original.read ?
             <Link to={`/edi_connection/${e.original.id}`}> {e.value} </Link>
             : <Link to={`/edi_connection/${e.original.id}`}> <b>{e.value}</b> </Link>
