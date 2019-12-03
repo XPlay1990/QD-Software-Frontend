@@ -1,0 +1,50 @@
+.SupplierQuestionGrid {
+    display: grid;
+    width: 80%;
+    margin: auto;
+    grid-gap: 15px;
+    background-color: white;
+    padding: 10px;
+    grid-template-areas: 'General SaveBtn' 'Supported Transfer' 'Additional Additional';
+    grid-template-rows: 15% 15% 15%;
+    grid-template-columns: 50% 50%;
+}
+
+
+.GeneralInfos {
+    grid-area: General;
+}
+
+.SupportedProtocols {
+    grid-area: Supported;
+}
+
+.Transfer {
+    grid-area: Transfer;
+}
+
+.Additional {
+    grid-area: Additional;
+    display: grid;
+    grid-template-areas: 'heading .' 'q1 q2';
+    /*margin: auto;*/
+    grid-gap: 15px;
+    background-color: white;
+    padding: 10px;
+}
+
+.Additional_Heading{
+    grid-area: heading;
+}
+
+.Q1{
+    grid-area: q1;
+}
+
+.Q2{
+    grid-area: q2;
+}
+
+.SaveBtn {
+    grid-area: SaveBtn;
+}
