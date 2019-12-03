@@ -12,6 +12,7 @@ import LoadingIndicator from "../../../../common/LoadingIndicator";
 import NotFound from "../../../../error/NotFound";
 import {Button, Form, Input, notification, Radio} from 'antd';
 import Select from "react-select";
+import {EMAIL_MAX_LENGTH} from "../../../../config/constants";
 
 const FormItem = Form.Item;
 
@@ -88,6 +89,43 @@ class SupplierQuestions extends Component {
         promise
             .then(response => {
                 if (this._isMounted) {
+                    response.forEach(element => {
+                        switch (element.questionId) {
+                            case 1:
+                                this.setState({IsAlreadySupplier: (element.answer === 'true')});
+                                break;
+                            case 2:
+                                this.setState({SelectedTransferStandards: (element.answer.split(','))});
+                                break;
+                            case 3:
+                                this.setState({SelectedConnectionTypes: (element.answer.split(','))});
+                                break;
+                            case 4:
+                                this.setState({PreferredConnectionTypes: (element.answer.split(','))});
+                                break;
+                            case 5:
+                                this.setState({SelectedMessageTypesReceive: (element.answer.split(','))});
+                                break;
+                            case 6:
+                                this.setState({SelectedMessageTypesSend: (element.answer.split(','))});
+                                break;
+                            case 7:
+                                this.setState({WantsPDFs: (element.answer === 'true')});
+                                break;
+                            case 8:
+                                this.setState({SelectedPDFTransferStandards: (element.answer.split(','))});
+                                break;
+                            case 9:
+                                this.setState({WantsEmails: (element.answer === 'true')});
+                                break;
+                            case 10:
+                                this.setState({SelectedEmailMessageTypes: (element.answer.split(','))});
+                                break;
+                            case 11:
+                                this.setState({Email: element.answer});
+                                break;
+                        }
+                    });
                     this.setState({
                         AnswerList: response,
                     })
@@ -174,20 +212,41 @@ class SupplierQuestions extends Component {
     handleSubmit(event) {
         event.preventDefault();
         const answerList = [];
-        answerList.push(this.state.QuestionList[0].id, this.state.IsAlreadySupplier);
-        answerList.push(this.state.QuestionList[1].id, this.state.SelectedTransferStandards);
-        answerList.push(this.state.QuestionList[2].id, this.state.SelectedConnectionTypes);
-        answerList.push(this.state.QuestionList[3].id, this.state.PreferredConnectionTypes);
-        answerList.push(this.state.QuestionList[4].id, this.state.SelectedMessageTypesReceive);
-        answerList.push(this.state.QuestionList[5].id, this.state.SelectedMessageTypesSend);
-        answerList.push(this.state.QuestionList[6].id, this.state.WantsPDFs);
+        answerList.push({questionId: this.state.QuestionList[0].id, answer: this.state.IsAlreadySupplier.toString()});
+        answerList.push({
+            questionId: this.state.QuestionList[1].id,
+            answer: this.state.SelectedTransferStandards.toString()
+        });
+        answerList.push({
+            questionId: this.state.QuestionList[2].id,
+            answer: this.state.SelectedConnectionTypes.toString()
+        });
+        answerList.push({
+            questionId: this.state.QuestionList[3].id,
+            answer: this.state.PreferredConnectionTypes.toString()
+        });
+        answerList.push({
+            questionId: this.state.QuestionList[4].id,
+            answer: this.state.SelectedMessageTypesReceive.toString()
+        });
+        answerList.push({
+            questionId: this.state.QuestionList[5].id,
+            answer: this.state.SelectedMessageTypesSend.toString()
+        });
+        answerList.push({questionId: this.state.QuestionList[6].id, answer: this.state.WantsPDFs.toString()});
         if (this.state.WantsPDFs) {
-            answerList.push(this.state.QuestionList[7].id, this.state.SelectedPDFTransferStandards);
+            answerList.push({
+                questionId: this.state.QuestionList[7].id,
+                answer: this.state.SelectedPDFTransferStandards.toString()
+            });
         }
-        answerList.push(this.state.QuestionList[8].id, this.state.WantsEmails);
+        answerList.push({questionId: this.state.QuestionList[8].id, answer: this.state.WantsEmails.toString()});
         if (this.state.WantsEmails) {
-            answerList.push(this.state.QuestionList[9].id, this.state.SelectedEmailMessageTypes);
-            answerList.push(this.state.QuestionList[10].id, this.state.Email);
+            answerList.push({
+                questionId: this.state.QuestionList[9].id,
+                answer: this.state.SelectedEmailMessageTypes.toString()
+            });
+            answerList.push({questionId: this.state.QuestionList[10].id, answer: this.state.Email});
         }
 
 
@@ -198,7 +257,11 @@ class SupplierQuestions extends Component {
 
         promise
             .then(response => {
-                this.getAnswers()
+                this.getAnswers(this.ediConnectionId);
+                notification.success({
+                    message: 'EdiConnection-Portal',
+                    description: response.message,
+                });
             }).catch(error => {
             this.setError(error);
         });
@@ -224,6 +287,35 @@ class SupplierQuestions extends Component {
         //     this.state.password.validateStatus === 'success'
         // );
     }
+
+    // validateEmail = (email) => {
+    //     if (!email) {
+    //         return {
+    //             validateStatus: 'error',
+    //             errorMsg: 'Email may not be empty'
+    //         }
+    //     }
+    //
+    //     const EMAIL_REGEX = RegExp('[^@ ]+@[^@ ]+\\.[^@ ]+');
+    //     if (!EMAIL_REGEX.test(email)) {
+    //         return {
+    //             validateStatus: 'error',
+    //             errorMsg: 'Email not valid'
+    //         }
+    //     }
+    //
+    //     if (email.length > EMAIL_MAX_LENGTH) {
+    //         return {
+    //             validateStatus: 'error',
+    //             errorMsg: `Email is too long (Maximum ${EMAIL_MAX_LENGTH} characters allowed)`
+    //         }
+    //     }
+    //
+    //     return {
+    //         validateStatus: null,
+    //         errorMsg: null
+    //     }
+    // };
 
     render() {
         if (this.state.notFound) {
@@ -450,10 +542,14 @@ class SupplierQuestions extends Component {
                                             />
                                             <Input
                                                 size="default"
-                                                name="name"
+                                                name="email"
+                                                type="email"
                                                 autoComplete="on"
                                                 placeholder={this.state.QuestionList[10].question_en}
                                                 value={this.state.Email}
+                                                // hasFeedback
+                                                // validateStatus={this.state.email.validateStatus}
+                                                // help={this.state.email.errorMsg}>
                                                 onChange={(event) => this.setState({Email: event.target.value})}
                                             />
                                         </div>) : null
