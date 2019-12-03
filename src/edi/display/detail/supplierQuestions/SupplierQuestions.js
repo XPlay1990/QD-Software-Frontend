@@ -228,7 +228,7 @@ class SupplierQuestions extends Component {
                                         getOptionValue={(option) => option}
                                 />
                                 {/*<Input*/}
-                                {/*    size="medium"*/}
+                                {/*    size="default"*/}
                                 {/*    name="name"*/}
                                 {/*    autoComplete="off"*/}
                                 {/*    placeholder="Other"*/}
@@ -252,7 +252,7 @@ class SupplierQuestions extends Component {
                                         getOptionValue={(option) => option}
                                 />
                                 {/*<Input*/}
-                                {/*    size="medium"*/}
+                                {/*    size="default"*/}
                                 {/*    name="name"*/}
                                 {/*    autoComplete="off"*/}
                                 {/*    placeholder="Other"*/}
@@ -276,7 +276,7 @@ class SupplierQuestions extends Component {
                                         getOptionValue={(option) => option}
                                 />
                                 {/*<Input*/}
-                                {/*    size="medium"*/}
+                                {/*    size="default"*/}
                                 {/*    name="name"*/}
                                 {/*    autoComplete="off"*/}
                                 {/*    placeholder="Other"*/}
@@ -300,7 +300,7 @@ class SupplierQuestions extends Component {
                                         getOptionValue={(option) => option}
                                 />
                                 {/*<Input*/}
-                                {/*    size="medium"*/}
+                                {/*    size="default"*/}
                                 {/*    name="name"*/}
                                 {/*    autoComplete="off"*/}
                                 {/*    placeholder="Other"*/}
@@ -324,7 +324,7 @@ class SupplierQuestions extends Component {
                                         getOptionValue={(option) => option}
                                 />
                                 {/*<Input*/}
-                                {/*    size="medium"*/}
+                                {/*    size="default"*/}
                                 {/*    name="name"*/}
                                 {/*    autoComplete="off"*/}
                                 {/*    placeholder="Other"*/}
@@ -357,7 +357,7 @@ class SupplierQuestions extends Component {
                                     />) : null
                                 }
                                 {/*<Input*/}
-                                {/*    size="medium"*/}
+                                {/*    size="default"*/}
                                 {/*    name="name"*/}
                                 {/*    autoComplete="off"*/}
                                 {/*    placeholder="Other"*/}
@@ -389,7 +389,7 @@ class SupplierQuestions extends Component {
                                                 getOptionValue={(option) => option}
                                         />
                                         <Input
-                                            size="medium"
+                                            size="default"
                                             name="name"
                                             autoComplete="on"
                                             placeholder={this.state.QuestionList[10].question_en}
@@ -403,7 +403,7 @@ class SupplierQuestions extends Component {
                             <FormItem>
                                 <Button type="primary"
                                         htmlType="submit"
-                                        size="medium"
+                                        size="default"
                                         className="Edi-questions-form-button"
                                         disabled={this.isFormInvalid()}>Save</Button>
                             </FormItem>
