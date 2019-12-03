@@ -101,7 +101,6 @@ class EdiConnection extends Component {
                             />
 
                             <div className="ediDetailedInformation">
-                                <p>detailedInfos</p>
                                 <Link to={ANSWER_URL(this.ediConnectionId)}><Button className="To_Questions" type="primary" size="large">To Questions</Button></Link>
                             </div>
 
