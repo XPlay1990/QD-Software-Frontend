@@ -12,7 +12,7 @@ class Navigationbar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isAdmin: props.isAdmin,
+            isAdmin: props.isAdmin
         };
     }
 
