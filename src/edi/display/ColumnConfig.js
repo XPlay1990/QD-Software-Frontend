@@ -1,9 +1,10 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import { useTranslation, withTranslation, Trans } from 'react-i18next';
 
 export const columnConfig = [
     {
-        Header: 'Customer',
+        Header: <Trans i18nKey="customer">Customer</Trans>,
         accessor: 'customer.name',
         headerStyle: {whiteSpace: 'unset'},
         style: {whiteSpace: 'unset'},
@@ -16,7 +17,7 @@ export const columnConfig = [
             : <Link to={`/edi_connection/${e.original.id}`}> <b>{e.value}</b> </Link>
     },
     {
-        Header: 'Supplier',
+        Header: <Trans i18nKey="supplier">Supplier</Trans>,
         accessor: 'supplier.name',
         headerStyle: {whiteSpace: 'unset'},
         style: {whiteSpace: 'unset'},
@@ -25,7 +26,7 @@ export const columnConfig = [
             : <Link to={`/edi_connection/${e.original.id}`}> <b>{e.value}</b> </Link>
     },
     {
-        Header: 'State',
+        Header: <Trans i18nKey="state">State</Trans>,
         accessor: 'status',
         headerStyle: {whiteSpace: 'unset'},
         style: {whiteSpace: 'unset'},
@@ -35,7 +36,7 @@ export const columnConfig = [
             : <Link to={`/edi_connection/${e.original.id}`}> <b>{e.value}</b> </Link>
     },
     {
-        Header: 'Developer',
+        Header: <Trans i18nKey="developer">Developer</Trans>,
         accessor: 'assignedDeveloper.username',
         headerStyle: {whiteSpace: 'unset'},
         style: {whiteSpace: 'unset'},
@@ -44,7 +45,7 @@ export const columnConfig = [
             : <Link to={`/edi_connection/${e.original.id}`}> <b>{e.value}</b> </Link>
     },
     {
-        Header: 'Last Modified',
+        Header: <Trans i18nKey="lastModified">Last Modified</Trans>,
         accessor: 'updateTime',
         headerStyle: {whiteSpace: 'unset'},
         style: {whiteSpace: 'unset'},

@@ -1,0 +1,6 @@
+{
+  "columnConfig": {
+    "customer": "Customer",
+    "supplier": "Supplier"
+  }
+}
