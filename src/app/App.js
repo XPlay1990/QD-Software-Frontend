@@ -47,7 +47,7 @@ class App extends Component {
         notification.config({
             placement: 'topRight',
             top: 70,
-            duration: 3,
+            duration: 3
         });
     }
 
@@ -87,7 +87,7 @@ class App extends Component {
 
         notification[notificationType]({
             message: 'EdiConnection-Portal',
-            description: description,
+            description: description
         });
     }
 
