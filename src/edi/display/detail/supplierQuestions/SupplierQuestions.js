@@ -13,6 +13,8 @@ import NotFound from "../../../../error/NotFound";
 import {Button, Form, Input, notification, Radio} from 'antd';
 import Select from "react-select";
 import {EMAIL_MAX_LENGTH} from "../../../../config/constants";
+import i18n from "i18next";
+import {Trans} from "react-i18next";
 
 const FormItem = Form.Item;
 
@@ -63,7 +65,7 @@ class SupplierQuestions extends Component {
     }
 
     getQuestions() {
-        let promise = getQuestions();
+        let promise = getQuestions(i18n.language);
         if (!promise) {
             return;
         }
@@ -341,24 +343,24 @@ class SupplierQuestions extends Component {
                     && this.state.MessageTypesList && this.state.TransferStandardsList && this.state.ConnectionTypesList ? (
                         <Form onSubmit={this.handleSubmit} className="signup-form SupplierQuestionGrid">
                             <div className="GeneralInfos">
-                                <h2>General information</h2>
+                                <h2><Trans i18nKey={`ediConnection.supplierQuestions.generalInformation`}>General information</Trans></h2>
                                 <FormItem
-                                    label={'1. ' + this.state.QuestionList[0].question_en}
+                                    label={'1. ' + this.state.QuestionList[0].question}
                                     // validateStatus={this.state.name.validateStatus}
                                     // help={this.state.name.errorMsg}
                                 >
                                     <Radio.Group defaultValue={this.state.IsAlreadySupplier}
                                                  onChange={(event) => this.setState({IsAlreadySupplier: event.target.value})}>
-                                        <Radio.Button value={true}>Yes</Radio.Button>
-                                        <Radio.Button value={false}>No</Radio.Button>
+                                        <Radio.Button value={true}><Trans i18nKey={`common.yes`}>Yes</Trans></Radio.Button>
+                                        <Radio.Button value={false}><Trans i18nKey={`common.no`}>No</Trans></Radio.Button>
                                     </Radio.Group>
                                 </FormItem>
                             </div>
 
                             <div className="SupportedProtocols">
-                                <h2>Supported Protocols</h2>
+                                <h2><Trans i18nKey={`ediConnection.supplierQuestions.supportedProtocols`}>Supported Protocols</Trans></h2>
                                 <FormItem
-                                    label={'2. ' + this.state.QuestionList[1].question_en}
+                                    label={'2. ' + this.state.QuestionList[1].question}
                                     // validateStatus={this.state.name.validateStatus}
                                     // help={this.state.name.errorMsg}
                                 >
@@ -382,7 +384,7 @@ class SupplierQuestions extends Component {
                                 </FormItem>
 
                                 <FormItem
-                                    label={'3. ' + this.state.QuestionList[2].question_en}
+                                    label={'3. ' + this.state.QuestionList[2].question}
                                     // validateStatus={this.state.name.validateStatus}
                                     // help={this.state.name.errorMsg}
                                 >
@@ -406,7 +408,7 @@ class SupplierQuestions extends Component {
                                 </FormItem>
 
                                 <FormItem
-                                    label={'4. ' + this.state.QuestionList[3].question_en}
+                                    label={'4. ' + this.state.QuestionList[3].question}
                                     // validateStatus={this.state.name.validateStatus}
                                     // help={this.state.name.errorMsg}
                                 >
@@ -431,9 +433,9 @@ class SupplierQuestions extends Component {
                             </div>
 
                             <div className="Transfer">
-                                <h2>Transfer</h2>
+                                <h2><Trans i18nKey={`ediConnection.supplierQuestions.transfer`}>Transfer</Trans></h2>
                                 <FormItem
-                                    label={'5. ' + this.state.QuestionList[4].question_en}
+                                    label={'5. ' + this.state.QuestionList[4].question}
                                     // validateStatus={this.state.name.validateStatus}
                                     // help={this.state.name.errorMsg}
                                 >
@@ -457,7 +459,7 @@ class SupplierQuestions extends Component {
                                 </FormItem>
 
                                 <FormItem
-                                    label={'6. ' + this.state.QuestionList[5].question_en}
+                                    label={'6. ' + this.state.QuestionList[5].question}
                                     // validateStatus={this.state.name.validateStatus}
                                     // help={this.state.name.errorMsg}
                                 >
@@ -482,17 +484,17 @@ class SupplierQuestions extends Component {
                             </div>
 
                             <div className="Additional">
-                                <h2 className="Additional_Heading">Additional</h2>
+                                <h2 className="Additional_Heading"><Trans i18nKey={`ediConnection.supplierQuestions.additional`}>Additional</Trans></h2>
                                 <FormItem
-                                    label={'7. ' + this.state.QuestionList[6].question_en}
+                                    label={'7. ' + this.state.QuestionList[6].question}
                                     // validateStatus={this.state.name.validateStatus}
                                     // help={this.state.name.errorMsg}
                                     className="Q1"
                                 >
                                     <Radio.Group defaultValue={this.state.WantsPDFs}
                                                  onChange={(event) => this.setState({WantsPDFs: event.target.value})}>
-                                        <Radio.Button value={true}>Yes</Radio.Button>
-                                        <Radio.Button value={false}>No</Radio.Button>
+                                        <Radio.Button value={true}><Trans i18nKey={`common.yes`}>Yes</Trans></Radio.Button>
+                                        <Radio.Button value={false}><Trans i18nKey={`common.no`}>No</Trans></Radio.Button>
                                     </Radio.Group>
 
                                     {this.state.WantsPDFs ? (
@@ -500,7 +502,7 @@ class SupplierQuestions extends Component {
                                                 autosize={false}
                                                 value={this.state.SelectedPDFTransferStandards || ''}
                                                 isMulti={true}
-                                                placeholder={this.state.QuestionList[7].question_en}
+                                                placeholder={this.state.QuestionList[7].question}
                                                 onChange={(value) => this.setState({SelectedPDFTransferStandards: value})}
                                                 options={this.state.TransferStandardsList}
                                                 getOptionLabel={(option) => option}
@@ -518,15 +520,15 @@ class SupplierQuestions extends Component {
                                 </FormItem>
 
                                 <FormItem
-                                    label={'9. ' + this.state.QuestionList[8].question_en}
+                                    label={'9. ' + this.state.QuestionList[8].question}
                                     // validateStatus={this.state.name.validateStatus}
                                     // help={this.state.name.errorMsg}
                                     className="Q2"
                                 >
                                     <Radio.Group defaultValue={this.state.WantsEmails}
                                                  onChange={(event) => this.setState({WantsEmails: event.target.value})}>
-                                        <Radio.Button value={true}>Yes</Radio.Button>
-                                        <Radio.Button value={false}>No</Radio.Button>
+                                        <Radio.Button value={true}><Trans i18nKey={`common.yes`}>Yes</Trans></Radio.Button>
+                                        <Radio.Button value={false}><Trans i18nKey={`common.no`}>No</Trans></Radio.Button>
                                     </Radio.Group>
                                     {this.state.WantsEmails ? (
                                         <div>
@@ -534,7 +536,7 @@ class SupplierQuestions extends Component {
                                                     autosize={false}
                                                     value={this.state.SelectedEmailMessageTypes || ''}
                                                     isMulti={true}
-                                                    placeholder={this.state.QuestionList[9].question_en}
+                                                    placeholder={this.state.QuestionList[9].question}
                                                     onChange={(value) => this.setState({SelectedEmailMessageTypes: value})}
                                                     options={this.state.MessageTypesList}
                                                     getOptionLabel={(option) => option}
@@ -545,7 +547,7 @@ class SupplierQuestions extends Component {
                                                 name="email"
                                                 type="email"
                                                 autoComplete="on"
-                                                placeholder={this.state.QuestionList[10].question_en}
+                                                placeholder={this.state.QuestionList[10].question}
                                                 value={this.state.Email}
                                                 // hasFeedback
                                                 // validateStatus={this.state.email.validateStatus}
@@ -564,7 +566,7 @@ class SupplierQuestions extends Component {
                                             htmlType="submit"
                                             size="default"
                                             className="Edi-questions-form-button"
-                                            disabled={this.isFormInvalid()}>Save</Button>
+                                            disabled={this.isFormInvalid()}><Trans i18nKey={`common.save`}>Save</Trans></Button>
                                 </FormItem>
                             </div>
                         </Form>) : null

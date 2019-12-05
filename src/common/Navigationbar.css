@@ -1,8 +1,25 @@
 .Navigationbar {
     background-color: lightsteelblue;
     display: flex;
+    flex-direction: row;
     width: 100%;
     margin-top: 10px;
+}
+
+.NavigationItems {
+    width: 50%;
+}
+
+.LanguageChange {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ToggleButtonGroup {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 10px;
 }
 
 .NavigationButton {

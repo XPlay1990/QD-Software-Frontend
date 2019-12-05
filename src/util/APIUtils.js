@@ -54,9 +54,9 @@ export function getAnswers(id) {
     });
 }
 
-export function getQuestions() {
+export function getQuestions(language) {
     return customJSONRequest({
-        url: `${BACKEND_BASE_URL}${QUESTION_URL}`,
+        url: `${BACKEND_BASE_URL}${QUESTION_URL}?language=${language}`,
         method: 'GET'
     });
 }

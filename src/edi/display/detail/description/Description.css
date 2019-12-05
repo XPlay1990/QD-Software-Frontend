@@ -71,10 +71,6 @@
     animation: spinner 0.8s ease infinite;
 }
 
-.ApplyChangesButton::after{
-    content: "Apply Changes";
-}
-
 @keyframes spinner {
     to {
         transform: rotate(360deg);

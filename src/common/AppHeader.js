@@ -3,6 +3,7 @@ import {Link, withRouter} from 'react-router-dom';
 import './AppHeader.css';
 import pollIcon from '../poll.svg';
 import {Dropdown, Icon, Layout, Menu} from 'antd';
+import {Trans} from "react-i18next";
 
 const Header = Layout.Header;
 
@@ -81,12 +82,12 @@ function ProfileDropdownMenu(props) {
             </Menu.Item>
             <Menu.Divider/>
             <Menu.Item key="profile" className="dropdown-item">
-                <Link to={`/users/${props.currentUser.username}`}>Profile</Link>
+                <Link to={`/users/${props.currentUser.username}`}><Trans i18nKey={`navigation.profile`}>Profile</Trans></Link>
             </Menu.Item>
             {
                 (props.isAdmin) ? (
                     <Menu.Item key="switchUser" className="dropdown-item">
-                        <Link to={`/switchuser/`}>Switch User</Link>
+                        <Link to={`/switchuser/`}><Trans i18nKey={`navigation.switchUser`}>Switch User</Trans></Link>
                     </Menu.Item>) : null
             }
             <Menu.Item key="logout" className="dropdown-item">

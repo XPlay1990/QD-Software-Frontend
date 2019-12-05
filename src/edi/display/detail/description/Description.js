@@ -5,13 +5,14 @@ import {getDeveloperList, getEdiStatusList, saveDeveloperAndStatus} from "../../
 import {notification} from "antd";
 import {CURRENT_USER} from "../../../../config/constants";
 import {Role} from "../../../../security/Roles";
-
+import Button from '@material-ui/core/Button';
+import {Trans} from "react-i18next";
 
 class Description extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            status: {label: props.status, value: props.status},
+            status: {label: <Trans i18nKey={`ediConnection.state.${props.status}`}>props.status</Trans>, value: props.status},
             statusList: [],
             creationTime: props.creationTime,
             updateTime: props.updateTime,
@@ -70,7 +71,10 @@ class Description extends Component {
                 if (this._isMounted) {
                     let statusList = [];
                     response.forEach(function (element) {
-                        statusList.push({label: element, value: element})
+                        statusList.push({
+                            label: <Trans i18nKey={`ediConnection.state.${element}`}>element:</Trans>,
+                            value: element
+                        })
                     });
                     this.setState({
                         statusList: statusList,
@@ -135,12 +139,32 @@ class Description extends Component {
         return (
             <div className="ediDescription">
                 <div className="ediDescriptionGrid">
-                    <div className="ediDescriptionCreationTime"><h1>Created:</h1>{this.state.creationTime}</div>
-                    <div className="ediDescriptionUpdateTime"><h1>Last Modified:</h1>{this.state.updateTime}</div>
-                    <div className="ediDescriptionCustomerName"><h1>Customer:</h1>{this.state.customerName}</div>
-                    <div className="ediDescriptionSupplierName"><h1>Supplier:</h1>{this.state.supplierName}</div>
+                    <div className="ediDescriptionCreationTime">
+                        <h1>
+                            <Trans i18nKey="ediConnection.description.created">Created:</Trans>
+                        </h1>
+                        {this.state.creationTime}
+                    </div>
+                    <div className="ediDescriptionUpdateTime">
+                        <h1>
+                            <Trans i18nKey="ediConnection.description.lastModified">Last Modified:</Trans>
+                        </h1>
+                        {this.state.updateTime}
+                    </div>
+                    <div className="ediDescriptionCustomerName">
+                        <h1>
+                            <Trans i18nKey="ediConnection.description.customer">Customer:</Trans>
+                        </h1>
+                        {this.state.customerName}
+                    </div>
+                    <div className="ediDescriptionSupplierName">
+                        <h1>
+                            <Trans i18nKey="ediConnection.description.supplier">Supplier:</Trans>
+                        </h1>
+                        {this.state.supplierName}
+                    </div>
                     <div className="ediDescriptionAssignedDev">
-                        <h1>Developer:</h1>
+                        <h1><Trans i18nKey="ediConnection.description.developer">Developer:</Trans></h1>
                         {
                             this.isAdmin ? (
                                 <Select name="DeveloperSelect"
@@ -162,7 +186,7 @@ class Description extends Component {
                         }
                     </div>
                     <div className="ediDescriptionStatus">
-                        <h1>State:</h1>
+                        <h1><Trans i18nKey="ediConnection.description.state">State:</Trans></h1>
                         {
                             this.isAdmin ? (
                                     <Select name="StateSelect"
@@ -179,10 +203,11 @@ class Description extends Component {
                     </div>
                     {
                         this.isAdmin ? (
-                            <button
-                                className={"ApplyChangesButton saveButton " + (this.state.isSaving ? "save-animation" : "")}
-                                onClick={this.saveDeveloperAndState}
-                            />) : null
+                            <Button variant="contained" color="primary" size="medium"
+                                    className={"ApplyChangesButton saveButton " + (this.state.isSaving ? "save-animation" : "")}
+                                    onClick={this.saveDeveloperAndState}>
+                                <Trans i18nKey="ediConnection.applyChanges">Apply Changes</Trans>
+                            </Button>) : null
                     }
                 </div>
             </div>

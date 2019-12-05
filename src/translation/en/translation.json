@@ -1,6 +1,39 @@
 {
+  "common":{
+    "save": "Save",
+    "delete": "Delete"
+  },
   "columnConfig": {
     "customer": "Customer",
-    "supplier": "Supplier"
+    "supplier": "Supplier",
+    "state": "State",
+    "developer": "Developer",
+    "lastModified": "Last modified"
+  },
+  "ediConnection": {
+    "applyChanges": "Apply changes",
+    "toQuestions": "Questionnaire",
+    "description": {
+      "created": "Created:",
+      "customer": "Customer:",
+      "supplier": "Supplier:",
+      "state": "State:",
+      "developer": "Developer:",
+      "lastModified": "Last modified:"
+    },
+    "state": {
+      "NEW": "NEW",
+      "DEVELOPMENT": "DEVELOPMENT",
+      "WAITING_FOR_CUSTOMER": "WAITING FOR CUSTOMER",
+      "WAITING_FOR_SUPPLIER": "WAITING FOR SUPPLIER",
+      "TESTING": "TESTING",
+      "DONE": "DONE"
+    },
+    "supplierQuestions": {
+      "generalInformation": "General information",
+      "supportedProtocols": "Supported Protocols",
+      "transfer": "Transfer",
+      "additional": "Additional"
+    }
   }
 }

@@ -7,12 +7,17 @@ import {ReactComponent as AddButton} from "../resources/navbar/md-add.svg"
 import {ReactComponent as CreateUser} from "../resources/navbar/md-person-add.svg"
 import {ReactComponent as CreateOrg} from "../resources/navbar/md-people.svg"
 import {CREATE_ORGANIZATION_URL, CREATE_USER_URL, EDICON_CREATE_URL} from "../config/constants";
+import i18n from "i18next";
+import {Radio} from "antd";
+import ToggleButton from '@material-ui/lab/ToggleButton';
+import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 
 class Navigationbar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isAdmin: props.isAdmin
+            isAdmin: props.isAdmin,
+            language: i18n.language
         };
     }
 
@@ -27,26 +32,57 @@ class Navigationbar extends Component {
         navbarItems.push(<ArrowRight key="ForwardButton" className="NavigationButton"
                                      onClick={this.props.history.goForward}/>);
 
-
-        // navbarItems.push(<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-        //     <ArrowRight key="ForwardButton" className="NavigationButton"
-        //                 onClick={this.props.history.goForward}/>
-        //     <text x="20" y="35" className="small">forward</text>
-        // </svg>);
-
         if (this.state.isAdmin) {
             navbarItems.push(<AddButton key="EDICREATEBUTTON" className="NavigationButton"
                                         onClick={() => this.props.history.push(EDICON_CREATE_URL)}>
-               </AddButton>);
+            </AddButton>);
             navbarItems.push(<CreateUser key="USERCREATEBUTTON" className="NavigationButton"
                                          onClick={() => this.props.history.push(CREATE_USER_URL)}/>);
             navbarItems.push(<CreateOrg key="ORGANIZATIONCREATEBUTTON" className="NavigationButton"
                                         onClick={() => this.props.history.push(CREATE_ORGANIZATION_URL)}/>);
         }
 
+        const changeLanguage = (selectedLanguage) => {
+            this.setState({language: selectedLanguage});
+            i18n.changeLanguage(selectedLanguage);
+            window.location.reload()
+        };
+
+        const changeLanguageToggle = (event, selectedLanguage) => {
+            this.setState({language: selectedLanguage});
+            i18n.changeLanguage(selectedLanguage);
+            window.location.reload()
+        };
+
         return (
             <div className="Navigationbar">
-                {navbarItems}
+                <div className="NavigationItems">
+                    {navbarItems}
+                </div>
+                <div className="LanguageChange">
+                    <ToggleButtonGroup
+                        value={this.state.language}
+                        exclusive
+                        size="small"
+
+                        onChange={changeLanguageToggle}
+                        aria-label="text alignment"
+                        className="ToggleButtonGroup"
+                    >
+                        <ToggleButton value='de' aria-label="centered">
+                            de
+                        </ToggleButton>
+                        <ToggleButton value='en' aria-label="centered">
+                            en
+                        </ToggleButton>
+                    </ToggleButtonGroup>
+
+                    <Radio.Group className="ToggleButtonGroup" defaultValue={this.state.language}
+                                 onChange={(event) => changeLanguage(event.target.value)}>
+                        <Radio.Button value={'de'}>de</Radio.Button>
+                        <Radio.Button value={'en'}>en</Radio.Button>
+                    </Radio.Group>
+                </div>
             </div>
         );
     }

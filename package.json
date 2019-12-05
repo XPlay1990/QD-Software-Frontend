@@ -5,6 +5,7 @@
   "dependencies": {
     "@atlaskit/avatar": "^17.1.4",
     "@material-ui/core": "^4.7.1",
+    "@material-ui/lab": "^4.0.0-alpha.34",
     "@progress/kendo-react-buttons": "^3.9.0",
     "antd": "^3.26.0",
     "config": "^3.2.4",

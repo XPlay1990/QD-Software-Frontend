@@ -4,7 +4,7 @@ import { useTranslation, withTranslation, Trans } from 'react-i18next';
 
 export const columnConfig = [
     {
-        Header: <Trans i18nKey="customer">Customer</Trans>,
+        Header: <Trans i18nKey="columnConfig.customer">Customer</Trans>,
         accessor: 'customer.name',
         headerStyle: {whiteSpace: 'unset'},
         style: {whiteSpace: 'unset'},
@@ -13,7 +13,7 @@ export const columnConfig = [
             : <Link to={`/edi_connection/${e.original.id}`}> <b>{e.value}</b> </Link>
     },
     {
-        Header: <Trans i18nKey="supplier">Supplier</Trans>,
+        Header: <Trans i18nKey="columnConfig.supplier">Supplier</Trans>,
         accessor: 'supplier.name',
         headerStyle: {whiteSpace: 'unset'},
         style: {whiteSpace: 'unset'},
@@ -22,7 +22,7 @@ export const columnConfig = [
             : <Link to={`/edi_connection/${e.original.id}`}> <b>{e.value}</b> </Link>
     },
     {
-        Header: <Trans i18nKey="state">State</Trans>,
+        Header: <Trans i18nKey="columnConfig.state">State</Trans>,
         accessor: 'status',
         headerStyle: {whiteSpace: 'unset'},
         style: {whiteSpace: 'unset'},
@@ -32,7 +32,7 @@ export const columnConfig = [
             : <Link to={`/edi_connection/${e.original.id}`}> <b>{e.value}</b> </Link>
     },
     {
-        Header: <Trans i18nKey="developer">Developer</Trans>,
+        Header: <Trans i18nKey="columnConfig.developer">Developer</Trans>,
         accessor: 'assignedDeveloper.username',
         headerStyle: {whiteSpace: 'unset'},
         style: {whiteSpace: 'unset'},
@@ -41,7 +41,7 @@ export const columnConfig = [
             : <Link to={`/edi_connection/${e.original.id}`}> <b>{e.value}</b> </Link>
     },
     {
-        Header: <Trans i18nKey="lastModified">Last Modified</Trans>,
+        Header: <Trans i18nKey="columnConfig.lastModified">Last Modified</Trans>,
         accessor: 'updateTime',
         headerStyle: {whiteSpace: 'unset'},
         style: {whiteSpace: 'unset'},

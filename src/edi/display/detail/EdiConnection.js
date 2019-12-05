@@ -4,11 +4,13 @@ import {getEdiConnection} from "../../../util/APIUtils";
 import LoadingIndicator from "../../../common/LoadingIndicator";
 import Description from "./description/Description";
 import EdiMessageList from "./messages/EdiMessageList";
-import {Button, notification} from "antd";
+import {notification} from "antd";
+import Button from '@material-ui/core/Button';
 import {ANSWER_URL, CURRENT_USER} from "../../../config/constants";
 import {Role} from "../../../security/Roles";
 import AttachmentList from "./attachments/AttachmentList";
 import {Link} from "react-router-dom";
+import {Trans} from "react-i18next";
 
 class EdiConnection extends Component {
     constructor(props) {
@@ -101,7 +103,11 @@ class EdiConnection extends Component {
                             />
 
                             <div className="ediDetailedInformation">
-                                <Link to={ANSWER_URL(this.ediConnectionId)}><Button className="To_Questions" type="primary" size="large">To Questions</Button></Link>
+                                <Link to={ANSWER_URL(this.ediConnectionId)}>
+                                    <Button variant="contained" color="primary" className="To_Questions" type="primary" size="medium">
+                                     <Trans i18nKey="ediConnection.toQuestions">To Questions</Trans>
+                                </Button>
+                                </Link>
                             </div>
 
                             <EdiMessageList ediConnectionId={this.ediConnectionId}/>

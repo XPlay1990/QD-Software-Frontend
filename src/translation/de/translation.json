@@ -1,7 +1,45 @@
 {
-  "customer": "Kunde",
-  "supplier": "Lieferant",
-  "state": "Status",
-  "developer": "Entwickler",
-  "lastModified": "Zuletzt geändert"
+  "common": {
+    "save": "Speichern",
+    "delete": "Löschen",
+    "yes": "Ja",
+    "no": "Nein"
+  },
+  "navigation": {
+    "profile": "Profil",
+    "switchUser": "Nutzer wechseln"
+  },
+  "columnConfig": {
+    "customer": "Kunde",
+    "supplier": "Lieferant",
+    "state": "Status",
+    "developer": "Entwickler",
+    "lastModified": "Zuletzt geändert"
+  },
+  "ediConnection": {
+    "applyChanges": "Änderung speichern",
+    "toQuestions": "Fragenkatalog",
+    "description": {
+      "created": "Erstellt:",
+      "customer": "Kunde:",
+      "supplier": "Lieferant:",
+      "state": "Status:",
+      "developer": "Entwickler:",
+      "lastModified": "Zuletzt geändert:"
+    },
+    "state": {
+      "NEW": "NEU",
+      "DEVELOPMENT": "IN ENTWICKLUNG",
+      "WAITING_FOR_CUSTOMER": "WARTE AUF KUNDE",
+      "WAITING_FOR_SUPPLIER": "WARTE AUF LIEFERANT",
+      "TESTING": "TESTEN",
+      "DONE": "FERTIG"
+    },
+    "supplierQuestions": {
+      "generalInformation": "Generelle Informationen",
+      "supportedProtocols": "Unterstützte Protokolle",
+      "transfer": "Übertragung",
+      "additional": "Zusätzlich"
+    }
+  }
 }
