@@ -13,24 +13,6 @@ export const authenticationService = {
     }
 };
 
-// function login(loginRequest) {
-// //     const requestOptions = {
-// //         method: 'POST',
-// //         headers: { 'Content-Type': 'application/json' },
-// //         body: JSON.stringify(loginRequest)
-// //     };
-// //
-// //     return fetch(`${BACKEND_BASE_URL}${LOGIN_URL}`, requestOptions)
-// //         .then(handleResponse)
-// //         .then(user => {
-// //             // store user details and jwt token in local storage to keep user logged in between page refreshes
-// //             console.log(user)
-// //             localStorage.setItem('currentUser', JSON.stringify(user));
-// //             currentUserSubject.next(user);
-// //             return user;
-// //         });
-// // }
-
 function login(loginRequest) {
     return customJSONRequest({
         url: BACKEND_BASE_URL + LOGIN_URL,

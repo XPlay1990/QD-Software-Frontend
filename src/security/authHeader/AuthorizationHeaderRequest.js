@@ -22,6 +22,7 @@ const createRequest = (options, headers) => {
 
     const defaults = {headers: headers};
     options = Object.assign({}, defaults, options);
+    options.append("mode", 'cors');
 
     return fetch(options.url, options)
         .then(response =>
