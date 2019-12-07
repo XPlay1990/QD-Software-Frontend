@@ -1,5 +1,6 @@
 {
-  "common":{
+  "common": {
+    "username": "Username",
     "save": "Save",
     "delete": "Delete"
   },
@@ -9,6 +10,12 @@
     "state": "State",
     "developer": "Developer",
     "lastModified": "Last modified"
+  },
+  "registration": {
+    "activationTitle": "Sign up",
+    "placeholderPassword": "A password between 6 to 20 characters",
+    "placeholderPasswordRepeat": "Repeat password",
+    "setPassword": "Set password"
   },
   "ediConnection": {
     "applyChanges": "Apply changes",

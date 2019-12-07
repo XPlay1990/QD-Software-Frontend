@@ -87,8 +87,36 @@ class Signup extends Component {
                 <h1 className="page-title">Sign Up</h1>
                 <div className="signup-content">
                     <Form onSubmit={this.handleSubmit} className="signup-form">
+                        <FormItem label="Username"
+                                  hasFeedback
+                                  validateStatus={this.state.username.validateStatus}
+                                  help={this.state.username.errorMsg}>
+                            <Input
+                                size="large"
+                                name="username"
+                                autoComplete="off"
+                                placeholder="A unique username"
+                                value={this.state.username.value}
+                                onBlur={this.validateUsernameAvailability}
+                                onChange={(event) => this.handleInputChange(event, this.validateUsername)} />
+                        </FormItem>
+                        <FormItem
+                            label="Email"
+                            hasFeedback
+                            validateStatus={this.state.email.validateStatus}
+                            help={this.state.email.errorMsg}>
+                            <Input
+                                size="large"
+                                name="email"
+                                type="email"
+                                autoComplete="off"
+                                placeholder="Your email"
+                                value={this.state.email.value}
+                                onBlur={this.validateEmailAvailability}
+                                onChange={(event) => this.handleInputChange(event, this.validateEmail)} />
+                        </FormItem>
                         <FormItem 
-                            label="Full Name"
+                            label="First name"
                             validateStatus={this.state.name.validateStatus}
                             help={this.state.name.errorMsg}>
                             <Input 
@@ -99,36 +127,20 @@ class Signup extends Component {
                                 value={this.state.name.value} 
                                 onChange={(event) => this.handleInputChange(event, this.validateName)} />    
                         </FormItem>
-                        <FormItem label="Username"
-                            hasFeedback
-                            validateStatus={this.state.username.validateStatus}
-                            help={this.state.username.errorMsg}>
-                            <Input 
+                        <FormItem
+                            label="Last Name"
+                            validateStatus={this.state.name.validateStatus}
+                            help={this.state.name.errorMsg}>
+                            <Input
                                 size="large"
-                                name="username" 
+                                name="name"
                                 autoComplete="off"
-                                placeholder="A unique username"
-                                value={this.state.username.value} 
-                                onBlur={this.validateUsernameAvailability}
-                                onChange={(event) => this.handleInputChange(event, this.validateUsername)} />    
+                                placeholder="Your full name"
+                                value={this.state.name.value}
+                                onChange={(event) => this.handleInputChange(event, this.validateName)} />
                         </FormItem>
-                        <FormItem 
-                            label="Email"
-                            hasFeedback
-                            validateStatus={this.state.email.validateStatus}
-                            help={this.state.email.errorMsg}>
-                            <Input 
-                                size="large"
-                                name="email" 
-                                type="email" 
-                                autoComplete="off"
-                                placeholder="Your email"
-                                value={this.state.email.value} 
-                                onBlur={this.validateEmailAvailability}
-                                onChange={(event) => this.handleInputChange(event, this.validateEmail)} />    
-                        </FormItem>
-                        <FormItem 
-                            label="Password"
+                        <FormItem
+                            label="Organization"
                             validateStatus={this.state.password.validateStatus}
                             help={this.state.password.errorMsg}>
                             <Input 
@@ -139,6 +151,32 @@ class Signup extends Component {
                                 placeholder="A password between 6 to 20 characters" 
                                 value={this.state.password.value} 
                                 onChange={(event) => this.handleInputChange(event, this.validatePassword)} />    
+                        </FormItem>
+                        <FormItem
+                            label="Gender"
+                            validateStatus={this.state.password.validateStatus}
+                            help={this.state.password.errorMsg}>
+                            <Input
+                                size="large"
+                                name="password"
+                                type="password"
+                                autoComplete="off"
+                                placeholder="A password between 6 to 20 characters"
+                                value={this.state.password.value}
+                                onChange={(event) => this.handleInputChange(event, this.validatePassword)} />
+                        </FormItem>
+                        <FormItem
+                            label="Language"
+                            validateStatus={this.state.password.validateStatus}
+                            help={this.state.password.errorMsg}>
+                            <Input
+                                size="large"
+                                name="password"
+                                type="password"
+                                autoComplete="off"
+                                placeholder="A password between 6 to 20 characters"
+                                value={this.state.password.value}
+                                onChange={(event) => this.handleInputChange(event, this.validatePassword)} />
                         </FormItem>
                         <FormItem>
                             <Button type="primary" 

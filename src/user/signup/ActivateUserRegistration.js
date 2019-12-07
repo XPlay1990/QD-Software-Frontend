@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import {activateAndSetPassword, getUsernameFromVerificationToken} from '../../util/APIUtils';
 import './ActivateUserRegistration.css';
 import {LOGIN_URL, PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH} from '../../config/constants';
-
 import {Button, Form, Input, notification} from 'antd';
+import {Trans, withTranslation} from "react-i18next";
 
 const FormItem = Form.Item;
 
@@ -14,7 +14,12 @@ class ActivateUserRegistration extends Component {
         this.state = {
             token: new URLSearchParams(window.location.search).get('token'),
             username: '',
-            password: ''
+            password: {
+                value: '',
+            },
+            passwordRepeat: {
+                value: ''
+            }
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -98,7 +103,7 @@ class ActivateUserRegistration extends Component {
     }
 
     isFormInvalid() {
-        return !(this.state.password.validateStatus === 'success');
+        return !(this.state.password.validateStatus === 'success' && this.state.passwordRepeat.validateStatus === 'success');
     }
 
     componentDidMount() {
@@ -118,22 +123,17 @@ class ActivateUserRegistration extends Component {
     render() {
         return (
             <div className="signup-container">
-                <h1 className="page-title">Sign Up</h1>
+                <h1 className="page-title">{<Trans i18nKey="registration.activationTitle">Sign up</Trans>}</h1>
                 <div className="signup-content">
                     <Form onSubmit={this.handleSubmit} className="signup-form">
-                        <FormItem label="Username"
-                                  hasFeedback
-                                  validateStatus={this.state.username.validateStatus}
-                                  help={this.state.username.errorMsg}>
+                        <FormItem label="Username" hasFeedback>
                             <Input
                                 size="large"
                                 name="username"
                                 autoComplete="off"
-                                placeholder="A unique username"
+                                placeholder={this.props.t('common.username')}
                                 value={this.state.username}
                                 disabled={true}
-                                // onBlur={this.validateUsernameAvailability}
-                                // onChange={(event) => this.handleInputChange(event, this.validateUsername)}
                             />
                         </FormItem>
                         <FormItem
@@ -145,16 +145,30 @@ class ActivateUserRegistration extends Component {
                                 name="password"
                                 type="password"
                                 autoComplete="off"
-                                placeholder="A password between 6 to 20 characters"
+                                placeholder={this.props.t('registration.placeholderPassword')}
                                 value={this.state.password.value}
                                 onChange={(event) => this.handleInputChange(event, this.validatePassword)}/>
+                        </FormItem>
+                        <FormItem
+                            label="Password"
+                            validateStatus={this.state.passwordRepeat.validateStatus}
+                            help={this.state.passwordRepeat.errorMsg}>
+                            <Input
+                                size="large"
+                                name="passwordRepeat"
+                                type="password"
+                                autoComplete="off"
+                                placeholder={this.props.t('registration.placeholderPasswordRepeat')}
+                                value={this.state.passwordRepeat.value}
+                                onChange={(event) => this.handleInputChange(event, this.validateRepeatPassword)}/>
                         </FormItem>
                         <FormItem>
                             <Button type="primary"
                                     htmlType="submit"
                                     size="large"
                                     className="signup-form-button"
-                                    disabled={this.isFormInvalid()}>Set Password</Button>
+                                    disabled={this.isFormInvalid()}><Trans i18nKey="registration.setPassword">Set
+                                password</Trans></Button>
                         </FormItem>
                     </Form>
                 </div>
@@ -176,11 +190,24 @@ class ActivateUserRegistration extends Component {
         } else {
             return {
                 validateStatus: 'success',
-                errorMsg: null,
+                errorMsg: null
             };
         }
-    }
+    };
 
+    validateRepeatPassword = (repeatPassword) => {
+        if (repeatPassword === this.state.password.value) {
+            return {
+                validateStatus: 'success',
+                errorMsg: null
+            };
+        } else {
+            return {
+                validateStatus: 'error',
+                errorMsg: `Password does not match!`
+            }
+        }
+    };
 }
 
-export default ActivateUserRegistration;
+export default withTranslation()(ActivateUserRegistration);

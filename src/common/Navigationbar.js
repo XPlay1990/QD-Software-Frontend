@@ -6,7 +6,7 @@ import {ReactComponent as ArrowRight} from "../resources/navbar/md-arrow-round-f
 import {ReactComponent as AddButton} from "../resources/navbar/md-add.svg"
 import {ReactComponent as CreateUser} from "../resources/navbar/md-person-add.svg"
 import {ReactComponent as CreateOrg} from "../resources/navbar/md-people.svg"
-import {CREATE_ORGANIZATION_URL, CREATE_USER_URL, EDICON_CREATE_URL} from "../config/constants";
+import {CREATE_ORGANIZATION_URL, EDICON_CREATE_URL, REGISTRATION_URL} from "../config/constants";
 import i18n from "i18next";
 import {Radio} from "antd";
 import ToggleButton from '@material-ui/lab/ToggleButton';
@@ -22,24 +22,22 @@ class Navigationbar extends Component {
     }
 
     render() {
-        if (!this.props.isAuthenticated) {
-            return null
-        }
-
         let navbarItems = [];
-        navbarItems.push(<ArrowLeft key="BackButton" className="NavigationButton"
-                                    onClick={this.props.history.goBack}/>);
-        navbarItems.push(<ArrowRight key="ForwardButton" className="NavigationButton"
-                                     onClick={this.props.history.goForward}/>);
+        if (this.props.isAuthenticated) {
+            navbarItems.push(<ArrowLeft key="BackButton" className="NavigationButton"
+                                        onClick={this.props.history.goBack}/>);
+            navbarItems.push(<ArrowRight key="ForwardButton" className="NavigationButton"
+                                         onClick={this.props.history.goForward}/>);
+        }
 
         if (this.state.isAdmin) {
             navbarItems.push(<AddButton key="EDICREATEBUTTON" className="NavigationButton"
                                         onClick={() => this.props.history.push(EDICON_CREATE_URL)}>
             </AddButton>);
-            navbarItems.push(<CreateUser key="USERCREATEBUTTON" className="NavigationButton"
-                                         onClick={() => this.props.history.push(CREATE_USER_URL)}/>);
             navbarItems.push(<CreateOrg key="ORGANIZATIONCREATEBUTTON" className="NavigationButton"
                                         onClick={() => this.props.history.push(CREATE_ORGANIZATION_URL)}/>);
+            navbarItems.push(<CreateUser key="USERCREATEBUTTON" className="NavigationButton"
+                                         onClick={() => this.props.history.push(REGISTRATION_URL)}/>);
         }
 
         const changeLanguage = (selectedLanguage) => {

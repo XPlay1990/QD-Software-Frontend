@@ -4,7 +4,7 @@ import {Redirect, Route, Switch, withRouter} from 'react-router-dom';
 
 import {getCurrentUserWithRoles} from '../security/AuthenticationService';
 import {
-    CREATE_USER_URL,
+    REGISTRATION_URL,
     CURRENT_USER,
     EDICON_CREATE_URL,
     EDICON_LIST_URL,
@@ -128,7 +128,7 @@ class App extends Component {
                                                              {...props} />}/>
                             <Route path={REGISTRATION_ACTIVATE_URL}
                                    render={(props) => <ActivateUserRegistration {...props} />}/>
-                            <Route path={CREATE_USER_URL} component={Signup}/>
+                            <Route path={REGISTRATION_URL} component={Signup}/>
                             <RoleRestrictedRoute isAuthenticated={this.state.isAuthenticated}
                                                  isAdmin={this.state.isAdmin}
                                                  exact path={EDICON_LIST_URL}

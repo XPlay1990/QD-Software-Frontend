@@ -20,11 +20,6 @@ class AppHeader extends Component {
     }
 
     render() {
-        if (!this.props.currentUser) {
-            //do not show AppHeader when logged out
-            return null
-        }
-
         let menuItems = [];
         menuItems.push(
             <Menu.Item key="/">
@@ -61,7 +56,10 @@ class AppHeader extends Component {
                         mode="horizontal"
                         selectedKeys={[this.props.location.pathname]}
                         style={{lineHeight: '64px'}}>
-                        {menuItems}
+                        {
+                            this.props.isAuthenticated ?
+                                menuItems : null
+                        }
                     </Menu>
                 </div>
             </Header>

@@ -3,7 +3,9 @@
     "save": "Speichern",
     "delete": "Löschen",
     "yes": "Ja",
-    "no": "Nein"
+    "no": "Nein",
+    "username": "Username",
+    "password": "Passwort"
   },
   "navigation": {
     "profile": "Profil",
@@ -15,6 +17,12 @@
     "state": "Status",
     "developer": "Entwickler",
     "lastModified": "Zuletzt geändert"
+  },
+  "registration": {
+    "activationTitle": "Anmelden",
+    "placeholderPassword": "Passwort zwischen 6 und 20 Zeichen",
+    "placeholderPasswordRepeat": "Passwort wiederholen",
+    "setPassword": "Passwort speichern"
   },
   "ediConnection": {
     "applyChanges": "Änderung speichern",
