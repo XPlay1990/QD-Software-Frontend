@@ -92,7 +92,7 @@ class Signup extends Component {
                                   validateStatus={this.state.username.validateStatus}
                                   help={this.state.username.errorMsg}>
                             <Input
-                                size="large"
+                                size="default"
                                 name="username"
                                 autoComplete="off"
                                 placeholder="A unique username"
@@ -106,7 +106,7 @@ class Signup extends Component {
                             validateStatus={this.state.email.validateStatus}
                             help={this.state.email.errorMsg}>
                             <Input
-                                size="large"
+                                size="default"
                                 name="email"
                                 type="email"
                                 autoComplete="off"
@@ -120,7 +120,7 @@ class Signup extends Component {
                             validateStatus={this.state.name.validateStatus}
                             help={this.state.name.errorMsg}>
                             <Input 
-                                size="large"
+                                size="default"
                                 name="name"
                                 autoComplete="off"
                                 placeholder="Your full name"
@@ -132,7 +132,7 @@ class Signup extends Component {
                             validateStatus={this.state.name.validateStatus}
                             help={this.state.name.errorMsg}>
                             <Input
-                                size="large"
+                                size="default"
                                 name="name"
                                 autoComplete="off"
                                 placeholder="Your full name"
@@ -144,7 +144,7 @@ class Signup extends Component {
                             validateStatus={this.state.password.validateStatus}
                             help={this.state.password.errorMsg}>
                             <Input 
-                                size="large"
+                                size="default"
                                 name="password" 
                                 type="password"
                                 autoComplete="off"
@@ -157,7 +157,7 @@ class Signup extends Component {
                             validateStatus={this.state.password.validateStatus}
                             help={this.state.password.errorMsg}>
                             <Input
-                                size="large"
+                                size="default"
                                 name="password"
                                 type="password"
                                 autoComplete="off"
@@ -170,7 +170,7 @@ class Signup extends Component {
                             validateStatus={this.state.password.validateStatus}
                             help={this.state.password.errorMsg}>
                             <Input
-                                size="large"
+                                size="default"
                                 name="password"
                                 type="password"
                                 autoComplete="off"
@@ -181,7 +181,7 @@ class Signup extends Component {
                         <FormItem>
                             <Button type="primary" 
                                 htmlType="submit" 
-                                size="large" 
+                                size="default" 
                                 className="signup-form-button"
                                 disabled={this.isFormInvalid()}>Sign up</Button>
                             Already registed? <Link to={LOGIN_URL}>Login now!</Link>
