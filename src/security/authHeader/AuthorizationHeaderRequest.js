@@ -15,6 +15,7 @@ export const customFileUploadRequest = (options) => {
 };
 
 const createRequest = (options, headers) => {
+    headers.append("Access-Control-Allow-Origin", "*");
     if (localStorage.getItem(ACCESS_TOKEN)) {
         headers.append('Authorization', 'Bearer ' + localStorage.getItem(ACCESS_TOKEN))
     }
