@@ -45,6 +45,7 @@ export const customFileDownloadRequest = (options) => {
 
     const defaults = {headers: headers};
     options = Object.assign({}, defaults, options);
+    options = Object.assign({}, {crossDomain: true}, options);
 
 
     return fetch(options.url, options)
