@@ -14,7 +14,8 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isAuthenticated: props.isAuthenticated
+            isAuthenticated: props.isAuthenticated,
+            username: props.location.state
         };
     }
 
@@ -29,7 +30,7 @@ class Login extends Component {
                 <div className="login-container">
                     <h1 className="page-title">Login</h1>
                     <div className="login-content">
-                        <AntWrappedLoginForm onLogin={this.props.onLogin}/>
+                        <AntWrappedLoginForm onLogin={this.props.onLogin} username={this.state.username}/>
                     </div>
                 </div>
             </div>
@@ -40,6 +41,9 @@ class Login extends Component {
 class LoginForm extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            username: props.username
+        };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -75,13 +79,15 @@ class LoginForm extends Component {
             <Form onSubmit={this.handleSubmit} className="login-form">
                 <FormItem>
                     {getFieldDecorator('usernameOrEmail', {
+                        initialValue: this.state.username,
                         rules: [{required: true, message: 'Please input your username or email!'}],
                     })(
                         <Input
                             prefix={<Icon type="user"/>}
                             size="large"
                             name="usernameOrEmail"
-                            placeholder="Username or Email"/>
+                            placeholder="Username or Email"
+                        />
                     )}
                 </FormItem>
                 <FormItem>

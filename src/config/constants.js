@@ -3,7 +3,7 @@ export const BACKEND_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://lo
 
 // API URLS
 export const BASE_URL = '/';
-export const REGISTRATION_ACTIVATE_URL = '/registration';
+export const REGISTRATION_ACTIVATE_URL = '/registration/activation';
 export const CREATE_USER_URL = '/tbd';
 export const LOGIN_URL = '/auth/login';
 export const LOGOUT_URL = '/auth/logout';

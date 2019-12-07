@@ -63,7 +63,7 @@ export function getQuestions(language) {
 
 export function getUsernameFromVerificationToken(token) {
     return customJSONRequest({
-        url: `${BACKEND_BASE_URL}${REGISTRATION_ACTIVATE_URL}/getUsername?token=${token}`,
+        url: `${BACKEND_BASE_URL}${REGISTRATION_ACTIVATE_URL}?token=${token}`,
         method: 'GET'
     });
 }
@@ -122,6 +122,14 @@ export function signup(signupRequest) {
         url: BACKEND_BASE_URL + "/auth/signup",
         method: 'POST',
         body: JSON.stringify(signupRequest)
+    });
+}
+
+export function activateAndSetPassword(activationRequest) {
+    return customJSONRequest({
+        url: BACKEND_BASE_URL + REGISTRATION_ACTIVATE_URL,
+        method: 'PUT',
+        body: JSON.stringify(activationRequest)
     });
 }
 

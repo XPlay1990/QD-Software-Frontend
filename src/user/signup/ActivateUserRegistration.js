@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
-import {getUsernameFromVerificationToken, signup} from '../../util/APIUtils';
+import {activateAndSetPassword, getUsernameFromVerificationToken} from '../../util/APIUtils';
 import './ActivateUserRegistration.css';
-import {Link} from 'react-router-dom';
 import {LOGIN_URL, PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH} from '../../config/constants';
 
 import {Button, Form, Input, notification} from 'antd';
-import i18n from "i18next";
 
 const FormItem = Form.Item;
 
@@ -81,13 +79,13 @@ class ActivateUserRegistration extends Component {
             token: this.state.token,
             password: this.state.password.value
         };
-        signup(registrationActivationRequest)
+        activateAndSetPassword(registrationActivationRequest)
             .then(response => {
                 notification.success({
                     message: 'EdiConnection-Portal',
                     description: "Thank you! You're successfully registered. Please Login to continue!",
                 });
-                this.props.history.push(LOGIN_URL);
+                this.props.history.push(LOGIN_URL, this.state.username);
             }).catch(error => {
             notification.error({
                 message: 'EdiConnection-Portal',
