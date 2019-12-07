@@ -4,12 +4,13 @@ import {Redirect, Route, Switch, withRouter} from 'react-router-dom';
 
 import {getCurrentUserWithRoles} from '../security/AuthenticationService';
 import {
+    CREATE_USER_URL,
     CURRENT_USER,
     EDICON_CREATE_URL,
     EDICON_LIST_URL,
     FORBIDDEN_URL,
     LOGIN_URL,
-    REGISTER_URL
+    REGISTRATION_ACTIVATE_URL
 } from '../config/constants';
 import Login from '../user/login/Login';
 import Signup from '../user/signup/Signup';
@@ -28,6 +29,7 @@ import EdiCreate from "../edi/create/EdiCreate";
 import Forbidden from "../error/Forbidden";
 import SwitchUser from "../admin_functions/SwitchUser";
 import SupplierQuestions from "../edi/display/detail/supplierQuestions/SupplierQuestions";
+import ActivateUserRegistration from "../user/signup/ActivateUserRegistration";
 
 const {Content} = Layout;
 
@@ -121,7 +123,9 @@ class App extends Component {
                             <Route path={LOGIN_URL}
                                    render={(props) => <Login onLogin={this.handleLogin}
                                                              isAuthenticated={this.state.isAuthenticated} {...props} />}/>
-                            <Route path={REGISTER_URL} component={Signup}/>
+                            <Route path={REGISTRATION_ACTIVATE_URL}
+                                   render={(props) => <ActivateUserRegistration {...props} />}/>
+                            <Route path={CREATE_USER_URL} component={Signup}/>
                             <RoleRestrictedRoute isAuthenticated={this.state.isAuthenticated}
                                                  isAdmin={this.state.isAdmin}
                                                  exact path={EDICON_LIST_URL}

@@ -13,7 +13,7 @@ import {
     GET_DEVELOPERS,
     GET_EDISTATES,
     GET_ORGANIZATION_MEMBERS_URL,
-    GET_SUPPLIER_ORGANIZATIONS_URL, GET_USERLIST_URL, MESSAGE_TYPES_URL, QUESTION_URL,
+    GET_SUPPLIER_ORGANIZATIONS_URL, GET_USERLIST_URL, MESSAGE_TYPES_URL, QUESTION_URL, REGISTRATION_ACTIVATE_URL,
     SAVE_DEVELOPER_AND_STATE, SELF_URL, SWITCH_USER_URL, TRANSFER_STANDARDS_URL
 } from '../config/constants';
 
@@ -57,6 +57,13 @@ export function getAnswers(id) {
 export function getQuestions(language) {
     return customJSONRequest({
         url: `${BACKEND_BASE_URL}${QUESTION_URL}?language=${language}`,
+        method: 'GET'
+    });
+}
+
+export function getUsernameFromVerificationToken(token) {
+    return customJSONRequest({
+        url: `${BACKEND_BASE_URL}${REGISTRATION_ACTIVATE_URL}/getUsername?token=${token}`,
         method: 'GET'
     });
 }
