@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Login.css';
-import {Link, Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import loginBackground from '../../resources/login/CHANGE_ME_NOT_FREE.png';
 import abbinoLogo from '../../resources/login/abbino_nicando.png';
 import AuthenticationService from "../../security/AuthenticationService"

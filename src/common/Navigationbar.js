@@ -6,7 +6,7 @@ import {ReactComponent as ArrowRight} from "../resources/navbar/md-arrow-round-f
 import {ReactComponent as AddButton} from "../resources/navbar/md-add.svg"
 import {ReactComponent as CreateUser} from "../resources/navbar/md-person-add.svg"
 import {ReactComponent as CreateOrg} from "../resources/navbar/md-people.svg"
-import {CREATE_ORGANIZATION_URL, EDICON_CREATE_URL, REGISTRATION_URL} from "../config/constants";
+import {CREATE_ORGANIZATION_URL, EDICON_CREATE_URL, LOGIN_URL, REGISTRATION_URL} from "../config/constants";
 import i18n from "i18next";
 import {Radio} from "antd";
 import ToggleButton from '@material-ui/lab/ToggleButton';
@@ -22,6 +22,10 @@ class Navigationbar extends Component {
     }
 
     render() {
+        if (this.props.location.pathname === LOGIN_URL) {
+            return null
+        }
+
         let navbarItems = [];
         if (this.props.isAuthenticated) {
             navbarItems.push(<ArrowLeft key="BackButton" className="NavigationButton"
