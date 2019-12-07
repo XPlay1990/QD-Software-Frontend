@@ -15,7 +15,7 @@ class Login extends Component {
         super(props);
         this.state = {
             isAuthenticated: props.isAuthenticated,
-            username: props.location.state
+            username: (props.location.state) ? props.location.state.username : null
         };
     }
 
@@ -79,7 +79,7 @@ class LoginForm extends Component {
             <Form onSubmit={this.handleSubmit} className="login-form">
                 <FormItem>
                     {getFieldDecorator('usernameOrEmail', {
-                        initialValue: this.state.username,
+                        initialValue: this.state.username || '',
                         rules: [{required: true, message: 'Please input your username or email!'}],
                     })(
                         <Input

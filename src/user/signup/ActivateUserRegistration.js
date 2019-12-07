@@ -85,7 +85,10 @@ class ActivateUserRegistration extends Component {
                     message: 'EdiConnection-Portal',
                     description: "Thank you! You're successfully registered. Please Login to continue!",
                 });
-                this.props.history.push(LOGIN_URL, this.state.username);
+                this.props.history.push({
+                    pathname: LOGIN_URL,
+                    state: {username: this.state.username}
+                })
             }).catch(error => {
             notification.error({
                 message: 'EdiConnection-Portal',
@@ -100,6 +103,7 @@ class ActivateUserRegistration extends Component {
 
     componentDidMount() {
         this._isMounted = true;
+        localStorage.clear();
         this.getUserNameFromToken();
         // this.getAnswers(this.ediConnectionId);
     }
@@ -150,7 +154,7 @@ class ActivateUserRegistration extends Component {
                                     htmlType="submit"
                                     size="large"
                                     className="signup-form-button"
-                                    disabled={this.isFormInvalid()}>Sign up</Button>
+                                    disabled={this.isFormInvalid()}>Set Password</Button>
                         </FormItem>
                     </Form>
                 </div>

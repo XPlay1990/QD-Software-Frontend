@@ -106,6 +106,7 @@ class App extends Component {
         if (this.state.isLoading) {
             return <LoadingIndicator/>
         }
+
         return (
             <Layout className="app-container">
                 <AppHeader isAuthenticated={this.state.isAuthenticated}
@@ -122,7 +123,9 @@ class App extends Component {
                             <Route exact path="/" render={() => (<Redirect to={EDICON_LIST_URL}/>)}/>
                             <Route path={LOGIN_URL}
                                    render={(props) => <Login onLogin={this.handleLogin}
-                                                             isAuthenticated={this.state.isAuthenticated} {...props} />}/>
+                                                             isAuthenticated={this.state.isAuthenticated}
+                                                             // username={props.username}
+                                                             {...props} />}/>
                             <Route path={REGISTRATION_ACTIVATE_URL}
                                    render={(props) => <ActivateUserRegistration {...props} />}/>
                             <Route path={CREATE_USER_URL} component={Signup}/>
