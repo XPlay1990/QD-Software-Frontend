@@ -7,7 +7,7 @@ import "./Attachment.css"
 // import {ReactComponent as DocxIcon} from "../../../../resources/fileIcons/docx.svg"
 // import {ReactComponent as DefaultIcon} from "../../../../resources/fileIcons/clip.svg"
 import {ReactComponent as DownloadIcon} from "../../../../resources/fileIcons/md-download.svg"
-import {ACCESS_TOKEN} from "../../../../config/constants";
+import {ACCESS_TOKEN, BACKEND_BASE_URL, EDICON_ATTACHMENT_DOWNLOAD_URL} from "../../../../config/constants";
 import Button from "@material-ui/core/Button";
 import formatBytes from '../../../../util/DataSizeHelper';
 
@@ -29,7 +29,7 @@ class Attachment extends Component {
     downloadFile() {
         let anchor = document.createElement("a");
         document.body.appendChild(anchor);
-        let file = `http://localhost:9020/edi_connection/${this.state.ediConnectionId}/attachment/download/${this.state.fileName}`;
+        let file = `${BACKEND_BASE_URL}${EDICON_ATTACHMENT_DOWNLOAD_URL(this.state.ediConnectionId, this.state.fileName)}`;
 
         let headers = new Headers();
         headers.append('Authorization', 'Bearer ' + localStorage.getItem(ACCESS_TOKEN));
