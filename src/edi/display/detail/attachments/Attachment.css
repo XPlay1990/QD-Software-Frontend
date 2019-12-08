@@ -1,4 +1,28 @@
-.EdiFileIcon{
-    height: 40px;
-    width: 40px;
+.Attachment {
+    display: grid;
+    /*grid-gap: 2px;*/
+    width: 200px;
+    background-color: white;
+    /*padding: 10px;*/
+    grid-template-areas: 'icon filename' 'icon filesize';
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 55% 45%;
+}
+
+.Attachment .EdiFileIcon {
+    /*height: 40px;*/
+    width: 50px;
+    grid-area: icon;
+}
+
+.Attachment .fileName {
+    grid-area: filename;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.Attachment .fileSize {
+    grid-area: filesize;
+    display: flex;
+    flex-direction: column;
 }

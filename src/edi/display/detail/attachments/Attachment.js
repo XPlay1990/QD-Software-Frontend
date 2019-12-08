@@ -9,6 +9,7 @@ import "./Attachment.css"
 import {ReactComponent as DownloadIcon} from "../../../../resources/fileIcons/md-download.svg"
 import {ACCESS_TOKEN} from "../../../../config/constants";
 import Button from "@material-ui/core/Button";
+import formatBytes from '../../../../util/DataSizeHelper';
 
 // import Divider from '@material-ui/core/Divider';
 
@@ -102,7 +103,8 @@ class Attachment extends Component {
         return (
             <div className="Attachment">
                 {fileSymbol}
-                {this.state.fileName}
+                <div className="fileName">{this.state.fileName}</div>
+                <div className="fileSize">{formatBytes(this.state.fileSize)}</div>
             </div>
         );
     }
