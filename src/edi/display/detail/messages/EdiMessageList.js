@@ -118,11 +118,11 @@ class EdiMessageList extends Component {
                         // ) : null
                     }
                 </div>
-                {/*<MegaDraftTextEditor*/}
-                {/*    loadEdiMessages={this.loadEdiMessages}*/}
-                {/*    ediConnectionId={this.ediConnectionId}*/}
-                {/*/>*/}
-                <MyDraftailEditor/>
+                <MegaDraftTextEditor
+                    loadEdiMessages={this.loadEdiMessages}
+                    ediConnectionId={this.ediConnectionId}
+                />
+                {/*<MyDraftailEditor/>*/}
                 {/*<CollapsedEditor*/}
                 {/*    placeholder="What would you like to say?"*/}
                 {/*    isExpanded={this.state.isEditorExpanded}*/}

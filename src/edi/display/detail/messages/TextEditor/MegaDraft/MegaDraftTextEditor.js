@@ -33,7 +33,7 @@ class MegaDraftTextEditor extends Component {
     handleUpdate = (editorState) => {
         this.setState({
             editorState,
-            raw: convertToRaw(editorState.getCurrentContent()),
+            // raw: convertToRaw(editorState.getCurrentContent()),
             paste: false,
         });
     };
