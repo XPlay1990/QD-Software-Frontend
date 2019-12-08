@@ -3,7 +3,7 @@ import {getUserProfile} from '../../util/APIUtils';
 // import {Avatar, Tabs} from 'antd';
 import {Avatar} from 'antd';
 import {getAvatarColor} from '../../util/Colors';
-import {formatDate} from '../../util/Helpers';
+import {formatLocalDateTime} from '../../util/Helpers';
 import LoadingIndicator from '../../common/LoadingIndicator';
 import './Profile.css';
 import NotFound from '../../error/NotFound';
@@ -29,7 +29,6 @@ class Profile extends Component {
 
         getUserProfile()
             .then(response => {
-                console.log(response)
                 if (this._isMounted) {
                     this.setState({
                         user: response.message,
@@ -110,7 +109,7 @@ class Profile extends Component {
                                         className="full-name">{this.state.user.firstName + ' ' + this.state.user.lastName}</div>
                                     <div className="username">@{this.state.user.username}</div>
                                     <div className="user-joined">
-                                        Joined {formatDate(this.state.user.creationTime)}
+                                        Joined {formatLocalDateTime(this.state.user.creationTime)}
                                     </div>
                                     <div className="email">
                                         Email: {this.state.user.email}
