@@ -1,9 +1,9 @@
 .login-container {
     position: absolute;
-    right: 500px;
-    top: 250px;
     width: 300px;
-    margin: 40px auto 0;
+    right: 27%;
+    top: 30%;
+    margin-bottom: auto;
     padding: 20px 20px 20px 20px;
 
     background-color: powderblue;

@@ -26,7 +26,7 @@ class Login extends Component {
         }
         return (
             <div className="fullContainer">
-                <img src={loginBackground} id="loginBackgroundImage" alt=""/> : null
+                <img src={loginBackground} id="loginBackgroundImage" alt=""/>
 
                 <div className="login-container">
                     <h1 className="page-title">Login</h1>
