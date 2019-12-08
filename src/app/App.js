@@ -4,13 +4,13 @@ import {Redirect, Route, Switch, withRouter} from 'react-router-dom';
 
 import {getCurrentUserWithRoles} from '../security/AuthenticationService';
 import {
-    REGISTRATION_URL,
     CURRENT_USER,
     EDICON_CREATE_URL,
     EDICON_LIST_URL,
     FORBIDDEN_URL,
     LOGIN_URL,
-    REGISTRATION_ACTIVATE_URL
+    REGISTRATION_ACTIVATE_URL,
+    REGISTRATION_URL
 } from '../config/constants';
 import Login from '../user/login/Login';
 import Signup from '../user/signup/Signup';
@@ -40,7 +40,7 @@ class App extends Component {
             currentUser: null,
             isAdmin: false,
             isAuthenticated: false,
-            isLoading: false
+            isLoading: true
         };
         this.handleLogout = this.handleLogout.bind(this);
         this.loadCurrentUser = this.loadCurrentUser.bind(this);
@@ -124,7 +124,6 @@ class App extends Component {
                             <Route path={LOGIN_URL}
                                    render={(props) => <Login onLogin={this.handleLogin}
                                                              isAuthenticated={this.state.isAuthenticated}
-                                                             // username={props.username}
                                                              {...props} />}/>
                             <Route path={REGISTRATION_ACTIVATE_URL}
                                    render={(props) => <ActivateUserRegistration {...props} />}/>
