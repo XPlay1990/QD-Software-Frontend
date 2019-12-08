@@ -4,6 +4,7 @@ import './AppHeader.css';
 import pollIcon from '../poll.svg';
 import {Dropdown, Icon, Layout, Menu} from 'antd';
 import {Trans} from "react-i18next";
+import {CURRENT_USER} from "../config/constants";
 
 const Header = Layout.Header;
 
@@ -75,7 +76,7 @@ function ProfileDropdownMenu(props) {
                     {props.currentUser.name}
                 </div>
                 <div className="username-info">
-                    @{props.currentUser.username}
+                    @{JSON.parse(localStorage.getItem(CURRENT_USER)).username}
                 </div>
             </Menu.Item>
             <Menu.Divider/>

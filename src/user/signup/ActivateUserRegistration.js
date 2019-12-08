@@ -122,7 +122,7 @@ class ActivateUserRegistration extends Component {
 
     render() {
         return (
-            <div className="signup-container">
+            <div className="activation-container">
                 <h1 className="page-title">{<Trans i18nKey="registration.activationTitle">Sign up</Trans>}</h1>
                 <div className="signup-content">
                     <Form onSubmit={this.handleSubmit} className="signup-form">

@@ -103,7 +103,7 @@ class SwitchUser extends Component {
     render() {
 
         return (
-            <div className="ediContent">
+            <div className="SwitchUserContent">
                 {
                     this.state.isLoading ?
                         <LoadingIndicator/> : null

@@ -178,8 +178,6 @@ class Signup extends Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        console.log(this.state.language.value)
-
         const signupRequest = {
             firstName: this.state.firstName.value,
             lastName: this.state.lastName.value,

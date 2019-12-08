@@ -1,25 +1,10 @@
-body, html {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-
-  top: 0;
-  left: 0;
-  background-color: #282c34;
-  /* Preserve aspet ratio */
-  min-width: 100%;
-  min-height: 100%;
-}
-
-.container {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+#root{
+    height: 100%;
+    width: 100%;
 }
 
 @media (max-width: 768px) {
-  h1 {
-    font-size: 1.7em;
-  }
+    h1 {
+        font-size: 1.7em;
+    }
 }

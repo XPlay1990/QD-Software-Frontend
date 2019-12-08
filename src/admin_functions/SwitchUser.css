@@ -1,3 +1,8 @@
-.SwitchUserButton::after{
+.SwitchUserButton::after {
     content: "Switch User";
+}
+
+.SwitchUserContent {
+    width: 40%;
+    margin: auto;
 }

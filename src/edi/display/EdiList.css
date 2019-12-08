@@ -10,13 +10,26 @@
 }
 
 .ediConnectionsContainer {
+    margin-left: auto;
+    margin-right: auto;
     background-color: white;
-    max-width: 90%;
-    margin: 20px auto 0;
+    width: 90%;
+    height: 90%;
 }
 
-.TableInfos{
+.ediConnectionsTable {
+    margin: auto;
+    background-color: white;
+}
+
+.TableInfos {
     /*display: flex;*/
     /*flex-direction: row;*/
     /*align-items: center;*/
+}
+
+.ediConnectionsContainer .hints {
+    margin-bottom: 20px;
+    height: 40px;
+    text-align: center;
 }

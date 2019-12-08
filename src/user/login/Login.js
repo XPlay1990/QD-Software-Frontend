@@ -25,8 +25,9 @@ class Login extends Component {
             return <Redirect to={EDICON_LIST_URL}/>
         }
         return (
-            <div className="loginBackground">
-                <img src={loginBackground} id="loginBackgroundImage" alt=""/>
+            <div className="fullContainer">
+                <img src={loginBackground} id="loginBackgroundImage" alt=""/> : null
+
                 <div className="login-container">
                     <h1 className="page-title">Login</h1>
                     <div className="login-content">
@@ -106,7 +107,7 @@ class LoginForm extends Component {
                     <Button type="primary" htmlType="submit" size="large" className="login-form-button">Login</Button>
                 </FormItem>
                 <div className={"LoginFooter"}>
-                    <img src={abbinoLogo} className="LoginBackground" alt=""/>
+                    <img src={abbinoLogo} className="footer" alt=""/>
                 </div>
             </Form>
         );

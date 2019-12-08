@@ -1,5 +1,4 @@
 .app-title {
-    /*text-align: center;*/
     display: inline-block;
     /*justify-content: flex-end;*/
     order: 2;
@@ -16,6 +15,8 @@
     line-height: 64px;
     font-size: 33px;
     display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .app-title a:hover {
