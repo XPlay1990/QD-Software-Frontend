@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import { useTranslation, withTranslation, Trans } from 'react-i18next';
+import {Trans} from 'react-i18next';
 
 export const columnConfig = [
     {

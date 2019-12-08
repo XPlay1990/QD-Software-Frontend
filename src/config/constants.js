@@ -1,5 +1,5 @@
 // BACKEND
-export const BACKEND_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:9020';
+export const BACKEND_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:9020'; //'http://ec2-18-184-142-66.eu-central-1.compute.amazonaws.com:9020';
 
 // API URLS
 export const BASE_URL = '/';
@@ -8,11 +8,17 @@ export const REGISTRATION_ACTIVATE_URL = `${REGISTRATION_URL}/activation`;
 export const LOGIN_URL = '/auth/login';
 export const LOGOUT_URL = '/auth/logout';
 export const CREATE_ORGANIZATION_URL = '/tbd';
-export const GET_ORGANIZATION_MEMBERS_URL = (id) => `/org/${id}/members`;
-export const GET_DEVELOPERS = '/org/nicando/members';
-export const GET_CUSTOMER_ORGANIZATIONS_URL = '/org/customers';
-export const GET_SUPPLIER_ORGANIZATIONS_URL = '/org/suppliers';
+export const USER_ROLES_BASE_URL = '/role';
+export const LOCALE_BASE_URL = '/locale';
+export const LANGUAGE_URL = `${LOCALE_BASE_URL}/languages`;
+export const ORGANIZATION_BASE_URL = '/org';
+export const ORGANIZATION_GET_ALL_URL = `${ORGANIZATION_BASE_URL}/all`;
+export const GET_ORGANIZATION_MEMBERS_URL = (id) => `${ORGANIZATION_BASE_URL}/${id}/members`;
+export const GET_DEVELOPERS = `${ORGANIZATION_BASE_URL}/nicando/members`;
+export const GET_CUSTOMER_ORGANIZATIONS_URL = `${ORGANIZATION_BASE_URL}/customers`;
+export const GET_SUPPLIER_ORGANIZATIONS_URL = `${ORGANIZATION_BASE_URL}/suppliers`;
 export const USER_URL= '/user';
+export const GENDER_URL = `${USER_URL}/genders`;
 export const SELF_URL = USER_URL + '/me';
 export const GET_USERLIST_URL = USER_URL + '/all';
 export const SWITCH_USER_URL = '/switchUser';
@@ -43,7 +49,7 @@ export const MAX_CHOICES = 6;
 export const POLL_QUESTION_MAX_LENGTH = 140;
 export const POLL_CHOICE_MAX_LENGTH = 40;
 
-export const NAME_MIN_LENGTH = 4;
+export const NAME_MIN_LENGTH = 1;
 export const NAME_MAX_LENGTH = 40;
 
 export const USERNAME_MIN_LENGTH = 3;

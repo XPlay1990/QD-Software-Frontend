@@ -4,17 +4,27 @@ import customJSONRequest, {
 } from "../security/authHeader/AuthorizationHeaderRequest"
 import {
     ANSWER_URL,
-    BACKEND_BASE_URL, CONNECTION_TYPES_URL,
-    EDI_LIST_SIZE, EDICON_ATTACHMENT_BASE_URL,
+    BACKEND_BASE_URL,
+    CONNECTION_TYPES_URL,
+    EDI_LIST_SIZE,
+    EDICON_ATTACHMENT_BASE_URL,
     EDICON_ATTACHMENT_UPLOAD_URL,
     EDICON_LIST_URL,
-    EDICON_MESSAGES_URL,
+    EDICON_MESSAGES_URL, GENDER_URL,
     GET_CUSTOMER_ORGANIZATIONS_URL,
     GET_DEVELOPERS,
     GET_EDISTATES,
     GET_ORGANIZATION_MEMBERS_URL,
-    GET_SUPPLIER_ORGANIZATIONS_URL, GET_USERLIST_URL, MESSAGE_TYPES_URL, QUESTION_URL, REGISTRATION_ACTIVATE_URL,
-    SAVE_DEVELOPER_AND_STATE, SELF_URL, SWITCH_USER_URL, TRANSFER_STANDARDS_URL
+    GET_SUPPLIER_ORGANIZATIONS_URL,
+    GET_USERLIST_URL, LANGUAGE_URL,
+    MESSAGE_TYPES_URL,
+    ORGANIZATION_GET_ALL_URL,
+    QUESTION_URL,
+    REGISTRATION_ACTIVATE_URL, REGISTRATION_URL,
+    SAVE_DEVELOPER_AND_STATE,
+    SELF_URL,
+    SWITCH_USER_URL,
+    TRANSFER_STANDARDS_URL, USER_ROLES_BASE_URL
 } from '../config/constants';
 
 export function getEdiConnections(pageNumber, pageSize, pageSorting, additiveSorting) {
@@ -119,7 +129,7 @@ export function getEdiConnectionMessages(ediConnectionId) {
 
 export function signup(signupRequest) {
     return customJSONRequest({
-        url: BACKEND_BASE_URL + "/auth/signup",
+        url: BACKEND_BASE_URL + REGISTRATION_URL,
         method: 'POST',
         body: JSON.stringify(signupRequest)
     });
@@ -140,12 +150,12 @@ export function checkUsernameAvailability(username) {
     });
 }
 
-export function checkEmailAvailability(email) {
-    return customJSONRequest({
-        url: BACKEND_BASE_URL + "/user/checkEmailAvailability?email=" + email,
-        method: 'GET'
-    });
-}
+// export function checkEmailAvailability(email) {
+//     return customJSONRequest({
+//         url: BACKEND_BASE_URL + "/user/checkEmailAvailability?email=" + email,
+//         method: 'GET'
+//     });
+// }
 
 export function getUserProfile() {
     return customJSONRequest({
@@ -170,6 +180,34 @@ export function createEdiCon(customerOrgId, custmerContactIdList, supplierOrgId,
 export function getOrganizationMembers(id) {
     return customJSONRequest({
         url: `${BACKEND_BASE_URL}${GET_ORGANIZATION_MEMBERS_URL(id)}`,
+        method: 'GET'
+    });
+}
+
+export function getAllOrganizations() {
+    return customJSONRequest({
+        url: `${BACKEND_BASE_URL}${ORGANIZATION_GET_ALL_URL}`,
+        method: 'GET'
+    });
+}
+
+export function getAllRoles() {
+    return customJSONRequest({
+        url: `${BACKEND_BASE_URL}${USER_ROLES_BASE_URL}`,
+        method: 'GET'
+    });
+}
+
+export function getAllLanguages() {
+    return customJSONRequest({
+        url: `${BACKEND_BASE_URL}${LANGUAGE_URL}`,
+        method: 'GET'
+    });
+}
+
+export function getAllGenders() {
+    return customJSONRequest({
+        url: `${BACKEND_BASE_URL}${GENDER_URL}`,
         method: 'GET'
     });
 }

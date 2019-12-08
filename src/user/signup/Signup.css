@@ -1,7 +1,6 @@
 .signup-container {
-    max-width: 420px;
-    margin: 0 auto;
-    margin-top: 40px;    
+    /*max-width: 420px;*/
+    margin: 40px auto auto;
 }
 
 .signup-form-button {
@@ -18,4 +17,60 @@
 
 .signup-form input {
     margin-bottom: 3px;
+}
+
+.signup-contentGrid {
+    display: grid;
+    width: 50%;
+    margin: 40px auto auto;
+    grid-gap: 15px;
+    padding: 10px;
+    grid-template-areas: 'Header Header' 'Username Email' 'Firstname Lastname' 'Organization Roles' 'Language Gender' 'Submit Submit';
+    grid-template-columns: 50% 50%;
+}
+
+
+.signup-contentGrid .Header {
+    grid-area: Header;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.signup-contentGrid .Username {
+    grid-area: Username;
+}
+
+.signup-contentGrid .Email {
+    grid-area: Email;
+}
+
+.signup-contentGrid .FirstName {
+    grid-area: Firstname;
+}
+
+.signup-contentGrid .LastName {
+    grid-area: Lastname;
+}
+
+.signup-contentGrid .Organization {
+    grid-area: Organization;
+}
+
+.signup-contentGrid .Roles {
+    grid-area: Roles;
+}
+
+.signup-contentGrid .Gender {
+    grid-area: Gender;
+}
+
+.signup-contentGrid .Language {
+    grid-area: Language;
+}
+
+.signup-contentGrid .Submit {
+    grid-area: Submit;
+    margin-right: 0;
+    margin-left: auto;
+    width: 160px;
 }
