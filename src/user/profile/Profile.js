@@ -3,7 +3,7 @@ import {getUserProfile} from '../../util/APIUtils';
 // import {Avatar, Tabs} from 'antd';
 import {Avatar} from 'antd';
 import {getAvatarColor} from '../../util/Colors';
-import {formatLocalDateTime} from '../../util/Helpers';
+import {formatLocalDateTime} from '../../util/DateHelper';
 import LoadingIndicator from '../../common/LoadingIndicator';
 import './Profile.css';
 import NotFound from '../../error/NotFound';

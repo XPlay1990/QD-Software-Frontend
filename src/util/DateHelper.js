@@ -1,3 +1,7 @@
+import moment from 'moment';
+import 'moment/locale/de';
+import i18n from "i18next";
+
 export function formatDate(dateString) {
     const date = new Date(dateString);
 
@@ -15,6 +19,6 @@ export function formatDate(dateString) {
 }
 
 export function formatLocalDateTime(input) {
-    const date = new Date(parseInt(input[0]), parseInt(input[1])-1, parseInt(input[2]), parseInt(input[3]), parseInt(input[4]), parseInt(input[5]));
-    return date.toDateString()
-}  
+    const date = moment(input.join(),'YYYY,MM,DD,HH,mm,ss');
+    return moment(date).locale(i18n.language).format('LL')
+}
