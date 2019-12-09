@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import './LoginApp.css';
 import {Route, Switch, withRouter} from 'react-router-dom';
-import {CURRENT_USER, IS_ADMIN, IS_AUTHENTICATED, LOGIN_URL} from '../config/constants';
+import {ACCESS_TOKEN, CURRENT_USER, IS_ADMIN, IS_AUTHENTICATED, LOGIN_URL} from '../config/constants';
 import Login from '../user/login/Login';
 import LoadingIndicator from '../common/LoadingIndicator';
 
@@ -37,17 +37,15 @@ class App extends Component {
             return <LoadingIndicator/>
         }
 
-        // console.log(localStorage.getItem(CURRENT_USER))
-        // console.log(localStorage.getItem(IS_AUTHENTICATED))
-        // console.log(localStorage.getItem(IS_ADMIN))
-        // console.log(window.location.pathname)
+        console.log(localStorage.getItem(CURRENT_USER))
+        console.log(localStorage.getItem(IS_AUTHENTICATED))
+        console.log(localStorage.getItem(IS_ADMIN))
+        console.log(localStorage.getItem(ACCESS_TOKEN))
+        console.log(window.location.pathname)
 
         return (
             <Switch>
-                <Route path={LOGIN_URL}
-                       render={(props) => <Login onLogin={this.handleLogin}
-                                                 isAuthenticated={localStorage.getItem(IS_AUTHENTICATED)}
-                                                 {...props} />}/>
+                <Route path={LOGIN_URL} render={(props) => <Login onLogin={this.handleLogin} {...props} />}/>
                 <Route path="/" render={(props) => <MainApp appState={this.state} {...props} />}/>
             </Switch>
         );

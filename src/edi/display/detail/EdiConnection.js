@@ -6,8 +6,7 @@ import Description from "./description/Description";
 import EdiMessageList from "./messages/EdiMessageList";
 import {notification} from "antd";
 import Button from '@material-ui/core/Button';
-import {ANSWER_URL, CURRENT_USER} from "../../../config/constants";
-import {Role} from "../../../security/Roles";
+import {ANSWER_URL} from "../../../config/constants";
 import AttachmentList from "./attachments/AttachmentList";
 import {Link} from "react-router-dom";
 import {Trans} from "react-i18next";
@@ -19,7 +18,6 @@ class EdiConnection extends Component {
             ediConnection: null,
             isLoading: true
         };
-        this.isAdmin = JSON.parse(localStorage.getItem(CURRENT_USER))["authorities"].includes(Role.Admin);
         this.ediConnectionId = props.match.params.id;
         this.loadEdiConnection = this.loadEdiConnection.bind(this);
     }
@@ -64,14 +62,6 @@ class EdiConnection extends Component {
     }
 
     componentDidUpdate = nextProps => {
-        if (this.props.isAuthenticated !== nextProps.isAuthenticated) {
-            // Reset State
-            this.setState({
-                ediConnection: null,
-                isLoading: true
-            });
-            this.loadEdiConnection(this.ediConnectionId);
-        }
     };
 
     render() {
@@ -104,9 +94,10 @@ class EdiConnection extends Component {
 
                             <div className="ediDetailedInformation">
                                 <Link to={ANSWER_URL(this.ediConnectionId)}>
-                                    <Button variant="contained" color="primary" className="To_Questions" type="primary" size="medium">
-                                     <Trans i18nKey="ediConnection.toQuestions">To Questions</Trans>
-                                </Button>
+                                    <Button variant="contained" color="primary" className="To_Questions" type="primary"
+                                            size="medium">
+                                        <Trans i18nKey="ediConnection.toQuestions">To Questions</Trans>
+                                    </Button>
                                 </Link>
                             </div>
 

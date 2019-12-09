@@ -43,12 +43,9 @@ export const NOT_FOUND_URL = `/notFound`;
 export const ACCESS_TOKEN = 'accessToken';
 export const CURRENT_USER = 'currentUser';
 export const IS_ADMIN = 'isAdmin';
-export const IS_AUTHENTICATED = 'isAdmin';
+export const IS_AUTHENTICATED = 'isAuthenticated';
 
 export const EDI_LIST_SIZE = 15;
-export const MAX_CHOICES = 6;
-export const POLL_QUESTION_MAX_LENGTH = 140;
-export const POLL_CHOICE_MAX_LENGTH = 40;
 
 export const NAME_MIN_LENGTH = 1;
 export const NAME_MAX_LENGTH = 40;

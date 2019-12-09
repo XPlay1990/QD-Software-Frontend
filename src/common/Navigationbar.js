@@ -6,7 +6,14 @@ import {ReactComponent as ArrowRight} from "../resources/navbar/md-arrow-round-f
 import {ReactComponent as AddButton} from "../resources/navbar/md-add.svg"
 import {ReactComponent as CreateUser} from "../resources/navbar/md-person-add.svg"
 import {ReactComponent as CreateOrg} from "../resources/navbar/md-people.svg"
-import {CREATE_ORGANIZATION_URL, EDICON_CREATE_URL, LOGIN_URL, REGISTRATION_URL} from "../config/constants";
+import {
+    CREATE_ORGANIZATION_URL,
+    EDICON_CREATE_URL,
+    IS_ADMIN,
+    IS_AUTHENTICATED,
+    LOGIN_URL,
+    REGISTRATION_URL
+} from "../config/constants";
 import i18n from "i18next";
 import {Radio} from "antd";
 import ToggleButton from '@material-ui/lab/ToggleButton';
@@ -16,7 +23,6 @@ class Navigationbar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isAdmin: props.isAdmin,
             language: i18n.language
         };
     }
@@ -27,14 +33,14 @@ class Navigationbar extends Component {
         }
 
         let navbarItems = [];
-        if (this.props.isAuthenticated) {
+        if (localStorage.getItem(IS_AUTHENTICATED) === 'true') {
             navbarItems.push(<ArrowLeft key="BackButton" className="NavigationButton"
                                         onClick={this.props.history.goBack}/>);
             navbarItems.push(<ArrowRight key="ForwardButton" className="NavigationButton"
                                          onClick={this.props.history.goForward}/>);
         }
 
-        if (this.state.isAdmin) {
+        if ((localStorage.getItem(IS_ADMIN) === 'true')) {
             navbarItems.push(<AddButton key="EDICREATEBUTTON" className="NavigationButton"
                                         onClick={() => this.props.history.push(EDICON_CREATE_URL)}>
             </AddButton>);

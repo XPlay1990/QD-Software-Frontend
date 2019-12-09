@@ -66,6 +66,7 @@ class SwitchUser extends Component {
                         isLoading: false
                     })
                 }
+                localStorage.clear();
                 localStorage.setItem(ACCESS_TOKEN, response.accessToken);
                 this.props.history.push(BASE_URL);
                 //hacky reload to refresh toolbar with new username

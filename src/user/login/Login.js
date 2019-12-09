@@ -6,7 +6,7 @@ import abbinoLogo from '../../resources/login/abbino_nicando.png';
 import AuthenticationService from "../../security/AuthenticationService"
 
 import {Button, Form, Icon, Input, notification} from 'antd';
-import {ACCESS_TOKEN, EDICON_LIST_URL} from "../../config/constants";
+import {ACCESS_TOKEN, EDICON_LIST_URL, IS_AUTHENTICATED} from "../../config/constants";
 
 const FormItem = Form.Item;
 
@@ -14,14 +14,13 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isAuthenticated: props.isAuthenticated,
             username: (props.location.state) ? props.location.state.username : null
         };
     }
 
     render() {
         const AntWrappedLoginForm = Form.create()(LoginForm);
-        if (this.state.isAuthenticated) {
+        if (localStorage.getItem(IS_AUTHENTICATED) === 'true') {
             return <Redirect to={EDICON_LIST_URL}/>
         }
         return (

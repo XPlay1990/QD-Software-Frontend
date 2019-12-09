@@ -23,7 +23,7 @@ function login(loginRequest) {
 
 function logout() {
     // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
+    localStorage.clear();
     currentUserSubject.next(null);
 }
 

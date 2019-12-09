@@ -4,7 +4,7 @@ import './AppHeader.css';
 import pollIcon from '../poll.svg';
 import {Dropdown, Icon, Layout, Menu} from 'antd';
 import {Trans} from "react-i18next";
-import {CURRENT_USER} from "../config/constants";
+import {CURRENT_USER, IS_ADMIN, IS_AUTHENTICATED} from "../config/constants";
 
 const Header = Layout.Header;
 
@@ -28,7 +28,7 @@ class AppHeader extends Component {
                     <Icon type="home" className="nav-icon"/>
                 </Link>
             </Menu.Item>);
-        if (this.props.isAdmin) {
+        if (localStorage.getItem(IS_ADMIN) === 'true') {
             menuItems.push(
                 <Menu.Item key="/poll/new">
                     <Link to="/poll/new">
@@ -40,7 +40,7 @@ class AppHeader extends Component {
         menuItems.push(
             <Menu.Item key="/profile" className="profile-menu">
                 <ProfileDropdownMenu
-                    isAdmin={this.props.isAdmin}
+                    isAdmin={localStorage.getItem(IS_ADMIN) === 'true'}
                     currentUser={this.props.currentUser}
                     handleMenuClick={this.handleMenuClick}/>
             </Menu.Item>);
@@ -58,7 +58,7 @@ class AppHeader extends Component {
                         selectedKeys={[this.props.location.pathname]}
                         style={{lineHeight: '64px'}}>
                         {
-                            this.props.isAuthenticated ?
+                            (localStorage.getItem(IS_AUTHENTICATED) === 'true') ?
                                 menuItems : null
                         }
                     </Menu>
@@ -69,19 +69,20 @@ class AppHeader extends Component {
 }
 
 function ProfileDropdownMenu(props) {
+    const currentUser = JSON.parse(localStorage.getItem(CURRENT_USER));
     const dropdownMenu = (
         <Menu onClick={props.handleMenuClick} className="profile-dropdown-menu">
             <Menu.Item key="user-info" className="dropdown-item" disabled>
                 <div className="user-full-name-info">
-                    {props.currentUser.name}
+                    {currentUser.name}
                 </div>
                 <div className="username-info">
-                    @{JSON.parse(localStorage.getItem(CURRENT_USER)).username}
+                    @{currentUser.username}
                 </div>
             </Menu.Item>
             <Menu.Divider/>
             <Menu.Item key="profile" className="dropdown-item">
-                <Link to={`/users/${props.currentUser.username}`}><Trans i18nKey={`navigation.profile`}>Profile</Trans></Link>
+                <Link to={`/users/${currentUser.username}`}><Trans i18nKey={`navigation.profile`}>Profile</Trans></Link>
             </Menu.Item>
             {
                 (props.isAdmin) ? (
