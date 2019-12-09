@@ -11,7 +11,7 @@ import {IS_AUTHENTICATED, LOGIN_URL} from "../config/constants";
 export const RoleRestrictedRoute = ({component: Component, roles, ...rest}) => (
     <Route {...rest} render={props => {
         // const currentUser = authenticationService.currentUserValue;
-        if (localStorage.getItem(IS_AUTHENTICATED) === 'false') {
+        if (localStorage.getItem(IS_AUTHENTICATED) !== 'true') {
             // not logged in so redirect to login page with the return url
             return <Redirect to={{pathname: LOGIN_URL, state: {from: props.location}}}/>
         }
