@@ -27,11 +27,6 @@ export const handleLogout =
     function handleLogout(notificationType = "success", description = "You're successfully logged out.") {
         localStorage.clear();
 
-        this.setState({
-            currentUser: null,
-            isAuthenticated: false
-        });
-
         this.props.history.push(LOGIN_URL);
 
         notification[notificationType]({

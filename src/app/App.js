@@ -8,7 +8,7 @@ import LoadingIndicator from '../common/LoadingIndicator';
 
 import {notification} from 'antd';
 import MainApp from "./MainApp";
-import {handleLogin, handleLogout, loadUserFunction} from "./UserFunctions"
+import {handleLogin, loadUserFunction} from "./UserFunctions"
 
 class App extends Component {
     constructor(props) {
@@ -18,12 +18,11 @@ class App extends Component {
         };
         this.loadCurrentUser = loadUserFunction.bind(this);
         this.handleLogin = handleLogin.bind(this);
-        this.handleLogout = handleLogout.bind(this);
 
         notification.config({
             placement: 'topRight',
             top: 70,
-            duration: 3000
+            duration: 3
         });
     }
 

@@ -31,8 +31,6 @@ class Navigationbar extends Component {
         super(props);
         this.state = {
             language: i18n.language,
-            // anchorEl: null,
-            // open: false,
         };
     }
 
@@ -98,7 +96,7 @@ class Navigationbar extends Component {
 
         const navbarItemsControl = [];
         navbarItemsControl.push(
-            <ControlDropdown key="controlDropdown"/>
+            <ControlDropdown {...this.props} key="controlDropdown"/>
         );
 
         navbarItemsControl.push(

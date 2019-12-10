@@ -22,7 +22,7 @@ import Forbidden from "../error/Forbidden";
 import SwitchUser from "../admin_functions/SwitchUser";
 import SupplierQuestions from "../edi/display/detail/supplierQuestions/SupplierQuestions";
 import ActivateUserRegistration from "../user/signup/ActivateUserRegistration";
-import {handleLogout, loadUserFunction} from "./UserFunctions"
+import {loadUserFunction} from "./UserFunctions"
 
 const {Content} = Layout;
 
@@ -33,7 +33,6 @@ class MainApp extends React.Component {
             isLoading: true
         };
         this.loadCurrentUser = loadUserFunction.bind(this);
-        this.handleLogout = handleLogout.bind(this);
     }
 
     render() {

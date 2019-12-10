@@ -1,21 +1,21 @@
 import React, {Component} from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import './ControlDropdown.css';
-import {Dropdown, Icon, Layout, Menu} from 'antd';
+import {Dropdown, Icon, Menu} from 'antd';
 import {Trans} from "react-i18next";
 import {CURRENT_USER, IS_ADMIN, IS_AUTHENTICATED} from "../../config/constants";
-
-const Header = Layout.Header;
+import {handleLogout} from "../../app/UserFunctions"
 
 class ControlDropdown extends Component {
     constructor(props) {
         super(props);
         this.handleMenuClick = this.handleMenuClick.bind(this);
+        this.handleLogout = handleLogout.bind(this);
     }
 
     handleMenuClick({key}) {
         if (key === "logout") {
-            this.props.onLogout();
+            this.handleLogout();
         }
     }
 
@@ -30,16 +30,16 @@ class ControlDropdown extends Component {
             </Menu.Item>);
 
         return (
-                    <Menu
-                        className="app-menu"
-                        mode="horizontal"
-                        selectedKeys={[this.props.location.pathname]}
-                        style={{lineHeight: '64px'}}>
-                        {
-                            (localStorage.getItem(IS_AUTHENTICATED) === 'true') ?
-                                menuItems : null
-                        }
-                    </Menu>
+            <Menu
+                className="app-menu"
+                mode="horizontal"
+                selectedKeys={[this.props.location.pathname]}
+                style={{lineHeight: '64px'}}>
+                {
+                    (localStorage.getItem(IS_AUTHENTICATED) === 'true') ?
+                        menuItems : null
+                }
+            </Menu>
         );
     }
 }
