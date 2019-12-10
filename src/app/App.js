@@ -23,7 +23,7 @@ class App extends Component {
         notification.config({
             placement: 'topRight',
             top: 70,
-            duration: 3
+            duration: 3000
         });
     }
 
@@ -37,11 +37,11 @@ class App extends Component {
             return <LoadingIndicator/>
         }
 
-        console.log(localStorage.getItem(CURRENT_USER))
-        console.log(localStorage.getItem(IS_AUTHENTICATED))
-        console.log(localStorage.getItem(IS_ADMIN))
-        console.log(localStorage.getItem(ACCESS_TOKEN))
-        console.log(window.location.pathname)
+        // console.log(localStorage.getItem(CURRENT_USER))
+        // console.log(localStorage.getItem(IS_AUTHENTICATED))
+        // console.log(localStorage.getItem(IS_ADMIN))
+        // console.log(localStorage.getItem(ACCESS_TOKEN))
+        // console.log(window.location.pathname)
 
         return (
             <Switch>

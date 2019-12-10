@@ -65,7 +65,6 @@ class EdiConnection extends Component {
     };
 
     render() {
-
         return (
             <div className="ediContent">
                 {
@@ -94,7 +93,7 @@ class EdiConnection extends Component {
 
                             <div className="ediDetailedInformation">
                                 <Link to={ANSWER_URL(this.ediConnectionId)}>
-                                    <Button variant="contained" color="primary" className="To_Questions" type="primary"
+                                    <Button variant="contained" color="primary" className="To_Questions"
                                             size="medium">
                                         <Trans i18nKey="ediConnection.toQuestions">To Questions</Trans>
                                     </Button>

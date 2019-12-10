@@ -1,14 +1,13 @@
 import React, {Component} from 'react';
 import {Link, withRouter} from 'react-router-dom';
-import './AppHeader.css';
-import pollIcon from '../poll.svg';
+import './ControlDropdown.css';
 import {Dropdown, Icon, Layout, Menu} from 'antd';
 import {Trans} from "react-i18next";
-import {CURRENT_USER, IS_ADMIN, IS_AUTHENTICATED} from "../config/constants";
+import {CURRENT_USER, IS_ADMIN, IS_AUTHENTICATED} from "../../config/constants";
 
 const Header = Layout.Header;
 
-class AppHeader extends Component {
+class ControlDropdown extends Component {
     constructor(props) {
         super(props);
         this.handleMenuClick = this.handleMenuClick.bind(this);
@@ -23,21 +22,6 @@ class AppHeader extends Component {
     render() {
         let menuItems = [];
         menuItems.push(
-            <Menu.Item key="/">
-                <Link to="/">
-                    <Icon type="home" className="nav-icon"/>
-                </Link>
-            </Menu.Item>);
-        if (localStorage.getItem(IS_ADMIN) === 'true') {
-            menuItems.push(
-                <Menu.Item key="/poll/new">
-                    <Link to="/poll/new">
-                        <img src={pollIcon} alt="poll" className="poll-icon"/>
-                    </Link>
-                </Menu.Item>
-            )
-        }
-        menuItems.push(
             <Menu.Item key="/profile" className="profile-menu">
                 <ProfileDropdownMenu
                     isAdmin={localStorage.getItem(IS_ADMIN) === 'true'}
@@ -46,12 +30,6 @@ class AppHeader extends Component {
             </Menu.Item>);
 
         return (
-            <Header className="app-header">
-                <div className="container">
-                    <div className="app-title">
-                        {/*<img className={"HeaderLogo"} src={NicandoLogo}/>*/}
-                        <Link to="/">Nicando Edi-Portal</Link>
-                    </div>
                     <Menu
                         className="app-menu"
                         mode="horizontal"
@@ -62,8 +40,6 @@ class AppHeader extends Component {
                                 menuItems : null
                         }
                     </Menu>
-                </div>
-            </Header>
         );
     }
 }
@@ -109,4 +85,4 @@ function ProfileDropdownMenu(props) {
 }
 
 
-export default withRouter(AppHeader);
+export default withRouter(ControlDropdown);

@@ -79,7 +79,6 @@ class MegaDraftTextEditor extends Component {
                 });
                 this.reloadEdiMessages()
             }).catch(error => {
-            console.log(error);
             this.setState({
                 isLoading: false
             });

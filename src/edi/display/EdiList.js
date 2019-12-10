@@ -100,7 +100,7 @@ class EdiList extends Component {
             this.setState({
                 ediConnections: [],
                 pageNumber: 0,
-                pageSize: 15,
+                pageSize: EDI_LIST_SIZE,
                 totalElements: 0,
                 totalPages: 0,
                 isLast: true,

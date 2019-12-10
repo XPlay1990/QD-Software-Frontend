@@ -1,9 +1,13 @@
 .app-container {
-    display: flex;
-    flex-direction: column;
-    align-content: flex-end;
-    align-items: center;
-    min-height: 100%;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*align-content: flex-end;*/
+    /*align-items: center;*/
+    /*min-height: 100%;*/
+}
+
+.ant-notification{
+    z-index: 1500;  /* to be on top of material ui components */
 }
 
 .container {
@@ -34,10 +38,9 @@
 }
 
 .app {
-    width: 90%;
-    min-height: 850px;
+    width: 100%;
+    height: 100%;
     background-color: white;
-    margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -45,9 +48,7 @@
 }
 
 .app-content {
-    flex: 1 1 auto;
+    flex: 1 1 available;
     width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
+    margin: auto;
 }

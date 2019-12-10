@@ -10,11 +10,8 @@ export const loadUserFunction =
         });
         getCurrentUserWithRoles()
             .then(response => {
-                console.log("WTF")
                 localStorage.setItem(CURRENT_USER, JSON.stringify(response));
-                console.log("WTF2")
                 localStorage.setItem(IS_AUTHENTICATED, 'true');
-                console.log("WTF2")
                 localStorage.setItem(IS_ADMIN, `${response && response.authorities.includes(Role.Admin)}`);
                 this.setState({
                     isLoading: false
