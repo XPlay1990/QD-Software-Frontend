@@ -144,7 +144,7 @@ class Navigationbar extends Component {
             <AppBar className="Navigationbar" position="static">
                 <Toolbar className="Toolbar">
                     <div className="app-title">
-                        {/*<img className={"HeaderLogo"} src={NicandoLogo}/>*/}
+                        {/*<img className={"HeaderLogo"} src={QDLogo}/>*/}
                         <Typography variant="h4"><Link to="/">QD Software Portal</Link></Typography>
                     </div>
                     <div className="BackForwardNav">

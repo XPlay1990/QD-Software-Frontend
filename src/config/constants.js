@@ -14,7 +14,7 @@ export const LANGUAGE_URL = `${LOCALE_BASE_URL}/languages`;
 export const ORGANIZATION_BASE_URL = '/org';
 export const ORGANIZATION_GET_ALL_URL = `${ORGANIZATION_BASE_URL}/all`;
 export const GET_ORGANIZATION_MEMBERS_URL = (id) => `${ORGANIZATION_BASE_URL}/${id}/members`;
-export const GET_DEVELOPERS = `${ORGANIZATION_BASE_URL}/nicando/members`;
+export const GET_DEVELOPERS = `${ORGANIZATION_BASE_URL}/qd/members`;
 export const GET_CUSTOMER_ORGANIZATIONS_URL = `${ORGANIZATION_BASE_URL}/customers`;
 export const GET_SUPPLIER_ORGANIZATIONS_URL = `${ORGANIZATION_BASE_URL}/suppliers`;
 export const USER_URL= '/user';
