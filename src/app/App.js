@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import './LoginApp.css';
 import {Route, Switch, withRouter} from 'react-router-dom';
-import {ACCESS_TOKEN, CURRENT_USER, IS_ADMIN, IS_AUTHENTICATED, LOGIN_URL} from '../config/constants';
+import {LOGIN_URL} from '../config/constants';
 import Login from '../user/login/Login';
 import LoadingIndicator from '../common/LoadingIndicator';
 

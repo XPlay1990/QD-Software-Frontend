@@ -11,7 +11,7 @@
 }
 
 .container {
-    height: calc(100% - 64px);
+    height: 100%;
     width: 100%;
     bottom: 0;
     margin-left: auto;
@@ -21,6 +21,7 @@
     flex-direction: column;
     align-content: flex-end;
     align-items: center;
+    flex: 1 1;
 }
 
 #loginBackgroundImage {
@@ -45,10 +46,11 @@
     margin-right: auto;
     display: flex;
     flex-direction: column;
+    flex: 1;
 }
 
 .app-content {
     flex: 1 1 available;
-    width: 100%;
+    width: 90%;
     margin: auto;
 }

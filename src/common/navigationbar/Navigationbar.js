@@ -25,6 +25,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
 import ToggleButton from "@material-ui/lab/ToggleButton";
 import ControlDropdown from "./ControlDropdown";
+import Typography from "@material-ui/core/Typography";
 
 class Navigationbar extends Component {
     constructor(props) {
@@ -144,7 +145,7 @@ class Navigationbar extends Component {
                 <Toolbar className="Toolbar">
                     <div className="app-title">
                         {/*<img className={"HeaderLogo"} src={NicandoLogo}/>*/}
-                        <Link to="/">Nicando Edi-Portal</Link>
+                        <Typography variant="h4"><Link to="/">QD Software Portal</Link></Typography>
                     </div>
                     <div className="BackForwardNav">
                         {navbarItemsBackForward}

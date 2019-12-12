@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './Login.css';
 import {Redirect} from 'react-router-dom';
 import loginBackground from '../../resources/login/CHANGE_ME_NOT_FREE.png';
-import abbinoLogo from '../../resources/login/abbino_nicando.png';
+import qdLogo from '../../resources/login/qd_software.png';
 import AuthenticationService from "../../security/AuthenticationService"
 
 import {Button, Form, Icon, Input, notification} from 'antd';
@@ -102,11 +102,11 @@ class LoginForm extends Component {
                             placeholder="Password"/>
                     )}
                 </FormItem>
-                <FormItem>
+                <FormItem className="LoginButton">
                     <Button type="primary" htmlType="submit" size="large" className="login-form-button">Login</Button>
                 </FormItem>
                 <div className={"LoginFooter"}>
-                    <img src={abbinoLogo} className="footer" alt=""/>
+                    <img src={qdLogo} className="footer" alt=""/>
                 </div>
             </Form>
         );
