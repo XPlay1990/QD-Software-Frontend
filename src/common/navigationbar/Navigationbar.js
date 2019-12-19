@@ -109,14 +109,16 @@ class Navigationbar extends Component {
             </Tooltip>
         );
 
-        navbarItemsControl.push(
-            <Tooltip title="Statistics" key="statisticsButton">
-                <IconButton edge="start" className="NavigationButton" color="inherit" aria-label="menu"
-                            onClick={() => this.props.history.push("STATISTICS")}>
-                    <BarChartIcon/>
-                </IconButton>
-            </Tooltip>
-        );
+        if (localStorage.getItem(IS_AUTHENTICATED) === 'true') {
+            navbarItemsControl.push(
+                <Tooltip title="Statistics" key="statisticsButton">
+                    <IconButton edge="start" className="NavigationButton" color="inherit" aria-label="menu"
+                                onClick={() => this.props.history.push("STATISTICS")}>
+                        <BarChartIcon/>
+                    </IconButton>
+                </Tooltip>
+            );
+        }
 
         navbarItemsControl.push(
             <div className="LanguageChange" key="languageChange">
