@@ -4,6 +4,11 @@
     "save": "Save",
     "delete": "Delete"
   },
+  "tabs": {
+    "Edi": "Edi",
+    "Statistics": "Statistics",
+    "Feedback": "Feedback"
+  },
   "columnConfig": {
     "customer": "Customer",
     "supplier": "Supplier",

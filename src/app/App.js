@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import './LoginApp.css';
 import {Route, Switch, withRouter} from 'react-router-dom';
-import {LOGIN_URL} from '../config/constants';
+import {FORBIDDEN_URL, LOGIN_URL} from '../config/constants';
 import Login from '../user/login/Login';
 import LoadingIndicator from '../common/LoadingIndicator';
 
@@ -10,6 +10,8 @@ import {notification} from 'antd';
 import MainApp from "./MainApp";
 import {handleLogin, loadUserFunction} from "./UserFunctions"
 import {createMuiTheme, responsiveFontSizes, ThemeProvider} from "@material-ui/core/styles";
+import Forbidden from "../error/Forbidden";
+import NotFound from "../error/NotFound";
 
 class App extends Component {
     constructor(props) {
@@ -51,6 +53,8 @@ class App extends Component {
                 <Switch>
                     <Route path={LOGIN_URL} render={(props) => <Login onLogin={this.handleLogin} {...props} />}/>
                     <Route path="/" render={(props) => <MainApp appState={this.state} {...props} />}/>
+                    <Route path={FORBIDDEN_URL} component={Forbidden}/>
+                    <Route component={NotFound}/>
                 </Switch>
             </ThemeProvider>
         );

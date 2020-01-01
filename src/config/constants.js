@@ -35,6 +35,8 @@ export const EDICON_ATTACHMENT_BASE_URL = (id) => `${EDICON_LIST_URL}/${id}/atta
 export const EDICON_ATTACHMENT_UPLOAD_URL = (id) => `${EDICON_ATTACHMENT_BASE_URL(id)}/upload`;
 export const EDICON_ATTACHMENT_DOWNLOAD_URL = (id, fileName) => `${EDICON_ATTACHMENT_BASE_URL(id)}/download/${fileName}`;
 export const EDICON_CREATE_URL = `${EDICON_LIST_URL}/create`;
+export const STATISTICS_URL = `/statistics`;
+export const FEEDBACK_URL = `/feedback`;
 
 export const FORBIDDEN_URL = `/forbidden`;
 export const NOT_FOUND_URL = `/notFound`;

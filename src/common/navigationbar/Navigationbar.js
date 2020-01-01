@@ -51,12 +51,10 @@ class Navigationbar extends Component {
         if (localStorage.getItem(IS_AUTHENTICATED) === 'true') {
             if (this.props.location.pathname === BASE_URL || this.props.location.pathname === EDICON_LIST_URL) {
                 navbarItemsBackForward.push(
-                    <Tooltip title="Back" key="backButton">
-                        <IconButton edge="start" className="NavigationButton" color="inherit" aria-label="menu"
-                                    onClick={this.props.history.goBack} disabled={true}>
-                            <ArrowBackIosIcon/>
-                        </IconButton>
-                    </Tooltip>
+                    <IconButton key="backButton" edge="start" className="NavigationButton" color="inherit" aria-label="menu"
+                                onClick={this.props.history.goBack} disabled={true}>
+                        <ArrowBackIosIcon/>
+                    </IconButton>
                 );
             } else {
                 navbarItemsBackForward.push(
@@ -148,23 +146,25 @@ class Navigationbar extends Component {
         );
 
         return (
-            <AppBar className="Navigationbar" position="static">
-                <Toolbar className="Toolbar">
-                    <div className="app-title">
-                        {/*<img className={"HeaderLogo"} src={QDLogo}/>*/}
-                        <Typography variant="h4"><Link to="/">QD Software Portal</Link></Typography>
-                    </div>
-                    <div className="BackForwardNav">
-                        {navbarItemsBackForward}
-                    </div>
-                    <div className={"UserButtons"}>
-                        {navbarItemsUer}
-                    </div>
-                    <div className="Navigation">
-                        {navbarItemsControl}
-                    </div>
-                </Toolbar>
-            </AppBar>
+            <div>
+                <AppBar className="Navigationbar" position="static">
+                    <Toolbar className="Toolbar">
+                        <div className="app-title">
+                            {/*<img className={"HeaderLogo"} src={QDLogo}/>*/}
+                            <Typography variant="h4"><Link to="/">QD Software Portal</Link></Typography>
+                        </div>
+                        <div className="BackForwardNav">
+                            {navbarItemsBackForward}
+                        </div>
+                        <div className={"UserButtons"}>
+                            {navbarItemsUer}
+                        </div>
+                        <div className="Navigation">
+                            {navbarItemsControl}
+                        </div>
+                    </Toolbar>
+                </AppBar>
+            </div>
         );
     }
 }
