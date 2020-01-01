@@ -10,6 +10,9 @@ import {ANSWER_URL} from "../../../config/constants";
 import AttachmentList from "./attachments/AttachmentList";
 import {Link} from "react-router-dom";
 import {Trans} from "react-i18next";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
+import Divider from "@material-ui/core/Divider";
 
 class EdiConnection extends Component {
     constructor(props) {
@@ -80,30 +83,52 @@ class EdiConnection extends Component {
                 }
                 {
                     !this.state.isLoading && this.state.ediConnection != null ? (
-                        <div className="ediContentGrid">
-                            <Description
-                                ediConnectionId={this.ediConnectionId}
-                                status={this.state.ediConnection.status}
-                                creationTime={this.state.ediConnection.creationTime}
-                                updateTime={this.state.ediConnection.updateTime}
-                                customerName={this.state.ediConnection.customer.name}
-                                supplierName={this.state.ediConnection.supplier.name}
-                                assignedDev={this.state.ediConnection.assignedDeveloper}
-                            />
+                        <Grid container spacing={4} className="ediContentGrid">
+                            <Grid item xs={6} container spacing={3} direction="column">
+                                {/*<Grid item>*/}
 
-                            <div className="ediDetailedInformation">
-                                <Link to={ANSWER_URL(this.ediConnectionId)}>
-                                    <Button variant="contained" color="primary" className="To_Questions"
-                                            size="medium">
-                                        <Trans i18nKey="ediConnection.toQuestions">To Questions</Trans>
-                                    </Button>
-                                </Link>
-                            </div>
+                                {/*</Grid>*/}
 
-                            <EdiMessageList ediConnectionId={this.ediConnectionId}/>
+                                {/*<Grid item className="ediQuestions">*/}
 
-                            <AttachmentList ediConnectionId={this.ediConnectionId}/>
-                        </div>) : null
+                                {/*</Grid>*/}
+                                {/*<Grid item>*/}
+                                {/*</Grid>*/}
+
+                                <Box display="flex" flexDirection="column" className="EdiInformations">
+                                    <Box className="ediDescription">
+                                        <Description
+                                            ediConnectionId={this.ediConnectionId}
+                                            status={this.state.ediConnection.status}
+                                            creationTime={this.state.ediConnection.creationTime}
+                                            updateTime={this.state.ediConnection.updateTime}
+                                            customerName={this.state.ediConnection.customer.name}
+                                            supplierName={this.state.ediConnection.supplier.name}
+                                            assignedDev={this.state.ediConnection.assignedDeveloper}
+                                        />
+                                    </Box>
+                                    <Divider variant="middle" className="EdiDivider"/>
+                                    <Box className="ediQuestions">
+                                        <Link to={ANSWER_URL(this.ediConnectionId)}>
+                                            <Button variant="contained" color="primary" className="To_Questions"
+                                                    size="medium">
+                                                <Trans i18nKey="ediConnection.toQuestions">To Questions</Trans>
+                                            </Button>
+                                        </Link>
+                                    </Box>
+                                    <Divider variant="middle" className="EdiDivider"/>
+                                    <Box className="EdiAttachments">
+                                        <AttachmentList ediConnectionId={this.ediConnectionId}/>
+                                    </Box>
+                                </Box>
+                            </Grid>
+
+                            <Grid item xs={6} sm container>
+                                <Grid item xs container direction="column" spacing={2}>
+                                    <EdiMessageList ediConnectionId={this.ediConnectionId}/>
+                                </Grid>
+                            </Grid>
+                        </Grid>) : null
                 }
             </div>
         );

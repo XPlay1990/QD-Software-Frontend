@@ -4,36 +4,51 @@
 /*    }*/
 /*}*/
 
+.ediContent {
+    margin-top: 20px;
+}
+
 
 .ediContentGrid {
-    display: grid;
-    grid-gap: 15px;
-    background-color: white;
-    padding: 10px;
-    grid-template-areas: /*'description description detailedInformation detailedInformation'*/ /*'messages messages messages attachments';    */ 'description messages' 'detailedInformation messages' 'attachments messages';
-    height: 900px;
-    grid-template-rows: 30% 30% 30%;
-    grid-template-columns: 50% 50%;
+    /*display: grid;*/
+    /*grid-gap: 15px;*/
+    /*background-color: white;*/
+    /*padding: 10px;*/
+    /*grid-template-areas: !*'description description detailedInformation detailedInformation'*! !*'messages messages messages attachments';    *! 'description messages' 'detailedInformation messages' 'attachments messages';*/
+    /*height: 900px;*/
+    /*grid-template-rows: 30% 30% 30%;*/
+    /*grid-template-columns: 50% 50%;*/
 }
 
-.ediDescription {
-    grid-area: description;
-    /*background-color: grey;*/
-}
-
-.ediDetailedInformation {
-    grid-area: detailedInformation;
-    background-color: white;
-}
-
-.EdiMessageList {
-    grid-area: messages;
+.EdiInformations {
     height: 100%;
 }
 
+.ediDescription {
+    /*grid-area: description;*/
+    /*background-color: grey;*/
+    margin-bottom: 20px;
+}
+
+.ediQuestions {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /*grid-area: detailedInformation;*/
+}
+
 .EdiAttachments {
-    grid-area: attachments;
+    margin-top: 20px;
+    /*grid-area: attachments;*/
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+    flex: 1
+}
+
+.EdiMessageList {
+    /*grid-area: messages;*/
+    height: 100%;
 }
 
 .AttachmentList {

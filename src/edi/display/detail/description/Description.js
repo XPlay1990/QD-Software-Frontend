@@ -7,12 +7,17 @@ import {CURRENT_USER} from "../../../../config/constants";
 import {Role} from "../../../../security/Roles";
 import Button from '@material-ui/core/Button';
 import {Trans} from "react-i18next";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 
 class Description extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            status: {label: <Trans i18nKey={`ediConnection.state.${props.status}`}>props.status</Trans>, value: props.status},
+            status: {
+                label: <Trans i18nKey={`ediConnection.state.${props.status}`}>props.status</Trans>,
+                value: props.status
+            },
             statusList: [],
             creationTime: props.creationTime,
             updateTime: props.updateTime,
@@ -137,80 +142,88 @@ class Description extends Component {
 
     render() {
         return (
-            <div className="ediDescription">
-                <div className="ediDescriptionGrid">
-                    <div className="ediDescriptionCreationTime">
-                        <h1>
-                            <Trans i18nKey="ediConnection.description.created">Created:</Trans>
-                        </h1>
-                        {this.state.creationTime}
-                    </div>
-                    <div className="ediDescriptionUpdateTime">
-                        <h1>
-                            <Trans i18nKey="ediConnection.description.lastModified">Last Modified:</Trans>
-                        </h1>
-                        {this.state.updateTime}
-                    </div>
-                    <div className="ediDescriptionCustomerName">
-                        <h1>
-                            <Trans i18nKey="ediConnection.description.customer">Customer:</Trans>
-                        </h1>
+            <Grid container spacing={3} className="ediDescriptionGrid">
+                <Grid item xs={3} className="ediDescriptionCustomerName">
+                    <Typography variant="h4"  style={{overflowWrap: "break-word"}}>
+                        <Trans i18nKey="ediConnection.description.customer">Customer:</Trans>
+                    </Typography>
+                    <Typography>
                         {this.state.customerName}
-                    </div>
-                    <div className="ediDescriptionSupplierName">
-                        <h1>
-                            <Trans i18nKey="ediConnection.description.supplier">Supplier:</Trans>
-                        </h1>
-                        {this.state.supplierName}
-                    </div>
-                    <div className="ediDescriptionAssignedDev">
-                        <h1><Trans i18nKey="ediConnection.description.developer">Developer:</Trans></h1>
-                        {
-                            this.isAdmin ? (
-                                <Select name="DeveloperSelect"
-                                        autosize={false}
-                                        value={this.state.assignedDev || ''}
-                                        onChange={(value) => this.setState({assignedDev: value})}
-                                        options={this.state.developerList}
-                                        getOptionLabel={(option) => (`${option.firstName} ${option.lastName} (@${option.username})`)}
-                                        getOptionValue={(option) => option.id}
-                                />) : (
-                                //TODO: Link to Developer Profile
-                                <p>
-                                    {
-                                        this.state.assignedDev ?
-                                            `${this.state.assignedDev.firstName} ${this.state.assignedDev.lastName} (@${this.state.assignedDev.username})` : 'Not Assigned'
-                                    }
-                                </p>
-                            )
-                        }
-                    </div>
-                    <div className="ediDescriptionStatus">
-                        <h1><Trans i18nKey="ediConnection.description.state">State:</Trans></h1>
-                        {
-                            this.isAdmin ? (
-                                    <Select name="StateSelect"
-                                            autosize={false}
-                                            value={this.state.status || ''}
-                                            onChange={(value) => this.setState({status: value})}
-                                            getOptionKey={(option) => option.index}
-                                            options={this.state.statusList}
-                                        // getOptionLabel={(option) => option}
-                                        // getOptionValue={(option) => option}
-                                    />)
-                                : (`${this.state.status.label}`)
-                        }
-                    </div>
+                    </Typography>
+                </Grid>
+                <Grid item xs={3} className="ediDescriptionUpdateTime">
+                    <Typography variant="h4"  style={{overflowWrap: "break-word"}}>
+                        <Trans i18nKey="ediConnection.description.lastModified">Last Modified:</Trans>
+                    </Typography>
+                    <Typography>
+                        {this.state.updateTime}
+                    </Typography>
+                </Grid>
+                <Grid item xs={3} className="ediDescriptionAssignedDev">
+                    <Typography variant="h4"  style={{overflowWrap: "break-word"}}>
+                        <Trans i18nKey="ediConnection.description.developer">Developer:</Trans>
+                    </Typography>
                     {
                         this.isAdmin ? (
-                            <Button variant="contained" color="primary" size="medium"
-                                    className={"ApplyChangesButton saveButton " + (this.state.isSaving ? "save-animation" : "")}
-                                    onClick={this.saveDeveloperAndState}>
-                                <Trans i18nKey="ediConnection.applyChanges">Apply Changes</Trans>
-                            </Button>) : null
+                            <Select name="DeveloperSelect"
+                                    autosize={false}
+                                    value={this.state.assignedDev || ''}
+                                    onChange={(value) => this.setState({assignedDev: value})}
+                                    options={this.state.developerList}
+                                    getOptionLabel={(option) => (`${option.firstName} ${option.lastName} (@${option.username})`)}
+                                    getOptionValue={(option) => option.id}
+                            />) : (
+                            //TODO: Link to Developer Profile
+                            <p>
+                                {
+                                    this.state.assignedDev ?
+                                        `${this.state.assignedDev.firstName} ${this.state.assignedDev.lastName} (@${this.state.assignedDev.username})` : 'Not Assigned'
+                                }
+                            </p>
+                        )
                     }
-                </div>
-            </div>
+                </Grid>
+                <Grid item xs={3} className="ediDescriptionStatus">
+                    <Typography variant="h4"  style={{overflowWrap: "break-word"}}>
+                        <Trans i18nKey="ediConnection.description.state">State:</Trans>
+                    </Typography>
+                    {
+                        this.isAdmin ? (
+                                <Select name="StateSelect"
+                                        autosize={false}
+                                        value={this.state.status || ''}
+                                        onChange={(value) => this.setState({status: value})}
+                                        getOptionKey={(option) => option.index}
+                                        options={this.state.statusList}
+                                    // getOptionLabel={(option) => option}
+                                    // getOptionValue={(option) => option}
+                                />)
+                            : (`${this.state.status.label}`)
+                    }
+                </Grid>
+
+
+                <Grid item xs={3} className="ediDescriptionSupplierName">
+                    <Typography variant="h4"  style={{overflowWrap: "break-word"}}>
+                        <Trans i18nKey="ediConnection.description.supplier">Supplier:</Trans>
+                    </Typography>
+                    {this.state.supplierName}
+                </Grid>
+                <Grid item xs={3} className="ediDescriptionCreationTime">
+                    <Typography variant="h4"  style={{overflowWrap: "break-word"}}>
+                        <Trans i18nKey="ediConnection.description.created">Created:</Trans>
+                    </Typography>
+                    {this.state.creationTime}
+                </Grid>
+                {
+                    this.isAdmin ? (
+                        <Button variant="contained" color="primary" size="medium"
+                                className={"ApplyChangesButton saveButton " + (this.state.isSaving ? "save-animation" : "")}
+                                onClick={this.saveDeveloperAndState}>
+                            <Trans i18nKey="ediConnection.applyChanges">Apply Changes</Trans>
+                        </Button>) : null
+                }
+            </Grid>
         );
     }
 }

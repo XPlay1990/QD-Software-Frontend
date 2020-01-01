@@ -4,6 +4,7 @@ import {
     BASE_URL,
     CREATE_ORGANIZATION_URL,
     EDICON_CREATE_URL,
+    EDICON_LIST_URL,
     IS_ADMIN,
     IS_AUTHENTICATED,
     LOGIN_URL,
@@ -14,7 +15,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Toolbar from "@material-ui/core/Toolbar";
 import AppBar from "@material-ui/core/AppBar";
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+// import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import CreateIcon from '@material-ui/icons/Create';
@@ -48,22 +49,26 @@ class Navigationbar extends Component {
 
         let navbarItemsBackForward = [];
         if (localStorage.getItem(IS_AUTHENTICATED) === 'true') {
-            navbarItemsBackForward.push(
-                <Tooltip title="Back" key="backButton">
-                    <IconButton edge="start" className="NavigationButton" color="inherit" aria-label="menu"
-                                onClick={this.props.history.goBack}>
-                        <ArrowBackIosIcon/>
-                    </IconButton>
-                </Tooltip>
-            );
-            navbarItemsBackForward.push(
-                <Tooltip title="Forward" key="forwardButton">
-                    <IconButton edge="start" className="NavigationButton" color="inherit" aria-label="menu"
-                                onClick={this.props.history.goForward}>
-                        <ArrowForwardIosIcon/>
-                    </IconButton>
-                </Tooltip>
-            )
+            if (this.props.location.pathname === BASE_URL || this.props.location.pathname === EDICON_LIST_URL) {
+                navbarItemsBackForward.push(
+                    <Tooltip title="Back" key="backButton">
+                        <IconButton edge="start" className="NavigationButton" color="inherit" aria-label="menu"
+                                    onClick={this.props.history.goBack} disabled={true}>
+                            <ArrowBackIosIcon/>
+                        </IconButton>
+                    </Tooltip>
+                );
+            } else {
+                navbarItemsBackForward.push(
+                    <Tooltip title="Back" key="backButton">
+                        <IconButton edge="start" className="NavigationButton" color="inherit" aria-label="menu"
+                                    onClick={this.props.history.goBack}>
+                            <ArrowBackIosIcon/>
+                        </IconButton>
+                    </Tooltip>
+                );
+            }
+
         }
 
         const navbarItemsUer = [];

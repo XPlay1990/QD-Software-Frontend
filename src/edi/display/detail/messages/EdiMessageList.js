@@ -4,8 +4,6 @@ import LoadingIndicator from "../../../../common/LoadingIndicator";
 import {getEdiConnectionMessages} from "../../../../util/APIUtils";
 import EdiMessageJS from "./EdiMessageJS";
 import MegaDraftTextEditor from "./TextEditor/MegaDraft/MegaDraftTextEditor";
-import MyEditor from "./TextEditor/draftJS/MyEditor";
-import MyDraftailEditor from "./TextEditor/draftTail/MyDraftailEditor";
 // import '@atlaskit/css-reset';
 // import '@atlaskit/reduced-ui-pack';
 // import { Editor, CollapsedEditor } from '@atlaskit/editor-core';

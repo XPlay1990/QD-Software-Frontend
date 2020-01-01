@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {convertToRaw} from 'draft-js';
 import {editorStateFromRaw, editorStateToJSON, MegadraftEditor} from 'megadraft';
 import Button from './Button/Button';
 import './MegaDraftTextEditor.css';

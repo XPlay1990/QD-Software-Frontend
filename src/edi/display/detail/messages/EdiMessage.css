@@ -1,16 +1,16 @@
 .EdiMessage {
-    /*border-style: solid;*/
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    /*min-height: 100px;*/
-    position: relative;
-    background-color: white;
-    display: grid;
-    grid-gap: 15px;
-    padding: 10px;
-    grid-template-areas: 'Sender CreationTime' 'Text Text' 'Divider Divider';
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 10% 80% 10%;
+    /*!*border-style: solid;*!*/
+    /*!*display: flex;*!*/
+    /*!*flex-direction: column;*!*/
+    /*!*min-height: 100px;*!*/
+    /*position: relative;*/
+    /*background-color: white;*/
+    /*display: grid;*/
+    /*grid-gap: 15px;*/
+    /*padding: 10px;*/
+    /*grid-template-areas: 'Sender CreationTime' 'Text Text' 'Divider Divider';*/
+    /*grid-template-columns: 50% 50%;*/
+    /*grid-template-rows: 10% 80% 10%;*/
 }
 
 /*.EdiMessage img {*/
@@ -20,7 +20,7 @@
 /*}*/
 
 .EdiMessage .Sender {
-    grid-area: Sender;
+    /*grid-area: Sender;*/
     text-decoration: underline;
     /*position: absolute;*/
     /*top: 0;*/
@@ -28,7 +28,7 @@
 }
 
 .EdiMessage .CreationTime {
-    grid-area: CreationTime;
+    /*grid-area: CreationTime;*/
     /*position: absolute;*/
     /*top: 0;*/
     /*right: 0;*/
@@ -40,17 +40,23 @@
 }
 
 .EdiMessage .EdiMessageText {
-    grid-area: Text;
+    /*grid-area: Text;*/
     height: 100px;
     max-height: 100px;
     display: flex;
+    background-color: white;
 }
 
 .EdiMessage .MessageDivider {
-    grid-area: Divider;
+    /*grid-area: Divider;*/
 }
 
 .EdiMessage .Avatar {
     /*grid-area: Avatar;*/
     margin-right: 20px;
+}
+
+.EdiMessage .ediMessageText {
+    /*grid-area: Avatar;*/
+    width: 100%;
 }

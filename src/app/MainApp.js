@@ -23,6 +23,7 @@ import SwitchUser from "../admin_functions/SwitchUser";
 import SupplierQuestions from "../edi/display/detail/supplierQuestions/SupplierQuestions";
 import ActivateUserRegistration from "../user/signup/ActivateUserRegistration";
 import {loadUserFunction} from "./UserFunctions"
+import Paper from "@material-ui/core/Paper";
 
 const {Content} = Layout;
 
@@ -50,7 +51,7 @@ class MainApp extends React.Component {
                 <div className="app">
                     <Navigationbar history={this.props.history} {...this.props}/>
 
-                    <div className="app-content">
+                    <Paper className="app-content">
                         <Switch>
                             <Route exact path="/" render={() => (<Redirect to={EDICON_LIST_URL}/>)}/>
                             <Route path={REGISTRATION_ACTIVATE_URL}
@@ -67,7 +68,7 @@ class MainApp extends React.Component {
                             <Route path={FORBIDDEN_URL} component={Forbidden}/>
                             <Route component={NotFound}/>
                         </Switch>
-                    </div>
+                    </Paper>
                 </div>
                 {/*</SimpleBarReact>*/}
             </Content>

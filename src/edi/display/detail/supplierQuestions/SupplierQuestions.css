@@ -1,26 +1,10 @@
-.SupplierQuestionGrid {
-    display: grid;
-    width: 80%;
-    margin: auto;
-    grid-gap: 15px;
-    background-color: white;
-    padding: 10px;
-    grid-template-areas: 'General SaveBtn' 'Supported Transfer' 'Additional Additional';
-    grid-template-rows: 15% 15% 15%;
-    grid-template-columns: 50% 50%;
-}
-
-
 .GeneralInfos {
-    grid-area: General;
 }
 
 .SupportedProtocols {
-    grid-area: Supported;
 }
 
 .Transfer {
-    grid-area: Transfer;
 }
 
 .Additional {
@@ -46,5 +30,8 @@
 }
 
 .SaveBtn {
-    grid-area: SaveBtn;
+}
+
+.ant-form-item-label {
+    white-space: normal;
 }

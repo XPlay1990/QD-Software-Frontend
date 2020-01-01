@@ -6,7 +6,8 @@ import "./TextEditor/MegaDraft/MegaDraftTextEditor.css";
 import "./EdiMessage.css"
 import Avatar from '@atlaskit/avatar';
 import Divider from '@material-ui/core/Divider';
-import {BASE_URL} from "../../../../config/constants";
+import Grid from "@material-ui/core/Grid";
+import {getAvatarColor} from "../../../../util/Colors";
 
 
 class EdiMessageJS extends Component {
@@ -22,41 +23,47 @@ class EdiMessageJS extends Component {
 
     render() {
         return (
-            <div className="EdiMessage">
-                <div className="Sender">
-                    <h1>{this.state.sender}</h1>
-                </div>
-                <div className="CreationTime">
-                    <h1>{this.state.creationTime}</h1>
-                </div>
-                <div className="EdiMessageText">
-                    <div className="Avatar">
-                        <Avatar
-                            // className="Avatar"
-                            name={this.state.sender}
-                            size="medium" presence="online"
-                            enableTooltip={true}
-                            label={this.state.sender}
-                            href={BASE_URL}
-                            // src={img url}
-                        />
-                    </div>
+            <div>
+                <Grid spacing={3} container className="EdiMessage">
+                    <Grid item xs={6} className="Sender">
+                        <h1>{this.state.sender}</h1>
+                    </Grid>
+                    <Grid item xs={6} className="CreationTime">
+                        <h1>{this.state.creationTime}</h1>
+                    </Grid>
+                    <Grid item xs={12} className="EdiMessageText">
+                        <div className="Avatar">
+                            {/*<Avatar*/}
+                            {/*    // className="Avatar"*/}
+                            {/*    name={this.state.sender}*/}
+                            {/*    size="medium" presence="online"*/}
+                            {/*    enableTooltip={true}*/}
+                            {/*    label={this.state.sender}*/}
+                            {/*    href={BASE_URL}*/}
+                            {/*    // src={img url}*/}
+                            {/*/>*/}
+                            <Avatar className="user-avatar-circle"
+                                    style={{backgroundColor: getAvatarColor(this.state.sender)}}>
+                                {`${this.state.sender[0].toUpperCase()}`}
+                            </Avatar>
+                        </div>
 
-                    <MegadraftEditor
-                        editorState={this.state.editorState}
-                        // onChange={this.handleUpdate}
-                        showSidebar={false}
-                        // theme='white-thin'
-                        // actions={actions}
-                        // placeholder={"Type your message"}
-                        readOnly={true}
-                        // language={'de-DE'}
-                    />
-                </div>
-                <div className="MessageDivider">
-                    <Divider variant="middle" absolute/>
+                        {/*<Paper className="ediMessageText">*/}
+                        <MegadraftEditor
+                            editorState={this.state.editorState}
+                            // onChange={this.handleUpdate}
+                            showSidebar={false}
+                            // theme='white-thin'
+                            // actions={actions}
+                            // placeholder={"Type your message"}
+                            readOnly={true}
+                            // language={'de-DE'}
+                        />
+                        {/*</Paper>*/}
+                    </Grid>
                     {/*<Divider variant="inset"  />*/}
-                </div>
+                </Grid>
+                <Divider variant="middle"/>
             </div>
         );
     }
