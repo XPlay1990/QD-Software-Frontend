@@ -22,7 +22,7 @@ import {
     QUESTION_URL,
     REGISTRATION_ACTIVATE_URL, REGISTRATION_URL,
     SAVE_DEVELOPER_AND_STATE,
-    SELF_URL,
+    SELF_URL, STATISTICS_EDI_STATE_URL,
     SWITCH_USER_URL,
     TRANSFER_STANDARDS_URL, USER_ROLES_BASE_URL
 } from '../config/constants';
@@ -53,6 +53,13 @@ export function getEdiConnections(pageNumber, pageSize, pageSorting, additiveSor
 export function getEdiConnection(id) {
     return customJSONRequest({
         url: `${BACKEND_BASE_URL}${EDICON_LIST_URL}/${id}`,
+        method: 'GET'
+    });
+}
+
+export function getEdiStateStatistics() {
+    return customJSONRequest({
+        url: `${BACKEND_BASE_URL}${STATISTICS_EDI_STATE_URL}`,
         method: 'GET'
     });
 }

@@ -71,9 +71,9 @@ class MainApp extends React.Component {
                         this.props.history.push(this.moduleMap.get(newValue))
                     }}>
                         <Tab value="Edi" label={<Trans i18nKey="tabs.Edi">Edi</Trans>}/>
-                        <div><Divider orientation="vertical"/></div>
+                        {/*<div><Divider orientation="vertical"/></div>*/}
                         <Tab value="Statistics" label={<Trans i18nKey="tabs.Statistics">Statistics</Trans>}/>
-                        <div><Divider orientation="vertical"/></div>
+                        {/*<div><Divider orientation="vertical"/></div>*/}
                         <Tab value="Feedback" label={<Trans i18nKey="tabs.Feedback">Feedback</Trans>}/>
                     </Tabs>
                 </Paper>
