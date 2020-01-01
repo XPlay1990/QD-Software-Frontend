@@ -5,10 +5,12 @@ import {
     CREATE_ORGANIZATION_URL,
     EDICON_CREATE_URL,
     EDICON_LIST_URL,
+    FEEDBACK_URL,
     IS_ADMIN,
     IS_AUTHENTICATED,
     LOGIN_URL,
-    REGISTRATION_URL
+    REGISTRATION_URL,
+    STATISTICS_URL
 } from "../../config/constants";
 import i18n from "i18next";
 import IconButton from "@material-ui/core/IconButton";
@@ -27,13 +29,27 @@ import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
 import ToggleButton from "@material-ui/lab/ToggleButton";
 import ControlDropdown from "./ControlDropdown";
 import Typography from "@material-ui/core/Typography";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import {Trans} from "react-i18next";
 
 class Navigationbar extends Component {
     constructor(props) {
         super(props);
         this.state = {
             language: i18n.language,
+            selectedTab: 'Edi' // possibleTabs[0]
         };
+
+        this.moduleMap = new Map();
+        this.moduleMap.set("Edi", EDICON_LIST_URL);
+        this.moduleMap.set("Statistics", STATISTICS_URL);
+        this.moduleMap.set("Feedback", FEEDBACK_URL);
+
+        this.reverseModuleMap = new Map();
+        this.moduleMap.forEach((value, key, map) =>
+            this.reverseModuleMap.set(value, key)
+        )
     }
 
     render() {
@@ -51,7 +67,8 @@ class Navigationbar extends Component {
         if (localStorage.getItem(IS_AUTHENTICATED) === 'true') {
             if (this.props.location.pathname === BASE_URL || this.props.location.pathname === EDICON_LIST_URL) {
                 navbarItemsBackForward.push(
-                    <IconButton key="backButton" edge="start" className="NavigationButton" color="inherit" aria-label="menu"
+                    <IconButton key="backButton" edge="start" className="NavigationButton" color="inherit"
+                                aria-label="menu"
                                 onClick={this.props.history.goBack} disabled={true}>
                         <ArrowBackIosIcon/>
                     </IconButton>
@@ -144,6 +161,23 @@ class Navigationbar extends Component {
                 </Tooltip>
             </div>
         );
+
+        const tabs = [];
+        if (Array.from(this.moduleMap.values()).includes(this.props.location.pathname)) {
+            // Check if correct tab is selected (might have been changed due to browser-back etc.
+            if (this.state.selectedTab !== this.reverseModuleMap.get(this.props.location.pathname)) {
+                this.setState({selectedTab: this.reverseModuleMap.get(this.props.location.pathname)});
+            }
+
+            tabs.push(<Tabs value={this.state.selectedTab} onChange={(event, newValue) => {
+                this.setState({selectedTab: newValue});
+                this.props.history.push(this.moduleMap.get(newValue))
+            }}>
+                <Tab value="Edi" label={<Trans i18nKey="tabs.Edi">Edi</Trans>}/>
+                <Tab value="Statistics" label={<Trans i18nKey="tabs.Statistics">Statistics</Trans>}/>
+                <Tab value="Feedback" label={<Trans i18nKey="tabs.Feedback">Feedback</Trans>}/>
+            </Tabs>)
+        }
 
         return (
             <div>

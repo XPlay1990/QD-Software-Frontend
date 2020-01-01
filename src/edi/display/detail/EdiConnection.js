@@ -83,7 +83,7 @@ class EdiConnection extends Component {
                 }
                 {
                     !this.state.isLoading && this.state.ediConnection != null ? (
-                        <Grid container spacing={4} className="ediContentGrid">
+                        <Grid container spacing={10} className="ediContentGrid">
                             <Grid item xs={6} container spacing={3} direction="column">
                                 {/*<Grid item>*/}
 

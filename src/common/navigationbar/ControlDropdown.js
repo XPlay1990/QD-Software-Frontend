@@ -5,6 +5,7 @@ import {Dropdown, Icon, Menu} from 'antd';
 import {Trans} from "react-i18next";
 import {CURRENT_USER, IS_ADMIN, IS_AUTHENTICATED} from "../../config/constants";
 import {handleLogout} from "../../app/UserFunctions"
+import zIndex from "@material-ui/core/styles/zIndex";
 
 class ControlDropdown extends Component {
     constructor(props) {

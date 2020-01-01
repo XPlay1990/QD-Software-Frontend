@@ -16,6 +16,9 @@
     "developer": "Developer",
     "lastModified": "Last modified"
   },
+  "ediConnections": {
+    "tableHint": "Note: Hold shift when sorting to multi-sort!"
+  },
   "registration": {
     "activationTitle": "Sign up",
     "placeholderPassword": "A password between 6 to 20 characters",

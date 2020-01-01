@@ -7,6 +7,8 @@ import "react-table/react-table.css";
 import {columnConfig} from "./ColumnConfig";
 import LoadingIndicator from "../../common/LoadingIndicator";
 import {EDI_LIST_SIZE} from "../../config/constants";
+import {Trans} from "react-i18next";
+import Typography from "@material-ui/core/Typography";
 
 class EdiList extends Component {
     constructor(props) {
@@ -166,7 +168,7 @@ class EdiList extends Component {
 
 export const Tips = () =>
     <div className="hints">
-        <em>Tip: Hold shift when sorting to multi-sort!</em>
+        <Trans i18nKey="ediConnections.tableHint">Note: Hold shift when sorting to multi-sort!</Trans>
     </div>;
 
 export default withRouter(EdiList);

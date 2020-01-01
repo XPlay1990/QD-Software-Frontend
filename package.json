@@ -9,6 +9,7 @@
     "@material-ui/lab": "^4.0.0-alpha.38",
     "@progress/kendo-react-buttons": "^3.9.0",
     "antd": "^3.26.5",
+    "chart.js": "^2.9.3",
     "config": "^3.2.4",
     "customize-cra": "^0.9.1",
     "draft-js": "^0.11.3",
