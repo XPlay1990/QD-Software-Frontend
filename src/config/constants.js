@@ -37,6 +37,7 @@ export const EDICON_ATTACHMENT_DOWNLOAD_URL = (id, fileName) => `${EDICON_ATTACH
 export const EDICON_CREATE_URL = `${EDICON_LIST_URL}/create`;
 export const STATISTICS_URL = `/statistics`;
 export const STATISTICS_EDI_STATE_URL = `${STATISTICS_URL}/state`;
+export const STATISTICS_EDI_CUSTOMER_URL = `${STATISTICS_URL}/customer`;
 export const FEEDBACK_URL = `/feedback`;
 
 export const FORBIDDEN_URL = `/forbidden`;

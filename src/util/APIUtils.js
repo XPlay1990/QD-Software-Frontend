@@ -22,7 +22,7 @@ import {
     QUESTION_URL,
     REGISTRATION_ACTIVATE_URL, REGISTRATION_URL,
     SAVE_DEVELOPER_AND_STATE,
-    SELF_URL, STATISTICS_EDI_STATE_URL,
+    SELF_URL, STATISTICS_EDI_CUSTOMER_URL, STATISTICS_EDI_STATE_URL,
     SWITCH_USER_URL,
     TRANSFER_STANDARDS_URL, USER_ROLES_BASE_URL
 } from '../config/constants';
@@ -60,6 +60,13 @@ export function getEdiConnection(id) {
 export function getEdiStateStatistics() {
     return customJSONRequest({
         url: `${BACKEND_BASE_URL}${STATISTICS_EDI_STATE_URL}`,
+        method: 'GET'
+    });
+}
+
+export function getEdCustomerStatistics() {
+    return customJSONRequest({
+        url: `${BACKEND_BASE_URL}${STATISTICS_EDI_CUSTOMER_URL}`,
         method: 'GET'
     });
 }
