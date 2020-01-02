@@ -7,6 +7,7 @@ import {withTranslation} from "react-i18next";
 
 import './statistics.css';
 import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
 
 class Statistics extends React.Component {
     constructor(props) {
@@ -280,22 +281,28 @@ class Statistics extends React.Component {
         // }
         return (
             <Grid container spacing={10} className="StatisticsGrid">
-                <Grid item xs={6} container spacing={3} direction="column">
-                    <canvas
-                        ref={node => (this.stateNode = node)}
-                    />
+                <Grid item xs={6}>
+                    <Paper className="StatisticsPaper">
+                        <canvas
+                            ref={node => (this.stateNode = node)}
+                        />
+                    </Paper>
                 </Grid>
 
                 <Grid item xs={6}>
-                    <canvas
-                        ref={node => (this.customerNode = node)}
-                    />
+                    <Paper className="StatisticsPaper">
+                        <canvas
+                            ref={node => (this.customerNode = node)}
+                        />
+                    </Paper>
                 </Grid>
 
                 <Grid item xs={6}>
-                    <canvas
-                        ref={node => (this.stateNodeSteppedLine = node)}
-                    />
+                    <Paper className="StatisticsPaper">
+                        <canvas
+                            ref={node => (this.stateNodeSteppedLine = node)}
+                        />
+                    </Paper>
                 </Grid>
             </Grid>
         );

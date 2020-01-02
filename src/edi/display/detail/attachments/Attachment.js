@@ -10,6 +10,9 @@ import {ReactComponent as DownloadIcon} from "../../../../resources/fileIcons/md
 import {ACCESS_TOKEN, BACKEND_BASE_URL, EDICON_ATTACHMENT_DOWNLOAD_URL} from "../../../../config/constants";
 import Button from "@material-ui/core/Button";
 import formatBytes from '../../../../util/DataSizeHelper';
+import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
 
 // import Divider from '@material-ui/core/Divider';
 
@@ -29,14 +32,14 @@ class Attachment extends Component {
     downloadFile() {
         let anchor = document.createElement("a");
         document.body.appendChild(anchor);
-        let file = `${BACKEND_BASE_URL}${EDICON_ATTACHMENT_DOWNLOAD_URL(this.state.ediConnectionId, this.state.fileName)}`;
+        let fileDownloadUrl = encodeURI(`${BACKEND_BASE_URL}${EDICON_ATTACHMENT_DOWNLOAD_URL(this.state.ediConnectionId, this.state.fileName)}`);
 
         let headers = new Headers();
         headers.append('Authorization', 'Bearer ' + localStorage.getItem(ACCESS_TOKEN));
 
-        fetch(file, {headers})
+        fetch(fileDownloadUrl, {headers})
             .then(response => {
-                this.filename = response.url.substring(response.url.lastIndexOf('/') + 1);
+                this.filename = decodeURI(response.url).substring(response.url.lastIndexOf('/') + 1);
                 return response.blob()
             })
             .then(blob => {
@@ -101,11 +104,15 @@ class Attachment extends Component {
         //         break;
         // }
         return (
-            <div className="Attachment">
-                {fileSymbol}
-                <div className="fileName">{this.state.fileName}</div>
-                <div className="fileSize">{formatBytes(this.state.fileSize)}</div>
-            </div>
+            <Paper className="Attachment">
+                <Grid container spacing={0}>
+                    <Grid item xs={6}>{fileSymbol}</Grid>
+                    <Grid item container direction={"column"} xs={6}>
+                        <Grid item><Box noWrap className="fileName">{this.state.fileName}</Box></Grid>
+                        <Grid item><Box className="fileSize">{formatBytes(this.state.fileSize)}</Box></Grid>
+                    </Grid>
+                </Grid>
+            </Paper>
         );
     }
 }

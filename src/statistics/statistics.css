@@ -1,2 +1,8 @@
 .StatisticsGrid {
 }
+
+.StatisticsPaper {
+    padding: 20px;
+    /*height: 100%;*/
+    /*width: 100%;*/
+}

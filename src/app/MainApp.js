@@ -74,7 +74,7 @@ class MainApp extends React.Component {
                         {/*<div><Divider orientation="vertical"/></div>*/}
                         <Tab value="Statistics" label={<Trans i18nKey="tabs.Statistics">Statistics</Trans>}/>
                         {/*<div><Divider orientation="vertical"/></div>*/}
-                        <Tab value="Feedback" label={<Trans i18nKey="tabs.Feedback">Feedback</Trans>}/>
+                        <Tab value="Feedback" label={<Trans i18nKey="tabs.Contact">Contact</Trans>}/>
                     </Tabs>
                 </Paper>
         }

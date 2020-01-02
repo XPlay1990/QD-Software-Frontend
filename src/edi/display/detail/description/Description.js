@@ -141,10 +141,11 @@ class Description extends Component {
 
 
     render() {
+        console.log(this.state.status.label)
         return (
             <Grid container spacing={3} className="ediDescriptionGrid">
                 <Grid item xs={3} className="ediDescriptionCustomerName">
-                    <Typography variant="h4"  style={{overflowWrap: "break-word"}}>
+                    <Typography variant="h4" style={{overflowWrap: "break-word"}}>
                         <Trans i18nKey="ediConnection.description.customer">Customer:</Trans>
                     </Typography>
                     <Typography>
@@ -152,7 +153,7 @@ class Description extends Component {
                     </Typography>
                 </Grid>
                 <Grid item xs={3} className="ediDescriptionUpdateTime">
-                    <Typography variant="h4"  style={{overflowWrap: "break-word"}}>
+                    <Typography variant="h4" style={{overflowWrap: "break-word"}}>
                         <Trans i18nKey="ediConnection.description.lastModified">Last Modified:</Trans>
                     </Typography>
                     <Typography>
@@ -160,7 +161,7 @@ class Description extends Component {
                     </Typography>
                 </Grid>
                 <Grid item xs={3} className="ediDescriptionAssignedDev">
-                    <Typography variant="h4"  style={{overflowWrap: "break-word"}}>
+                    <Typography variant="h4" style={{overflowWrap: "break-word"}}>
                         <Trans i18nKey="ediConnection.description.developer">Developer:</Trans>
                     </Typography>
                     {
@@ -184,7 +185,7 @@ class Description extends Component {
                     }
                 </Grid>
                 <Grid item xs={3} className="ediDescriptionStatus">
-                    <Typography variant="h4"  style={{overflowWrap: "break-word"}}>
+                    <Typography variant="h4" style={{overflowWrap: "break-word"}}>
                         <Trans i18nKey="ediConnection.description.state">State:</Trans>
                     </Typography>
                     {
@@ -198,19 +199,19 @@ class Description extends Component {
                                     // getOptionLabel={(option) => option}
                                     // getOptionValue={(option) => option}
                                 />)
-                            : (`${this.state.status.label}`)
+                            : (<Trans i18nKey={`ediConnection.state.${this.props.status}`}/>)
                     }
                 </Grid>
 
 
                 <Grid item xs={3} className="ediDescriptionSupplierName">
-                    <Typography variant="h4"  style={{overflowWrap: "break-word"}}>
+                    <Typography variant="h4" style={{overflowWrap: "break-word"}}>
                         <Trans i18nKey="ediConnection.description.supplier">Supplier:</Trans>
                     </Typography>
                     {this.state.supplierName}
                 </Grid>
                 <Grid item xs={3} className="ediDescriptionCreationTime">
-                    <Typography variant="h4"  style={{overflowWrap: "break-word"}}>
+                    <Typography variant="h4" style={{overflowWrap: "break-word"}}>
                         <Trans i18nKey="ediConnection.description.created">Created:</Trans>
                     </Typography>
                     {this.state.creationTime}

@@ -1,5 +1,4 @@
 import customJSONRequest, {
-    customFileDownloadRequest,
     customFileUploadRequest
 } from "../security/authHeader/AuthorizationHeaderRequest"
 import {
@@ -277,13 +276,6 @@ export function storeAttachments(ediConnectionId, files) {
         url: `${BACKEND_BASE_URL}${EDICON_ATTACHMENT_UPLOAD_URL(ediConnectionId)}`,
         method: 'POST',
         body: formData
-    });
-}
-
-export function downloadEdiAttachment(ediConnectionId, fileName) {
-    return customFileDownloadRequest({
-        url: `${BACKEND_BASE_URL}${EDICON_ATTACHMENT_UPLOAD_URL(ediConnectionId)}`,
-        method: 'GET',
     });
 }
 
