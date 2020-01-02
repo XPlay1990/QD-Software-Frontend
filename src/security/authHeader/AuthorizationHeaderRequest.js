@@ -35,27 +35,28 @@ const createRequest = (options, headers) => {
         );
 };
 
-export const customFileDownloadRequest = (options) => {
+export const customFileDownloadRequest = (fileDownloadUrl) => {
+    let anchor = document.createElement("a");
+    document.body.appendChild(anchor);
+    let encodedFileDownloadUrl = encodeURI(fileDownloadUrl);
 
-    const headers = new Headers();
+    let headers = new Headers();
+    headers.append('Authorization', 'Bearer ' + localStorage.getItem(ACCESS_TOKEN));
 
-    if (localStorage.getItem(ACCESS_TOKEN)) {
-        headers.append('Authorization', 'Bearer ' + localStorage.getItem(ACCESS_TOKEN))
-    }
-
-    const defaults = {headers: headers};
-    options = Object.assign({}, defaults, options);
-    options = Object.assign({}, {crossDomain: true}, options);
-
-
-    return fetch(options.url, options)
+    let fileName;
+    fetch(encodedFileDownloadUrl, {headers})
         .then(response => {
-                if (!response.ok) {
-                    return Promise.reject(response);
-                }
-                return response;
-            }
-        );
+            console.log(response)
+            fileName = decodeURI(response.url).substring(response.url.lastIndexOf('/') + 1);
+            return response.blob()
+        })
+        .then(blob => {
+            let objectUrl = URL.createObjectURL(blob);
+            anchor.href = objectUrl;
+            anchor.download = fileName;
+            anchor.click();
+            window.URL.revokeObjectURL(objectUrl);
+        });
 };
 
 export default customJSONRequest

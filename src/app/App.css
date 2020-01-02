@@ -6,8 +6,8 @@
     /*min-height: 100%;*/
 }
 
-.ant-notification{
-    z-index: 1500;  /* to be on top of material ui components */
+.ant-notification {
+    z-index: 1500; /* to be on top of material ui components */
 }
 
 .container {
@@ -58,10 +58,22 @@
     min-height: 80vh;
 }
 
-.TabBar{
+.TabBar {
+    display: flex;
+    flex-direction: row;
+    height: 48px;
 }
 
-.app-content{
+.app-content {
     padding: 2%;
     height: 100%;
+}
+
+.CsvPdfDownloadContainer,
+.TabsContainer {
+    width: 50%;
+}
+
+.excelDownloadIcon{
+    height: 40px;
 }

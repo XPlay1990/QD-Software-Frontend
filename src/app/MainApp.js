@@ -2,13 +2,16 @@ import React from 'react';
 import './App.css';
 import {Redirect, Route, Switch, withRouter} from 'react-router-dom';
 import {
-    EDICON_CREATE_URL,
+    BACKEND_BASE_URL,
+    CREATE_ORGANIZATION_URL,
+    EDICON_CREATE_URL, EDICON_EXCEL_URL,
     EDICON_LIST_URL,
     FEEDBACK_URL,
     FORBIDDEN_URL,
     REGISTRATION_ACTIVATE_URL,
     REGISTRATION_URL,
-    STATISTICS_URL, SWITCH_USER_URL
+    STATISTICS_URL,
+    SWITCH_USER_URL
 } from '../config/constants';
 import Signup from '../user/signup/Signup';
 import EdiList from '../edi/display/EdiList';
@@ -27,8 +30,13 @@ import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import {Trans} from "react-i18next";
-import {Divider} from "@material-ui/core";
 import Statistics from "../statistics/Statistics";
+import Box from "@material-ui/core/Box";
+import Tooltip from "@material-ui/core/Tooltip";
+import IconButton from "@material-ui/core/IconButton";
+import excelIcon from "../resources/fileIcons/excel.png"
+import pdfIcon from "../resources/fileIcons/pdf.png"
+import {customFileDownloadRequest} from "../security/authHeader/AuthorizationHeaderRequest";
 
 class MainApp extends React.Component {
     constructor(props) {
@@ -65,17 +73,36 @@ class MainApp extends React.Component {
             }
 
             tabBar =
-                <Paper>
-                    <Tabs value={this.state.selectedTab} onChange={(event, newValue) => {
-                        this.setState({selectedTab: newValue});
-                        this.props.history.push(this.moduleMap.get(newValue))
-                    }}>
-                        <Tab value="Edi" label={<Trans i18nKey="tabs.Edi">Edi</Trans>}/>
-                        {/*<div><Divider orientation="vertical"/></div>*/}
-                        <Tab value="Statistics" label={<Trans i18nKey="tabs.Statistics">Statistics</Trans>}/>
-                        {/*<div><Divider orientation="vertical"/></div>*/}
-                        <Tab value="Feedback" label={<Trans i18nKey="tabs.Contact">Contact</Trans>}/>
-                    </Tabs>
+                <Paper className="TabBar">
+                    <Box className="TabsContainer">
+                        <Tabs value={this.state.selectedTab} onChange={(event, newValue) => {
+                            this.setState({selectedTab: newValue});
+                            this.props.history.push(this.moduleMap.get(newValue))
+                        }}>
+                            <Tab value="Edi" label={<Trans i18nKey="tabs.Edi">Edi</Trans>}/>
+                            {/*<div><Divider orientation="vertical"/></div>*/}
+                            <Tab value="Statistics" label={<Trans i18nKey="tabs.Statistics">Statistics</Trans>}/>
+                            {/*<div><Divider orientation="vertical"/></div>*/}
+                            <Tab value="Feedback" label={<Trans i18nKey="tabs.Contact">Contact</Trans>}/>
+                        </Tabs>
+                    </Box>
+                    <Box display="flex" flexDirection="row-reverse" className="CsvPdfDownloadContainer">
+                        <Tooltip title="Create Organization" key="createOrgButton">
+                            <IconButton edge="start" className="NavigationButton" color="inherit" aria-label="menu"
+                                        onClick={() => customFileDownloadRequest(`${BACKEND_BASE_URL}${EDICON_EXCEL_URL}`)}>
+                                <img src={excelIcon} className={"excelDownloadIcon"} alt={"excel"}/>
+                                {/*<div>Icons erstellt von <a href="https://www.flaticon.com/de/autoren/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a  href="https://www.flaticon.com/de/" title="Flaticon">www.flaticon.com</a></div>*/}
+                            </IconButton>
+                        </Tooltip>
+                        <Tooltip title="Download Pdf" key="downloadPdf">
+                            <IconButton edge="start" className="NavigationButton" color="inherit" aria-label="menu"
+                                // onClick={() => this.props.history.push(CREATE_ORGANIZATION_URL)}
+                            >
+                                <img src={pdfIcon} className={"excelDownloadIcon"} alt={"excel"}/>
+                                {/*<div>Icons erstellt von <a href="https://www.flaticon.com/de/autoren/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/de/" title="Flaticon">www.flaticon.com</a></div>*/}
+                            </IconButton>
+                        </Tooltip>
+                    </Box>
                 </Paper>
         }
 
