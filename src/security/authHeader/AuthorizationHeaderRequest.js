@@ -46,8 +46,9 @@ export const customFileDownloadRequest = (fileDownloadUrl) => {
     let fileName;
     fetch(encodedFileDownloadUrl, {headers})
         .then(response => {
-            console.log(response)
-            fileName = decodeURI(response.url).substring(response.url.lastIndexOf('/') + 1);
+            fileName = response.headers.get('content-disposition')
+                .substring(response.headers.get('content-disposition')
+                    .lastIndexOf('filename=') + 9).replace(new RegExp('"', 'g'), '');
             return response.blob()
         })
         .then(blob => {

@@ -3,11 +3,12 @@ import './App.css';
 import {Redirect, Route, Switch, withRouter} from 'react-router-dom';
 import {
     BACKEND_BASE_URL,
-    CREATE_ORGANIZATION_URL,
-    EDICON_CREATE_URL, EDICON_EXCEL_URL,
+    EDICON_CREATE_URL,
+    EDICON_EXCEL_URL,
     EDICON_LIST_URL,
     FEEDBACK_URL,
     FORBIDDEN_URL,
+    PDF_URL,
     REGISTRATION_ACTIVATE_URL,
     REGISTRATION_URL,
     STATISTICS_URL,
@@ -96,8 +97,7 @@ class MainApp extends React.Component {
                         </Tooltip>
                         <Tooltip title="Download Pdf" key="downloadPdf">
                             <IconButton edge="start" className="NavigationButton" color="inherit" aria-label="menu"
-                                // onClick={() => this.props.history.push(CREATE_ORGANIZATION_URL)}
-                            >
+                                        onClick={() => customFileDownloadRequest(`${BACKEND_BASE_URL}${PDF_URL}`)}>
                                 <img src={pdfIcon} className={"excelDownloadIcon"} alt={"excel"}/>
                                 {/*<div>Icons erstellt von <a href="https://www.flaticon.com/de/autoren/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/de/" title="Flaticon">www.flaticon.com</a></div>*/}
                             </IconButton>

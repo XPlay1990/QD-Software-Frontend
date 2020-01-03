@@ -91,8 +91,8 @@ class Attachment extends Component {
                 <Grid container spacing={0}>
                     <Grid item xs={6}>{fileSymbol}</Grid>
                     <Grid item container direction={"column"} xs={6}>
-                        <Grid item><Box noWrap className="fileName">{this.state.fileName}</Box></Grid>
-                        <Grid item><Box className="fileSize">{formatBytes(this.state.fileSize)}</Box></Grid>
+                        <Grid item><Box whiteSpace="nowrap" className="fileName">{this.state.fileName}</Box></Grid>
+                        <Grid item><Box whiteSpace="nowrap" className="fileSize">{formatBytes(this.state.fileSize)}</Box></Grid>
                     </Grid>
                 </Grid>
             </Paper>

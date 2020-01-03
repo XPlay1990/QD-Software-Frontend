@@ -40,6 +40,7 @@ export const STATISTICS_EDI_STATE_URL = `${STATISTICS_URL}/state`;
 export const STATISTICS_EDI_CUSTOMER_URL = `${STATISTICS_URL}/customer`;
 export const FEEDBACK_URL = `/feedback`;
 export const EDICON_EXCEL_URL = `${EDICON_LIST_URL}/excel`;
+export const PDF_URL = `/pdf`;
 
 export const FORBIDDEN_URL = `/forbidden`;
 export const NOT_FOUND_URL = `/notFound`;
