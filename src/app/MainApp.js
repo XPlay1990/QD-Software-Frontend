@@ -88,7 +88,7 @@ class MainApp extends React.Component {
                         </Tabs>
                     </Box>
                     <Box display="flex" flexDirection="row-reverse" className="CsvPdfDownloadContainer">
-                        <Tooltip title="Create Organization" key="createOrgButton">
+                        <Tooltip title="Download excel file" key="downloadXLSX">
                             <IconButton edge="start" className="NavigationButton" color="inherit" aria-label="menu"
                                         onClick={() => customFileDownloadRequest(`${BACKEND_BASE_URL}${EDICON_EXCEL_URL}`)}>
                                 <img src={excelIcon} className={"excelDownloadIcon"} alt={"excel"}/>
