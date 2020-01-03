@@ -2,6 +2,8 @@
     /*display: grid;*/
     /*!*grid-gap: 2px;*!*/
     width: 200px;
+    height: 80px;
+    margin: 20px
     /*background-color: white;*/
     /*!*padding: 10px;*!*/
     /*grid-template-areas: 'icon filename' 'icon filesize';*/
@@ -20,7 +22,7 @@
 .Attachment .fileSize {
     white-space: normal;
     text-overflow: ellipsis;
-    width: 100px;
+    height: 40px;
     display: block;
-    overflow: hidden
+    overflow: hidden;
 }
