@@ -10,10 +10,11 @@ import {ReactComponent as DownloadIcon} from "../../../../resources/fileIcons/md
 import {BACKEND_BASE_URL, EDICON_ATTACHMENT_DOWNLOAD_URL} from "../../../../config/constants";
 import Button from "@material-ui/core/Button";
 import formatBytes from '../../../../util/DataSizeHelper';
-import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import {customFileDownloadRequest} from "../../../../security/authHeader/AuthorizationHeaderRequest";
+import Typography from "@material-ui/core/Typography";
+import {Tooltip} from "@material-ui/core";
 
 // import Divider from '@material-ui/core/Divider';
 
@@ -88,13 +89,15 @@ class Attachment extends Component {
         // }
         return (
             <Paper className="Attachment">
-                <Grid container spacing={0}>
-                    <Grid item xs={6}>{fileSymbol}</Grid>
-                    <Grid item container direction={"column"} xs={6}>
-                        <Grid item><Box whiteSpace="nowrap" className="fileName">{this.state.fileName}</Box></Grid>
-                        <Grid item><Box whiteSpace="nowrap" className="fileSize">{formatBytes(this.state.fileSize)}</Box></Grid>
+                <Tooltip title={this.state.fileName} key="backButton">
+                    <Grid container spacing={0}>
+                        <Grid item xs={6}>{fileSymbol}</Grid>
+                        <Grid item container direction={"column"} xs={6}>
+                            <Grid item><Typography className="fileName">{this.state.fileName}</Typography></Grid>
+                            <Grid item><Typography className="fileSize">{formatBytes(this.state.fileSize)}</Typography></Grid>
+                        </Grid>
                     </Grid>
-                </Grid>
+                </Tooltip>
             </Paper>
         );
     }

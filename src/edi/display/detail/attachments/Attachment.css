@@ -15,14 +15,12 @@
     grid-area: icon;
 }
 
-.Attachment .fileName {
-    grid-area: filename;
-    display: flex;
-    flex-direction: column-reverse;
-}
-
+.Attachment .fileName,
+.Attachment .fileType,
 .Attachment .fileSize {
-    grid-area: filesize;
-    display: flex;
-    flex-direction: column;
+    white-space: normal;
+    text-overflow: ellipsis;
+    width: 100px;
+    display: block;
+    overflow: hidden
 }

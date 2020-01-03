@@ -141,7 +141,6 @@ class Description extends Component {
 
 
     render() {
-        console.log(this.state.status.label)
         return (
             <Grid container spacing={3} className="ediDescriptionGrid">
                 <Grid item xs={3} className="ediDescriptionCustomerName">
