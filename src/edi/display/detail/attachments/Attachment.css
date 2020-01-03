@@ -2,7 +2,6 @@
     /*display: grid;*/
     /*!*grid-gap: 2px;*!*/
     width: 200px;
-    height: 80px;
     margin: 20px
     /*background-color: white;*/
     /*!*padding: 10px;*!*/
@@ -17,12 +16,17 @@
     grid-area: icon;
 }
 
+.fileDataContainer{
+    width: 100%;
+}
+
 .Attachment .fileName,
 .Attachment .fileType,
 .Attachment .fileSize {
     white-space: normal;
     text-overflow: ellipsis;
     height: 40px;
+    width: 100%;
     display: block;
     overflow: hidden;
 }

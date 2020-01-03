@@ -6,15 +6,16 @@ import "./Attachment.css"
 // import {ReactComponent as JpgIcon} from "../../../../resources/fileIcons/jpg.svg"
 // import {ReactComponent as DocxIcon} from "../../../../resources/fileIcons/docx.svg"
 // import {ReactComponent as DefaultIcon} from "../../../../resources/fileIcons/clip.svg"
-import {ReactComponent as DownloadIcon} from "../../../../resources/fileIcons/md-download.svg"
 import {BACKEND_BASE_URL, EDICON_ATTACHMENT_DOWNLOAD_URL} from "../../../../config/constants";
-import Button from "@material-ui/core/Button";
 import formatBytes from '../../../../util/DataSizeHelper';
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import {customFileDownloadRequest} from "../../../../security/authHeader/AuthorizationHeaderRequest";
 import Typography from "@material-ui/core/Typography";
 import {Tooltip} from "@material-ui/core";
+import IconButton from "@material-ui/core/IconButton";
+import {GetApp} from "@material-ui/icons";
+import Box from "@material-ui/core/Box";
 
 // import Divider from '@material-ui/core/Divider';
 
@@ -37,9 +38,9 @@ class Attachment extends Component {
 
     render() {
         let fileSymbol =
-            <Button onClick={this.downloadFile} className="EdiFileIcon">
-                <DownloadIcon/>
-            </Button>;
+            <IconButton onClick={this.downloadFile} className="EdiFileIcon">
+                <GetApp/>
+            </IconButton>;
 
 
         // switch (this.state.fileType) {
@@ -91,10 +92,13 @@ class Attachment extends Component {
             <Paper className="Attachment">
                 <Tooltip title={this.state.fileName} key="backButton">
                     <Grid container spacing={0}>
-                        <Grid item xs={5}>{fileSymbol}</Grid>
-                        <Grid item container direction={"column"} xs={7}>
-                            <Grid item xs={12}><Typography variant={"caption"} className="fileName">{this.state.fileName}</Typography></Grid>
-                            <Grid item xs={12}><Typography variant={"caption"} className="fileSize">{formatBytes(this.state.fileSize)}</Typography></Grid>
+                        <Grid item xs={3}>{fileSymbol}</Grid>
+                        <Grid item xs={9} container>
+                            <Box className={"fileDataContainer"} display={"flex"} flexDirection={"column"}>
+                                <Typography variant={"caption"} className="fileName">{this.state.fileName}</Typography>
+                                <Typography variant={"caption"}
+                                            className="fileSize">{formatBytes(this.state.fileSize)}</Typography>
+                            </Box>
                         </Grid>
                     </Grid>
                 </Tooltip>
