@@ -1,4 +1,8 @@
 {
+  "demo":{
+    "loginInfoTitle": "Welcome to the QD Demo Portal!",
+    "loginInfoText": "You can login with <br> user: sampleuser <br> password: sampleuser"
+  },
   "common": {
     "username": "Username",
     "save": "Save",

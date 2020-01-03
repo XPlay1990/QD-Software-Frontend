@@ -7,6 +7,7 @@ import AuthenticationService from "../../security/AuthenticationService"
 
 import {Button, Form, Icon, Input, notification} from 'antd';
 import {ACCESS_TOKEN, EDICON_LIST_URL, IS_AUTHENTICATED} from "../../config/constants";
+import {Trans} from "react-i18next";
 
 const FormItem = Form.Item;
 
@@ -45,6 +46,14 @@ class LoginForm extends Component {
             username: props.username
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentDidMount() {
+        notification.info({
+            message: <Trans i18nKey="demo.loginInfoTitle"/>,
+            description: <Trans i18nKey="demo.loginInfoText"/>,
+            duration: 10
+        });
     }
 
     handleSubmit(event) {
