@@ -71,9 +71,9 @@
 
 .CsvPdfDownloadContainer,
 .TabsContainer {
-    width: 50%;
 }
 
 .excelDownloadIcon{
-    height: 40px;
+    height: 30px;
+    margin: auto;
 }

@@ -38,6 +38,7 @@ import IconButton from "@material-ui/core/IconButton";
 import excelIcon from "../resources/fileIcons/excel.png"
 import pdfIcon from "../resources/fileIcons/pdf.png"
 import {customFileDownloadRequest} from "../security/authHeader/AuthorizationHeaderRequest";
+import Divider from "@material-ui/core/Divider";
 
 class MainApp extends React.Component {
     constructor(props) {
@@ -87,11 +88,12 @@ class MainApp extends React.Component {
                             <Tab value="Feedback" label={<Trans i18nKey="tabs.Contact">Contact</Trans>}/>
                         </Tabs>
                     </Box>
-                    <Box display="flex" flexDirection="row-reverse" className="CsvPdfDownloadContainer">
+                    <Divider orientation="vertical" variant="middle"/>
+                    <Box display="flex" flexDirection="row" className="CsvPdfDownloadContainer">
                         <Tooltip title="Download excel file" key="downloadXLSX">
                             <IconButton edge="start" className="NavigationButton" color="inherit" aria-label="menu"
                                         onClick={() => customFileDownloadRequest(`${BACKEND_BASE_URL}${EDICON_EXCEL_URL}`)}>
-                                <img src={excelIcon} className={"excelDownloadIcon"} alt={"excel"}/>
+                                <img src={excelIcon} className="excelDownloadIcon" alt={"excel"}/>
                                 {/*<div>Icons erstellt von <a href="https://www.flaticon.com/de/autoren/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a  href="https://www.flaticon.com/de/" title="Flaticon">www.flaticon.com</a></div>*/}
                             </IconButton>
                         </Tooltip>
