@@ -131,6 +131,13 @@ class Statistics extends React.Component {
                 title: {
                     display: true,
                     text: 'Number of Edi connections by state'
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
                 }
             },
             data: {
