@@ -123,7 +123,7 @@ class Navigationbar extends Component {
 
         return (
             <div>
-                <AppBar className="Navigationbar" position="static">
+                <AppBar className="Navigationbar" position="relative">
                     <Toolbar className="Toolbar">
                         <div className="app-title">
                             {/*<img className={"HeaderLogo"} src={QDLogo}/>*/}
