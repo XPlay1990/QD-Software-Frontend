@@ -6,7 +6,6 @@ import Description from "./description/Description";
 import EdiMessageList from "./messages/EdiMessageList";
 import {notification} from "antd";
 import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
 
 class EdiConnection extends Component {
     constructor(props) {

@@ -29,8 +29,10 @@ export const columnConfig = [
         style: {whiteSpace: 'unset'},
         width: 350,
         Cell: e => e.original.read ?
-            <Link to={EDICON_DETAILS_OVERVIEW_URL(e.original.id)}> {e.value} </Link>
-            : <Link to={EDICON_DETAILS_OVERVIEW_URL(e.original.id)}> <b>{e.value}</b> </Link>
+            <Link to={EDICON_DETAILS_OVERVIEW_URL(e.original.id)}> {<Trans
+                i18nKey={`ediConnection.state.${e.value}`}/>} </Link>
+            : <Link to={EDICON_DETAILS_OVERVIEW_URL(e.original.id)}> <b>{<Trans
+                i18nKey={`ediConnection.state.${e.value}`}/>}</b> </Link>
     },
     {
         Header: <Trans i18nKey="columnConfig.developer">Developer</Trans>,
