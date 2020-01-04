@@ -1,3 +1,21 @@
+.EdiAttachments {
+    margin: 20px;
+    /*grid-area: attachments;*/
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+    height: 100%;
+}
+
+
+.AttachmentList {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    overflow-y: scroll;
+}
+
 .AttachmentDropZone {
     min-height: 120px;
     background-color: lightgrey;

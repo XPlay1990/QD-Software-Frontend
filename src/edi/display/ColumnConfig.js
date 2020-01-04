@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import {Trans} from 'react-i18next';
+import {EDICON_DETAILS_OVERVIEW_URL} from "../../config/constants";
 
 export const columnConfig = [
     {
@@ -9,8 +10,8 @@ export const columnConfig = [
         headerStyle: {whiteSpace: 'unset'},
         style: {whiteSpace: 'unset'},
         Cell: e => e.original.read ?
-            <Link to={`/edi_connection/${e.original.id}`}> {e.value} </Link>
-            : <Link to={`/edi_connection/${e.original.id}`}> <b>{e.value}</b> </Link>
+            <Link to={EDICON_DETAILS_OVERVIEW_URL(e.original.id)}> {e.value} </Link>
+            : <Link to={EDICON_DETAILS_OVERVIEW_URL(e.original.id)}> {e.value} </Link>
     },
     {
         Header: <Trans i18nKey="columnConfig.supplier">Supplier</Trans>,
@@ -18,8 +19,8 @@ export const columnConfig = [
         headerStyle: {whiteSpace: 'unset'},
         style: {whiteSpace: 'unset'},
         Cell: e => e.original.read ?
-            <Link to={`/edi_connection/${e.original.id}`}> {e.value} </Link>
-            : <Link to={`/edi_connection/${e.original.id}`}> <b>{e.value}</b> </Link>
+            <Link to={EDICON_DETAILS_OVERVIEW_URL(e.original.id)}> {e.value} </Link>
+            : <Link to={EDICON_DETAILS_OVERVIEW_URL(e.original.id)}> {e.value} </Link>
     },
     {
         Header: <Trans i18nKey="columnConfig.state">State</Trans>,
@@ -28,8 +29,8 @@ export const columnConfig = [
         style: {whiteSpace: 'unset'},
         width: 350,
         Cell: e => e.original.read ?
-            <Link to={`/edi_connection/${e.original.id}`}> {e.value} </Link>
-            : <Link to={`/edi_connection/${e.original.id}`}> <b>{e.value}</b> </Link>
+            <Link to={EDICON_DETAILS_OVERVIEW_URL(e.original.id)}> {e.value} </Link>
+            : <Link to={EDICON_DETAILS_OVERVIEW_URL(e.original.id)}> {e.value} </Link>
     },
     {
         Header: <Trans i18nKey="columnConfig.developer">Developer</Trans>,
@@ -37,8 +38,8 @@ export const columnConfig = [
         headerStyle: {whiteSpace: 'unset'},
         style: {whiteSpace: 'unset'},
         Cell: e => e.original.read ?
-            <Link to={`/edi_connection/${e.original.id}`}> {e.value} </Link>
-            : <Link to={`/edi_connection/${e.original.id}`}> <b>{e.value}</b> </Link>
+            <Link to={EDICON_DETAILS_OVERVIEW_URL(e.original.id)}> {e.value} </Link>
+            : <Link to={EDICON_DETAILS_OVERVIEW_URL(e.original.id)}> {e.value} </Link>
     },
     {
         Header: <Trans i18nKey="columnConfig.lastModified">Last Modified</Trans>,
@@ -46,7 +47,7 @@ export const columnConfig = [
         headerStyle: {whiteSpace: 'unset'},
         style: {whiteSpace: 'unset'},
         Cell: e => e.original.read ?
-            <Link to={`/edi_connection/${e.original.id}`}> {e.value} </Link>
-            : <Link to={`/edi_connection/${e.original.id}`}> <b>{e.value}</b> </Link>
+            <Link to={EDICON_DETAILS_OVERVIEW_URL(e.original.id)}> {e.value} </Link>
+            : <Link to={EDICON_DETAILS_OVERVIEW_URL(e.original.id)}> {e.value} </Link>
     },
 ];

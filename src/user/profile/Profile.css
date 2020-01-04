@@ -1,5 +1,4 @@
 .user-details {
-    margin-bottom: 44px;
     padding-top: 40px;
     padding-bottom: 20px;
     margin: 0 auto;
@@ -11,6 +10,7 @@
     height: 120px;
     border-radius: 60px;
     line-height: 60px;
+    margin: 20px;
 }
 
 .user-avatar-circle > * {

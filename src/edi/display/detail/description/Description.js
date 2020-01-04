@@ -142,8 +142,8 @@ class Description extends Component {
 
     render() {
         return (
-            <Grid container spacing={3} className="ediDescriptionGrid">
-                <Grid item xs={3} className="ediDescriptionCustomerName">
+            <Grid container spacing={4} className="ediDescriptionGrid">
+                <Grid item xs={6} className="ediDescriptionCustomerName">
                     <Typography variant="h6" style={{overflowWrap: "break-word"}}>
                         <Trans i18nKey="ediConnection.description.customer">Customer:</Trans>
                     </Typography>
@@ -151,7 +151,20 @@ class Description extends Component {
                         {this.state.customerName}
                     </Typography>
                 </Grid>
-                <Grid item xs={3} className="ediDescriptionUpdateTime">
+                <Grid item xs={6} className="ediDescriptionSupplierName">
+                    <Typography variant="h6" style={{overflowWrap: "break-word"}}>
+                        <Trans i18nKey="ediConnection.description.supplier">Supplier:</Trans>
+                    </Typography>
+                    {this.state.supplierName}
+                </Grid>
+
+                <Grid item xs={6} className="ediDescriptionCreationTime">
+                    <Typography variant="h6" style={{overflowWrap: "break-word"}}>
+                        <Trans i18nKey="ediConnection.description.created">Created:</Trans>
+                    </Typography>
+                    {this.state.creationTime}
+                </Grid>
+                <Grid item xs={6} className="ediDescriptionUpdateTime">
                     <Typography variant="h6" style={{overflowWrap: "break-word"}}>
                         <Trans i18nKey="ediConnection.description.lastModified">Last Modified:</Trans>
                     </Typography>
@@ -159,7 +172,8 @@ class Description extends Component {
                         {this.state.updateTime}
                     </Typography>
                 </Grid>
-                <Grid item xs={3} className="ediDescriptionAssignedDev">
+
+                <Grid item xs={6} className="ediDescriptionAssignedDev">
                     <Typography variant="h6" style={{overflowWrap: "break-word"}}>
                         <Trans i18nKey="ediConnection.description.developer">Developer:</Trans>
                     </Typography>
@@ -183,7 +197,7 @@ class Description extends Component {
                         )
                     }
                 </Grid>
-                <Grid item xs={3} className="ediDescriptionStatus">
+                <Grid item xs={6} className="ediDescriptionStatus">
                     <Typography variant="h6" style={{overflowWrap: "break-word"}}>
                         <Trans i18nKey="ediConnection.description.state">State:</Trans>
                     </Typography>
@@ -203,25 +217,16 @@ class Description extends Component {
                 </Grid>
 
 
-                <Grid item xs={3} className="ediDescriptionSupplierName">
-                    <Typography variant="h6" style={{overflowWrap: "break-word"}}>
-                        <Trans i18nKey="ediConnection.description.supplier">Supplier:</Trans>
-                    </Typography>
-                    {this.state.supplierName}
-                </Grid>
-                <Grid item xs={3} className="ediDescriptionCreationTime">
-                    <Typography variant="h6" style={{overflowWrap: "break-word"}}>
-                        <Trans i18nKey="ediConnection.description.created">Created:</Trans>
-                    </Typography>
-                    {this.state.creationTime}
-                </Grid>
                 {
                     this.isAdmin ? (
-                        <Button variant="contained" color="primary" size="medium"
-                                className={"ApplyChangesButton saveButton " + (this.state.isSaving ? "save-animation" : "")}
-                                onClick={this.saveDeveloperAndState}>
-                            <Trans i18nKey="ediConnection.applyChanges">Apply Changes</Trans>
-                        </Button>) : null
+                        <Grid item>
+                            <Button variant="contained" color="primary" size="medium"
+                                    className={"ApplyChangesButton saveButton " + (this.state.isSaving ? "save-animation" : "")}
+                                    onClick={this.saveDeveloperAndState}>
+                                <Trans i18nKey="ediConnection.applyChanges">Apply Changes</Trans>
+                            </Button>
+                        </Grid>
+                    ) : null
                 }
             </Grid>
         );

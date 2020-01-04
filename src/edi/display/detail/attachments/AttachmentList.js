@@ -14,7 +14,7 @@ class AttachmentList extends Component {
             isLoading: true
         };
 
-        this.ediConnectionId = props.ediConnectionId;
+        this.ediConnectionId = props.match.params.id;
         this.loadAttachmentList = this.loadAttachmentList.bind(this);
         this.uploadFiles = this.uploadFiles.bind(this);
     }

@@ -11,7 +11,12 @@
   "tabs": {
     "Edi": "Edi",
     "Statistics": "Statistics",
-    "Contact": "Contact"
+    "Contact": "Contact",
+    "ediconnection": {
+      "overview": "Overview",
+      "question/answer": "Questions",
+      "attachments": "Attachments"
+    }
   },
   "columnConfig": {
     "customer": "Customer",

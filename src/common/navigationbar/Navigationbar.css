@@ -19,12 +19,6 @@
     text-decoration: none;
 }
 
-.Navigationbar .BackForwardNav {
-    display: flex;
-    flex-direction: row;
-    margin-right: 20px;
-}
-
 .Navigationbar .UserButtons {
     flex: 1;
     display: flex;

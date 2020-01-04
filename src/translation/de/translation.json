@@ -1,5 +1,5 @@
 {
-  "demo":{
+  "demo": {
     "loginInfoTitle": "Willkommen zum QD Demo Portal!",
     "loginInfoText": "Sie können sich einloggen mit <br> user: sampleuser <br> password: sampleuser"
   },
@@ -14,7 +14,12 @@
   "tabs": {
     "Edi": "Edi",
     "Statistics": "Statistik",
-    "Contact": "Kontakt"
+    "Contact": "Kontakt",
+    "ediconnection": {
+      "overview": "Übersicht",
+      "question/answer": "Fragen",
+      "attachments": "Anhänge"
+    }
   },
   "navigation": {
     "profile": "Profil",

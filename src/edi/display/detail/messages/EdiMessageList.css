@@ -32,14 +32,12 @@
 /*.headlineButton:focus {*/
 /*    background: #f3f3f3;*/
 /*}*/
-.EdiMessages{
+.EdiMessages {
     background-color: white;
     border-style: solid;
     border-color: lightblue;
-    height: 650px;
+    height: 600px;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    overflow-y:scroll;
-    position:relative;
+    overflow-y: scroll;
+    position: relative;
 }

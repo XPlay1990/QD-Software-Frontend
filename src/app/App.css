@@ -58,22 +58,9 @@
     min-height: 80vh;
 }
 
-.TabBar {
-    display: flex;
-    flex-direction: row;
-    height: 48px;
-}
 
 .app-content {
     padding: 2%;
     height: 100%;
 }
 
-.CsvPdfDownloadContainer,
-.TabsContainer {
-}
-
-.excelDownloadIcon{
-    height: 30px;
-    margin: auto;
-}

@@ -1,0 +1,19 @@
+.TabBar {
+    display: flex;
+    flex-direction: row;
+    height: 48px;
+}
+
+.CsvPdfDownloadContainer,
+.TabsContainer {
+}
+
+.excelDownloadIcon{
+    height: 30px;
+    margin: auto;
+}
+
+.invisible {
+    display: none;
+    visibility: hidden;
+}

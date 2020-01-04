@@ -4,6 +4,8 @@ import LoadingIndicator from "../../../../common/LoadingIndicator";
 import {getEdiConnectionMessages} from "../../../../util/APIUtils";
 import EdiMessageJS from "./EdiMessageJS";
 import MegaDraftTextEditor from "./TextEditor/MegaDraft/MegaDraftTextEditor";
+import {Box} from "@material-ui/core";
+import Divider from "@material-ui/core/Divider";
 // import '@atlaskit/css-reset';
 // import '@atlaskit/reduced-ui-pack';
 // import { Editor, CollapsedEditor } from '@atlaskit/editor-core';
@@ -93,12 +95,14 @@ class EdiMessageList extends Component {
                 key={ediMessage.message.id}
                 message={ediMessage.message}
                 type={ediMessage.type}
-            />)
+            />);
+            messageView.push(<Divider variant="middle"/>
+            )
         });
 
         return (
-            <div className="EdiMessageList">
-                <div className="EdiMessages">
+            <Box display={"flex"} flexDirection={"column"} className="EdiMessageList">
+                <Box display={"flex"} flexDirection={"column"} className="EdiMessages">
                     {messageView}
                     {
                         this.state.isLoading ?
@@ -115,7 +119,7 @@ class EdiMessageList extends Component {
                         // !this.state.isLoading && this.state.ediMessages !== [] ? (
                         // ) : null
                     }
-                </div>
+                </Box>
                 <MegaDraftTextEditor
                     loadEdiMessages={this.loadEdiMessages}
                     ediConnectionId={this.ediConnectionId}
@@ -132,8 +136,7 @@ class EdiMessageList extends Component {
                 {/*        onCancel={this.collapseEditor}*/}
                 {/*    />*/}
                 {/*</CollapsedEditor>*/}
-
-            </div>
+            </Box>
         );
     }
 }
