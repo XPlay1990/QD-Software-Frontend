@@ -25,6 +25,7 @@ import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
 import ToggleButton from "@material-ui/lab/ToggleButton";
 import ControlDropdown from "./ControlDropdown";
 import Typography from "@material-ui/core/Typography";
+import {Box} from "@material-ui/core";
 
 class Navigationbar extends Component {
     constructor(props) {
@@ -122,22 +123,20 @@ class Navigationbar extends Component {
         );
 
         return (
-            <div>
-                <AppBar className="Navigationbar" position="relative">
-                    <Toolbar className="Toolbar">
-                        <div className="app-title">
-                            {/*<img className={"HeaderLogo"} src={QDLogo}/>*/}
-                            <Typography variant="h4"><Link to="/">QD Software Portal</Link></Typography>
-                        </div>
-                        <div className={"UserButtons"}>
-                            {navbarItemsUer}
-                        </div>
-                        <div className="Navigation">
-                            {navbarItemsControl}
-                        </div>
-                    </Toolbar>
-                </AppBar>
-            </div>
+            <AppBar className="Navigationbar" position="relative">
+                <Toolbar className="Toolbar">
+
+                    <Box display={"flex"} flexDirection={"row"} className="UserButtons">
+                        {navbarItemsUer}
+                    </Box>
+                    <Box className="app-title">
+                        <Typography variant="h4"><Link to="/">QD Software Portal</Link></Typography>
+                    </Box>
+                    <Box display={"flex"} flexDirection={"row-reverse"} className="Navigation">
+                        {navbarItemsControl}
+                    </Box>
+                </Toolbar>
+            </AppBar>
         );
     }
 }

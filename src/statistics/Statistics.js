@@ -287,7 +287,7 @@ class Statistics extends React.Component {
         //     return <LoadingIndicator/>
         // }
         return (
-            <Grid container spacing={10} className="StatisticsGrid">
+            <Grid container spacing={3} className="StatisticsGrid">
                 <Grid item xs={6}>
                     <Paper className="StatisticsPaper">
                         <canvas
