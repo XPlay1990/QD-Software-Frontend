@@ -11,7 +11,7 @@ export const columnConfig = [
         style: {whiteSpace: 'unset'},
         Cell: e => e.original.read ?
             <Link to={EDICON_DETAILS_OVERVIEW_URL(e.original.id)}> {e.value} </Link>
-            : <Link to={EDICON_DETAILS_OVERVIEW_URL(e.original.id)}> {e.value} </Link>
+            : <Link to={EDICON_DETAILS_OVERVIEW_URL(e.original.id)}> <b>{e.value}</b> </Link>
     },
     {
         Header: <Trans i18nKey="columnConfig.supplier">Supplier</Trans>,
@@ -20,7 +20,7 @@ export const columnConfig = [
         style: {whiteSpace: 'unset'},
         Cell: e => e.original.read ?
             <Link to={EDICON_DETAILS_OVERVIEW_URL(e.original.id)}> {e.value} </Link>
-            : <Link to={EDICON_DETAILS_OVERVIEW_URL(e.original.id)}> {e.value} </Link>
+            : <Link to={EDICON_DETAILS_OVERVIEW_URL(e.original.id)}> <b>{e.value}</b> </Link>
     },
     {
         Header: <Trans i18nKey="columnConfig.state">State</Trans>,
@@ -30,7 +30,7 @@ export const columnConfig = [
         width: 350,
         Cell: e => e.original.read ?
             <Link to={EDICON_DETAILS_OVERVIEW_URL(e.original.id)}> {e.value} </Link>
-            : <Link to={EDICON_DETAILS_OVERVIEW_URL(e.original.id)}> {e.value} </Link>
+            : <Link to={EDICON_DETAILS_OVERVIEW_URL(e.original.id)}> <b>{e.value}</b> </Link>
     },
     {
         Header: <Trans i18nKey="columnConfig.developer">Developer</Trans>,
@@ -39,7 +39,7 @@ export const columnConfig = [
         style: {whiteSpace: 'unset'},
         Cell: e => e.original.read ?
             <Link to={EDICON_DETAILS_OVERVIEW_URL(e.original.id)}> {e.value} </Link>
-            : <Link to={EDICON_DETAILS_OVERVIEW_URL(e.original.id)}> {e.value} </Link>
+            : <Link to={EDICON_DETAILS_OVERVIEW_URL(e.original.id)}> <b>{e.value}</b> </Link>
     },
     {
         Header: <Trans i18nKey="columnConfig.lastModified">Last Modified</Trans>,
@@ -48,6 +48,6 @@ export const columnConfig = [
         style: {whiteSpace: 'unset'},
         Cell: e => e.original.read ?
             <Link to={EDICON_DETAILS_OVERVIEW_URL(e.original.id)}> {e.value} </Link>
-            : <Link to={EDICON_DETAILS_OVERVIEW_URL(e.original.id)}> {e.value} </Link>
+            : <Link to={EDICON_DETAILS_OVERVIEW_URL(e.original.id)}> <b>{e.value}</b> </Link>
     },
 ];
