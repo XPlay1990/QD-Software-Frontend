@@ -1,11 +1,12 @@
 .TabBar {
     display: flex;
     flex-direction: row;
-    height: 48px;
 }
 
 .CsvPdfDownloadContainer,
 .TabsContainer {
+    flex-wrap: wrap;
+    margin-top: auto;
 }
 
 .excelDownloadIcon{

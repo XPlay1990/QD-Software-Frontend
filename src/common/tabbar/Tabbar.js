@@ -85,25 +85,25 @@ class Tabbar extends Component {
         this.setSelectedTab();
 
         if (this.reverseModuleMap.has(this.props.location.pathname)) {
-            return <Box className="TabsContainer">
-                <Tabs value={this.state.selectedTab} onChange={(event, newValue) => {
+            return (
+                <Tabs className="TabsContainer" value={this.state.selectedTab} onChange={(event, newValue) => {
                     this.setState({selectedTab: newValue});
                     this.props.history.push(this.moduleMap.get(newValue))
                 }}>
                     {this.moduleTabs}
                 </Tabs>
-            </Box>
+            )
         } else if (new RegExp(`${EDICON_LIST_URL}/*/*`).test(this.props.location.pathname)) {
             let ediConnectionId = this.props.location.pathname.split("/")[2];
 
-            return <Box className="TabsContainer">
-                <Tabs value={this.state.selectedTab} onChange={(event, newValue) => {
+            return (
+                <Tabs className="TabsContainer" value={this.state.selectedTab} onChange={(event, newValue) => {
                     this.setState({selectedTab: newValue});
                     this.props.history.push(`${EDICON_DETAILS_URL(ediConnectionId)}/${newValue}`)
                 }}>
                     {this.ediConnectionTabs}
                 </Tabs>
-            </Box>
+            )
         }
     }
 
@@ -157,7 +157,7 @@ class Tabbar extends Component {
             <Paper className="TabBar">
                 {this.buildBackButton()}
                 {this.buildTabs()}
-                <Divider orientation="vertical" variant="middle"/>
+                <Box><Divider orientation="vertical" variant="middle"/></Box>
                 {this.buildDownloadOptions()}
             </Paper>
         );
