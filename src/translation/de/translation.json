@@ -3,13 +3,28 @@
     "loginInfoTitle": "Willkommen zum QD Demo Portal!",
     "loginInfoText": "Sie können sich einloggen mit <br> user: sampleuser <br> password: sampleuser"
   },
+  "contact": {
+    "intro": "Sie sind an einer Zusammenarbeit interessiert, haben eine Anfrage oder Feedback? <br> Über folgende Kontaktdaten oder das unten stehende Kontaktformular können Sie mich erreichen.",
+    "formTitle": "Kontaktform",
+    "label": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Nachricht"
+    },
+    "placeholder": {
+      "name": "Ihr Name",
+      "email": "Ihre Email",
+      "message": "Schreiben Sie mir Ihre Nachricht"
+    }
+  },
   "common": {
     "save": "Speichern",
     "delete": "Löschen",
     "yes": "Ja",
     "no": "Nein",
     "username": "Username",
-    "password": "Passwort"
+    "password": "Passwort",
+    "send": "Senden"
   },
   "tabs": {
     "Edi": "Edi",

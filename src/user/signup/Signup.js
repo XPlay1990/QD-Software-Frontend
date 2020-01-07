@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {
-    checkEmailAvailability,
     checkUsernameAvailability,
     getAllGenders,
     getAllLanguages,

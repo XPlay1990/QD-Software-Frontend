@@ -1,12 +1,27 @@
 {
-  "demo":{
+  "demo": {
     "loginInfoTitle": "Welcome to the QD Demo Portal!",
     "loginInfoText": "You can login with <br> user: sampleuser <br> password: sampleuser"
+  },
+  "contact": {
+    "intro": "Are you interested in working together, have a request or feedback? <br> You can contact me directly or use the contact form below.",
+    "formTitle": "Contact form",
+    "label": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message"
+    },
+    "placeholder": {
+      "name": "Your name",
+      "email": "Your Email",
+      "message": "Type your message"
+    }
   },
   "common": {
     "username": "Username",
     "save": "Save",
-    "delete": "Delete"
+    "delete": "Delete",
+    "send": "Send"
   },
   "tabs": {
     "Edi": "Edi",

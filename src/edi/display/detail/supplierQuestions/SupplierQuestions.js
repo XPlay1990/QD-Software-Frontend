@@ -371,8 +371,8 @@ class SupplierQuestions extends Component {
                                                 htmlType="submit"
                                                 size="default"
                                                 className="Edi-questions-form-button"
-                                                disabled={this.isFormInvalid()}><Trans
-                                            i18nKey={`common.save`}>Save</Trans></Button>
+                                                disabled={this.isFormInvalid()}>
+                                            <Trans i18nKey={`common.save`}>Save</Trans></Button>
                                     </FormItem>
                                 </Grid>
 

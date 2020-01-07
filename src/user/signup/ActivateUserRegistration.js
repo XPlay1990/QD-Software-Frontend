@@ -167,8 +167,8 @@ class ActivateUserRegistration extends Component {
                                     htmlType="submit"
                                     size="large"
                                     className="signup-form-button"
-                                    disabled={this.isFormInvalid()}><Trans i18nKey="registration.setPassword">Set
-                                password</Trans></Button>
+                                    disabled={this.isFormInvalid()}>
+                                <Trans i18nKey="registration.setPassword">Set password</Trans></Button>
                         </FormItem>
                     </Form>
                 </div>

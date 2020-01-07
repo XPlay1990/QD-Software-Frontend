@@ -1,29 +1,34 @@
-import customJSONRequest, {
-    customFileUploadRequest
-} from "../security/authHeader/AuthorizationHeaderRequest"
+import customJSONRequest, {customFileUploadRequest} from "../security/authHeader/AuthorizationHeaderRequest"
 import {
     ANSWER_URL,
     BACKEND_BASE_URL,
     CONNECTION_TYPES_URL,
+    CONTACT_URL,
     EDI_LIST_SIZE,
     EDICON_ATTACHMENT_BASE_URL,
     EDICON_ATTACHMENT_UPLOAD_URL,
     EDICON_LIST_URL,
-    EDICON_MESSAGES_URL, GENDER_URL,
+    EDICON_MESSAGES_URL,
+    GENDER_URL,
     GET_CUSTOMER_ORGANIZATIONS_URL,
     GET_DEVELOPERS,
     GET_EDISTATES,
     GET_ORGANIZATION_MEMBERS_URL,
     GET_SUPPLIER_ORGANIZATIONS_URL,
-    GET_USERLIST_URL, LANGUAGE_URL,
+    GET_USERLIST_URL,
+    LANGUAGE_URL,
     MESSAGE_TYPES_URL,
     ORGANIZATION_GET_ALL_URL,
     QUESTION_URL,
-    REGISTRATION_ACTIVATE_URL, REGISTRATION_URL,
+    REGISTRATION_ACTIVATE_URL,
+    REGISTRATION_URL,
     SAVE_DEVELOPER_AND_STATE,
-    SELF_URL, STATISTICS_EDI_CUSTOMER_URL, STATISTICS_EDI_STATE_URL,
+    SELF_URL,
+    STATISTICS_EDI_CUSTOMER_URL,
+    STATISTICS_EDI_STATE_URL,
     SWITCH_USER_URL,
-    TRANSFER_STANDARDS_URL, USER_ROLES_BASE_URL
+    TRANSFER_STANDARDS_URL,
+    USER_ROLES_BASE_URL
 } from '../config/constants';
 
 export function getEdiConnections(pageNumber, pageSize, pageSorting, additiveSorting) {
@@ -126,6 +131,7 @@ export function getAllUsers() {
         method: 'GET'
     });
 }
+
 export function switchUser(username) {
     return customJSONRequest({
         url: `${BACKEND_BASE_URL}${SWITCH_USER_URL}?username=${username}`,
@@ -267,6 +273,7 @@ export function getAttachmentList(ediConnectionId) {
         method: 'GET'
     });
 }
+
 export function storeAttachments(ediConnectionId, files) {
     let formData = new FormData();
     files.forEach(function (entry) {
@@ -287,7 +294,19 @@ export function saveDeveloperAndStatus(ediConnectionId, assignedDev, state) {
         body: JSON.stringify({
             ediConnectionId: ediConnectionId,
             developerId: assignedDevId,
-            state: state.value,
+            state: state.value
+        })
+    });
+}
+
+export function sendContactMessage(fullName, email, message) {
+    return customJSONRequest({
+        url: `${BACKEND_BASE_URL}${CONTACT_URL}`,
+        method: 'POST',
+        body: JSON.stringify({
+            fullName: fullName,
+            email: email,
+            message: message
         })
     });
 }
