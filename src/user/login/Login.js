@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './Login.css';
 import {Redirect} from 'react-router-dom';
-import loginBackground from '../../resources/login/shutterstock_1133982038.png';
+import loginBackground from '../../resources/login/Login_Background_fullhd.png';
 import qdLogo from '../../resources/login/qd_software.png';
 import AuthenticationService from "../../security/AuthenticationService"
 
