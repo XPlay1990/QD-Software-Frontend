@@ -76,8 +76,8 @@ class EdiConnection extends Component {
                 }
                 {
                     !this.state.isLoading && this.state.ediConnection != null ? (
-                        <Grid container spacing={4} className="ediContentGrid">
-                            <Grid item xs={6} direction="column">
+                        <Grid container spacing={4} className="ediContentGrid" wrap={"wrap"}>
+                            <Grid item sm={6} direction="column">
                                 <Description
                                     ediConnectionId={this.ediConnectionId}
                                     status={this.state.ediConnection.status}
@@ -89,7 +89,7 @@ class EdiConnection extends Component {
                                 />
                             </Grid>
 
-                            <Grid item xs={6} sm container>
+                            <Grid item sm={6}>
                                 <EdiMessageList ediConnectionId={this.ediConnectionId}/>
                             </Grid>
                         </Grid>
