@@ -19,9 +19,10 @@
     margin-bottom: 3px;
 }
 
+
 .signup-contentGrid {
     display: grid;
-    width: 50%;
+    width: 100%;
     margin: 40px auto auto;
     grid-gap: 15px;
     padding: 10px;
@@ -29,6 +30,16 @@
     grid-template-columns: 50% 50%;
 }
 
+@media (min-width: 1024px) {
+    .signup-contentGrid {
+        display: grid;
+        width: 50%;
+        margin: 40px auto auto;
+        grid-gap: 15px;
+        padding: 10px;
+        grid-template-areas: 'Header Header' 'Username Email' 'Firstname Lastname' 'Organization Roles' 'Language Gender' 'Submit Submit';
+        grid-template-columns: 50% 50%;    }
+}
 
 .signup-contentGrid .Header {
     grid-area: Header;
