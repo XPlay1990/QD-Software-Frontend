@@ -288,7 +288,7 @@ class Statistics extends React.Component {
         // }
         return (
             <Grid container spacing={3} className="StatisticsGrid">
-                <Grid item md={6}>
+                <Grid item md={6} sm={12}>
                     <Paper className="StatisticsPaper">
                         <canvas
                             ref={node => (this.stateNode = node)}
@@ -296,7 +296,7 @@ class Statistics extends React.Component {
                     </Paper>
                 </Grid>
 
-                <Grid item md={6}>
+                <Grid item md={6} sm={12}>
                     <Paper className="StatisticsPaper">
                         <canvas
                             ref={node => (this.customerNode = node)}
@@ -304,7 +304,7 @@ class Statistics extends React.Component {
                     </Paper>
                 </Grid>
 
-                <Grid item md={6}>
+                <Grid item md={6} sm={12}>
                     <Paper className="StatisticsPaper">
                         <canvas
                             ref={node => (this.stateNodeSteppedLine = node)}
