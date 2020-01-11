@@ -24,8 +24,10 @@ import Tooltip from "@material-ui/core/Tooltip";
 import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
 import ToggleButton from "@material-ui/lab/ToggleButton";
 import ControlDropdown from "./ControlDropdown";
-import Typography from "@material-ui/core/Typography";
 import {Box} from "@material-ui/core";
+import QD_Logo from '../../resources/Logo_black.png'
+
+// import QD_Logo from '../../resources/login/qd_software_non_licensed.png'
 
 class Navigationbar extends Component {
     constructor(props) {
@@ -129,9 +131,7 @@ class Navigationbar extends Component {
                     <Box display={"flex"} flexDirection={"row"} className="UserButtons">
                         {navbarItemsUer}
                     </Box>
-                    <Box className="app-title">
-                        <Typography variant="h4"><Link to="/">QD Software Portal</Link></Typography>
-                    </Box>
+                    <Link to="/" className='app-title'><img src={QD_Logo} alt={""}/></Link>
                     <Box display={"flex"} flexDirection={"row-reverse"} className="Navigation">
                         {navbarItemsControl}
                     </Box>

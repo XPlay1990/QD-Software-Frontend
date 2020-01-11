@@ -39,6 +39,7 @@
 }
 
 .app {
+    /*background-image: url("../resources/login/Login_Background_fullhd.png");*/
     min-width: 100vw;
     min-height: 100vh;
     background-color: #dcdde1;

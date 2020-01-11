@@ -4,13 +4,13 @@ import {Route, Switch, withRouter} from 'react-router-dom';
 import {FORBIDDEN_URL, LOGIN_URL} from '../config/constants';
 import Login from '../user/login/Login';
 import LoadingIndicator from '../common/LoadingIndicator';
-
 import {notification} from 'antd';
 import MainApp from "./MainApp";
 import {handleLogin, loadUserFunction} from "./UserFunctions"
 import {createMuiTheme, responsiveFontSizes, ThemeProvider} from "@material-ui/core/styles";
 import Forbidden from "../error/Forbidden";
 import NotFound from "../error/NotFound";
+
 
 class App extends Component {
     constructor(props) {
@@ -34,7 +34,13 @@ class App extends Component {
     }
 
     render() {
-        let theme = createMuiTheme();
+        let theme = createMuiTheme({
+            palette: {
+                type: false ? 'dark' : 'light', // mediaquery on dark theme
+                // primary: {main: blue[500]},
+                // secondary: red,
+            },
+        });
         theme = responsiveFontSizes(theme);
 
         if (this.state.isLoading) {

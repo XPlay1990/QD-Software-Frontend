@@ -12,14 +12,12 @@
 .ediConnectionsContainer {
     margin-left: auto;
     margin-right: auto;
-    background-color: white;
     width: 90%;
     height: 90%;
 }
 
 .ediConnectionsTable {
     margin: auto;
-    background-color: white;
 }
 
 .TableInfos {

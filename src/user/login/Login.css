@@ -19,6 +19,11 @@
     border-width: 2px;
 }
 
+.login-form{
+    display: flex;
+    flex-direction: column;
+}
+
 .LoginButton {
     /*margin-bottom: 0;*/
 }
@@ -28,17 +33,7 @@
     width: 100%;
 }
 
-.LoginFooter {
-    margin: 0 auto;
-    /*display: flex;*/
-}
-
-.LoginFooter .footer {
-    position: absolute;
+.footer {
     height: 40px;
     bottom: 0;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
 }

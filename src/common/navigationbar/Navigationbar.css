@@ -14,6 +14,12 @@
 
 .Toolbar .app-title {
     margin: auto;
+    width: 20%;
+
+}
+
+.app-title img{
+    width: 100%;
 }
 
 .Navigationbar .UserButtons {
