@@ -8,25 +8,18 @@
 }
 
 .Additional {
-    grid-area: Additional;
-    display: grid;
-    grid-template-areas: 'heading .' 'q1 q2';
+    display: flex;
+    flex-direction: column;
     /*margin: auto;*/
-    grid-gap: 15px;
-    background-color: white;
-    padding: 10px;
 }
 
 .Additional_Heading{
-    grid-area: heading;
 }
 
 .Q1{
-    grid-area: q1;
 }
 
 .Q2{
-    grid-area: q2;
 }
 
 .SaveBtn {
