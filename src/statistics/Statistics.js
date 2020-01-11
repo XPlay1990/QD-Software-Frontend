@@ -48,7 +48,7 @@ class Statistics extends React.Component {
 
         promise
             .then(response => {
-                if (this._isMounted) {
+                if (this._imdounted) {
                     this.setState({
                             stateStatistics: new Map(Object.entries(response))
                         },
@@ -74,7 +74,7 @@ class Statistics extends React.Component {
 
         promise
             .then(response => {
-                if (this._isMounted) {
+                if (this._imdounted) {
                     this.setState({
                             customerStatistics: new Map(Object.entries(response))
                         },
@@ -93,7 +93,7 @@ class Statistics extends React.Component {
     }
 
     componentDidMount() {
-        this._isMounted = true;
+        this._imdounted = true;
         this.initStatistics()
     }
 
@@ -288,7 +288,7 @@ class Statistics extends React.Component {
         // }
         return (
             <Grid container spacing={3} className="StatisticsGrid">
-                <Grid item sm={6}>
+                <Grid item md={6}>
                     <Paper className="StatisticsPaper">
                         <canvas
                             ref={node => (this.stateNode = node)}
@@ -296,7 +296,7 @@ class Statistics extends React.Component {
                     </Paper>
                 </Grid>
 
-                <Grid item sm={6}>
+                <Grid item md={6}>
                     <Paper className="StatisticsPaper">
                         <canvas
                             ref={node => (this.customerNode = node)}
@@ -304,7 +304,7 @@ class Statistics extends React.Component {
                     </Paper>
                 </Grid>
 
-                <Grid item sm={6}>
+                <Grid item md={6}>
                     <Paper className="StatisticsPaper">
                         <canvas
                             ref={node => (this.stateNodeSteppedLine = node)}
