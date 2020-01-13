@@ -3,7 +3,6 @@
     /*grid-area: attachments;*/
     display: flex;
     flex-direction: column;
-    align-content: flex-end;
     height: 100%;
 }
 
@@ -15,7 +14,4 @@
 }
 
 .AttachmentDropZone {
-    min-height: 120px;
-    background-color: lightgrey;
-    margin: 20px;
 }

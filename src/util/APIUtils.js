@@ -277,7 +277,7 @@ export function getAttachmentList(ediConnectionId) {
 export function storeAttachments(ediConnectionId, files) {
     let formData = new FormData();
     files.forEach(function (entry) {
-        formData.append("file", entry);
+        formData.append("file", entry.file);
     });
     return customFileUploadRequest({
         url: `${BACKEND_BASE_URL}${EDICON_ATTACHMENT_UPLOAD_URL(ediConnectionId)}`,
