@@ -1,8 +1,9 @@
 .Attachment {
     /*display: grid;*/
     /*!*grid-gap: 2px;*!*/
-    width: 100%;
+    width: 250px;
     height: 80px;
+    margin: 20px;
     /*background-color: white;*/
     /*!*padding: 10px;*!*/
     /*grid-template-areas: 'icon filename' 'icon filesize';*/

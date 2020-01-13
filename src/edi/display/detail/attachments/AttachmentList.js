@@ -5,6 +5,7 @@ import Dropzone from 'react-dropzone'
 import {notification} from "antd";
 import Attachment from "./Attachment";
 import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
 
 class AttachmentList extends Component {
     constructor(props) {
@@ -99,7 +100,6 @@ class AttachmentList extends Component {
         const attachments = [];
         this.state.attachmentList.forEach((attachment, index) => {
             attachments.push(
-                <Grid item md={2}>
                     <Attachment
                         key={attachment.fileName}
                         fileName={attachment.fileName}
@@ -107,15 +107,14 @@ class AttachmentList extends Component {
                         fileType={attachment.fileType}
                         ediConnectionId={this.ediConnectionId}
                     />
-                </Grid>
             )
         });
 
         return (
             <div className="EdiAttachments">
-                <Grid container spacing={3} className="AttachmentList">
+                <Box className="AttachmentList">
                     {attachments}
-                </Grid>
+                </Box>
                 <Dropzone onDrop={acceptedFiles => this.uploadFiles(acceptedFiles)}>
                     {({getRootProps, getInputProps}) => (
                         <section>
