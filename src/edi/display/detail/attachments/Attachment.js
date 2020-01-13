@@ -92,9 +92,9 @@ class Attachment extends Component {
             <Paper className="Attachment">
                 <Tooltip title={this.state.fileName} key="backButton">
                     <Grid container spacing={0}>
-                        <Grid item xs={3}>{fileSymbol}</Grid>
-                        <Grid item xs={9} container>
-                            <Box className={"fileDataContainer"} display={"flex"} flexDirection={"column"}>
+                        <Grid item md={3}>{fileSymbol}</Grid>
+                        <Grid item md={9} container>
+                            <Box className="fileDataContainer" display={"flex"} flexDirection={"column"}>
                                 <Typography variant={"caption"} className="fileName">{this.state.fileName}</Typography>
                                 <Typography variant={"caption"}
                                             className="fileSize">{formatBytes(this.state.fileSize)}</Typography>
