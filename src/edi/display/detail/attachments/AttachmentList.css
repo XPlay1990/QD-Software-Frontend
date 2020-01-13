@@ -1,7 +1,6 @@
 .EdiAttachments {
     margin: 20px;
     /*grid-area: attachments;*/
-    background-color: white;
     display: flex;
     flex-direction: column;
     align-content: flex-end;
@@ -10,9 +9,6 @@
 
 
 .AttachmentList {
-    display: flex;
-    flex-direction: row;
-    flex: 1;
     overflow-y: scroll;
 }
 

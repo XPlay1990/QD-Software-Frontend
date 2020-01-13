@@ -10,6 +10,7 @@ import {handleLogin, loadUserFunction} from "./UserFunctions"
 import {createMuiTheme, responsiveFontSizes, ThemeProvider} from "@material-ui/core/styles";
 import Forbidden from "../error/Forbidden";
 import NotFound from "../error/NotFound";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 
 class App extends Component {
@@ -55,6 +56,7 @@ class App extends Component {
 
         return (
             <ThemeProvider theme={theme}>
+                <CssBaseline/>
                 <Switch>
                     <Route path={LOGIN_URL} render={(props) => <Login onLogin={this.handleLogin} {...props} />}/>
                     <Route path="/" render={(props) => <MainApp appState={this.state} {...props} />}/>

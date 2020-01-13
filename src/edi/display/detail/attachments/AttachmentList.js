@@ -4,6 +4,7 @@ import {getAttachmentList, storeAttachments} from "../../../../util/APIUtils";
 import Dropzone from 'react-dropzone'
 import {notification} from "antd";
 import Attachment from "./Attachment";
+import Grid from "@material-ui/core/Grid";
 
 class AttachmentList extends Component {
     constructor(props) {
@@ -97,20 +98,24 @@ class AttachmentList extends Component {
     render() {
         const attachments = [];
         this.state.attachmentList.forEach((attachment, index) => {
-            attachments.push(<Attachment
-                key={attachment.fileName}
-                fileName={attachment.fileName}
-                fileSize={attachment.fileSize}
-                fileType={attachment.fileType}
-                ediConnectionId={this.ediConnectionId}
-            />)
+            attachments.push(
+                <Grid item md={2}>
+                    <Attachment
+                        key={attachment.fileName}
+                        fileName={attachment.fileName}
+                        fileSize={attachment.fileSize}
+                        fileType={attachment.fileType}
+                        ediConnectionId={this.ediConnectionId}
+                    />
+                </Grid>
+            )
         });
 
         return (
             <div className="EdiAttachments">
-                <div className="AttachmentList">
+                <Grid container spacing={3} className="AttachmentList">
                     {attachments}
-                </div>
+                </Grid>
                 <Dropzone onDrop={acceptedFiles => this.uploadFiles(acceptedFiles)}>
                     {({getRootProps, getInputProps}) => (
                         <section>
