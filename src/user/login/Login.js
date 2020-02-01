@@ -10,6 +10,7 @@ import {ACCESS_TOKEN, EDICON_LIST_URL, IS_AUTHENTICATED} from "../../config/cons
 import {Trans} from "react-i18next";
 import {Box} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
+import ReactGA from 'react-ga';
 
 const FormItem = Form.Item;
 
@@ -68,6 +69,10 @@ class LoginForm extends Component {
                     .then(response => {
                         localStorage.setItem(ACCESS_TOKEN, response.accessToken);
                         this.props.onLogin();
+                        ReactGA.event({
+                            category: "Login",
+                            action: "login",
+                        });
                     }).catch(error => {
                     if (error.status === 401) {
                         notification.error({

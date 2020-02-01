@@ -11,7 +11,15 @@ import {createMuiTheme, responsiveFontSizes, ThemeProvider} from "@material-ui/c
 import Forbidden from "../error/Forbidden";
 import NotFound from "../error/NotFound";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import ReactGA from 'react-ga';
 
+const ga_TrackerId = 'UA-157113083-2';
+ReactGA.initialize(ga_TrackerId);
+ReactGA.set({
+    selectedLanguage: i18next.language,
+    // any data that is relevant to the user session
+    // that you would like to track with google analytics
+});
 
 class App extends Component {
     constructor(props) {

@@ -4,11 +4,11 @@ import {editorStateFromRaw, MegadraftEditor} from "megadraft";
 // import 'megadraft/dist/css/megadraft.css';
 import "./TextEditor/MegaDraft/MegaDraftTextEditor.css";
 import "./EdiMessage.css"
-import Avatar from '@atlaskit/avatar';
 import Grid from "@material-ui/core/Grid";
 import {getAvatarColor} from "../../../../util/Colors";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import Avatar from "@material-ui/core/Avatar";
 
 
 class EdiMessageJS extends Component {

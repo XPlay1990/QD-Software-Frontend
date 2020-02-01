@@ -8,6 +8,7 @@ import {withTranslation} from "react-i18next";
 import './statistics.css';
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
+import ReactGA from "react-ga";
 
 class Statistics extends React.Component {
     constructor(props) {
@@ -94,7 +95,12 @@ class Statistics extends React.Component {
 
     componentDidMount() {
         this._imdounted = true;
-        this.initStatistics()
+        this.initStatistics();
+
+        ReactGA.event({
+            category: "Statistics",
+            action: "Statistics",
+        });
     }
 
     initStateDataSet() {
