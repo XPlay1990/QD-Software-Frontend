@@ -12,6 +12,7 @@ import Forbidden from "../error/Forbidden";
 import NotFound from "../error/NotFound";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import ReactGA from 'react-ga';
+import i18next from "i18next";
 
 const ga_TrackerId = 'UA-157113083-2';
 ReactGA.initialize(ga_TrackerId);

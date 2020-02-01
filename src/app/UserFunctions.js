@@ -2,6 +2,8 @@ import {getCurrentUserWithRoles} from "../security/AuthenticationService";
 import {Role} from "../security/Roles";
 import {CURRENT_USER, EDICON_LIST_URL, IS_ADMIN, IS_AUTHENTICATED, LOGIN_URL} from "../config/constants";
 import {notification} from "antd";
+import ReactGA from "react-ga";
+import i18next from "i18next";
 
 export const loadUserFunction =
     function loadCurrentUser() {
@@ -15,6 +17,11 @@ export const loadUserFunction =
                 localStorage.setItem(IS_ADMIN, `${response && response.authorities.includes(Role.Admin)}`);
                 this.setState({
                     isLoading: false
+                });
+                ReactGA.set({
+                    selectedLanguage: i18next.language,
+                    user: localStorage.getItem(CURRENT_USER),
+                    isAdmin: localStorage.getItem(IS_ADMIN)
                 });
             }).catch(error => {
             this.setState({
