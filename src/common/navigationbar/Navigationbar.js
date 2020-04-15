@@ -26,6 +26,7 @@ import ToggleButton from "@material-ui/lab/ToggleButton";
 import ControlDropdown from "./ControlDropdown";
 import {Box} from "@material-ui/core";
 import QD_Logo from '../../resources/Logo_black.png'
+import Button from "@material-ui/core/Button";
 
 // import QD_Logo from '../../resources/login/qd_software_non_licensed.png'
 
@@ -52,26 +53,36 @@ class Navigationbar extends Component {
         if ((localStorage.getItem(IS_ADMIN) === 'true')) {
             navbarItemsUer.push(
                 <Tooltip title="Create Edi connection" key="createEdiButton">
-                    <IconButton edge="start" className="NavigationButton" color="inherit" aria-label="menu"
-                                onClick={() => this.props.history.push(EDICON_CREATE_URL)}>
-                        <CreateIcon/>
-                    </IconButton>
+                    <Button edge="start" className="NavigationButton" aria-label="menu"
+                            onClick={() => this.props.history.push(EDICON_CREATE_URL)}
+                            variant={"contained"}
+                            color={"primary"}
+                            startIcon={<CreateIcon/>}
+                    >
+                        Create Edi connection
+                    </Button>
                 </Tooltip>
             );
             navbarItemsUer.push(
                 <Tooltip title="Create Organization" key="createOrgButton">
-                    <IconButton edge="start" className="NavigationButton" color="inherit" aria-label="menu"
-                                onClick={() => this.props.history.push(CREATE_ORGANIZATION_URL)}>
-                        <GroupAddIcon/>
-                    </IconButton>
+                    <Button edge="start" className="NavigationButton" color="inherit" aria-label="menu"
+                            onClick={() => this.props.history.push(CREATE_ORGANIZATION_URL)}
+                            variant={"contained"}
+                            startIcon={<GroupAddIcon/>}
+                    >
+                        Create Organization
+                    </Button>
                 </Tooltip>
             );
             navbarItemsUer.push(
                 <Tooltip title="Create User" key="createUserButton">
-                    <IconButton edge="start" className="NavigationButton" color="inherit" aria-label="menu"
-                                onClick={() => this.props.history.push(REGISTRATION_URL)}>
-                        <PersonAddIcon/>
-                    </IconButton>
+                    <Button edge="start" className="NavigationButton" color="inherit" aria-label="menu"
+                            onClick={() => this.props.history.push(REGISTRATION_URL)}
+                            variant={"contained"}
+                            startIcon={<PersonAddIcon/>}
+                    >
+                        Create User
+                    </Button>
                 </Tooltip>
             );
         }

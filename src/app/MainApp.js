@@ -28,7 +28,7 @@ import Paper from "@material-ui/core/Paper";
 import Statistics from "../statistics/Statistics";
 import Tabbar from "../common/tabbar/Tabbar";
 import AttachmentList from "../edi/display/detail/attachments/AttachmentList";
-import Contact from "../contact/contact";
+import ContactMe from "../contact/ContactMe";
 
 class MainApp extends React.Component {
     constructor(props) {
@@ -62,7 +62,7 @@ class MainApp extends React.Component {
                             <Route exact path={EDICON_LIST_URL + "/:id/attachments"} component={AttachmentList}/>
                             <Route path={SWITCH_USER_URL} component={SwitchUser}/>
                             <Route path={STATISTICS_URL} component={Statistics}/>
-                            <Route path={CONTACT_URL} component={Contact}/>
+                            <Route path={CONTACT_URL} component={ContactMe}/>
                             <Route path={FORBIDDEN_URL} component={Forbidden}/>
                             <Route component={NotFound}/>
                         </Switch>

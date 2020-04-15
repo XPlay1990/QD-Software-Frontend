@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Redirect, withRouter} from 'react-router-dom';
 import './EdiCreate.css';
-import "react-table/react-table.css";
 import LoadingIndicator from "../../common/LoadingIndicator";
 import BaseSelect from "react-select";
 import {

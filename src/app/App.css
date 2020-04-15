@@ -24,15 +24,6 @@
     flex: 1 1;
 }
 
-#loginBackgroundImage {
-    position: fixed;
-    top: 0;
-    left: 0;
-    /* Preserve aspet ratio */
-    width: 100%;
-    height: 100%;
-}
-
 .app-scrollbar {
     width: 90%;
     max-height: 300px;

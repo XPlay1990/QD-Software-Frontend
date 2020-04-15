@@ -3,7 +3,7 @@
     "loginInfoTitle": "Willkommen zum QD Demo Portal!",
     "loginInfoText": "Sie können sich einloggen mit <br> user: sampleuser <br> password: sampleuser"
   },
-  "contact": {
+  "ContactMe": {
     "intro": "Sie sind an einer Zusammenarbeit interessiert, haben eine Anfrage oder Feedback? <br> Über folgende Kontaktdaten oder das unten stehende Kontaktformular können Sie mich erreichen.",
     "formTitle": "Kontaktform",
     "label": {
@@ -29,7 +29,7 @@
   "tabs": {
     "Edi": "Edi",
     "Statistics": "Statistik",
-    "Contact": "Kontakt",
+    "ContactMe": "Kontakt",
     "ediconnection": {
       "overview": "Übersicht",
       "question/answer": "Fragen",

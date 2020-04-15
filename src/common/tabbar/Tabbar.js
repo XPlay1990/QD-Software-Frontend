@@ -35,7 +35,7 @@ class Tabbar extends Component {
         this.moduleMap = new Map();
         this.moduleMap.set("Edi", EDICON_LIST_URL);
         this.moduleMap.set("Statistics", STATISTICS_URL);
-        this.moduleMap.set("Contact", CONTACT_URL);
+        this.moduleMap.set("ContactMe", CONTACT_URL);
 
         this.reverseModuleMap = new Map();
         this.moduleMap.forEach((value, key, map) =>

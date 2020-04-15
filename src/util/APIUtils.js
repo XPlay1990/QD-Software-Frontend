@@ -31,7 +31,7 @@ import {
     USER_ROLES_BASE_URL
 } from '../config/constants';
 
-export function getEdiConnections(pageNumber, pageSize, pageSorting, additiveSorting) {
+export function getEdiConnections(pageNumber, pageSize, pageSorting, filter) {
     pageNumber = pageNumber || 0;
     pageSize = pageSize || EDI_LIST_SIZE;
 
@@ -49,7 +49,7 @@ export function getEdiConnections(pageNumber, pageSize, pageSorting, additiveSor
         sortString = "updateTime,desc"
     }
     return customJSONRequest({
-        url: `${BACKEND_BASE_URL}${EDICON_LIST_URL}?page=${pageNumber}&size=${pageSize}&sort=${sortString}`,
+        url: `${BACKEND_BASE_URL}${EDICON_LIST_URL}?page=${pageNumber}&size=${pageSize}&sort=${sortString}&search=${filter}`,
         method: 'GET',
     });
 }

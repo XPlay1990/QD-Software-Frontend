@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function Contact() {
+export default function ContactMe() {
     const {t} = useTranslation();
     const classes = useStyles();
 
@@ -82,7 +82,7 @@ export default function Contact() {
         <Box className={classes.container}>
             <Typography variant="h6"
                         style={{overflowWrap: "break-word", textOverflow: "ellipsis", marginBottom: "20px"}}>
-                {<Trans i18nKey={"contact.intro"}/>}
+                {<Trans i18nKey={"ContactMe.intro"}/>}
             </Typography>
             <Divider variant={"middle"}/>
             <Typography variant="body2"
@@ -101,13 +101,13 @@ export default function Contact() {
                 <Paper style={{padding: "20px"}}>
                     <Typography variant="h6"
                                 style={{overflowWrap: "break-word", textOverflow: "ellipsis", marginBottom: "20px"}}>
-                        {t('contact.formTitle')}
+                        {t('ContactMe.formTitle')}
                     </Typography>
                     <TextField
                         id="standard-full-width"
-                        label={t('contact.label.name')}
+                        label={t('ContactMe.label.name')}
                         style={{margin: 8}}
-                        placeholder={t('contact.placeholder.name')}
+                        placeholder={t('ContactMe.placeholder.name')}
                         fullWidth
                         margin="normal"
                         name="fullname"
@@ -120,9 +120,9 @@ export default function Contact() {
                     />
                     <TextField
                         id="standard-full-width"
-                        label={t('contact.label.email')}
+                        label={t('ContactMe.label.email')}
                         style={{margin: 8}}
-                        placeholder={t('contact.placeholder.email')}
+                        placeholder={t('ContactMe.placeholder.email')}
                         fullWidth
                         margin="normal"
                         name="email"
@@ -135,9 +135,9 @@ export default function Contact() {
                     />
                     <TextField
                         id="standard-full-width"
-                        label={t('contact.label.message')}
+                        label={t('ContactMe.label.message')}
                         style={{margin: 8}}
-                        placeholder={t('contact.placeholder.message')}
+                        placeholder={t('ContactMe.placeholder.message')}
                         fullWidth
                         multiline={true}
                         rows={7}
