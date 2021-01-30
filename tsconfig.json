@@ -3,7 +3,7 @@
     "module": "esnext",
     "target": "es2018",
     "sourceMap": true,
-    "jsx": "react-jsx",
+    "jsx": "react",
     "lib": [
       "dom",
       "dom.iterable",

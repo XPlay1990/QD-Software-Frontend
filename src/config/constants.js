@@ -1,5 +1,5 @@
 // BACKEND
-export const BACKEND_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:9020'; //'http://ec2-18-184-142-66.eu-central-1.compute.amazonaws.com:9020';
+export const BACKEND_BASE_URL = process.env.REACT_APP_API_BASE_URL || process.env.NODE_ENV === 'production' ? 'http://api.qd-software.de' : 'http://localhost:9020'; //'http://ec2-18-184-142-66.eu-central-1.compute.amazonaws.com:9020';
 
 // API URLS
 export const BASE_URL = '/';
@@ -17,7 +17,7 @@ export const GET_ORGANIZATION_MEMBERS_URL = (id) => `${ORGANIZATION_BASE_URL}/${
 export const GET_DEVELOPERS = `${ORGANIZATION_BASE_URL}/qd/members`;
 export const GET_CUSTOMER_ORGANIZATIONS_URL = `${ORGANIZATION_BASE_URL}/customers`;
 export const GET_SUPPLIER_ORGANIZATIONS_URL = `${ORGANIZATION_BASE_URL}/suppliers`;
-export const USER_URL= '/user';
+export const USER_URL = '/user';
 export const GENDER_URL = `${USER_URL}/genders`;
 export const SELF_URL = USER_URL + '/me';
 export const GET_USERLIST_URL = USER_URL + '/all';
