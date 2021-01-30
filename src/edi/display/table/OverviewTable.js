@@ -132,15 +132,15 @@ const OverviewTable = () => {
                 isLoading ?
                     <LoadingIndicator/> : null
             }
+            {/*{*/}
+            {/*    !isLoading && data.length === 0 ? (*/}
+            {/*        <div className="noEdiConnectionsFound">*/}
+            {/*            <span>No Edi-Connections Found.</span>*/}
+            {/*        </div>*/}
+            {/*    ) : null*/}
+            {/*}*/}
             {
-                !isLoading && data.length === 0 ? (
-                    <div className="noEdiConnectionsFound">
-                        <span>No Edi-Connections Found.</span>
-                    </div>
-                ) : null
-            }
-            {
-                !isLoading && data.length > 0 ? (
+                !isLoading ? (
                     <div className="ediConnectionsTable">
                         <Paper>
                             <TableContainer className={"ReactTable"}>

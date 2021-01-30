@@ -27,6 +27,7 @@ export const loadUserFunction =
             this.setState({
                 isLoading: false
             });
+            this.handleLogout()
         });
     };
 

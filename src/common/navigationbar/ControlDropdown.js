@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import './ControlDropdown.css';
-import {Dropdown, Icon, Menu} from 'antd';
+import {Dropdown, Menu} from 'antd';
 import {Trans} from "react-i18next";
 import {CURRENT_USER, IS_ADMIN, IS_AUTHENTICATED} from "../../config/constants";
 import {handleLogout} from "../../app/UserFunctions"
+import {DownOutlined, UserOutlined} from "@ant-design/icons";
 
 class ControlDropdown extends Component {
     constructor(props) {
@@ -20,34 +21,24 @@ class ControlDropdown extends Component {
     }
 
     render() {
-        let menuItems = [];
-        menuItems.push(
-            <Menu.Item key="/profile" className="profile-menu">
+        return (
+            <div className="NavigationButton">
                 <ProfileDropdownMenu
+                    // style={{lineHeight: '64px', margin: "auto"}}
                     isAdmin={localStorage.getItem(IS_ADMIN) === 'true'}
                     currentUser={this.props.currentUser}
-                    handleMenuClick={this.handleMenuClick}/>
-            </Menu.Item>);
-
-        return (
-            <Menu
-                className="app-menu"
-                mode="horizontal"
-                selectedKeys={[this.props.location.pathname]}
-                style={{lineHeight: '64px'}}>
-                {
-                    (localStorage.getItem(IS_AUTHENTICATED) === 'true') ?
-                        menuItems : null
-                }
-            </Menu>
+                    handleMenuClick={this.handleMenuClick}
+                />
+            </div>
         );
     }
 }
 
 function ProfileDropdownMenu(props) {
     const currentUser = JSON.parse(localStorage.getItem(CURRENT_USER));
-    const dropdownMenu = (
-        <Menu onClick={props.handleMenuClick} className="profile-dropdown-menu">
+    let menuItems = [];
+    if (localStorage.getItem(IS_AUTHENTICATED) === 'true') {
+        menuItems.push(
             <Menu.Item key="user-info" className="dropdown-item" disabled>
                 <div className="user-full-name-info">
                     {currentUser.name}
@@ -56,19 +47,33 @@ function ProfileDropdownMenu(props) {
                     @{currentUser.username}
                 </div>
             </Menu.Item>
+        )
+        menuItems.push(
             <Menu.Divider/>
+        )
+        menuItems.push(
             <Menu.Item key="profile" className="dropdown-item">
                 <Link to={`/users/${currentUser.username}`}><Trans i18nKey={`navigation.profile`}>Profile</Trans></Link>
             </Menu.Item>
-            {
-                (props.isAdmin) ? (
-                    <Menu.Item key="switchUser" className="dropdown-item">
-                        <Link to={`/switchuser/`}><Trans i18nKey={`navigation.switchUser`}>Switch User</Trans></Link>
-                    </Menu.Item>) : null
-            }
+        )
+        menuItems.push(
+            <Menu.Divider/>
+        )
+        menuItems.push(
+            (props.isAdmin) ? (
+                <Menu.Item key="switchUser" className="dropdown-item">
+                    <Link to={`/switchuser/`}><Trans i18nKey={`navigation.switchUser`}>Switch User</Trans></Link>
+                </Menu.Item>) : null
+        )
+        menuItems.push(
             <Menu.Item key="logout" className="dropdown-item">
                 Logout
             </Menu.Item>
+        )
+    }
+    const dropdownMenu = (
+        <Menu onClick={props.handleMenuClick} className="profile-dropdown-menu">
+            {menuItems}
         </Menu>
     );
 
@@ -76,10 +81,10 @@ function ProfileDropdownMenu(props) {
         <Dropdown
             overlay={dropdownMenu}
             trigger={['click']}
-            getPopupContainer={() => document.getElementsByClassName('profile-menu')[0]}>
-            <button className="ant-dropdown-link">
-                <Icon type="user" className="nav-icon" style={{marginRight: 0}}/> <Icon type="down"/>
-            </button>
+            placement="bottomCenter"
+        >
+            <UserOutlined className="nav-icon" style={{marginRight: 0}}/>
+            {/*<DownOutlined/>*/}
         </Dropdown>
     );
 }

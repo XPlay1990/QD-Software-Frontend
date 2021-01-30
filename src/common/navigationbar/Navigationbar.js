@@ -65,7 +65,7 @@ class Navigationbar extends Component {
             );
             navbarItemsUer.push(
                 <Tooltip title="Create Organization" key="createOrgButton">
-                    <Button edge="start" className="NavigationButton" color="inherit" aria-label="menu"
+                    <Button edge="start" className="NavigationButton" color="primary" aria-label="menu"
                             onClick={() => this.props.history.push(CREATE_ORGANIZATION_URL)}
                             variant={"contained"}
                             startIcon={<GroupAddIcon/>}
@@ -76,7 +76,7 @@ class Navigationbar extends Component {
             );
             navbarItemsUer.push(
                 <Tooltip title="Create User" key="createUserButton">
-                    <Button edge="start" className="NavigationButton" color="inherit" aria-label="menu"
+                    <Button edge="start" className="NavigationButton" color="primary" aria-label="menu"
                             onClick={() => this.props.history.push(REGISTRATION_URL)}
                             variant={"contained"}
                             startIcon={<PersonAddIcon/>}

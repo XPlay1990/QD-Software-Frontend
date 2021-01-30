@@ -55,7 +55,6 @@ const TableToolbar = (setFilter) => {
         }
         let joinedFilter = filter.join(",");
         setFilter.setFilter(joinedFilter)
-        console.log(joinedFilter)
         handleClose()
     };
 

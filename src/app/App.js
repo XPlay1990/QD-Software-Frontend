@@ -6,7 +6,7 @@ import Login from '../user/login/Login';
 import LoadingIndicator from '../common/LoadingIndicator';
 import {notification} from 'antd';
 import MainApp from "./MainApp";
-import {handleLogin, loadUserFunction} from "./UserFunctions"
+import {handleLogin, handleLogout, loadUserFunction} from "./UserFunctions"
 import {createMuiTheme, responsiveFontSizes, ThemeProvider} from "@material-ui/core/styles";
 import Forbidden from "../error/Forbidden";
 import NotFound from "../error/NotFound";
@@ -30,6 +30,7 @@ class App extends Component {
         };
         this.loadCurrentUser = loadUserFunction.bind(this);
         this.handleLogin = handleLogin.bind(this);
+        this.handleLogout = handleLogout.bind(this);
 
         notification.config({
             placement: 'topRight',

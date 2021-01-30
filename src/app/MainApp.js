@@ -23,7 +23,6 @@ import Forbidden from "../error/Forbidden";
 import SwitchUser from "../admin_functions/SwitchUser";
 import SupplierQuestions from "../edi/display/detail/supplierQuestions/SupplierQuestions";
 import ActivateUserRegistration from "../user/signup/ActivateUserRegistration";
-import {loadUserFunction} from "./UserFunctions"
 import Paper from "@material-ui/core/Paper";
 import Statistics from "../statistics/Statistics";
 import Tabbar from "../common/tabbar/Tabbar";
@@ -31,14 +30,6 @@ import AttachmentList from "../edi/display/detail/attachments/AttachmentList";
 import ContactMe from "../contact/ContactMe";
 
 class MainApp extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isLoading: true,
-        };
-        this.loadCurrentUser = loadUserFunction.bind(this);
-    }
-
     render() {
         return (
             <div className="app">
